@@ -48,3 +48,8 @@ display: flex;
 background: #444;
 color: #e72929;
 }
+
+.card{
+    margin-bottom: 40px;
+}
+
