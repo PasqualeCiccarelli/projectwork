@@ -1,0 +1,50 @@
+/* ----------------------NAV BAR-------------------------------- */
+.navbar-toggler-icon {
+font-size: 2rem;
+}
+
+.navbar-nav {
+display: flex;
+justify-content: space-between;
+position: relative;
+}
+
+.navbar {
+background: rgba(255, 255, 255, 0.104);
+}
+
+.navbar-toggler-icon {
+font-size: 32px;
+}
+
+.user-icon {
+width: 1.8rem;
+height: 1.8rem;
+border: 2px solid black;
+border-radius: 50%;
+align-items: center;
+justify-content: center;
+display: flex;
+}
+
+.logo {
+    margin-left: 2rem;
+}
+
+.navbar-toggler {
+    background-color: #ffffff7d;
+}
+
+.fa-user {
+    height: 70%;
+    width: auto;
+}
+
+.offcanvas-body {
+    justify-content: space-between;
+}
+/* ----------------------------footer---------------------------------------------- */
+#main-footer {
+background: #444;
+color: #e72929;
+}
