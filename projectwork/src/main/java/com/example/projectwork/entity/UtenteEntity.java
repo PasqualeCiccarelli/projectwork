@@ -3,10 +3,9 @@ package com.example.projectwork.entity;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
+
 
 import com.example.projectwork.entity.entityenum.Ruolo;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,9 +14,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
