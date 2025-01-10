@@ -73,19 +73,19 @@ public class CardEntity {
 	
 	public CardEntity() {
 		
-	};
-	 
-	 
-	
+	}
 
-	public CardEntity(long id, String nome, String descrizione, String categoria, double prezzo, int rimanenze,
-		boolean disponibilita, String immagine, LocalDate data_inizio, double prezzo_scontato, AdminEntity admin,
-		List<DettaglioOrdineEntity> dettagli_ordine) {
-		super();
+
+
+
+	public CardEntity(long id, String nome, String descrizione, Categoria categoria, Tipo tipo, double prezzo,
+			int rimanenze, boolean disponibilita, String immagine, LocalDate data_inizio, double prezzo_scontato,
+			AdminEntity admin, List<DettaglioOrdineEntity> dettagli_ordine) {
 		this.id = id;
 		this.nome = nome;
 		Descrizione = descrizione;
 		this.categoria = categoria;
+		this.tipo = tipo;
 		this.prezzo = prezzo;
 		this.rimanenze = rimanenze;
 		this.disponibilita = disponibilita;
@@ -141,15 +141,29 @@ public class CardEntity {
 
 
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
 
 
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+
+
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+
+
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 
@@ -262,20 +276,9 @@ public class CardEntity {
 
 	public void setDettagli_ordine(List<DettaglioOrdineEntity> dettagli_ordine) {
 		this.dettagli_ordine = dettagli_ordine;
-	}
-	
-	
-	
-	
-	
-	
-	 
-	 
-	 
-	 
-	 
-	 
+	};
 	 
 	 
 	
+
 }
