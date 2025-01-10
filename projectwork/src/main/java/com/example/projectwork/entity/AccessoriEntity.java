@@ -69,7 +69,7 @@ public class AccessoriEntity {
 	@JoinColumn(name = "id_admin")
 	private AdminEntity admin;
 
-	@OneToMany(mappedBy = "accessori", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "accessorio", cascade = CascadeType.ALL)
 	private List<DettaglioOrdineEntity> dettagliOrdine;
 	
 	
