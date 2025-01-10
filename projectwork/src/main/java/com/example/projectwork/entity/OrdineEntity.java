@@ -33,7 +33,7 @@ public class OrdineEntity {
 	
 	private Stato stato_consegna;
 	
-	@OneToMany(mappedBy = "ordini", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
 	private List<DettaglioOrdineEntity> dettagliOrdine;
 	
 	public OrdineEntity() {
