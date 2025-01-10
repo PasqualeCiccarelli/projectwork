@@ -34,7 +34,7 @@ public class AccessoriEntity {
 	private String descrizione;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, columnDefinition = "ENUM('PREVENTIDA', 'NOVITA', 'DEFAULT', 'SPECIALE')")
+	@Column(nullable = false, columnDefinition = "ENUM('PREVENDITA', 'NOVITA', 'DEFAULT', 'SPECIALE')")
 	private Categoria categoria;
 	 
 	@Column
@@ -56,7 +56,7 @@ public class AccessoriEntity {
 	private String dimensioni;
 	 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, columnDefinition = "ENUM('DEFAULT', 'EDIZIONE_LIMITATA', 'ACTION_FIGURE', 'GADGET', 'RACCOGLITORI', 'SLEEVE')")
+	@Column(nullable = false, columnDefinition = "ENUM('EDIZIONE_LIMITATA', 'ACTION_FIGURE', 'GADGET', 'RACCOGLITORI', 'SLEEVE')")
 	private Tipo tipo;
 
 	@Column
