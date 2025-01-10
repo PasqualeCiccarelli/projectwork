@@ -1,5 +1,7 @@
 package com.example.projectwork.entity;
 
+import com.example.projectwork.entity.Enum.Ruolo;
+
 public class UtenteEntity {
 
 	private long id;
