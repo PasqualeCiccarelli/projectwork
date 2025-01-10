@@ -1,6 +1,7 @@
 package com.example.projectwork.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
