@@ -1,6 +1,6 @@
 package com.example.projectwork.entity;
 
-import com.example.projectwork.entity.Enum.Ruolo;
+import com.example.projectwork.entity.entityenum.Ruolo;
 
 public class UtenteEntity {
 
