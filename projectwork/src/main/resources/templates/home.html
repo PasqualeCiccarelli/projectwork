@@ -70,29 +70,60 @@
               </li>
             </ul>
 
+
+
+ <!-- Swiper -->
+ <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+      <div class="swiper-slide"><img src="download.jpeg" alt=""></div>
+    
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      loop: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+
+
+
+
+       <!--footer-->
+    <footer id="main-footer" class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 text-center text-lg-start">Info azienda | Cookies | Etc.</div>
+            <div class="col-lg-4 text-center">IG | FB | YT</div>
+            <div class="col-lg-4 text-center text-lg-end">&copy; 2024 Jaita 131</div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <!-- fine navbar -->
+      </footer>
+     <!--fine footer--> 
 
-
-
-
-
-
-  <!--footer-->
-  <footer id="main-footer" class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 text-center text-lg-start">Info azienda | Cookies | Etc.</div>
-        <div class="col-lg-4 text-center">IG | FB | YT</div>
-        <div class="col-lg-4 text-center text-lg-end">&copy; 2024 Jaita 131</div>
-      </div>
-    </div>
-  </footer>
-  <!--fine footer-->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
