@@ -18,29 +18,29 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ordini")
 public class OrdineEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@ManyToOne
-    @JoinColumn(name = "utente_id", nullable = false)
+	@JoinColumn(name = "utente_id", nullable = false)
 	private UtenteEntity utente;
-	
+
 	private String indirizzo;
-	
+
 	private LocalDate data;
-	
+
 	private Stato stato_consegna;
-	
+
 	@OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
 	private List<DettaglioOrdineEntity> dettagliOrdine;
-	
+
 	public OrdineEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrdineEntity(long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato_consegna,
+	public OrdineEntity(Long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato_consegna,
 			List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.id = id;
 		this.utente = utente;
@@ -50,11 +50,11 @@ public class OrdineEntity {
 		this.dettagliOrdine = dettagliOrdine;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -97,6 +97,5 @@ public class OrdineEntity {
 	public void setDettagliOrdine(List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.dettagliOrdine = dettagliOrdine;
 	}
-	
 
 }

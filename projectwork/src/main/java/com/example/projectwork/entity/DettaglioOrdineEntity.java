@@ -9,30 +9,30 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "dettagli_ordine")
+@Table(name = "dettagli_ordine")
 public class DettaglioOrdineEntity {
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
 
-	 private Double prezzo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 private Integer quantita;
+	private Double prezzo;
 
-	 @ManyToOne
-	 @JoinColumn(name = "id_ordine", nullable = false)
-	 private OrdineEntity ordine;
+	private Integer quantita;
 
-	 @ManyToOne
-	 @JoinColumn(name = "id_carta")
-	 private CardEntity carta;
+	@ManyToOne
+	@JoinColumn(name = "id_ordine", nullable = false)
+	private OrdineEntity ordine;
 
-	 @ManyToOne
-	 @JoinColumn(name = "id_accessori")
-	 private AccessoriEntity accessorio;
-	 
-	 public DettaglioOrdineEntity() {
+	@ManyToOne
+	@JoinColumn(name = "id_carta")
+	private CardEntity carta;
+
+	@ManyToOne
+	@JoinColumn(name = "id_accessori")
+	private AccessoriEntity accessorio;
+
+	public DettaglioOrdineEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -93,7 +93,5 @@ public class DettaglioOrdineEntity {
 	public void setAccessorio(AccessoriEntity accessorio) {
 		this.accessorio = accessorio;
 	}
-	 
-	 
 
 }

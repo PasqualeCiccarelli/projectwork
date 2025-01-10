@@ -3,6 +3,7 @@ package com.example.projectwork.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
 
@@ -20,30 +21,34 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name= "accessori")
+@Table(name = "accessori")
 public class AccessoriEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length= 100, nullable=false)
+	@Column(length = 100, nullable = false)
 	private String nome;
 
-	@Column(length= 500, nullable=false)
+	@Column(length = 500, nullable = false)
 	private String descrizione;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, columnDefinition = "ENUM('PREVENDITA', 'NOVITA', 'DEFAULT', 'SPECIALE')")
 	private Categoria categoria;
-	 
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, columnDefinition = "ENUM('POKEMON', 'MAGIC', 'YUGIHO')")
+	private Brand brand;
+
 	@Column
 	private boolean disponibilita;
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String immagine;
 
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private double prezzo;
 
 	@Column
@@ -54,14 +59,14 @@ public class AccessoriEntity {
 
 	@Column
 	private String dimensioni;
-	 
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, columnDefinition = "ENUM('EDIZIONE_LIMITATA', 'ACTION_FIGURE', 'GADGET', 'RACCOGLITORI', 'SLEEVE')")
 	private Tipo tipo;
 
 	@Column
 	private LocalDate dataInizio;
-	
+
 	@Column
 	private int rimanenza;
 
@@ -71,20 +76,20 @@ public class AccessoriEntity {
 
 	@OneToMany(mappedBy = "accessorio", cascade = CascadeType.ALL)
 	private List<DettaglioOrdineEntity> dettagliOrdine;
-	
-	
+
 	public AccessoriEntity() {
-		
+
 	}
 
-	public AccessoriEntity(Long id, String nome, String descrizione, Categoria categoria, boolean disponibilita,
-		String immagine, double prezzo, double prezzoScontato, double peso, String dimensioni, Tipo tipo,
-		LocalDate dataInizio, int rimanenza, AdminEntity admin, List<DettaglioOrdineEntity> dettagliOrdine) {
-		super();
+	public AccessoriEntity(Long id, String nome, String descrizione, Categoria categoria, Brand brand,
+			boolean disponibilita, String immagine, double prezzo, double prezzoScontato, double peso,
+			String dimensioni, Tipo tipo, LocalDate dataInizio, int rimanenza, AdminEntity admin,
+			List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
+		this.brand = brand;
 		this.disponibilita = disponibilita;
 		this.immagine = immagine;
 		this.prezzo = prezzo;
@@ -128,6 +133,14 @@ public class AccessoriEntity {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 
 	public boolean isDisponibilita() {
@@ -217,13 +230,5 @@ public class AccessoriEntity {
 	public void setDettagliOrdine(List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.dettagliOrdine = dettagliOrdine;
 	}
-	
-	
-	
-	
-	 
-	 
-	 
-	 
 
 }
