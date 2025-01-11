@@ -40,7 +40,7 @@ position: relative;
 }
 
 .navbar {
-background: #41a1d0;
+background: #eedede ;
 }
 
 .navbar-toggler-icon {
@@ -81,12 +81,11 @@ display: flex;
 
 }
 
-.logo-icon-pokeball, .logo-icon-magic {
+.logo-icon-pokeball, .logo-icon-magic, .logo-icon-puzzle {
     height: 62px;
     width: 60px;
     margin: 0 2rem;
-    /* box-shadow: 6px 4px 0px rgba(0, 0, 0, 0.4);
-    border-radius: 30px; */
+    filter: drop-shadow(8px 8px 4px black);
 }
 
 /* .logo-icon-pokeball:hover{

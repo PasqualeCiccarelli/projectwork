@@ -10,10 +10,10 @@
     <!-- fontawesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../static/css/loginReg.css">
+  <link rel="stylesheet" href="../static/css/login.css">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body>
+<body class="sfondo-login">
 
 
      <!-- inizio-navbar -->
@@ -72,20 +72,28 @@
 
 
 
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+  <img class="img mimikyu" src="../static/img/loginfoto/mimikyu.png" alt="">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+  <img class="img gengar" src="../static/img/loginfoto/gengar.png" alt="">
 
-            <button type="submit">Login</button>
-        </form>
-        <p>Non hai un account? <a href="/register.html">Registrati qui</a></p>
-        <p id="errorMessage" style="color: red;"></p>
-    </div>
+  <img class="img darkrai" src="../static/img/loginfoto/darkrai.png" alt="">
+
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+    <p class="patrizio">Non hai un account? <a href="/register.html">Registrati qui</a></p>
+    <p class="patrizio" id="errorMessage" style="color: red;"></p>
+</div>
+
 
 
 
