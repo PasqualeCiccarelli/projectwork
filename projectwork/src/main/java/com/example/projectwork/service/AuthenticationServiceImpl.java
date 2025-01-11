@@ -67,6 +67,7 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 	public RegistrazioneResponse registrazione(RegistrazioneRequest registerRequest) {
 	    
 	    Optional<UtenteEntity> existingUser = utenteRepository.findByEmail(registerRequest.getEmail());
+	    
 	    if (existingUser.isPresent()) {
 	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email già in uso");
 	    }

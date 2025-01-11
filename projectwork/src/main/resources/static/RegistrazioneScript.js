@@ -12,14 +12,15 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         alert("Devi accettare le politiche aziendali per registrarti.");
         return;
     }
-    
+
+    const dataNascitaDate = new Date(dataNascita);
 
     const registerData = {
         nome: nome,
         cognome: cognome,
         email: email,
         password: password,
-        dataNascita: dataNascita,
+        dataNascita: dataNascitaDate,
         accettaPolitiche: accettaPolitiche
     };
 
@@ -57,5 +58,7 @@ document.getElementById("registerForm").addEventListener("submit", function(even
     })
     .catch(error => {
         document.getElementById("errorMessage").innerText = error.message;
+        console.log(registerData);
+        console.log("Controllo tipo di dati:", typeof registerData);
     });
 })

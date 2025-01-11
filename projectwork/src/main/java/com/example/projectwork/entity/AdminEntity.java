@@ -39,7 +39,7 @@ public class AdminEntity implements UserDetails{
 	@Column(length = 100, nullable = false, unique = true)
 	private String email;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 255, nullable = false)
 	private String password;
 
 	@Enumerated(EnumType.STRING)
