@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="../static/css/swiper.css">
 </head>
 
-<body>
+<body id="background" class="background-base">
   
   <!-- inizio-navbar -->
   <header id="main-header">
@@ -104,9 +104,9 @@
       </div> -->
 
       <div class="container-icone-switch container my-auto py-5 d-flex">
-        <img src="../static/img/pokeball.png" class="logo-icon-pokeball" alt="pokemon">
-        <img src="../static/img/millennium-puzzle.png" class="logo-icon-puzzle" alt="yu-gi-oh">
-        <img src="../static/img/magic-symbol.png" class="logo-icon-magic" alt="magic">
+        <button id="btn-pokemon"><img src="../static/img/icone-tgc/pokeball.png" class="logo-icon-pokeball" alt="pokemon"></button>
+        <button id="btn-yugi"><img src="../static/img/icone-tgc/millennium-puzzle.png" class="logo-icon-puzzle" alt="yu-gi-oh"></button>
+        <button id="btn-magic"><img src="../static/img/icone-tgc/magic-symbol.png" class="logo-icon-magic" alt="magic"></button>
       </div>
 
 
@@ -145,10 +145,26 @@
        <!-- End  Swiper -->
      
      
-       <h2 class="text-center mt-5">NOVITA'</h2>
+       <img src="../static/img/immagini-font/Novita.png" class="pokemon-font mx-auto" alt="">
    
        <!-- Swiper JS -->
-     
+       <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+      <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
+      <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
+      <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
+      <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
+      <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
+      <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+     </div>
+
+
+     <img src="../static/img/immagini-font/gadgets.png" class="pokemon-font mx-auto"  alt="">
+
      
        <!-- Initialize Swiper -->
        <script>
@@ -187,6 +203,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../static/switch-style.js"></script>
 
 </body>
 </html>
