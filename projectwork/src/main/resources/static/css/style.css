@@ -84,7 +84,6 @@ display: flex;
 .logo-icon-pokeball, .logo-icon-magic, .logo-icon-puzzle {
     height: 62px;
     width: 60px;
-    margin: 0 2rem;
     filter: drop-shadow(8px 8px 4px black);
 }
 
