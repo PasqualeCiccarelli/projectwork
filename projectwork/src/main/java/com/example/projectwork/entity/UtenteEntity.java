@@ -1,7 +1,14 @@
 package com.example.projectwork.entity;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.projectwork.entity.entityenum.Ruolo;
 import jakarta.persistence.CascadeType;
@@ -17,7 +24,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "utenti")
-public class UtenteEntity {
+public class UtenteEntity implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +47,9 @@ public class UtenteEntity {
 	private Ruolo ruolo;
 
 	private LocalDate data_nascita;
+	
+	@Column(nullable = false)
+    private boolean accettaPolitiche;
 
 	@OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
 	private List<OrdineEntity> ordini;
@@ -49,7 +59,7 @@ public class UtenteEntity {
 	}
 
 	public UtenteEntity(long id, String nome, String cognome, String email, String password, Ruolo ruolo,
-			LocalDate data_nascita, List<OrdineEntity> ordini) {
+			LocalDate data_nascita, boolean accettaPolitiche, List<OrdineEntity> ordini) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -57,6 +67,7 @@ public class UtenteEntity {
 		this.password = password;
 		this.ruolo = ruolo;
 		this.data_nascita = data_nascita;
+		this.accettaPolitiche = accettaPolitiche;
 		this.ordini = ordini;
 	}
 
@@ -92,10 +103,6 @@ public class UtenteEntity {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -116,6 +123,14 @@ public class UtenteEntity {
 		this.data_nascita = data_nascita;
 	}
 
+	public boolean isAccettaPolitiche() {
+		return accettaPolitiche;
+	}
+
+	public void setAccettaPolitiche(boolean accettaPolitiche) {
+		this.accettaPolitiche = accettaPolitiche;
+	}
+
 	public List<OrdineEntity> getOrdini() {
 		return ordini;
 	}
@@ -123,5 +138,40 @@ public class UtenteEntity {
 	public void setOrdini(List<OrdineEntity> ordini) {
 		this.ordini = ordini;
 	}
+
+	@Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.ruolo.name()));
+    }
+
+	@Override
+    public String getUsername() {
+        return email;
+    }
+	
+	@Override
+    public String getPassword() {
+        return password;
+    }
+
+	@Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+	
+	@Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+	
+	@Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 }
