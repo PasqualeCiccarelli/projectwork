@@ -81,7 +81,7 @@ display: flex;
 
 }
 
-.logo-icon-pokeball, .logo-icon-magic {
+.logo-icon-pokeball, .logo-icon-magic, .logo-icon-puzzle {
     height: 62px;
     width: 60px;
     margin: 0 2rem;
