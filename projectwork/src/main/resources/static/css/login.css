@@ -6,8 +6,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 120px;
-    margin-bottom: 90px;
+    margin-top: 200px;
+    margin-bottom: 200px;
     background-color: white;
 }
 
@@ -96,6 +96,17 @@ button:hover {
         width: 450px;
         height: 350px;
     }
+
+    .pokeball {
+        z-index: -1;
+        position: absolute;
+        top: 67%; /* Posizionata più in alto */
+        left: 48%; /* Più a destra */
+        transform: translate(-50%, -50%);
+        width: 70%; /* Più larga */
+        height: 130%; /* Più alta */
+    }
+    
 
   }
 
