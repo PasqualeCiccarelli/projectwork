@@ -28,7 +28,7 @@ display: flex;
 }
 
 .logo {
-    margin-left: 2rem;
+    height: 6rem;
 }
 
 .navbar-toggler {
