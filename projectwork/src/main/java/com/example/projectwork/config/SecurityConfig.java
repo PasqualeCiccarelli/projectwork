@@ -18,42 +18,37 @@ import com.example.projectwork.service.CustomUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	@Autowired
+    @Autowired
     private CustomUserDetailsService customUserDetailsService;
-	
-	public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();  // Usa BCryptPasswordEncoder per la gestione della password
     }
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	    http
-	        .csrf(csrf -> csrf.disable())  // Disabilita la protezione CSRF
-	        .formLogin(formLogin -> formLogin
-	            .loginPage("/login")  // URL della tua pagina di login personalizzata
-	            .permitAll())  // Permette l'accesso alla pagina di login a tutti
-	        .authorizeHttpRequests(auth -> auth
-	            .requestMatchers("/admin/**").hasRole("ADMIN")  // Richiede il ruolo 'ADMIN' per le rotte /admin/**
-	            .requestMatchers("/user/**").hasRole("USER")  // Richiede il ruolo 'USER' per le rotte /user/**
-	            .anyRequest().permitAll())  // Permette tutte le altre richieste
-	        .sessionManagement(session -> 
-	            session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));  // Usa sessioni basate su cookie (stato della sessione)
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers("/api/**"))  // Ignora CSRF per le API REST
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/status").permitAll()  // Permette a tutti l'accesso all'endpoint di stato
+                .requestMatchers("/admin/**").hasRole("ADMIN")  // Permette solo agli utenti con ruolo ADMIN di accedere a /admin/**
+                .requestMatchers("/user/**").hasRole("USER")  // Permette solo agli utenti con ruolo USER di accedere a /user/**
+                .anyRequest().permitAll())  // Permette l'accesso a tutte le altre richieste
+            .sessionManagement(session -> 
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // Disabilita la gestione delle sessioni (stateless)
 
-	    return http.build();
-	}
+        return http.build();
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
 
         authenticationManagerBuilder.userDetailsService(customUserDetailsService)
-            .passwordEncoder(passwordEncoder());
+            .passwordEncoder(passwordEncoder());  // Usa il passwordEncoder per le operazioni di autenticazione
 
         return authenticationManagerBuilder.build();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
