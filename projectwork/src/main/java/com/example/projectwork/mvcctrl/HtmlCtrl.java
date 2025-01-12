@@ -26,4 +26,8 @@ public class HtmlCtrl {
 		return "promozione";
 	}
 
+	@GetMapping("/creazione-card")
+	public String miaCreazioneCard() {
+		return "creazionecarta";
+	}
 }

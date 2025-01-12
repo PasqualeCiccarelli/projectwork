@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,6 +20,8 @@ import com.example.projectwork.repository.UtenteRepository;
 import com.example.projectwork.service.interf.AuthenticationService;
 import com.example.projectwork.util.PasswordUtil;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Service
 public class AuthenticationServiceImpl implements  AuthenticationService{
@@ -57,6 +60,9 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 	    if (ruolo1 == null && ruolo2 == null) {
 	        throw new ResponseStatusException(UNAUTHORIZED, "Credenziali non valide");
 	    }
+	    
+	    Authentication authentication = new UsernamePasswordAuthenticationToken(email, password);
+	    SecurityContextHolder.getContext().setAuthentication(authentication);
 
 	    String nome = utente.map(UtenteEntity::getNome)
 	            .orElse(admin.map(AdminEntity::getNome).orElse(null));

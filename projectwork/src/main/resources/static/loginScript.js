@@ -24,26 +24,30 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     })
     .then(data => {
 
-        localStorage.setItem("nome", data.nome);
-        
-        if (data.ruolo1) {
-            localStorage.setItem("ruolo1", data.ruolo1);
-        }else{
-            localStorage.removeItem("ruolo1");
-        }
-        
-        if (data.ruolo2) {
-            localStorage.setItem("ruolo2", data.ruolo2);
-        }else{
-            localStorage.removeItem("ruolo2");
-        }
+        sessionStorage.setItem("user", JSON.stringify(data));
 
-        if (data.email) {
-            localStorage.setItem("email", data.email);
-        }
-        if (data.id) {
-            localStorage.setItem("id", data.id);
-        }
+        // localStorage.setItem("nome", data.nome);
+        
+        // if (data.ruolo1) {
+        //     localStorage.setItem("ruolo1", data.ruolo1);
+        // }else{
+        //     localStorage.removeItem("ruolo1");
+        // }
+        
+        // if (data.ruolo2) {
+        //     localStorage.setItem("ruolo2", data.ruolo2);
+        // }else{
+        //     localStorage.removeItem("ruolo2");
+        // }
+
+        // if (data.email) {
+        //     localStorage.setItem("email", data.email);
+        // }
+        // if (data.id) {
+        //     localStorage.setItem("id", data.id);
+        // }
+
+        window.location.href = '/';
 
     })
     .catch(error => {
