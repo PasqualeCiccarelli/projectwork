@@ -15,6 +15,7 @@ import com.example.projectwork.dto.CardRequest;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.repository.CardRepository;
 import com.example.projectwork.restCtrl.CardCtrl;
@@ -87,5 +88,25 @@ public class CardServiceImpl implements CardService {
         return getCardsByBrand(Brand.YUGIHO);
     }
 
+	
+
+    
+    
+    
+    /******************************************/
+    
+    public List<CardDto> getCardByCategoria(Brand brand, Categoria categoria){
+    	
+    	List<CardEntity> lista= cardRepository.findByBrandAndCategoria(brand, categoria);
+    	
+    	return lista.stream().map(CardDto::fromEntity).collect(Collectors.toList());
+    }
+    
+    
+    
+    
+    
+    
+    
     
 }

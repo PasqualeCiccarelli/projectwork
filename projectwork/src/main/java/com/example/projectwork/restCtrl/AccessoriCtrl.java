@@ -18,6 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.AccessoriRequest;
 import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.service.interf.AccessoriService;
 
 @RestController
@@ -72,5 +74,147 @@ public class AccessoriCtrl {
     public List<AccessoriDto> getAccessoriYugiho() {
         return accessoriService.getAccessoriByBrandYugiho();
     }
+    
+    
+    
+    /********************/
+    
+    @GetMapping("/brand/pokemon-prevendita")
+    public ResponseEntity<List<AccessoriDto>> getPokemonPrevenditaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.POKEMON, Categoria.PREVENDITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/pokemon-novita")
+    public ResponseEntity<List<AccessoriDto>> getPokemonNovitaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.POKEMON, Categoria.NOVITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/pokemon-default")
+    public ResponseEntity<List<AccessoriDto>> getPokemonDefaultCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.POKEMON, Categoria.DEFAULT);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/pokemon-speciale")
+    public ResponseEntity<List<AccessoriDto>> getPokemonSpecialeCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.POKEMON, Categoria.SPECIALE);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    
+    /********************/
+    
+    @GetMapping("/brand/magic-prevendita")
+    public ResponseEntity<List<AccessoriDto>> getMagicPrevenditaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.MAGIC, Categoria.PREVENDITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/magic-novita")
+    public ResponseEntity<List<AccessoriDto>> getMagicNovitaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.MAGIC, Categoria.NOVITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/magic-default")
+    public ResponseEntity<List<AccessoriDto>> getMagicDefaultCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.MAGIC, Categoria.DEFAULT);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/magic-speciale")
+    public ResponseEntity<List<AccessoriDto>> getMagicSpecialeCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.MAGIC, Categoria.SPECIALE);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    
+    
+    /********************/
+    
+    @GetMapping("/brand/yugiho-prevendita")
+    public ResponseEntity<List<AccessoriDto>> getYugihoPrevenditaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.YUGIHO, Categoria.PREVENDITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/yugiho-novita")
+    public ResponseEntity<List<AccessoriDto>> getYugihoNovitaCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.YUGIHO, Categoria.NOVITA);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/yugiho-default")
+    public ResponseEntity<List<AccessoriDto>> getYugihoDefaultCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.YUGIHO, Categoria.DEFAULT);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    @GetMapping("/brand/yugiho-speciale")
+    public ResponseEntity<List<AccessoriDto>> getYugihoSpecialeCard(){
+  	  
+  	  List<AccessoriDto> lista= accessoriService.getCardByAccessori(Brand.YUGIHO, Categoria.SPECIALE);
+  	  
+  	  return ResponseEntity.ok(lista);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
