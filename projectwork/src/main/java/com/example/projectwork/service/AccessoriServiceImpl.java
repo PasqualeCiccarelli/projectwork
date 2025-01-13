@@ -20,6 +20,7 @@ import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.repository.AccessoriRepository;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.restCtrl.CardCtrl;
@@ -92,5 +93,24 @@ public class AccessoriServiceImpl implements AccessoriService {
 	public List<AccessoriDto> getAccessoriByBrandYugiho() {
 		return getAccessoriByBrand(Brand.YUGIHO);
 	}
+	
+	
+	
+	
+	/******************************************/
+    
+    public List<AccessoriDto> getCardByAccessori(Brand brand, Categoria categoria){
+    	
+    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndAccessori(brand, categoria);
+    	
+    	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
+    }
+    
+    
+    
+    
+	
+	
+	
 
 }

@@ -21,6 +21,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.example.projectwork.dto.CardDto;
 import com.example.projectwork.dto.CardRequest;
 import com.example.projectwork.entity.CardEntity;
+import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.service.interf.CardService;
 
 
@@ -78,4 +80,134 @@ public class CardCtrl {
   public List<CardDto> getCardsByBrandYugiho() {
       return cardService.getCardsByBrandYugiho();
   }
+  
+  
+  
+  /********************/
+  
+  @GetMapping("/brand/pokemon-prevendita")
+  public ResponseEntity<List<CardDto>> getPokemonPrevenditaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.POKEMON, Categoria.PREVENDITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/pokemon-novita")
+  public ResponseEntity<List<CardDto>> getPokemonNovitaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.POKEMON, Categoria.NOVITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/pokemon-default")
+  public ResponseEntity<List<CardDto>> getPokemonDefaultCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.POKEMON, Categoria.DEFAULT);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/pokemon-speciale")
+  public ResponseEntity<List<CardDto>> getPokemonSpecialeCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.POKEMON, Categoria.SPECIALE);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  
+  /**********************/
+  
+  
+  @GetMapping("/brand/magic-prevendita")
+  public ResponseEntity<List<CardDto>> getMagicPrevenditaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.MAGIC, Categoria.PREVENDITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/magic-novita")
+  public ResponseEntity<List<CardDto>> getMagicNovitaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.MAGIC, Categoria.NOVITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/magic-default")
+  public ResponseEntity<List<CardDto>> getMagicDefaultCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.MAGIC, Categoria.DEFAULT);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/magic-speciale")
+  public ResponseEntity<List<CardDto>> getMagicSpecialeCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.MAGIC, Categoria.SPECIALE);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  /***********************/
+  
+  
+  @GetMapping("/brand/yugiho-prevendita")
+  public ResponseEntity<List<CardDto>> getYugihoPrevenditaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.YUGIHO, Categoria.PREVENDITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/yugiho-novita")
+  public ResponseEntity<List<CardDto>> getYugihoNovitaCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.YUGIHO, Categoria.NOVITA);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/yugiho-default")
+  public ResponseEntity<List<CardDto>> getYugihoDefaultCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.YUGIHO, Categoria.DEFAULT);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+  
+  
+  @GetMapping("/brand/yugiho-speciale")
+  public ResponseEntity<List<CardDto>> getYugihoSpecialeCard(){
+	  
+	  List<CardDto> lista= cardService.getCardByCategoria(Brand.YUGIHO, Categoria.SPECIALE);
+	  
+	  return ResponseEntity.ok(lista);
+  }
+	  
+	
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
