@@ -163,9 +163,9 @@ function createCarousel(containerId, data) {
         const img = document.createElement('img');
         img.src = `img/pokemon/${item.immagine}`;
         img.alt = item.nome;
-        img.onerror = () => {
+        /*img.onerror = () => {
             img.src = 'img/placeholder.jpg';
-        };
+        };*/
  
 
         const category = document.createElement('p');
