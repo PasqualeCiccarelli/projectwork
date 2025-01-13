@@ -36,8 +36,8 @@ const swiperConfig = {
     watchSlidesProgress: true,
 };
 
-function initializeSwiper(containerId) {
-    return new Swiper(`#${containerId} .swiper-container`, swiperConfig);
+function initializeSwiper() {
+    return new Swiper(`.mySwiper`, swiperConfig);
 }
 
 function getUserDataFromSessionStorage() {
@@ -192,6 +192,8 @@ function createCarousel(containerId, data) {
         slide.appendChild(card);
         container.appendChild(slide);
     });
+	
+	initializeSwiper();
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
