@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.projectwork.entity.AccessoriEntity;
-import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;

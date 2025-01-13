@@ -14,20 +14,20 @@ public class OrdineDto {
 	private long utenteId;
 	private String indirizzo;
 	private LocalDate data;
-	private Stato statoConsegna;
+	private Stato stato;
 	private List<DettagliOrdineDto> dettagliOrdine;
 
 	public OrdineDto() {
 		
 	}
 
-	public OrdineDto(Long id, long utenteId, String indirizzo, LocalDate data, Stato statoConsegna,
+	public OrdineDto(Long id, long utenteId, String indirizzo, LocalDate data, Stato stato,
 			List<DettagliOrdineDto> dettagliOrdine) {
 		this.id = id;
 		this.utenteId = utenteId;
 		this.indirizzo = indirizzo;
 		this.data = data;
-		this.statoConsegna = statoConsegna;
+		this.stato = stato;
 		this.dettagliOrdine = dettagliOrdine;
 	}
 
@@ -63,12 +63,12 @@ public class OrdineDto {
 		this.data = data;
 	}
 
-	public Stato getStatoConsegna() {
-		return statoConsegna;
+	public Stato getStato() {
+		return stato;
 	}
 
-	public void setStatoConsegna(Stato statoConsegna) {
-		this.statoConsegna = statoConsegna;
+	public void setStato(Stato stato) {
+		this.stato = stato;
 	}
 
 	public List<DettagliOrdineDto> getDettagliOrdine() {
@@ -85,7 +85,7 @@ public class OrdineDto {
 		dto.setUtenteId(entity.getUtente().getId());
 		dto.setIndirizzo(entity.getIndirizzo());
 		dto.setData(entity.getData());
-		dto.setStatoConsegna(entity.getStato_consegna());
+		dto.setStato(entity.getStato());
 		dto.setDettagliOrdine(
 				entity.getDettagliOrdine().stream().map(DettagliOrdineDto::fromEntity).collect(Collectors.toList()));
 		return dto;
@@ -96,7 +96,7 @@ public class OrdineDto {
 
 		entity.setIndirizzo(this.getIndirizzo());
 		entity.setData(this.getData());
-		entity.setStato_consegna(this.getStatoConsegna());
+		entity.setStato(this.getStato());
 
 		if (this.getUtenteId() != 0) {
 			UtenteEntity utenteEntity = new UtenteEntity();

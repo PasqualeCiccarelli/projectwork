@@ -31,7 +31,7 @@ public class OrdineEntity {
 
 	private LocalDate data;
 
-	private Stato stato_consegna;
+	private Stato stato;
 
 	@OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)
 	private List<DettaglioOrdineEntity> dettagliOrdine;
@@ -40,13 +40,13 @@ public class OrdineEntity {
 		
 	}
 
-	public OrdineEntity(Long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato_consegna,
+	public OrdineEntity(Long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato,
 			List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.id = id;
 		this.utente = utente;
 		this.indirizzo = indirizzo;
 		this.data = data;
-		this.stato_consegna = stato_consegna;
+		this.stato = stato;
 		this.dettagliOrdine = dettagliOrdine;
 	}
 
@@ -82,12 +82,12 @@ public class OrdineEntity {
 		this.data = data;
 	}
 
-	public Stato getStato_consegna() {
-		return stato_consegna;
+	public Stato getStato() {
+		return stato;
 	}
 
-	public void setStato_consegna(Stato stato_consegna) {
-		this.stato_consegna = stato_consegna;
+	public void setStato(Stato stato) {
+		this.stato= stato;
 	}
 
 	public List<DettaglioOrdineEntity> getDettagliOrdine() {
