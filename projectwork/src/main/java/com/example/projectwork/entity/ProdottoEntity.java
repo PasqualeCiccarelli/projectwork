@@ -13,7 +13,6 @@ public abstract class ProdottoEntity {
     private Categoria categoria;
     
     public ProdottoEntity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ProdottoEntity(Long id, String nome, double prezzo, double prezzoScontato, int rimanenza,

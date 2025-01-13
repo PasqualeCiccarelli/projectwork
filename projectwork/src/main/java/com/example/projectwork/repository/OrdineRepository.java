@@ -15,19 +15,19 @@ import com.example.projectwork.entity.entityenum.Stato;
 public interface OrdineRepository extends JpaRepository<OrdineEntity, Long>{
 	
 	
-	Optional<OrdineEntity> findByUtenteIdAndStato_consegna(Long userId, Stato stato);
-	
-	List<OrdineEntity> findByUtenteId(Long userId);
-	
-	List<OrdineEntity> findByStato_consegna(Stato stato);
-	
-	List<OrdineEntity> findAllByStatoNotIn(Collection<Stato> stati);
-	
-	@Query("SELECT o FROM OrdineEntity o WHERE o.data BETWEEN :startDate AND :endDate")
+	Optional<OrdineEntity> findByUtenteIdAndStato(Long utenteId, Stato stato);
+
+    List<OrdineEntity> findByUtenteId(Long userId);
+
+    List<OrdineEntity> findByStato(Stato stato);
+
+    List<OrdineEntity> findAllByStatoNotIn(Collection<Stato> stati);
+
+    @Query("SELECT o FROM OrdineEntity o WHERE o.data BETWEEN :startDate AND :endDate")
     List<OrdineEntity> findByDataBetween(
         @Param("startDate") LocalDate startDate, 
         @Param("endDate") LocalDate endDate
     );
-	
-	long countByStato_consegna(Stato stato);
+
+    long countByStato(Stato stato);
 }

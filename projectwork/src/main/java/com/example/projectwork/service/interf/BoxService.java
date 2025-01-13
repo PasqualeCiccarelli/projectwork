@@ -2,7 +2,6 @@ package com.example.projectwork.service.interf;
 
 import java.util.List;
 
-import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BoxRequest;
 import com.example.projectwork.entity.BoxEntity;

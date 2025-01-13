@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BoxRequest;
 import com.example.projectwork.entity.BoxEntity;

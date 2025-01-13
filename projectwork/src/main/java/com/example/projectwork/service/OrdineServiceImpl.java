@@ -99,20 +99,20 @@ public class OrdineServiceImpl implements OrdineService{
         LocalDate now = LocalDate.now();
 
         for (OrdineEntity ordine : ordini) {
-            switch (ordine.getStato_consegna()) {
+            switch (ordine.getStato()) {
                 case ORDINATO:
                     if (ChronoUnit.DAYS.between(ordine.getData(), now) >= 3) {
-                        ordine.setStato_consegna(Stato.SPEDITO);
+                        ordine.setStato(Stato.SPEDITO);
                     }
                     break;
                 case SPEDITO:
                     if (ChronoUnit.DAYS.between(ordine.getData(), now) >= 5) {
-                        ordine.setStato_consegna(Stato.IN_CONSEGNA);
+                        ordine.setStato(Stato.IN_CONSEGNA);
                     }
                     break;
                 case IN_CONSEGNA:
                     if (ChronoUnit.HOURS.between(ordine.getData().atStartOfDay(), now.atStartOfDay()) >= 12) {
-                        ordine.setStato_consegna(Stato.CONSEGNATO);
+                        ordine.setStato(Stato.CONSEGNATO);
                     }
                     break;
             }
@@ -129,10 +129,10 @@ public class OrdineServiceImpl implements OrdineService{
             throw new IllegalArgumentException("La richiesta non può essere nulla");
         }
 
-        OrdineEntity ordine = ordineRepository.findByUtenteIdAndStato_consegna(userId, Stato.IN_CORSO).orElseGet(() -> {
+        OrdineEntity ordine = ordineRepository.findByUtenteIdAndStato(userId, Stato.IN_CORSO).orElseGet(() -> {
             OrdineEntity nuovoOrdine = new OrdineEntity();
             nuovoOrdine.setUtente(utenteRepository.findById(userId).orElseThrow());
-            nuovoOrdine.setStato_consegna(Stato.IN_CORSO);
+            nuovoOrdine.setStato(Stato.IN_CORSO);
             nuovoOrdine.setData(LocalDate.now());
             nuovoOrdine.setIndirizzo(request.getIndirizzo());
             return ordineRepository.save(nuovoOrdine);
@@ -148,15 +148,11 @@ public class OrdineServiceImpl implements OrdineService{
         return DettagliOrdineDto.fromEntity(dettagliOrdineRepository.save(dettaglio));
     }
 
-    private boolean isCategoriaSpeciale(Categoria categoria) {
-        return Categoria.SPECIALE.equals(categoria);
-    }
-
     public void rimuoviDettaglio(Long dettaglioId) {
         DettaglioOrdineEntity dettaglio = dettagliOrdineRepository.findById(dettaglioId)
                 .orElseThrow(() -> new RuntimeException("Dettaglio non trovato"));
 
-        if (dettaglio.getOrdine().getStato_consegna() != Stato.IN_CORSO) {
+        if (dettaglio.getOrdine().getStato() != Stato.IN_CORSO) {
             throw new RuntimeException("Non puoi modificare un ordine già confermato");
         }
 
@@ -167,7 +163,7 @@ public class OrdineServiceImpl implements OrdineService{
         OrdineEntity ordine = ordineRepository.findById(ordineId)
                 .orElseThrow(() -> new RuntimeException("Ordine non trovato"));
 
-        if (ordine.getStato_consegna() != Stato.IN_CORSO) {
+        if (ordine.getStato() != Stato.IN_CORSO) {
             throw new RuntimeException("L'ordine è già stato confermato");
         }
 
@@ -175,7 +171,7 @@ public class OrdineServiceImpl implements OrdineService{
             aggiornaRimanenze(dettaglio);
         }
 
-        ordine.setStato_consegna(Stato.ORDINATO);
+        ordine.setStato(Stato.ORDINATO);
         ordineRepository.save(ordine);
     }
     
@@ -215,18 +211,18 @@ public class OrdineServiceImpl implements OrdineService{
         OrdineEntity ordine = ordineRepository.findById(ordineId)
                 .orElseThrow(() -> new RuntimeException("Ordine non trovato"));
 
-        if (ordine.getStato_consegna() == Stato.SPEDITO || ordine.getStato_consegna() == Stato.IN_CONSEGNA
-                || ordine.getStato_consegna() == Stato.CONSEGNATO) {
+        if (ordine.getStato() == Stato.SPEDITO || ordine.getStato() == Stato.IN_CONSEGNA
+                || ordine.getStato() == Stato.CONSEGNATO) {
             throw new RuntimeException("Non puoi annullare un ordine già spedito");
         }
 
-        if (ordine.getStato_consegna() == Stato.ORDINATO) {
+        if (ordine.getStato() == Stato.ORDINATO) {
             for (DettaglioOrdineEntity dettaglio : ordine.getDettagliOrdine()) {
                 ripristinaRimanenze(dettaglio);
             }
         }
 
-        ordine.setStato_consegna(Stato.ANNULLATO);
+        ordine.setStato(Stato.ANNULLATO);
         ordineRepository.save(ordine);
     }
 
