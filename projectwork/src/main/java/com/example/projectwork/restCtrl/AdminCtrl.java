@@ -50,7 +50,7 @@ public class AdminCtrl {
 	}
 	
 	
-	@GetMapping("/{email}/bustine")
+	@GetMapping("/{email}/accessori")
 	public ResponseEntity<List<AccessoriDto>> getAccessoriByAdmin(@PathVariable String email){
 		
 		List<AccessoriDto> lista= adminService.getAccessoriByAdmin(email);
