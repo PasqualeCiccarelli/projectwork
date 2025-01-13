@@ -10,7 +10,7 @@
 }
 
 h2 {
-    color: #ff6f61;
+    color: #000000;
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -33,7 +33,7 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus {
-    border-color: #ff6f61;
+    border-color: #ffffff;
     box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
     outline: none;
 }
@@ -43,7 +43,7 @@ input[type="checkbox"] {
 }
 
 a {
-    color: #ff6f61;
+    color: #006aac;
     text-decoration: none;
     font-weight: bold;
 }
@@ -53,8 +53,8 @@ a:hover {
 }
 
 #registrazione-btn {
-    background-color: #000000;
-    color: white;
+    background-color: #f9f9f9;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 12px;
     width: 100%;
@@ -65,7 +65,7 @@ a:hover {
 }
 
 #registrazione-btn:hover {
-    background-color: #ff3f2f;
+    background-color: #006aac;
 }
 
 #errorMessage {
