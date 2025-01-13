@@ -45,11 +45,14 @@ position: relative;
 }
 
 .navbar {
+    width: 100%;
 background: #eedede ;
 padding: 0;
 }
 
 .navbar-toggler-icon {
+    background-size: auto;
+    width: 100%;
 font-size: 32px;
 }
 
