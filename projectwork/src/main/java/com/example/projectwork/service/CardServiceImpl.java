@@ -1,17 +1,25 @@
 package com.example.projectwork.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.example.projectwork.dto.CardDto;
 import com.example.projectwork.dto.CardRequest;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.CardEntity;
+import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.repository.CardRepository;
+import com.example.projectwork.restCtrl.CardCtrl;
 import com.example.projectwork.service.interf.CardService;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -21,24 +29,21 @@ public class CardServiceImpl implements CardService {
 
     @Autowired
     private AdminRepository adminRepository;
-
-    @Autowired
-    private HttpServletRequest request;  // Per ottenere la richiesta HTTP e accedere ai cookie
+    
+    private static final Logger logger = LoggerFactory.getLogger(CardCtrl.class);
 
     @Override
     public CardEntity creaCard(CardRequest cardRequest) {
-        // Recupera l'email direttamente dalla richiesta
+
         String emailAdmin = cardRequest.getEmailAdmin();
 
         if (emailAdmin == null || emailAdmin.isEmpty()) {
             throw new RuntimeException("Email dell'utente mancante.");
         }
 
-        // Recupera l'admin loggato dal database tramite l'email
         AdminEntity adminLoggato = adminRepository.findByEmail(emailAdmin)
                 .orElseThrow(() -> new RuntimeException("Admin non trovato"));
 
-        // Crea la nuova card
         CardEntity newCard = new CardEntity();
         newCard.setNome(cardRequest.getNome());
         newCard.setDescrizione(cardRequest.getDescrizione());
@@ -53,8 +58,33 @@ public class CardServiceImpl implements CardService {
         newCard.setPrezzo_scontato(cardRequest.getPrezzo_scontato());
         newCard.setAdmin(adminLoggato);
 
-        // Salva la card nel repository
         return cardRepository.save(newCard);
+    }
+    
+    private List<CardDto> getCardsByBrand(Brand brand) {
+        try {
+            List<CardEntity> cards = cardRepository.findByBrand(brand);
+            logger.info("Trovate {} carte per il brand {}", cards.size(), brand);
+            return cards.stream()
+                    .map(CardDto::fromEntity)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            logger.error("Errore nel recupero delle carte per brand {}: {}", brand, e.getMessage(), e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, 
+                "Errore nel recupero delle carte per brand: " + e.getMessage(), e);
+        }
+    }
+    
+    public List<CardDto> getCardsByBrandPokemon() {
+        return getCardsByBrand(Brand.POKEMON);
+    }
+    
+    public List<CardDto> getCardsByBrandMagic() {
+        return getCardsByBrand(Brand.MAGIC);
+    }
+    
+    public List<CardDto> getCardsByBrandYugiho() {
+        return getCardsByBrand(Brand.YUGIHO);
     }
 
     

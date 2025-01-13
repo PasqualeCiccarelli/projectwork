@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.projectwork.dto.LoginRequest;
 import com.example.projectwork.dto.LoginResponse;
 import com.example.projectwork.dto.RegistrazioneRequest;
+import com.example.projectwork.dto.RegistrazioneResponse;
 import com.example.projectwork.service.interf.AuthenticationService;
 
 import jakarta.validation.Valid;
@@ -54,9 +55,9 @@ public class AuthenticationCtrl {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<String> register(@Valid @RequestBody RegistrazioneRequest registerRequest) {
-		authenticationService.registrazione(registerRequest);
-		return ResponseEntity.ok("Registrazione avvenuta con successo");
+	public ResponseEntity<RegistrazioneResponse> register(@Valid @RequestBody RegistrazioneRequest registerRequest) {
+	    RegistrazioneResponse registrazioneResponse = authenticationService.registrazione(registerRequest);
+	    return ResponseEntity.ok(registrazioneResponse);
 	}
 
 	@PostMapping("/promote/{userId}")

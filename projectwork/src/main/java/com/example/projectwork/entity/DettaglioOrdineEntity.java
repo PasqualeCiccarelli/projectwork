@@ -31,19 +31,29 @@ public class DettaglioOrdineEntity {
 	@ManyToOne
 	@JoinColumn(name = "id_accessori")
 	private AccessoriEntity accessorio;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_box")
+	private BoxEntity box;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_bustina")
+	private BustinaEntity bustina;
 
 	public DettaglioOrdineEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public DettaglioOrdineEntity(Long id, Double prezzo, Integer quantita, OrdineEntity ordine, CardEntity carta,
-			AccessoriEntity accessorio) {
+			AccessoriEntity accessorio, BoxEntity box, BustinaEntity bustina) {
 		this.id = id;
 		this.prezzo = prezzo;
 		this.quantita = quantita;
 		this.ordine = ordine;
 		this.carta = carta;
 		this.accessorio = accessorio;
+		this.box = box;
+		this.bustina = bustina;
 	}
 
 	public Long getId() {
@@ -93,5 +103,23 @@ public class DettaglioOrdineEntity {
 	public void setAccessorio(AccessoriEntity accessorio) {
 		this.accessorio = accessorio;
 	}
+
+	public BoxEntity getBox() {
+		return box;
+	}
+
+	public void setBox(BoxEntity box) {
+		this.box = box;
+	}
+
+	public BustinaEntity getBustina() {
+		return bustina;
+	}
+
+	public void setBustina(BustinaEntity bustina) {
+		this.bustina = bustina;
+	}
+
+	
 
 }

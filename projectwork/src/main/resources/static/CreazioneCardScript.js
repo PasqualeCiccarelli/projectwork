@@ -1,51 +1,45 @@
 function getUserDataFromSessionStorage() {
-  const userData = sessionStorage.getItem('user'); // Recupera il valore 'user' da SessionStorage
+  const userData = sessionStorage.getItem('user');
   if (userData) {
     try {
-      // Verifica se userData è una stringa JSON
       if (typeof userData === 'string') {
-        return JSON.parse(userData);  // Fai il parsing solo se è una stringa
+        return JSON.parse(userData);
       }
-      return userData;  // Se è già un oggetto, restituiscilo così com'è
+      return userData;
     } catch (e) {
       alert("Errore nel parsing dei dati dell'utente.");
       console.error(e);
     }
   }
-  return null; // Restituisce null se non ci sono dati nel sessionStorage
+  return null;
 }
 
 function checkLoginStatus() {
-  // Recupera i dati dell'utente da SessionStorage
   const userData = getUserDataFromSessionStorage();
 
   if (!userData) {
     console.log("Utente non autenticato o dati non trovati nel sessionStorage");
-    window.location.href = '/login'; // Reindirizza alla pagina di login
+    window.location.href = '/login';
     return;
   }
 
   console.log('Dati dell\'utente:', userData);
 
-  // Verifica se i dati necessari sono presenti
   if (!userData.email || !userData.ruolo2) {
     console.log("Dati mancanti nell'utente: email o ruolo");
-    window.location.href = '/login'; // Reindirizza se i dati non sono completi
+    window.location.href = '/login';
     return;
   }
 
-  // Controlla se l'utente ha il ruolo richiesto
   if (userData.ruolo2 !== 'ADMIN') {
     console.log("Utente non ha il ruolo ADMIN");
-    window.location.href = '/login'; // Reindirizza se il ruolo non è ADMIN
+    window.location.href = '/login';
     return;
   }
 
-  // L'utente ha il ruolo richiesto
   console.log("Accesso consentito. L'utente è un ADMIN.");
 }
 
-// Esegui il controllo all'avvio della pagina
 checkLoginStatus();
 
 function getEmailFromCookie() {
@@ -55,11 +49,7 @@ function getEmailFromCookie() {
   
   return userData.email;
 
-  // Restituisce l'email se trovata, altrimenti null
 }
-
-console.log(getEmailFromCookie());
-
 
 const disponibilita = document.getElementById("disponibilita");
 const dataInizioWrapper = document.getElementById("dataInizioWrapper");
@@ -78,7 +68,7 @@ disponibilita.addEventListener("change", () => {
 document.getElementById("cardForm").addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  const formData = new FormData(event.target);  // Usa FormData per gestire i dati del form
+  const formData = new FormData(event.target);
   const data = Object.fromEntries(formData.entries());
   data.disponibilita = data.disponibilita === "true";
   data.prezzo_scontato = (data.prezzo * 0.8).toFixed(2);
@@ -87,11 +77,11 @@ document.getElementById("cardForm").addEventListener("submit", async function (e
 
   if (!userData) {
     alert("Non sei autenticato. Effettua il login.");
-    window.location.href = '/login';  // Reindirizza se l'utente non è autenticato
+    window.location.href = '/login';
     return;
   }
 
-  const emailAdmin = getEmailFromCookie();  // Recupera l'email dal cookie
+  const emailAdmin = getEmailFromCookie();
 
   if (!emailAdmin) {
       alert("Email dell'utente non trovata nel cookie.");
@@ -110,27 +100,23 @@ document.getElementById("cardForm").addEventListener("submit", async function (e
     data.categoria = "PREVENDITA";
   }
 
-  // Gestione della data di inizio
   if (data.data_inizio) {
     data.data_inizio = new Date(data.data_inizio).toISOString().split("T")[0];
   }
 
-  // Gestione dell'immagine (se presente)
   const immagineFile = immagineInput.files[0]; 
   if (immagineFile) {
-    data.immagine = immagineFile.name;  // Usa solo il nome del file, non l'intero file
+    data.immagine = immagineFile.name;
   }
-
-  console.log(data);  // Log dei dati da inviare
 
   try {
     const response = await fetch("/api/card/crea", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Se invii JSON, questa intestazione è importante
+        "Content-Type": "application/json",
       },
-      credentials: 'include',  // Importante per inviare i cookie di sessione (JSESSIONID)
-      body: JSON.stringify(data) // Invia i dati in formato JSON
+      credentials: 'include',
+      body: JSON.stringify(data)
     });
 
     const responseText = await response.text();

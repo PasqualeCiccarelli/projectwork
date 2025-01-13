@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.projectwork.entity.CardEntity;
+import com.example.projectwork.entity.BustinaEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 
-public interface CardRepository extends JpaRepository<CardEntity, Long>{
+public interface BustineRepository extends JpaRepository<BustinaEntity, Long>{
 	
-	List<CardEntity> findByBrand(Brand brand);
+	List<BustinaEntity> findByBrand(Brand brand);
 
 }

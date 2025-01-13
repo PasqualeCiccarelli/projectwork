@@ -9,6 +9,6 @@ public interface AuthenticationService {
 	
 	public LoginResponse login(LoginRequest loginRequest);
 	public RegistrazioneResponse registrazione(RegistrazioneRequest registerRequest);
-	public void promozioneToAdmin(Long userId, boolean acceptedPolicies);
+	public LoginResponse promozioneToAdmin(Long userId, boolean acceptedPolicies);
 
 }

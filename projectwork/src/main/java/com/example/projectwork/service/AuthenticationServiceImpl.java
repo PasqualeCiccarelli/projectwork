@@ -71,20 +71,19 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 	}
 	
 	public RegistrazioneResponse registrazione(RegistrazioneRequest registerRequest) {
-	    
 	    Optional<UtenteEntity> existingUser = utenteRepository.findByEmail(registerRequest.getEmail());
-	    
+
 	    if (existingUser.isPresent()) {
 	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email già in uso");
 	    }
-	    
+
 	    if (!registerRequest.isAdult()) {
 	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'età minima per la registrazione è di 16 anni");
 	    }
-	    
+
 	    if (!registerRequest.isAccettaPolitiche()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Devi accettare le politiche aziendali per registrarti");
-        }
+	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Devi accettare le politiche aziendali per registrarti");
+	    }
 
 	    UtenteEntity newUser = new UtenteEntity();
 	    newUser.setNome(registerRequest.getNome());
@@ -99,30 +98,42 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 	    return new RegistrazioneResponse(savedUser.getId(), savedUser.getNome(), savedUser.getEmail(), savedUser.getRuolo().name());
 	}
 
-	 public void promozioneToAdmin(Long userId,boolean acceptedPolicies) {
-	       
-		 UtenteEntity utente = utenteRepository.findById(userId)
-	                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Utente non trovato"));
+	public LoginResponse promozioneToAdmin(Long userId, boolean acceptedPolicies) {
 
-	        if (!isUserAdult(utente.getData_nascita())) {
-	            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'utente deve avere più di 18 anni per diventare partner");
-	        }
+	    UtenteEntity utente = utenteRepository.findById(userId)
+	            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Utente non trovato"));
 
-	        if (!acceptedPolicies) {
-	            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'utente deve aver accettato le politiche aziendali");
-	        }
-
-	        AdminEntity newAdmin = new AdminEntity();
-	        newAdmin.setNome(utente.getNome());
-	        newAdmin.setCognome(utente.getCognome());
-	        newAdmin.setEmail(utente.getEmail());
-	        newAdmin.setPassword(utente.getPassword());
-	        newAdmin.setData_nascita(utente.getData_nascita());
-	        newAdmin.setRuolo(Ruolo.ADMIN);
-
-	        adminRepository.save(newAdmin);
-	    
+	    if (!isUserAdult(utente.getData_nascita())) {
+	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'utente deve avere più di 18 anni per diventare partner");
 	    }
+
+	    if (!acceptedPolicies) {
+	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'utente deve aver accettato le politiche aziendali");
+	    }
+
+	    AdminEntity newAdmin = new AdminEntity();
+	    newAdmin.setNome(utente.getNome());
+	    newAdmin.setCognome(utente.getCognome());
+	    newAdmin.setEmail(utente.getEmail());
+	    newAdmin.setPassword(utente.getPassword());
+	    newAdmin.setData_nascita(utente.getData_nascita());
+	    newAdmin.setRuolo(Ruolo.ADMIN);
+
+	    adminRepository.save(newAdmin);
+
+	    AdminEntity admin = adminRepository.findByEmail(newAdmin.getEmail())
+	            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Errore durante la creazione dell'admin"));
+
+	    
+	    String email = admin.getEmail();
+	    String ruolo1 = utente.getRuolo().name();
+	    String ruolo2 = admin.getRuolo().name();
+	    Long id = admin.getId();
+	    String nome = admin.getNome();
+
+	    
+	    return new LoginResponse(nome, ruolo1, ruolo2, email, id);
+	}
 	 
 	 private boolean isUserAdult(LocalDate birthDate) {
 		 

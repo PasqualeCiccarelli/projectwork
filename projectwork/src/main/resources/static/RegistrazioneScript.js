@@ -1,4 +1,4 @@
-document.getElementById("registerForm").addEventListener("submit", function(event) {
+document.getElementById("registerForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const nome = document.getElementById("nome").value;
@@ -13,7 +13,7 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         return;
     }
 
-    const dataNascitaDate = new Date(dataNascita);
+    const dataNascitaDate = new Date(dataNascita).toISOString().split("T")[0];
 
     const registerData = {
         nome: nome,
@@ -39,26 +39,13 @@ document.getElementById("registerForm").addEventListener("submit", function(even
         }
     })
     .then(data => {
-        const { id, nome, email, ruolo1, ruolo2 } = data;
-
-        localStorage.setItem("id", id);
-        localStorage.setItem("nome", nome);
-        localStorage.setItem("email", email);
-
-        if (ruolo1) {
-            localStorage.setItem("ruolo1", ruolo1);
-        }
-
-        if (ruolo2) {
-            localStorage.setItem("ruolo2", ruolo2);
-        }
-
-        alert("Registrazione completata! Puoi ora effettuare il login.");
-        window.location.href = "/login.html";
+        sessionStorage.setItem("user", JSON.stringify(data));
+    
+        alert("Registrazione completata!");
+        window.location.href = "/";
     })
     .catch(error => {
         document.getElementById("errorMessage").innerText = error.message;
-        console.log(registerData);
-        console.log("Controllo tipo di dati:", typeof registerData);
+        console.log("Errore:", error);
     });
-})
+});

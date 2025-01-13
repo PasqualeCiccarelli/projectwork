@@ -8,8 +8,8 @@
 </head>
 <body>
     
-    <h1>Creazione Nuova Carta</h1>
-  <form id="cardForm">
+    <h1>Creazione Nuovo Accessorio</h1>
+  <form id="accessorioForm">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" required>
 
@@ -18,8 +18,10 @@
 
     <label for="tipo">Tipo</label>
     <select id="tipo" name="tipo" required>
-      <option value="DEFAULT">Default</option>
-      <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
+      <option value="ACTION_FIGURE">Action figure</option>
+      <option value="GADGET">Gadget</option>
+      <option value="RACCOGLITORI">Raccoglitori</option>
+      <option value="SLEEVE">Sleeve</option>
     </select>
 
     <label for="brand">Brand</label>
@@ -31,6 +33,12 @@
 
     <label for="prezzo">Prezzo (€)</label>
     <input type="number" id="prezzo" name="prezzo" step="0.01" required>
+
+    <label for="prezzo">dimensione</label>
+    <input type="number" id="dimensione" name="dimensione" step="0.01" required>
+
+    <label for="prezzo">Peso</label>
+    <input type="number" id="peso" name="peso" step="0.01" required>
 
     <label for="rimanenze">Rimanenze</label>
     <input type="number" id="rimanenze" name="rimanenze" required>
@@ -49,13 +57,13 @@
     <label for="immagine">Carica Immagine</label>
     <input type="file" id="immagine" name="immagine" accept="image/*" required><br><br>
 
-    <button type="submit">Crea Carta</button>
+    <button type="submit">Crea Accessorio</button>
   </form>
 
   <div id="loginStatus"></div>
 
 
-    <script src="CreazioneCardScript.js"></script>
+    <script src="CreazioneAccessorioScript.js"></script>
 
 </body>
 </html>

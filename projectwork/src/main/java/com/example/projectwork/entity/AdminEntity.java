@@ -53,13 +53,21 @@ public class AdminEntity implements UserDetails{
 
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	private List<AccessoriEntity> accessori;
+	
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+	private List<BoxEntity> box;
+	
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+	private List<BustinaEntity> bustine;
 
 	public AdminEntity() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public AdminEntity(long id, String nome, String cognome, String email, String password, Ruolo ruolo,
-			LocalDate data_nascita, List<CardEntity> carte, List<AccessoriEntity> accessori) {
+			LocalDate data_nascita, List<CardEntity> carte, List<AccessoriEntity> accessori, List<BoxEntity> box,
+			List<BustinaEntity> bustine) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -69,6 +77,8 @@ public class AdminEntity implements UserDetails{
 		this.data_nascita = data_nascita;
 		this.carte = carte;
 		this.accessori = accessori;
+		this.box = box;
+		this.bustine = bustine;
 	}
 
 	public long getId() {
@@ -103,10 +113,6 @@ public class AdminEntity implements UserDetails{
 		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public Ruolo getRuolo() {
 		return ruolo;
 	}
@@ -137,6 +143,26 @@ public class AdminEntity implements UserDetails{
 
 	public void setAccessori(List<AccessoriEntity> accessori) {
 		this.accessori = accessori;
+	}
+
+	public List<BoxEntity> getBox() {
+		return box;
+	}
+
+	public void setBox(List<BoxEntity> box) {
+		this.box = box;
+	}
+
+	public List<BustinaEntity> getBustine() {
+		return bustine;
+	}
+
+	public void setBustine(List<BustinaEntity> bustine) {
+		this.bustine = bustine;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
