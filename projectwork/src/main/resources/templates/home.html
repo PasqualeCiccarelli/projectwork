@@ -147,13 +147,15 @@
 
 
 
-    <div class="swiper mySwiper2">
+    <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
@@ -168,19 +170,39 @@
     <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
+        centeredSlides: true,
         loop: true,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
         pagination: {
           el: ".swiper-pagination",
+          clickable: true,
         },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+        breakpoints: {
+          // Quando la larghezza della finestra è >= 768px
+          768: {
+            slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
+            spaceBetween: 20,
+          },
+          // Quando la larghezza della finestra è >= 1024px
+          1024: {
+            slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+            spaceBetween: 30,
+          }
+        },
       });
       const swiperbutton = document.querySelector('.swiper').swiper;
 
       // Now you can use all slider methods like
-      swiperbutton.slideNext();
+      swiperbutton2.slideNext();
 
     </script>
     <!-- End  Swiper -->
@@ -196,6 +218,8 @@
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
@@ -215,7 +239,7 @@
         slidesPerView: 2,
         spaceBetween: 30,
         autoplay: {
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         },
         pagination: {
@@ -225,6 +249,18 @@
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          // Quando la larghezza della finestra è >= 768px
+          768: {
+            slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
+            spaceBetween: 20,
+          },
+          // Quando la larghezza della finestra è >= 1024px
+          1024: {
+            slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+            spaceBetween: 30,
+          }
         },
       });
       const swiperbutton2 = document.querySelector('.swiper').swiper;
