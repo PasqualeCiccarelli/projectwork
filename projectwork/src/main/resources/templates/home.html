@@ -27,81 +27,43 @@
 
 <body id="background" class="background-base">
 
-  <!-- inizio-navbar -->
+  <!-- inizio-navbar 1 -->
   <header id="main-header">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-
-        <!-- logo -->
+    <nav class="navbar navbar-expand-lg" style="background: none;">
+      <div class="container d-flex  flex-column">
+        <div>
+           <!-- logo -->
         <a class="navbar-brand" href="home.html">
-          <img src="../static/img/LOGO.png" class="logo">
+          <img src="../static/img/LOGO.png" class="logo my-3">
         </a>
-
-        <button class="navbar-toggler px-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="height: 2rem; width: 2rem;"></span>
-        </button>
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-
-          <div class="offcanvas-body">
-
-            <!-- search form -->
-            <div class="search-form">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="">
-                <label for="floatingInput">Cerca nel sito...</label>
-              </div>
+        </div>
+        <div style="width: 100%">
+           <!-- search form -->
+           <div class="search-form mt-5 mb-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder="">
+              <label for="floatingInput">Cerca nel sito...</label>
             </div>
-            <!-- fine search form -->
+          </div>
+          <!-- fine search form -->
+        </div>
 
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+        <div class="container d-flex justify-content-end">
+ </div>           <ul class="navbar-nav first-navbar d-flex flex-row">
+              <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
+          <div class=>
+            <i class="fa-solid fa-user fa-3x"></i>
+          </div>
+          <p><strong>ACCOUNT</strong></p>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../templates/login.html">login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/registrati">Sing in</a>
-              </li>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/promozione">Diventa Admin</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/creazione-card">creazione carte</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/creazione-accessori">creazione accessori</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/creazione-bustine">creazione bustine</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/creazione-box">creazione box</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/negozio-pokemon">negozio pokemon</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/negozio-magic">negozio magic</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/negozio-yugiho">negozio yugiho</a>
-              </li>
-
-              <li class="nav-item">
-                <div class="user-icon">
-                  <i class="fa-solid fa-user"></i>
-                </div>
+              <li class="nav-item d-flex flex-column justify-content-center align-items-center">
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #7d7cd4;"></i>
+          </div>
+          <p>CARRELLO</p>
               </li>
             </ul>
-
+        </div>
           </div>
         </div>
       </div>
@@ -109,32 +71,71 @@
   </header>
   <!-- fine navbar -->
 
+    <!-- inizio-navbar -->
+    <header id="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container ">
+  
+            <div class="d-flex justify-content-center align-items-center w-100 mb-4" >
+              <nav class="navbar navbar-expand-lg ">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#"></a>
+                  <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  </button >
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="../templates/login.html">login</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/registrati">Sing in</a>
+                        </li>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/promozione">Diventa Admin</a>
+                        </li>
+          
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/creazione-card">creazione carte</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/creazione-accessori">creazione accessori</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/creazione-bustine">creazione bustine</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/creazione-box">creazione box</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/negozio-pokemon">negozio pokemon</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/negozio-magic">negozio magic</a>
+                        </li>
+                        <li class="nav-item bordo">
+                          <a class="nav-link" href="/negozio-yugiho">negozio yugiho</a>
+                        </li>
+        
+                    </div>
+                  </div>
+                </div>
+              </nav>
+  
+  
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- fine navbar -->
 
 
   <main>
-    <!-- Swiper -->
-    <!-- <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="card swiper-slide">
-          <a href=""><img src="../static/img/LOGO.png" class="card-img-top" alt="..."></a>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-        <div class="card swiper-slide">
-          <a href=""><img src="../static/img/LOGO.png" class="card-img-top" alt="..."></a>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-        <div class="card swiper-slide">
-          <a href=""><img src="../static/img/LOGO.png" class="card-img-top" alt="..."></a>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-       </div>
-      </div> -->
 
     <div class="container-icone-switch container my-auto py-5 d-flex">
       <button id="btn-pokemon"><img id="pokemon-img" src="../static/img/icone-tgc/pokeball.png"
@@ -147,13 +148,15 @@
 
 
 
-    <div class="swiper mySwiper2">
+    <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
@@ -168,19 +171,39 @@
     <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
+        centeredSlides: true,
         loop: true,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
         pagination: {
           el: ".swiper-pagination",
+          clickable: true,
         },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+        breakpoints: {
+          // Quando la larghezza della finestra è >= 768px
+          768: {
+            slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
+            spaceBetween: 20,
+          },
+          // Quando la larghezza della finestra è >= 1024px
+          1024: {
+            slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+            spaceBetween: 30,
+          }
+        },
       });
       const swiperbutton = document.querySelector('.swiper').swiper;
 
       // Now you can use all slider methods like
-      swiperbutton.slideNext();
+      swiperbutton2.slideNext();
 
     </script>
     <!-- End  Swiper -->
@@ -197,6 +220,8 @@
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -212,10 +237,10 @@
       var swiper = new Swiper(".mySwiper2", {
         centeredSlides: true,
         loop: true,
-        slidesPerView: 2,
+        slidesPerView: 6,
         spaceBetween: 30,
         autoplay: {
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         },
         pagination: {
@@ -225,6 +250,18 @@
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          // Quando la larghezza della finestra è >= 768px
+          768: {
+            slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
+            spaceBetween: 20,
+          },
+          // Quando la larghezza della finestra è >= 1024px
+          1024: {
+            slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+            spaceBetween: 30,
+          }
         },
       });
       const swiperbutton2 = document.querySelector('.swiper').swiper;
