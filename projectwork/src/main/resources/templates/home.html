@@ -20,7 +20,10 @@
 
   <!-- swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
   <link rel="stylesheet" href="../static/css/style.css">
   <link rel="stylesheet" href="../static/css/swiper.css">
 </head>
@@ -34,17 +37,17 @@
         <div>
            <!-- logo -->
         <a class="navbar-brand" href="home.html">
-          <img src="../static/img/LOGO.png" class="logo my-3">
+          <img src="../static/img/LOGO.png" class="logo mt-3">
         </a>
         </div>
         <div style="width: 100%">
            <!-- search form -->
-           <div class="search-form mt-5 mb-3">
+             <div class="search-form mt-5 mb-3">
             <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="">
+              <input type="text" class="form-control" id="floatingInput" placeholder="" style="background-color: #efefef; border: rgb(0, 0, 0);">
               <label for="floatingInput">Cerca nel sito...</label>
             </div>
-          </div>
+            </div>
           <!-- fine search form -->
         </div>
 
@@ -52,15 +55,15 @@
  </div>           <ul class="navbar-nav first-navbar d-flex flex-row">
               <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
           <div class=>
-            <i class="fa-solid fa-user fa-3x"></i>
+            <i class="fa-solid fa-user fa-3x" style="color:#ffffff"></i>
           </div>
-          <p><strong>ACCOUNT</strong></p>
+          <p style="color: #ffffff;"><strong>ACCOUNT</strong></p>
               </li>
               <li class="nav-item d-flex flex-column justify-content-center align-items-center">
           <div class="cart-icon">
-            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #7d7cd4;"></i>
+            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #ffffff;"></i>
           </div>
-          <p>CARRELLO</p>
+          <p style="color: #ffffff;"><STRONG>CARRELLO</STRONG></p>
               </li>
             </ul>
         </div>
@@ -71,14 +74,14 @@
   </header>
   <!-- fine navbar -->
 
-    <!-- inizio-navbar -->
+    <!-- inizio-navbar 2-->
     <header id="main-header">
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg" style="background-color: #f7c327;">
         <div class="container ">
   
             <div class="d-flex justify-content-center align-items-center w-100 mb-4" >
               <nav class="navbar navbar-expand-lg ">
-                <div class="container-fluid">
+                <div class="container-fluid" style="background-color: #f7c327;">
                   <a class="navbar-brand" href="#"></a>
                   <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                   </button >
@@ -209,7 +212,7 @@
     <!-- End  Swiper -->
 
 
-    <img id="Novita" src="../static/img/immagini-font/Novita.png" class="pokemon-font mx-auto" alt="">
+    <div class="container "><img id="Novita" class="animazioni animate__animated animate__backInLeft" src="../static/img/immagini-font/Novita.png" class="pokemon-font mx-auto" alt=""></div>
 
     <!-- Swiper JS -->
     <div class="swiper mySwiper2">
@@ -229,15 +232,15 @@
     </div>
 
 
-    <img id="Gadgets" src="../static/img/immagini-font/gadgets.png" class="pokemon-font mx-auto" alt="">
+    <img id="Gadgets" class="animazioni animate__animated animate__backInRight" src="../static/img/immagini-font/gadgets.png" class="pokemon-font mx-auto" alt="">
 
 
     <!-- Initialize Swiper -->
     <script>
-      var swiper = new Swiper(".mySwiper2", {
+        var swiper = new Swiper(".mySwiper2", {
         centeredSlides: true,
         loop: true,
-        slidesPerView: 6,
+        slidesPerView: 2,
         spaceBetween: 30,
         autoplay: {
           delay: 3000,
