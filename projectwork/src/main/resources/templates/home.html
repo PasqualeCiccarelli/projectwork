@@ -147,13 +147,15 @@
 
 
 
-    <div class="swiper mySwiper2">
+    <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
@@ -168,9 +170,17 @@
     <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
+        centeredSlides: true,
         loop: true,
+        slidesPerView: 6,
+        spaceBetween: 30,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
         pagination: {
           el: ".swiper-pagination",
+          clickable: true,
         },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -197,6 +207,8 @@
         <div class="swiper-slide mb-5"><img src="../static/img/yugi10.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic3.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
+        <div class="swiper-slide mb-5"><img src="../static/img/poke6.png" alt=""></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -212,7 +224,7 @@
       var swiper = new Swiper(".mySwiper2", {
         centeredSlides: true,
         loop: true,
-        slidesPerView: 2,
+        slidesPerView: 6,
         spaceBetween: 30,
         autoplay: {
           delay: 5000,
