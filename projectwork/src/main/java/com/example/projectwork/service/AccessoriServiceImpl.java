@@ -96,7 +96,7 @@ public class AccessoriServiceImpl implements AccessoriService {
     
     public List<AccessoriDto> getCardByAccessori(Brand brand, Categoria categoria){
     	
-    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndAccessori(brand, categoria);
+    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndCategoria(brand, categoria);
     	
     	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
     }
