@@ -12,6 +12,6 @@ import com.example.projectwork.entity.entityenum.Categoria;
 public interface AccessoriRepository extends JpaRepository<AccessoriEntity, Long>{
 	
 	List<AccessoriEntity> findByBrand(Brand brand);
-	List<AccessoriEntity> findByBrandAndAccessori(Brand brand, Categoria categoria);
+	List<AccessoriEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
 
 }
