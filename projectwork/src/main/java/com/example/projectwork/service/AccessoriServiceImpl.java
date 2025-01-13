@@ -16,6 +16,7 @@ import com.example.projectwork.entity.AccessoriEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
+import com.example.projectwork.entity.entityenum.Tipo;
 import com.example.projectwork.repository.AccessoriRepository;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.restCtrl.CardCtrl;
@@ -97,6 +98,16 @@ public class AccessoriServiceImpl implements AccessoriService {
     public List<AccessoriDto> getCardByAccessori(Brand brand, Categoria categoria){
     	
     	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndCategoria(brand, categoria);
+    	
+    	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
+    }
+    
+    
+    /******************************************/
+    
+    public List<AccessoriDto> getCardByAccessoriByTipo(Brand brand, Tipo tipo){
+    	
+    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndTipo(brand, tipo);
     	
     	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
     }
