@@ -36,8 +36,8 @@ const swiperConfig = {
     watchSlidesProgress: true,
 };
 
-function initializeSwiper(containerId) {
-    return new Swiper(`#${containerId} .swiper-container`, swiperConfig);
+function initializeSwiper() {
+    return new Swiper(`.mySwiper`, swiperConfig);
 }
 
 function getUserDataFromSessionStorage() {
@@ -145,9 +145,13 @@ function createCarousel(containerId, data) {
         emptySlide.classList.add('swiper-slide');
         emptySlide.textContent = 'Nessun elemento disponibile';
         container.appendChild(emptySlide);
+		console.log("DENTRO");
         return;
     }
- 
+	
+	console.log(container.children);
+	console.log(data);
+	 
     data.forEach(item => {
         const slide = document.createElement('div');
         slide.classList.add('swiper-slide');
@@ -192,6 +196,8 @@ function createCarousel(containerId, data) {
         slide.appendChild(card);
         container.appendChild(slide);
     });
+	
+	initializeSwiper();
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
