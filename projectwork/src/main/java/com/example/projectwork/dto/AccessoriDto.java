@@ -30,7 +30,7 @@ public class AccessoriDto {
 	private List<DettagliOrdineDto> dettagliOrdine;
 
 	public AccessoriDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public AccessoriDto(Long id, String nome, String descrizione, Categoria categoria, Brand brand,

@@ -50,8 +50,8 @@ public class AuthenticationCtrl {
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
-		LoginResponse loginResponse = authenticationService.login(loginRequest);
-		return ResponseEntity.ok(authenticationService.login(loginRequest));
+    	LoginResponse loginResponse = authenticationService.login(loginRequest);
+    	return ResponseEntity.ok(loginResponse);
 	}
 
 	@PostMapping("/register")

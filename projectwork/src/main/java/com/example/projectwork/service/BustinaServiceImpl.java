@@ -10,13 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.BustinaDto;
 import com.example.projectwork.dto.BustinaRequest;
-import com.example.projectwork.dto.CardDto;
+import com.example.projectwork.entity.AccessoriEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BustinaEntity;
-import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.repository.BustineRepository;
 import com.example.projectwork.restCtrl.CardCtrl;
@@ -89,5 +90,16 @@ public class BustinaServiceImpl implements BustinaService {
     public List<BustinaDto> getBustineByBrandYugiho() {
         return getBustineByBrand(Brand.YUGIHO);
     }
+    
+    
+    /**********************************/
+
+	@Override
+	public List<BustinaDto> getCardByAccessori(Brand brand, Categoria categoria) {
+
+		List<BustinaEntity> lista= bustineRepository.findByBrandAndCategoria(brand, categoria);
+    	
+    	return lista.stream().map(BustinaDto::fromEntity).collect(Collectors.toList());
+	}
 
 }

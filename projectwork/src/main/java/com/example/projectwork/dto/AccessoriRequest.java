@@ -6,7 +6,6 @@ import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
 
-import jakarta.persistence.Column;
 
 public class AccessoriRequest {
 	

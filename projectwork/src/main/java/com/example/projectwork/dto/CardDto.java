@@ -29,7 +29,7 @@ public class CardDto {
 	private List<DettagliOrdineDto> dettagliOrdine;
 
 	public CardDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CardDto(Long id, String nome, String descrizione, Categoria categoria, Tipo tipo, Brand brand, double prezzo,

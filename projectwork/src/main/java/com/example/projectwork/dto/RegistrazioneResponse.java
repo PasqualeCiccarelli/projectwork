@@ -8,13 +8,20 @@ public class RegistrazioneResponse {
 	private String ruolo1;
 	private String ruolo2;
 
-	public RegistrazioneResponse(Long id, String nome, String email, String ruolo1) {
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.ruolo1 = ruolo1;
-		this.ruolo2 = ruolo2;
-	}
+	public RegistrazioneResponse(Long id, String nome, String email, String ruolo1, String ruolo2) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.ruolo1 = ruolo1;
+        this.ruolo2 = ruolo2;
+    }
+
+    public RegistrazioneResponse(Long id, String nome, String email, String ruolo1) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.ruolo1 = ruolo1;
+    }
 
 	public Long getId() {
 		return id;

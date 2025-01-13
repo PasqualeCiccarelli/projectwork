@@ -10,13 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BoxRequest;
-import com.example.projectwork.dto.CardDto;
+import com.example.projectwork.entity.AccessoriEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BoxEntity;
-import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.repository.BoxRepository;
 import com.example.projectwork.restCtrl.CardCtrl;
@@ -89,5 +90,27 @@ public class BoxServiceImpl implements BoxService {
     public List<BoxDto> getBoxByBrandYugiho() {
         return getBoxByBrand(Brand.YUGIHO);
     }
+    
+    
+    
+    /**************************/
+    
+	public List<BoxDto> getCardByAccessori(Brand brand, Categoria categoria){
+	    	
+	    List<BoxEntity> lista= boxRepository.findByBrandAndCategoria(brand, categoria);
+	    	
+	    return lista.stream().map(BoxDto::fromEntity).collect(Collectors.toList());
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

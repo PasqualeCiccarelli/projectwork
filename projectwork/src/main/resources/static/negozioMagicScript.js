@@ -157,7 +157,7 @@ function createCarousel(containerId, data) {
         
         // Immagine con percorso corretto
         const img = document.createElement('img');
-        img.src = `img/${item.immagine}`;
+        img.src = `img/magic/${item.immagine}`;
         img.alt = item.nome;
         img.onerror = () => {
             img.src = 'img/placeholder.jpg';

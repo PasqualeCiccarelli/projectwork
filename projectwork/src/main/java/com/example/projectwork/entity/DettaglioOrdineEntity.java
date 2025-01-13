@@ -41,7 +41,7 @@ public class DettaglioOrdineEntity {
 	private BustinaEntity bustina;
 
 	public DettaglioOrdineEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public DettaglioOrdineEntity(Long id, Double prezzo, Integer quantita, OrdineEntity ordine, CardEntity carta,

@@ -37,7 +37,7 @@ public class OrdineEntity {
 	private List<DettaglioOrdineEntity> dettagliOrdine;
 
 	public OrdineEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public OrdineEntity(Long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato_consegna,
