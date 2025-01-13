@@ -8,6 +8,14 @@
     background-size: cover;
 }
 
+#main-header{
+    background-position: center center;
+    background-color: #ffff99;
+    background-image: url("../img/sfondi/1000_F_526978622_dayjHFDSjD1r7SiplcnxzTaUOjDlnuIp.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .background-pokemon{
     background-position: center center;
     background-color: #ffff99;
@@ -26,9 +34,9 @@
 .background-magic{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/sfondo-magic.png");
+    background-image: url("../img/sfondi/");
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 
 }
@@ -67,7 +75,7 @@ display: flex;
 }
 
 .logo {
-    height: 5rem;
+    height: 10rem;
 }
 
 .navbar-toggler {
@@ -83,6 +91,13 @@ display: flex;
     justify-content: space-between;
 }
 
+.animazioni{
+    width: 80%;
+    margin: auto;
+    animation-duration: 2s;
+    display: block;
+    text-align: center;
+}
 /* --------------------------- icone switch stile --------------------------- */
 
 .container-icone-switch{
@@ -144,8 +159,17 @@ display: flex;
     .logo-icon-magic, .logo-icon-pokeball, .logo-icon-puzzle{
         width: 14rem;
         height: 7rem;
-    }}
-/* 
-    width: 14rem
-    height: 7rem
-*/
+    }
+
+    .logo{
+        height: 5rem;
+    }
+
+    .animazioni{
+        width: 40%;
+    }
+
+}
+
+
+
