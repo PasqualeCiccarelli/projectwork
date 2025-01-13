@@ -22,11 +22,11 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "card")
-public class CardEntity {
+public class CardEntity extends ProdottoEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(length = 100, nullable = false)
 	private String nome;
@@ -94,11 +94,11 @@ public class CardEntity {
 		this.dettagli_ordine = dettagli_ordine;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

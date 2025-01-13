@@ -6,7 +6,10 @@ import java.util.List;
 import com.example.projectwork.entity.entityenum.Stato;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,7 +20,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ordini")
-public class OrdineEntity {
+public class OrdineEntity extends ProdottoEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +34,8 @@ public class OrdineEntity {
 
 	private LocalDate data;
 
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, columnDefinition = "ENUM('ORDINATO', 'SPEDITO', 'IN_CONSEGNA', 'CONSEGNATO', 'IN_CORSO', 'ANNULLATO')")
 	private Stato stato_consegna;
 
 	@OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL)

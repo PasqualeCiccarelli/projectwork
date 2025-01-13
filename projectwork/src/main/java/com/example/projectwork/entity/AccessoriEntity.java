@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "accessori")
-public class AccessoriEntity {
+public class AccessoriEntity extends ProdottoEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

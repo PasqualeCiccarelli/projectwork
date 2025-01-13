@@ -119,6 +119,34 @@ public class DettaglioOrdineEntity {
 	public void setBustina(BustinaEntity bustina) {
 		this.bustina = bustina;
 	}
+	
+	public ProdottoEntity getProdotto() {
+        if (this.carta != null) {
+            return this.carta;
+        } else if (this.box != null) {
+            return this.box;
+        } else if (this.bustina != null) {
+            return this.bustina;
+        } else if (this.accessorio != null) {
+            return this.accessorio;
+        } else {
+            throw new RuntimeException("Nessun prodotto associato a questo dettaglio d'ordine.");
+        }
+    }
+
+    public void setProdotto(ProdottoEntity prodotto) {
+        if (prodotto instanceof CardEntity) {
+            this.carta = (CardEntity) prodotto;
+        } else if (prodotto instanceof BoxEntity) {
+            this.box = (BoxEntity) prodotto;
+        } else if (prodotto instanceof BustinaEntity) {
+            this.bustina = (BustinaEntity) prodotto;
+        } else if (prodotto instanceof AccessoriEntity) {
+            this.accessorio = (AccessoriEntity) prodotto;
+        } else {
+            throw new IllegalArgumentException("Tipo di prodotto non valido.");
+        }
+    }
 
 	
 

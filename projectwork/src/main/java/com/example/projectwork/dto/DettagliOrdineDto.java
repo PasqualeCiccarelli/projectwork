@@ -12,18 +12,24 @@ public class DettagliOrdineDto {
 	private Long ordineId;
 	private Long cartaId;
 	private Long accessorioId;
+	private Long boxId;
+	private Long bustinaId;
 
 	public DettagliOrdineDto() {
 		
 	}
 
-	public DettagliOrdineDto(Long id, double prezzo, int quantita, Long ordineId, Long cartaId, Long accessorioId) {
+	public DettagliOrdineDto(Long id, double prezzo, int quantita, Long ordineId, Long cartaId, Long accessorioId,
+			Long boxId, Long bustinaId) {
+		super();
 		this.id = id;
 		this.prezzo = prezzo;
 		this.quantita = quantita;
 		this.ordineId = ordineId;
 		this.cartaId = cartaId;
 		this.accessorioId = accessorioId;
+		this.boxId = boxId;
+		this.bustinaId = bustinaId;
 	}
 
 	public Long getId() {
@@ -72,6 +78,22 @@ public class DettagliOrdineDto {
 
 	public void setAccessorioId(Long accessorioId) {
 		this.accessorioId = accessorioId;
+	}
+
+	public Long getBoxId() {
+		return boxId;
+	}
+
+	public void setBoxId(Long boxId) {
+		this.boxId = boxId;
+	}
+
+	public Long getBustinaId() {
+		return bustinaId;
+	}
+
+	public void setBustinaId(Long bustinaId) {
+		this.bustinaId = bustinaId;
 	}
 
 	public static DettagliOrdineDto fromEntity(DettaglioOrdineEntity entity) {

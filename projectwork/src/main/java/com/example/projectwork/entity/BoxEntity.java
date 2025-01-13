@@ -22,7 +22,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "box")
-public class BoxEntity {
+public class BoxEntity extends ProdottoEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
