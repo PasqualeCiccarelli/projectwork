@@ -78,7 +78,7 @@ public class BoxEntity {
 	private List<DettaglioOrdineEntity> dettagliOrdine;
 	
 	public BoxEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public BoxEntity(Long id, String nome, String descrizione, Categoria categoria, Brand brand, boolean disponibilita,

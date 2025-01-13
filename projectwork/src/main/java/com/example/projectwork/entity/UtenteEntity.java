@@ -1,7 +1,6 @@
 package com.example.projectwork.entity;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -55,7 +54,7 @@ public class UtenteEntity implements UserDetails{
 	private List<OrdineEntity> ordini;
 
 	public UtenteEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public UtenteEntity(long id, String nome, String cognome, String email, String password, Ruolo ruolo,

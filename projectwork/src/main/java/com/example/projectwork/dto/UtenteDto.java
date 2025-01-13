@@ -1,7 +1,6 @@
 package com.example.projectwork.dto;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,7 @@ public class UtenteDto {
 	private List<OrdineDto> ordini;
 
 	public UtenteDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public UtenteDto(Long id, String nome, String cognome, String email, String password, Ruolo ruolo,

@@ -26,7 +26,7 @@ public class AdminDto {
 	private List<BoxDto> box;
 
 	public AdminDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 		

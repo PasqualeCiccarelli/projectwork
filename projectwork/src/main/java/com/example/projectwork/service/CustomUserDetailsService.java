@@ -15,9 +15,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.User;
 
-
-import com.example.projectwork.repository.AdminRepository;
-import com.example.projectwork.repository.UtenteRepository;
 import com.example.projectwork.restCtrl.AuthController;
 
 import jakarta.servlet.http.Cookie;
@@ -25,13 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
-    @Autowired
-    private UtenteRepository utenteRepository;
-
-    @Autowired
-    private AdminRepository adminRepository;
-    
+ 
     @Autowired
     private HttpServletRequest request;
     

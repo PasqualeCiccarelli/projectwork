@@ -61,7 +61,7 @@ public class AdminEntity implements UserDetails{
 	private List<BustinaEntity> bustine;
 
 	public AdminEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public AdminEntity(long id, String nome, String cognome, String email, String password, Ruolo ruolo,
