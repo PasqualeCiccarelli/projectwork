@@ -52,7 +52,7 @@ a:hover {
     text-decoration: underline;
 }
 
-button {
+#registrazione-btn {
     background-color: #000000;
     color: white;
     border: none;
@@ -64,7 +64,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+#registrazione-btn:hover {
     background-color: #ff3f2f;
 }
 
