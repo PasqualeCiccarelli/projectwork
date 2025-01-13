@@ -17,7 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.AccessoriRequest;
-import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.entity.AccessoriEntity;
 import com.example.projectwork.service.interf.AccessoriService;
 

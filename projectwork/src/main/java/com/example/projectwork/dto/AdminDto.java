@@ -22,7 +22,7 @@ public class AdminDto {
 	private List<AccessoriDto> accessori;
 
 	public AdminDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public AdminDto(Long id, String nome, String cognome, String email, String password, Ruolo ruolo,
