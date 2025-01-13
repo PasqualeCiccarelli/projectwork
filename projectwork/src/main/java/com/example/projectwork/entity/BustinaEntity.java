@@ -75,7 +75,7 @@ public class BustinaEntity {
 	private List<DettaglioOrdineEntity> dettagliOrdine;
 	
 	public BustinaEntity() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public BustinaEntity(Long id, String nome, String descrizione, Categoria categoria, Brand brand,

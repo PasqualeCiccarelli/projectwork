@@ -18,7 +18,7 @@ public class OrdineDto {
 	private List<DettagliOrdineDto> dettagliOrdine;
 
 	public OrdineDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public OrdineDto(Long id, long utenteId, String indirizzo, LocalDate data, Stato statoConsegna,

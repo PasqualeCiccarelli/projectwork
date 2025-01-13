@@ -14,7 +14,7 @@ public class DettagliOrdineDto {
 	private Long accessorioId;
 
 	public DettagliOrdineDto() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public DettagliOrdineDto(Long id, double prezzo, int quantita, Long ordineId, Long cartaId, Long accessorioId) {

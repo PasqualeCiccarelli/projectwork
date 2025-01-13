@@ -93,12 +93,16 @@ display: flex;
     filter: drop-shadow(8px 8px 4px black);
 }
 
-/* .logo-icon-pokeball:hover{
+.logo-icon-pokeball:hover{
     transform: scale(1.25);
     filter: brightness(1.1);
-} */
+}
 
-
+.logo-icon-magic:hover, .logo-icon-pokeball:hover, .logo-icon-puzzle:hover{
+    transform: scale(1.25);
+    filter: brightness(1.1);
+    filter: drop-shadow(8px 8px 4px black);
+}
 
 .logo-icon-puzzle {
     height: 72px;
