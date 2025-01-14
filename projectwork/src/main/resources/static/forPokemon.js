@@ -83,7 +83,7 @@ async function getCardNovita(){
 			<div class="swiper-slide">
 				<div class="product-card">
 					<!-- <img src=img/${data[i].immagine}> -->
-					<img src=${data[i].immagine}>
+					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -164,7 +164,7 @@ async function getCardSpeciale(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<img src=${data[i].immagine}>
+					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -212,7 +212,7 @@ async function getAccessoriActionFigure(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<img src=${data[i].immagine}>
+					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -251,7 +251,7 @@ async function getAccessoriGadget(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<img src=${data[i].immagine}>
+					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -280,8 +280,10 @@ switchBrand.addEventListener('click', () => {
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	
-	if(brandSelezionato !== switchBrand.id)
+	if(brandSelezionato !== switchBrand.id){
+		brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);
 		aperturaHome();	
+	}
 	else{
 		console.log("Sto già nel brand",switchBrand.id);
 	}
