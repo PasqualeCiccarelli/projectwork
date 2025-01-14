@@ -280,8 +280,10 @@ switchBrand.addEventListener('click', () => {
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	
-	if(brandSelezionato !== switchBrand.id)
+	if(brandSelezionato !== switchBrand.id){
+		brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);
 		aperturaHome();	
+	}
 	else{
 		console.log("Sto già nel brand",switchBrand.id);
 	}

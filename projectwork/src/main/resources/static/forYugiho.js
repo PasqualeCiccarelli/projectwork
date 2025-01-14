@@ -1,51 +1,51 @@
 //Configurazione degli swiper
-const configurazioneSwiper= {
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: 6,
-    spaceBetween: 30,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-        // Quando la larghezza della finestra è >= 768px
-        768: {
-        slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
-        spaceBetween: 20,
-    },
-    // Quando la larghezza della finestra è >= 1024px
-        1024: {
-        slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
-        spaceBetween: 30,
-        }
-    },
-}
+// const confSwiper= {
+//     centeredSlides: true,
+//     loop: true,
+//     slidesPerView: 6,
+//     spaceBetween: 30,
+//     autoplay: {
+//         delay: 3000,
+//         disableOnInteraction: false,
+//     },
+//     pagination: {
+//         el: ".swiper-pagination",
+//         clickable: true,
+//     },
+//     navigation: {
+//         nextEl: ".swiper-button-next",
+//         prevEl: ".swiper-button-prev",
+//     },
+//     breakpoints: {
+//         // Quando la larghezza della finestra è >= 768px
+//         768: {
+//         slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
+//         spaceBetween: 20,
+//     },
+//     // Quando la larghezza della finestra è >= 1024px
+//         1024: {
+//         slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+//         spaceBetween: 30,
+//         }
+//     },
+// }
 
-function initializeSwiper() {
-    return new Swiper(`.mySwiper`, configurazioneSwiper);
-}
+// function initializeSwiper() {
+//     return new Swiper(`.mySwiper`, confSwiper);
+// }
 
-function initializeSwiper2() {
-    return new Swiper(`.mySwiper2`, configurazioneSwiper);
-}
+// function initializeSwiper2() {
+//     return new Swiper(`.mySwiper2`, confSwiper);
+// }
 
-function initializeSwiper3() {
-    return new Swiper(`.mySwiper3`, configurazioneSwiper);
-}
+// function initializeSwiper3() {
+//     return new Swiper(`.mySwiper3`, confSwiper);
+// }
 
 // initializeSwiper();
 // initializeSwiper2();
 
-console.log("ciao");
+console.log("ciao ciao");
 
 
 
@@ -55,15 +55,15 @@ console.log("ciao");
 
 
 
-const gadget= document.querySelector('.gadget');
-const swiperNovita= document.querySelector('.swiper-novita');
-//const swiperPrevendita= document.querySelector('.swiper-prevendita');
-const swiperSpeciale= document.querySelector('.swiper-speciale');
-let brandSelezionato= '';
+// const gadget2= document.querySelector('.gadget');
+// const swiperNovita2= document.querySelector('.swiper-novita');
+// //const swiperPrevendita= document.querySelector('.swiper-prevendita');
+// const swiperSpeciale2= document.querySelector('.swiper-speciale');
+// let brandSelezionato2= '';
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Novità
-async function getCardNovita(){
+async function getCardNovita2(){
 
 	swiperNovita.innerHTML= '';
 
@@ -111,7 +111,7 @@ async function getCardNovita(){
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
-async function getCardSpeciale(){
+async function getCardSpeciale2(){
 	
 	swiperSpeciale.innerHTML= '';
 
@@ -160,7 +160,7 @@ async function getCardSpeciale(){
 
 
 //chiamata fetch per recuperare gli accessori (action-figure e gadget) da inserire nello swiper Gadget
-async function getAccessoriActionFigure(){
+async function getAccessoriActionFigure2(){
 
 	gadget.innerHTML = '';
 
@@ -199,7 +199,7 @@ async function getAccessoriActionFigure(){
 
 
 
-async function getAccessoriGadget(){
+async function getAccessoriGadget2(){
 
 	gadget.innerHTML = '';
 
@@ -240,67 +240,56 @@ async function getAccessoriGadget(){
 
 
 //per quando si clicca sul Brand Pokemon, mostra card, accessori, .. riferiti a questo brand
-const switchBrand= document.querySelector('.logo-icon-pokeball');
+const switchBrand2= document.querySelector('.logo-icon-puzzle');
+console.log(switchBrand2);
 
-switchBrand.addEventListener('click', () => {
+switchBrand2.addEventListener('click', () => {
+	
+	console.log("WWWWWWWWWWWWWWWWWWWWWWW");
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	
-	if(brandSelezionato !== switchBrand.id)
+	if(brandSelezionato !== switchBrand2.id){
+		brandSelezionato= localStorage.setItem('brandSelect', switchBrand2.id);
 		aperturaHome();	
+	}
 	else{
-		console.log("Sto già nel brand",switchBrand.id);
+		console.log("Sto già nel brand",switchBrand2.id);
 	}
 });
-
-
-//per quando apro la home
-function aperturaHome(){
-	
-	getCardNovita();
-	//getCardPrevendita();
-	getCardSpeciale();
-	getAccessoriActionFigure();
-	getAccessoriGadget();	
-
-	//prendo il brand che viene mostrato all'apertura della pagina web
-	brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);
-}
-
-aperturaHome();
 
 
   
 
 
-function sollevamentoEccezione(response){
-	if(response.status != 200){
-		let placeholder=
-			`
-			<div class="swiper-slide mb-5">
-				<div class="card" aria-hidden="true">
-					<div style="width: 100%; height: 200px; background-color: #868E96;"></div>
-					<div class="card-body">
-						<h5 class="card-title placeholder-glow">
-						<span class="placeholder col-6"></span>
-						</h5>
-						<p class="card-text placeholder-glow">
-						<span class="placeholder col-7"></span>
-						<span class="placeholder col-4"></span>
-						<span class="placeholder col-4"></span>
-						<span class="placeholder col-6"></span>
-						<span class="placeholder col-8"></span>
-						</p>
-						<a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-					</div>
-				</div>
-        	</div>
-			`;	
+// function sollevamentoEccezione(response){
+// 	if(response.status != 200){
+// 		let placeholder=
+// 			`
+// 			<div class="swiper-slide mb-5">
+// 				<div class="card" aria-hidden="true">
+// 					<div style="width: 100%; height: 200px; background-color: #868E96;"></div>
+// 					<div class="card-body">
+// 						<h5 class="card-title placeholder-glow">
+// 						<span class="placeholder col-6"></span>
+// 						</h5>
+// 						<p class="card-text placeholder-glow">
+// 						<span class="placeholder col-7"></span>
+// 						<span class="placeholder col-4"></span>
+// 						<span class="placeholder col-4"></span>
+// 						<span class="placeholder col-6"></span>
+// 						<span class="placeholder col-8"></span>
+// 						</p>
+// 						<a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+// 					</div>
+// 				</div>
+//         	</div>
+// 			`;	
 		
-		swiperNovita.innerHTML+= placeholder;
-		throw new Error("errore nel caricamento delle card");
-	}
-};
+// 		swiperNovita.innerHTML+= placeholder;
+// 		throw new Error("errore nel caricamento delle card");
+// 	}
+// };
 
 
 
