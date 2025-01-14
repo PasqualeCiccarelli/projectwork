@@ -95,8 +95,6 @@ console.log(typeof prodotto);
 
 
 function isCard(prodotto) {
-    // Assumo che ci sia un modo per determinare se il prodotto è una carta
-    // Modifica questa logica in base alla tua struttura dati
     return prodotto.specificDetails && prodotto.specificDetails.includes('Edizione:');
 }
 

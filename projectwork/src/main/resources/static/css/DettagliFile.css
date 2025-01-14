@@ -74,7 +74,6 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Effetto zoom per bustine, box e accessori */
 .zoom-effect {
     transition: transform 0.3s ease;
 }
@@ -83,7 +82,6 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Effetto tilt per le carte */
 .card-effect {
     transition: transform 0.2s ease;
     transform-style: preserve-3d;
