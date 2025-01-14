@@ -1,14 +1,13 @@
-
-console.log("ciao ciao");
+console.log("ciao ciao ciao");
 
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Novità
-async function getCardNovita2(){
+async function getCardNovita3(){
 
 	swiperNovita.innerHTML= '';
 
-	let response= await fetch('/api/card/brand/yugiho-novita');
+	let response= await fetch('/api/card/brand/magic-novita');
 
 	sollevamentoEccezione(response);
 
@@ -52,11 +51,11 @@ async function getCardNovita2(){
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
-async function getCardSpeciale2(){
+async function getCardSpeciale3(){
 	
 	swiperSpeciale.innerHTML= '';
 
-	let response= await fetch('/api/card/brand/yugiho-speciale');
+	let response= await fetch('/api/card/brand/magic-speciale');
 
 	sollevamentoEccezione(response);
 
@@ -96,11 +95,11 @@ async function getCardSpeciale2(){
 
 
 //chiamata fetch per recuperare gli accessori (action-figure e gadget) da inserire nello swiper Gadget
-async function getAccessoriActionFigure2(){
+async function getAccessoriActionFigure3(){
 
 	gadget.innerHTML = '';
 
-    const response= await fetch('http://localhost:8080/api/accessori/brand/yugiho/action-figure');
+    const response= await fetch('http://localhost:8080/api/accessori/brand/magic/action-figure');
 
 	sollevamentoEccezione(response)
 
@@ -135,11 +134,11 @@ async function getAccessoriActionFigure2(){
 
 
 
-async function getAccessoriGadget2(){
+async function getAccessoriGadget3(){
 
 	gadget.innerHTML = '';
 
-    const response= await fetch('http://localhost:8080/api/accessori/brand/yugiho/gadget');
+    const response= await fetch('http://localhost:8080/api/accessori/brand/magic/gadget');
 
 	sollevamentoEccezione(response);
 
@@ -176,36 +175,31 @@ async function getAccessoriGadget2(){
 
 
 //per quando si clicca sul Brand Pokemon, mostra card, accessori, .. riferiti a questo brand
-const switchBrand2= document.querySelector('.logo-icon-puzzle');
-console.log(switchBrand2);
+const switchBrand3= document.querySelector('.logo-icon-magic');
+console.log(switchBrand3);
 
-switchBrand2.addEventListener('click', () => {
+switchBrand3.addEventListener('click', () => {
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	
-	if(brandSelezionato !== switchBrand2.id){
-		brandSelezionato= localStorage.setItem('brandSelect', switchBrand2.id);
-		aperturaBrandYugiho();	
+	if(brandSelezionato !== switchBrand3.id){
+		brandSelezionato= localStorage.setItem('brandSelect', switchBrand3.id);
+		aperturaBrandMagic();	
 	}
 	else{
-		console.log("Sto già nel brand",switchBrand2.id);
+		console.log("Sto già nel brand",switchBrand3.id);
 	}
 });
 
 
 
 
-function aperturaBrandYugiho(){
+function aperturaBrandMagic(){
 
-	getCardNovita2();
-	getCardSpeciale2();
-	getAccessoriActionFigure2();
-	getAccessoriGadget2();
+	getCardNovita3();
+	getCardSpeciale3();
+	getAccessoriActionFigure3();
+	getAccessoriGadget3();
 }
-
-
-
-
-
 
 
