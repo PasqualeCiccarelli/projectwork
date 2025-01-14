@@ -25,6 +25,7 @@ public class CardDto {
 	private String immagine;
 	private LocalDate dataInizio;
 	private double prezzoScontato;
+	private String nomeSet;
 	private Long adminId;
 	private List<DettagliOrdineDto> dettagliOrdine;
 
@@ -33,7 +34,7 @@ public class CardDto {
 	}
 
 	public CardDto(Long id, String nome, String descrizione, Categoria categoria, Tipo tipo, Brand brand, double prezzo,
-			int rimanenze, boolean disponibilita, String immagine, LocalDate dataInizio, double prezzoScontato,
+			int rimanenze, boolean disponibilita, String immagine, LocalDate dataInizio, String nomeSet, double prezzoScontato,
 			Long adminId, List<DettagliOrdineDto> dettagliOrdine) {
 		this.id = id;
 		this.nome = nome;
@@ -47,6 +48,7 @@ public class CardDto {
 		this.immagine = immagine;
 		this.dataInizio = dataInizio;
 		this.prezzoScontato = prezzoScontato;
+		this.nomeSet = nomeSet;
 		this.adminId = adminId;
 		this.dettagliOrdine = dettagliOrdine;
 	}
@@ -61,6 +63,14 @@ public class CardDto {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public String getNomeSet() {
+		return nomeSet;
+	}
+
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
 	}
 
 	public void setNome(String nome) {
@@ -175,15 +185,16 @@ public class CardDto {
 		dto.setTipo(entity.getTipo());
 		dto.setBrand(entity.getBrand());
 		dto.setPrezzo(entity.getPrezzo());
-		dto.setRimanenze(entity.getRimanenze());
+		dto.setRimanenze(entity.getRimanenza());
 		dto.setDisponibilita(entity.isDisponibilita());
 		dto.setImmagine(entity.getImmagine());
-		dto.setDataInizio(entity.getData_inizio());
-		dto.setPrezzoScontato(entity.getPrezzo_scontato());
+		dto.setDataInizio(entity.getDataInizio());
+		dto.setPrezzoScontato(entity.getPrezzoScontato());
+		dto.setNomeSet(entity.getNomeSet());
 		dto.setAdminId(entity.getAdmin() != null ? entity.getAdmin().getId() : null);
 
-		if (entity.getDettagli_ordine() != null) {
-			dto.setDettagliOrdine(entity.getDettagli_ordine().stream().map(DettagliOrdineDto::fromEntity)
+		if (entity.getDettagliOrdine() != null) {
+			dto.setDettagliOrdine(entity.getDettagliOrdine().stream().map(DettagliOrdineDto::fromEntity)
 					.collect(Collectors.toList()));
 		}
 
@@ -199,11 +210,12 @@ public class CardDto {
 		entity.setTipo(this.getTipo());
 		entity.setBrand(this.getBrand());
 		entity.setPrezzo(this.getPrezzo());
-		entity.setRimanenze(this.getRimanenze());
+		entity.setRimanenza(this.getRimanenze());
 		entity.setDisponibilita(this.isDisponibilita());
 		entity.setImmagine(this.getImmagine());
-		entity.setData_inizio(this.getDataInizio());
-		entity.setPrezzo_scontato(this.getPrezzoScontato());
+		entity.setDataInizio(this.getDataInizio());
+		entity.setPrezzoScontato(this.getPrezzoScontato());
+		entity.setNomeSet(this.getNomeSet());
 
 		if (this.getAdminId() != null) {
 			AdminEntity adminEntity = new AdminEntity();
@@ -214,7 +226,7 @@ public class CardDto {
 		if (this.getDettagliOrdine() != null) {
 			List<DettaglioOrdineEntity> dettagliOrdine = this.getDettagliOrdine().stream()
 					.map(dto -> dto.toEntity(null)).collect(Collectors.toList());
-			entity.setDettagli_ordine(dettagliOrdine);
+			entity.setDettagliOrdine(dettagliOrdine);
 		}
 
 		return entity;

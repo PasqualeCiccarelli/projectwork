@@ -17,7 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.AccessoriRequest;
-import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
@@ -42,7 +42,7 @@ public class AccessoriCtrl {
 	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email dell'utente mancante.");
 	      }
 
-	      AccessoriEntity newAccessorio = accessoriService.creaAccessorio(accessoriRequest);
+	      AccessorioEntity newAccessorio = accessoriService.creaAccessorio(accessoriRequest);
 
 	      return ResponseEntity.ok()
 	                           .body(Map.of("message", "Accessorio aggiunto con successo", "id", newAccessorio.getId()));

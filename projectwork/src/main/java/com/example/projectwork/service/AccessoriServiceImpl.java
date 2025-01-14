@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.AccessoriRequest;
-import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -34,7 +34,7 @@ public class AccessoriServiceImpl implements AccessoriService {
 	private static final Logger logger = LoggerFactory.getLogger(CardCtrl.class);
 
 	@Override
-	public AccessoriEntity creaAccessorio(AccessoriRequest accessoriRequest) {
+	public AccessorioEntity creaAccessorio(AccessoriRequest accessoriRequest) {
 
 		String emailAdmin = accessoriRequest.getEmailAdmin();
 
@@ -45,7 +45,7 @@ public class AccessoriServiceImpl implements AccessoriService {
 		AdminEntity adminLoggato = adminRepository.findByEmail(emailAdmin)
 				.orElseThrow(() -> new RuntimeException("Admin non trovato"));
 
-		AccessoriEntity newAccessorio = new AccessoriEntity();
+		AccessorioEntity newAccessorio = new AccessorioEntity();
 		newAccessorio.setNome(accessoriRequest.getNome());
 		newAccessorio.setDescrizione(accessoriRequest.getDescrizione());
 		newAccessorio.setCategoria(accessoriRequest.getCategoria());
@@ -66,7 +66,7 @@ public class AccessoriServiceImpl implements AccessoriService {
 
 	private List<AccessoriDto> getAccessoriByBrand(Brand brand) {
         try {
-            List<AccessoriEntity> cards = accessoriRepository.findByBrand(brand);
+            List<AccessorioEntity> cards = accessoriRepository.findByBrand(brand);
             logger.info("Trovate {} carte per il brand {}", cards.size(), brand);
             return cards.stream()
                     .map(AccessoriDto::fromEntity)
@@ -97,7 +97,7 @@ public class AccessoriServiceImpl implements AccessoriService {
     
     public List<AccessoriDto> getCardByAccessori(Brand brand, Categoria categoria){
     	
-    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndCategoria(brand, categoria);
+    	List<AccessorioEntity> lista= accessoriRepository.findByBrandAndCategoria(brand, categoria);
     	
     	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
     }
@@ -107,7 +107,7 @@ public class AccessoriServiceImpl implements AccessoriService {
     
     public List<AccessoriDto> getCardByAccessoriByTipo(Brand brand, Tipo tipo){
     	
-    	List<AccessoriEntity> lista= accessoriRepository.findByBrandAndTipo(brand, tipo);
+    	List<AccessorioEntity> lista= accessoriRepository.findByBrandAndTipo(brand, tipo);
     	
     	return lista.stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
     }

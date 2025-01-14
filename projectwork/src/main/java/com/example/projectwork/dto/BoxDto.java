@@ -27,6 +27,7 @@ public class BoxDto {
     private int rimanenza;
     private int numeroCarte;
     private int numeroBustine;
+    private String nomeSet;
     private Long adminId;
     private List<DettagliOrdineDto> dettagliOrdine;
 
@@ -35,7 +36,7 @@ public class BoxDto {
 
     public BoxDto(Long id, String nome, String descrizione, Categoria categoria, Brand brand,
                   boolean disponibilita, String immagine, double prezzo, double prezzoScontato,
-                  Tipo tipo, LocalDate dataInizio, int rimanenza, int numeroCarte, int numeroBustine, 
+                  Tipo tipo, LocalDate dataInizio, int rimanenza, int numeroCarte,String nomeSet, int numeroBustine, 
                   Long adminId, List<DettagliOrdineDto> dettagliOrdine) {
         this.id = id;
         this.nome = nome;
@@ -51,6 +52,7 @@ public class BoxDto {
         this.rimanenza = rimanenza;
         this.numeroCarte = numeroCarte;
         this.numeroBustine = numeroBustine;
+        this.nomeSet = nomeSet;
         this.adminId = adminId;
         this.dettagliOrdine = dettagliOrdine;
     }
@@ -183,7 +185,15 @@ public class BoxDto {
         this.dettagliOrdine = dettagliOrdine;
     }
 
-    public static BoxDto fromEntity(BoxEntity entity) {
+    public String getNomeSet() {
+		return nomeSet;
+	}
+
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
+	}
+
+	public static BoxDto fromEntity(BoxEntity entity) {
         if (entity == null) return null;
 
         BoxDto dto = new BoxDto();
@@ -199,8 +209,9 @@ public class BoxDto {
         dto.setTipo(entity.getTipo());
         dto.setDataInizio(entity.getDataInizio());
         dto.setRimanenza(entity.getRimanenza());
-        dto.setNumeroCarte(entity.getNumero_carte());
-        dto.setNumeroBustine(entity.getNumero_bustine());
+        dto.setNumeroCarte(entity.getQuantitaCarte());
+        dto.setNumeroBustine(entity.getNumeroBustine());
+        dto.setNomeSet(entity.getNomeSet());
         dto.setAdminId(entity.getAdmin() != null ? entity.getAdmin().getId() : null);
 
         if (entity.getDettagliOrdine() != null) {
@@ -226,8 +237,9 @@ public class BoxDto {
         entity.setTipo(this.getTipo());
         entity.setDataInizio(this.getDataInizio());
         entity.setRimanenza(this.getRimanenza());
-        entity.setNumero_carte(this.getNumeroCarte());
-        entity.setNumero_bustine(this.getNumeroBustine());
+        entity.setNumeroBustine(this.getNumeroCarte());
+        entity.setNumeroBustine(this.getNumeroBustine());
+        entity.setNomeSet(this.getNomeSet());
 
         if (this.getAdminId() != null) {
             AdminEntity adminEntity = new AdminEntity();

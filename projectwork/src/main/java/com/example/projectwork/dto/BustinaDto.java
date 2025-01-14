@@ -26,6 +26,7 @@ public class BustinaDto {
     private LocalDate dataInizio;
     private int rimanenza;
     private int numeroCarte;
+    private String nomeSet;
     private Long adminId;
     private List<DettagliOrdineDto> dettagliOrdine;
 
@@ -34,7 +35,7 @@ public class BustinaDto {
 
     public BustinaDto(Long id, String nome, String descrizione, Categoria categoria, Brand brand,
                       boolean disponibilita, String immagine, double prezzo, double prezzoScontato,
-                      Tipo tipo, LocalDate dataInizio, int rimanenza, int numeroCarte, Long adminId,
+                      Tipo tipo, LocalDate dataInizio, int rimanenza, int numeroCarte,String nomeSet, Long adminId,
                       List<DettagliOrdineDto> dettagliOrdine) {
         this.id = id;
         this.nome = nome;
@@ -49,6 +50,7 @@ public class BustinaDto {
         this.dataInizio = dataInizio;
         this.rimanenza = rimanenza;
         this.numeroCarte = numeroCarte;
+        this.nomeSet = nomeSet;
         this.adminId = adminId;
         this.dettagliOrdine = dettagliOrdine;
     }
@@ -69,7 +71,15 @@ public class BustinaDto {
         this.nome = nome;
     }
 
-    public String getDescrizione() {
+    public String getNomeSet() {
+		return nomeSet;
+	}
+
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
+	}
+
+	public String getDescrizione() {
         return descrizione;
     }
 
@@ -189,7 +199,8 @@ public class BustinaDto {
         dto.setTipo(entity.getTipo());
         dto.setDataInizio(entity.getDataInizio());
         dto.setRimanenza(entity.getRimanenza());
-        dto.setNumeroCarte(entity.getNumero_carte());
+        dto.setNumeroCarte(entity.getQuantitaCarte());
+        dto.setNomeSet(entity.getNomeSet());
         dto.setAdminId(entity.getAdmin() != null ? entity.getAdmin().getId() : null);
 
         if (entity.getDettagliOrdine() != null) {
@@ -215,7 +226,8 @@ public class BustinaDto {
         entity.setTipo(this.getTipo());
         entity.setDataInizio(this.getDataInizio());
         entity.setRimanenza(this.getRimanenza());
-        entity.setNumero_carte(this.getNumeroCarte());
+        entity.setQuantitaCarte(this.getNumeroCarte());
+        entity.setNomeSet(this.getNomeSet());
 
         if (this.getAdminId() != null) {
             AdminEntity adminEntity = new AdminEntity();

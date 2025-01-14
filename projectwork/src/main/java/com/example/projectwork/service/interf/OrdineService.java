@@ -2,6 +2,7 @@ package com.example.projectwork.service.interf;
 
 import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
+import com.example.projectwork.entity.OrdineEntity;
 
 
 public interface OrdineService {
@@ -13,5 +14,6 @@ public interface OrdineService {
 	public void confermaOrdine(Long ordineId);
 	public void annullaOrdine(Long ordineId);
 	public double calcolaTotaleOrdine(Long ordineId);
+	public OrdineEntity getOrdineInCorso(Long userId);
 
 }

@@ -57,7 +57,7 @@ public class BustinaServiceImpl implements BustinaService {
         newBustina.setImmagine(bustinaRequest.getImmagine());
         newBustina.setDataInizio(bustinaRequest.getData_inizio());
         newBustina.setPrezzoScontato(bustinaRequest.getPrezzo_scontato());
-        newBustina.setNumero_carte(bustinaRequest.getNumero_carte());
+        newBustina.setQuantitaCarte(bustinaRequest.getNumero_carte());
         newBustina.setAdmin(adminLoggato);
 
 

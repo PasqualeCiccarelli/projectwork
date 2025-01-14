@@ -17,9 +17,8 @@ public interface CardRepository extends JpaRepository<CardEntity, Long>{
 	List<CardEntity> findByCategoria(Categoria categoria);
 	List<CardEntity> findByTipo(Tipo tipo);
 	List<CardEntity> findByDisponibilita(boolean disponibilita);
-	List<CardEntity> findByRimanenzeGreaterThan(int rimanenze);
-	@Query("SELECT c FROM CardEntity c WHERE c.prezzo_scontato > 0")
-    List<CardEntity> findCarteInSconto();
+	List<CardEntity> findByRimanenzaGreaterThan(int rimanenze);
+    List<CardEntity> findByPrezzoScontatoGreaterThan(double prezzoScontato);
 	List<CardEntity> findByNomeContainingIgnoreCase(String nome);
 	List<CardEntity> findByPrezzoBetween(double minPrezzo, double maxPrezzo);
 

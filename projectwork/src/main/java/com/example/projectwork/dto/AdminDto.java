@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.projectwork.entity.AccessoriEntity;
+
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.BustinaEntity;
@@ -47,11 +48,6 @@ public class AdminDto {
 		this.bustine = bustine;
 		this.box = box;
 	}
-
-
-	
-
-
 
 	public Long getId() {
 		return id;
@@ -234,7 +230,7 @@ public class AdminDto {
 		}
 
 		if (this.getAccessori() != null) {
-			List<AccessoriEntity> accessori = this.getAccessori().stream()
+			List<AccessorioEntity> accessori = this.getAccessori().stream()
 					.map(accessoriDto -> accessoriDto.toEntity(null)).collect(Collectors.toList());
 			entity.setAccessori(accessori);
 		}
