@@ -12,7 +12,9 @@ const yugiImg = document.getElementById("yugi-img");
 const magicImg = document.getElementById("magic-img");
 
 const navbarVideo = document.querySelector("#navbar-video"); 
+const navbarVideo2 = document.querySelector("#navbar-video2"); 
 const videoSource = document.querySelector("#video"); 
+const videoSource2 = document.querySelector("#video2"); 
 
 btnPokemon.addEventListener("click", () => {
   background.classList.remove("background-base");
@@ -22,8 +24,11 @@ btnPokemon.addEventListener("click", () => {
   novita.src = "../static/img/immagini-font/Novita.png";
   gadgets.src = "../static/img/immagini-font/gadgets.png";
   videoSource.src = "../static/img/sfondi/pokemon-video.mp4"; 
+  videoSource2.src ="../static/img/sfondi/pikac.mp4" 
   navbarVideo.load(); 
+  navbarVideo2.load(); 
   navbarVideo.play(); 
+  navbarVideo2.play(); 
 });
 
 btnYugi.addEventListener("click", () => {
@@ -34,8 +39,11 @@ btnYugi.addEventListener("click", () => {
   novita.src = "../static/img/immagini-font/yugi-novita.png";
   gadgets.src = "../static/img/immagini-font/yugi-gadgets.png";
   videoSource.src = "../static/img/sfondi/yugioh.mp4"; 
+  videoSource2.src ="../static/img/sfondi/yugifinale.mp4" 
   navbarVideo.load(); 
   navbarVideo.play(); 
+  navbarVideo2.load(); 
+  navbarVideo2.play(); 
 });
 
 btnMagic.addEventListener("click", () => {
