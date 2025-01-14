@@ -208,6 +208,10 @@ display: flex;
         border-radius: 20px;
 
     }
+
+    #yugi-img, #magic-img{
+        padding: 10px; 
+    }
 }
 
 
