@@ -52,11 +52,11 @@ public class CardServiceImpl implements CardService {
         newCard.setTipo(cardRequest.getTipo());
         newCard.setBrand(cardRequest.getBrand());
         newCard.setPrezzo(cardRequest.getPrezzo());
-        newCard.setRimanenze(cardRequest.getRimanenze());
+        newCard.setRimanenza(cardRequest.getRimanenze());
         newCard.setDisponibilita(cardRequest.isDisponibilita());
         newCard.setImmagine(cardRequest.getImmagine());
-        newCard.setData_inizio(cardRequest.getData_inizio());
-        newCard.setPrezzo_scontato(cardRequest.getPrezzo_scontato());
+        newCard.setDataInizio(cardRequest.getData_inizio());
+        newCard.setPrezzoScontato(cardRequest.getPrezzo_scontato());
         newCard.setAdmin(adminLoggato);
 
         return cardRepository.save(newCard);

@@ -28,50 +28,67 @@
   <link rel="stylesheet" href="../static/css/swiper.css">
 </head>
 
-<body id="background" class="background-base">
-
+<body >
   <!-- inizio-navbar 1 -->
+ 
+  
   <header id="main-header">
-    <nav class="navbar navbar-expand-lg" style="background: none;">
-      <div class="container d-flex  flex-column">
-        <div>
-           <!-- logo -->
-        <a class="navbar-brand" href="home.html">
-          <img src="../static/img/LOGO.png" class="logo mt-3">
-        </a>
-        </div>
-        <div style="width: 100%">
-           <!-- search form -->
-             <div class="search-form mt-5 mb-3">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInput" placeholder="" style="background-color: #efefef; border: rgb(0, 0, 0);">
-              <label for="floatingInput">Cerca nel sito...</label>
-            </div>
-            </div>
-          <!-- fine search form -->
-        </div>
-
-        <div class="container d-flex justify-content-end">
- </div>           <ul class="navbar-nav first-navbar d-flex flex-row">
-              <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
-          <div class=>
-            <i class="fa-solid fa-user fa-3x" style="color:#ffffff"></i>
+    <nav class="navbar navbar-expand-lg " style="background: none; position: relative; z-index: 1;">
+      <video autoplay muted loop id="navbar-video" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+      <source id="video" src="../static/img/sfondi/pokemon-video.mp4" type="video/mp4">
+      </video>
+      <div class="container navtest d-flex justify-content-center align-items-center">
+        <div class="row w-100">
+          <!-- Logo -->
+          <div class="col-md-2">
+            <a class="navbar-brand d-flex justify-content-center align-items-center" href="home.html">
+              <img src="../static/img/LOGO.png" class="logo ">
+            </a>
           </div>
-          <p style="color: #ffffff;"><strong>ACCOUNT</strong></p>
+
+          <!-- Search form -->
+          <div class="col-md-8">
+            <div class="search-form mt-5 mb-3">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" style="background-color: #efefef; border: rgb(0, 0, 0);">
+                <label for="floatingInput">Cerca nel sito...</label>
+              </div>
+            </div>
+          </div>
+          <!-- Navbar items -->
+          <div class="col-md-2 d-flex justify-content-center">
+            <ul class="navbar-nav first-navbar d-flex flex-row">
+              <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
+                <div>
+                  <i class="fa-solid fa-user fa-3x" style="color:#a3a3a3;"></i>
+                </div>
+                <p style="color: #a3a3a3;"><strong>ACCOUNT</strong></p>
               </li>
               <li class="nav-item d-flex flex-column justify-content-center align-items-center">
-          <div class="cart-icon">
-            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #ffffff;"></i>
-          </div>
-          <p style="color: #ffffff;"><STRONG>CARRELLO</STRONG></p>
+                <div class="cart-icon">
+                  <i class="fa-solid fa-cart-shopping fa-3x" style="color: #a3a3a3;"></i>
+                </div>
+                <p style="color: #a3a3a3;"><strong>CARRELLO</strong></p>
               </li>
             </ul>
-        </div>
+          </div>
+          
+            <div class="hero">
+            <div class="container-icone-switch container my-auto py-5 d-flex">
+              <button id="btn-pokemon"><img id="pokemon-img" src="../static/img/icone-tgc/pokeball.png"
+                  class="logo-icon-pokeball" alt="pokemon"></button>
+              <button id="btn-yugi"><img  id="yugi-img"   src="../static/img/icone-tgc/millennium-puzzle.png"
+                  class="logo-icon-puzzle" alt="yu-gi-oh"></button>
+              <button id="btn-magic"><img id="magic-img" src="../static/img/icone-tgc/magic-symbol.png" class="logo-icon-magic"
+                  alt="magic"></button>
+            </div>
           </div>
         </div>
       </div>
     </nav>
   </header>
+<!--fine navvbax-->
+
   <!-- fine navbar -->
 
     <!-- inizio-navbar 2-->
@@ -86,42 +103,52 @@
                   <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                   </button >
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    <div class="navbar-nav d-flex mx-auto">
+                        <ul class="navbar-nav"></ul>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-home mt-3 fa-2x"></i>
+                          <a class="nav-link active" aria-current="page" href="home.html"><strong>Home</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="../templates/login.html">login</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-sign-in-alt mt-3 fa-2x"></i>
+                          <a class="nav-link active"  href="../templates/login.html"><strong>Login</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/registrati">Sing in</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-user-plus mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/registrati"><strong>Sign-in</strong></a>
                         </li>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-user-shield mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/promozione"><strong>Diventa<br>Admin</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/promozione">Diventa Admin</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-clone mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/creazione-card"><strong>Creazione<br>Carte</strong></a>
                         </li>
-          
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-card">creazione carte</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-tools mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/creazione-accessori"><strong>Creazione<br>Accessori</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-accessori">creazione accessori</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fa-regular fa-rectangle-list mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/creazione-bustine"><strong>Creazione<br>Bustine</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-bustine">creazione bustine</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-box mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/creazione-box"><strong>Creazione<br>Box</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-box">creazione box</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-dragon mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/negozio-pokemon"><strong>Negozio<br>Pokémon</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-pokemon">negozio pokemon</a>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-hat-wizard mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/negozio-magic"><strong>Negozio<br>Magic</strong></a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-magic">negozio magic</a>
-                        </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-yugiho">negozio yugiho</a>
+                        </ul>
+                        <li class="nav-item bordo text-center mx-3">
+                          <i class="fas fa-scroll mt-3 fa-2x"></i>
+                          <a class="nav-link active" href="/negozio-yugiho"><strong>Negozio<br>Yu-Gi-Oh!</strong></a>
                         </li>
         
                     </div>
@@ -138,21 +165,16 @@
     <!-- fine navbar -->
 
 
-  <main>
-
-    <div class="container-icone-switch container my-auto py-5 d-flex">
-      <button id="btn-pokemon"><img id="pokemon-img" src="../static/img/icone-tgc/pokeball.png"
-          class="logo-icon-pokeball" alt="pokemon"></button>
-      <button id="btn-yugi"><img id="yugi-img" src="../static/img/icone-tgc/millennium-puzzle.png"
-          class="logo-icon-puzzle" alt="yu-gi-oh"></button>
-      <button id="btn-magic"><img id="magic-img" src="../static/img/icone-tgc/magic-symbol.png" class="logo-icon-magic"
-          alt="magic"></button>
-    </div>
-
+  <main style="position: relative; z-index: 1">
+    <video autoplay muted loop id="navbar-video2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+      <source id="video2" src="../static/img/sfondi/pikac.mp4" type="video/mp4">
+      </video>
+   
+    <div class="container "><img id="Offerte" class="animazioni animate__animated animate__backInLeft pokemon-font mx-auto" src="../static/img/immagini-font/Offerte-pokemon.png"></div>
 
 
     <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper swiper-speciale">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
@@ -172,7 +194,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-    <!-- <script>
+    <script>
       var swiper = new Swiper(".mySwiper", {
         centeredSlides: true,
         loop: true,
@@ -208,7 +230,7 @@
       // Now you can use all slider methods like
       swiperbutton2.slideNext();
 
-    </script> -->
+    </script> 
     <!-- End  Swiper -->
 
 
@@ -216,7 +238,7 @@
 
     <!-- Swiper JS -->
     <div class="swiper mySwiper2">
-      <div class="swiper-wrapper novita">
+      <div class="swiper-wrapper swiper-novita">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/poke3.png" alt=""></div>
@@ -235,11 +257,11 @@
 
 
     <!-- Initialize Swiper -->
-    <!-- <script>
+    <script>
       var swiper = new Swiper(".mySwiper2", {
         centeredSlides: true,
         loop: true,
-        slidesPerView: 2,
+        slidesPerView: 10,
         spaceBetween: 30,
         autoplay: {
           delay: 3000,
@@ -271,13 +293,18 @@
       // Now you can use all slider methods like
       swiperbutton2.slideNext();
 
-    </script> -->
+    </script> 
+
+
+    
+
+
 
 
     <img id="Gadgets" src="../static/img/immagini-font/gadgets.png" class="pokemon-font mx-auto" alt="">
 
-	<!-- Swiper JS -->
-    <div class="swiper mySwiper2">
+	<!-- Swiper JS
+    <div class="swiper mySwiper3">
       <div class="swiper-wrapper gadget">
         <div class="swiper-slide mb-5"><img src="../static/img/yugi7.jpg" alt=""></div>
         <div class="swiper-slide mb-5"><img src="../static/img/magic2.jpg" alt=""></div>
@@ -291,10 +318,8 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
-    </div>
+    </div> -->
     
-
-  </main>
 
 
 
@@ -344,7 +369,7 @@
             </p>
           </div>
           <!-- Grid column -->
-
+        </main>
           <!-- Grid column -->
           <div class="accordion"  id="accordionExample">
             <div class="accordion-item">
@@ -436,13 +461,21 @@
 
 
 
+
   <!-- Swiper JS -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="../static/switch-style.js"></script>
-  <script src="../static/forPokemon.js"></script> <!-- PER CARICARE PAGINA DA VISUAL STUDIO-->
-  <!-- <script src="forPokemon.js"></script>  PER CARICARE PAGINA DA ECLIPSE-->
+  
+  <!-- <script src="../static/forPokemon.js"></script> PER CARICARE PAGINA DA VISUAL STUDIO -->
+  <!-- <script src="forPokemon.js"></script>  PER CARICARE PAGINA DA ECLIPSE -->
+  
+  <script src="forYugiho.js"></script>
+  <script src="forMagic.js"></script>
+  <!-- <script src="forYugiho.js"></script> -->
+</video>
+ 
 
 </body>
 

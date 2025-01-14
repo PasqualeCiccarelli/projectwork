@@ -1,6 +1,6 @@
 package com.example.projectwork.dto;
 
-import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.DettaglioOrdineEntity;
 import com.example.projectwork.entity.OrdineEntity;
@@ -127,7 +127,7 @@ public class DettagliOrdineDto {
 		}
 
 		if (this.getAccessorioId() != null) {
-			AccessoriEntity accessorioEntity = new AccessoriEntity();
+			AccessorioEntity accessorioEntity = new AccessorioEntity();
 			accessorioEntity.setId(this.getAccessorioId());
 			entity.setAccessorio(accessorioEntity);
 		}

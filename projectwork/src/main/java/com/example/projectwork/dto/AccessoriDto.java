@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.DettaglioOrdineEntity;
 import com.example.projectwork.entity.entityenum.Brand;
@@ -12,236 +12,218 @@ import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
 
 public class AccessoriDto {
-	private Long id;
-	private String nome;
-	private String descrizione;
-	private Categoria categoria;
-	private Brand brand;
-	private boolean disponibilita;
-	private String immagine;
-	private double prezzo;
-	private double prezzoScontato;
-	private double peso;
-	private String dimensioni;
-	private Tipo tipo;
-	private LocalDate dataInizio;
-	private int rimanenza;
-	private Long adminId;
-	private List<DettagliOrdineDto> dettagliOrdine;
+	 private Long id;
+	    private String nome;
+	    private String descrizione;
+	    private Categoria categoria;
+	    private Brand brand;
+	    private boolean disponibilita;
+	    private String immagine;
+	    private double prezzo;
+	    private double prezzoScontato;
+	    private double peso;
+	    private String dimensioni;
+	    private Tipo tipo;
+	    private LocalDate dataInizio;
+	    private int rimanenza;
+	    private Long adminId;
+	    private List<DettagliOrdineDto> dettagliOrdine;
 
-	public AccessoriDto() {
-		
-	}
+	    public AccessoriDto() {}
 
-	public AccessoriDto(Long id, String nome, String descrizione, Categoria categoria, Brand brand,
-			boolean disponibilita, String immagine, double prezzo, double prezzoScontato, double peso,
-			String dimensioni, Tipo tipo, LocalDate dataInizio, int rimanenza, Long adminId,
-			List<DettagliOrdineDto> dettagliOrdine) {
-		this.id = id;
-		this.nome = nome;
-		this.descrizione = descrizione;
-		this.categoria = categoria;
-		this.brand = brand;
-		this.disponibilita = disponibilita;
-		this.immagine = immagine;
-		this.prezzo = prezzo;
-		this.prezzoScontato = prezzoScontato;
-		this.peso = peso;
-		this.dimensioni = dimensioni;
-		this.tipo = tipo;
-		this.dataInizio = dataInizio;
-		this.rimanenza = rimanenza;
-		this.adminId = adminId;
-		this.dettagliOrdine = dettagliOrdine;
-	}
+	    public static AccessoriDto fromEntity(AccessorioEntity entity) {
+	        if (entity == null) {
+	            return null;
+	        }
 
-	public Long getId() {
-		return id;
-	}
+	        AccessoriDto dto = new AccessoriDto();
+	        dto.setId(entity.getId());
+	        dto.setNome(entity.getNome());
+	        dto.setDescrizione(entity.getDescrizione());
+	        dto.setCategoria(entity.getCategoria());
+	        dto.setBrand(entity.getBrand());
+	        dto.setDisponibilita(entity.isDisponibilita());
+	        dto.setImmagine(entity.getImmagine());
+	        dto.setPrezzo(entity.getPrezzo());
+	        dto.setPrezzoScontato(entity.getPrezzoScontato());
+	        dto.setPeso(entity.getPeso());
+	        dto.setDimensioni(entity.getDimensioni());
+	        dto.setTipo(entity.getTipo());
+	        dto.setDataInizio(entity.getDataInizio());
+	        dto.setRimanenza(entity.getRimanenza());
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	        if (entity.getAdmin() != null) {
+	            dto.setAdminId(entity.getAdmin().getId());
+	        }
 
-	public String getNome() {
-		return nome;
-	}
+	        if (entity.getDettagliOrdine() != null) {
+	            dto.setDettagliOrdine(entity.getDettagliOrdine().stream()
+	                    .map(DettagliOrdineDto::fromEntity)
+	                    .collect(Collectors.toList()));
+	        }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	        return dto;
+	    }
 
-	public String getDescrizione() {
-		return descrizione;
-	}
+	    public AccessorioEntity toEntity(AccessorioEntity existingEntity) {
+	        AccessorioEntity entity = (existingEntity != null && this.getId() != null)
+	                ? existingEntity
+	                : new AccessorioEntity();
 
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
+	        entity.setNome(this.getNome());
+	        entity.setDescrizione(this.getDescrizione());
+	        entity.setCategoria(this.getCategoria());
+	        entity.setBrand(this.getBrand());
+	        entity.setDisponibilita(this.isDisponibilita());
+	        entity.setImmagine(this.getImmagine());
+	        entity.setPrezzo(this.getPrezzo());
+	        entity.setPrezzoScontato(this.getPrezzoScontato());
+	        entity.setPeso(this.getPeso());
+	        entity.setTipo(this.getTipo());
+	        entity.setDataInizio(this.getDataInizio());
+	        entity.setRimanenza(this.getRimanenza());
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
+	        if (this.getAdminId() != null) {
+	            AdminEntity adminEntity = new AdminEntity();
+	            adminEntity.setId(this.getAdminId());
+	            entity.setAdmin(adminEntity);
+	        }
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+	        if (this.getDettagliOrdine() != null) {
+	            List<DettaglioOrdineEntity> dettagliOrdine = this.getDettagliOrdine().stream()
+	                    .map(dto -> dto.toEntity(null))
+	                    .collect(Collectors.toList());
+	            entity.setDettagliOrdine(dettagliOrdine);
+	        }
 
-	public Brand getBrand() {
-		return brand;
-	}
+	        return entity;
+	    }
 
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
+	    public Long getId() {
+	        return id;
+	    }
 
-	public boolean isDisponibilita() {
-		return disponibilita;
-	}
+	    public void setId(Long id) {
+	        this.id = id;
+	    }
 
-	public void setDisponibilita(boolean disponibilita) {
-		this.disponibilita = disponibilita;
-	}
+	    public String getNome() {
+	        return nome;
+	    }
 
-	public String getImmagine() {
-		return immagine;
-	}
+	    public void setNome(String nome) {
+	        this.nome = nome;
+	    }
 
-	public void setImmagine(String immagine) {
-		this.immagine = immagine;
-	}
+	    public String getDescrizione() {
+	        return descrizione;
+	    }
 
-	public double getPrezzo() {
-		return prezzo;
-	}
+	    public void setDescrizione(String descrizione) {
+	        this.descrizione = descrizione;
+	    }
 
-	public void setPrezzo(double prezzo) {
-		this.prezzo = prezzo;
-	}
+	    public Categoria getCategoria() {
+	        return categoria;
+	    }
 
-	public double getPrezzoScontato() {
-		return prezzoScontato;
-	}
+	    public void setCategoria(Categoria categoria) {
+	        this.categoria = categoria;
+	    }
 
-	public void setPrezzoScontato(double prezzoScontato) {
-		this.prezzoScontato = prezzoScontato;
-	}
+	    public Brand getBrand() {
+	        return brand;
+	    }
 
-	public double getPeso() {
-		return peso;
-	}
+	    public void setBrand(Brand brand) {
+	        this.brand = brand;
+	    }
 
-	public void setPeso(double peso) {
-		this.peso = peso;
-	}
+	    public boolean isDisponibilita() {
+	        return disponibilita;
+	    }
 
-	public String getDimensioni() {
-		return dimensioni;
-	}
+	    public void setDisponibilita(boolean disponibilita) {
+	        this.disponibilita = disponibilita;
+	    }
 
-	public void setDimensioni(String dimensioni) {
-		this.dimensioni = dimensioni;
-	}
+	    public String getImmagine() {
+	        return immagine;
+	    }
 
-	public Tipo getTipo() {
-		return tipo;
-	}
+	    public void setImmagine(String immagine) {
+	        this.immagine = immagine;
+	    }
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
-	}
+	    public double getPrezzo() {
+	        return prezzo;
+	    }
 
-	public LocalDate getDataInizio() {
-		return dataInizio;
-	}
+	    public void setPrezzo(double prezzo) {
+	        this.prezzo = prezzo;
+	    }
 
-	public void setDataInizio(LocalDate dataInizio) {
-		this.dataInizio = dataInizio;
-	}
+	    public double getPrezzoScontato() {
+	        return prezzoScontato;
+	    }
 
-	public int getRimanenza() {
-		return rimanenza;
-	}
+	    public void setPrezzoScontato(double prezzoScontato) {
+	        this.prezzoScontato = prezzoScontato;
+	    }
 
-	public void setRimanenza(int rimanenza) {
-		this.rimanenza = rimanenza;
-	}
+	    public double getPeso() {
+	        return peso;
+	    }
 
-	public Long getAdminId() {
-		return adminId;
-	}
+	    public void setPeso(double peso) {
+	        this.peso = peso;
+	    }
 
-	public void setAdminId(Long adminId) {
-		this.adminId = adminId;
-	}
+	    public String getDimensioni() {
+	        return dimensioni;
+	    }
 
-	public List<DettagliOrdineDto> getDettagliOrdine() {
-		return dettagliOrdine;
-	}
+	    public void setDimensioni(String dimensioni) {
+	        this.dimensioni = dimensioni;
+	    }
 
-	public void setDettagliOrdine(List<DettagliOrdineDto> dettagliOrdine) {
-		this.dettagliOrdine = dettagliOrdine;
-	}
+	    public Tipo getTipo() {
+	        return tipo;
+	    }
 
-	public static AccessoriDto fromEntity(AccessoriEntity entity) {
-		if (entity == null)
-			return null;
+	    public void setTipo(Tipo tipo) {
+	        this.tipo = tipo;
+	    }
 
-		AccessoriDto dto = new AccessoriDto();
-		dto.setId(entity.getId());
-		dto.setNome(entity.getNome());
-		dto.setDescrizione(entity.getDescrizione());
-		dto.setCategoria(entity.getCategoria());
-		dto.setBrand(entity.getBrand());
-		dto.setDisponibilita(entity.isDisponibilita());
-		dto.setImmagine(entity.getImmagine());
-		dto.setPrezzo(entity.getPrezzo());
-		dto.setPrezzoScontato(entity.getPrezzoScontato());
-		dto.setPeso(entity.getPeso());
-		dto.setDimensioni(entity.getDimensioni());
-		dto.setTipo(entity.getTipo());
-		dto.setDataInizio(entity.getDataInizio());
-		dto.setRimanenza(entity.getRimanenza());
-		dto.setAdminId(entity.getAdmin() != null ? entity.getAdmin().getId() : null);
+	    public LocalDate getDataInizio() {
+	        return dataInizio;
+	    }
 
-		if (entity.getDettagliOrdine() != null) {
-			dto.setDettagliOrdine(entity.getDettagliOrdine().stream().map(DettagliOrdineDto::fromEntity)
-					.collect(Collectors.toList()));
-		}
-		return dto;
-	}
+	    public void setDataInizio(LocalDate dataInizio) {
+	        this.dataInizio = dataInizio;
+	    }
 
-	public AccessoriEntity toEntity(AccessoriEntity existingEntity) {
-		AccessoriEntity entity = (existingEntity != null && this.getId() != null) ? existingEntity
-				: new AccessoriEntity();
+	    public int getRimanenza() {
+	        return rimanenza;
+	    }
 
-		entity.setNome(this.getNome());
-		entity.setDescrizione(this.getDescrizione());
-		entity.setCategoria(this.getCategoria());
-		entity.setBrand(this.getBrand());
-		entity.setDisponibilita(this.isDisponibilita());
-		entity.setImmagine(this.getImmagine());
-		entity.setPrezzo(this.getPrezzo());
-		entity.setPrezzoScontato(this.getPrezzoScontato());
-		entity.setPeso(this.getPeso());
-		entity.setDimensioni(this.getDimensioni());
-		entity.setTipo(this.getTipo());
-		entity.setDataInizio(this.getDataInizio());
-		entity.setRimanenza(this.getRimanenza());
+	    public void setRimanenza(int rimanenza) {
+	        this.rimanenza = rimanenza;
+	    }
 
-		if (this.getAdminId() != null) {
-			AdminEntity adminEntity = new AdminEntity();
-			adminEntity.setId(this.getAdminId());
-			entity.setAdmin(adminEntity);
-		}
+	    public Long getAdminId() {
+	        return adminId;
+	    }
 
-		if (this.getDettagliOrdine() != null) {
-			List<DettaglioOrdineEntity> dettagliOrdine = this.getDettagliOrdine().stream()
-					.map(dto -> dto.toEntity(null)).collect(Collectors.toList());
-			entity.setDettagliOrdine(dettagliOrdine);
-		}
+	    public void setAdminId(Long adminId) {
+	        this.adminId = adminId;
+	    }
 
-		return entity;
-	}
+	    public List<DettagliOrdineDto> getDettagliOrdine() {
+	        return dettagliOrdine;
+	    }
 
+	    public void setDettagliOrdine(List<DettagliOrdineDto> dettagliOrdine) {
+	        this.dettagliOrdine = dettagliOrdine;
+	    }
 }

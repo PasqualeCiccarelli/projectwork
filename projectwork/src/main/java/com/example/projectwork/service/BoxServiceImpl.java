@@ -57,8 +57,8 @@ public class BoxServiceImpl implements BoxService {
         newBox.setImmagine(boxRequest.getImmagine());
         newBox.setDataInizio(boxRequest.getData_inizio());
         newBox.setPrezzoScontato(boxRequest.getPrezzo_scontato());
-        newBox.setNumero_carte(boxRequest.getNumero_carte());
-        newBox.setNumero_bustine(boxRequest.getNumero_bustine());
+        newBox.setQuantitaCarte(boxRequest.getNumero_carte());
+        newBox.setNumeroBustine(boxRequest.getNumero_bustine());
         newBox.setAdmin(adminLoggato);
 
         return boxRepository.save(newBox);

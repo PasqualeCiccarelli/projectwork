@@ -18,8 +18,7 @@ public interface BustineRepository extends JpaRepository<BustinaEntity, Long>{
 	List<BustinaEntity> findByTipo(Tipo tipo);
 	List<BustinaEntity> findByDisponibilita(boolean disponibilita);
 	List<BustinaEntity> findByRimanenzaGreaterThan(int rimanenza);
-	@Query("SELECT c FROM CardEntity c WHERE c.prezzo_scontato > 0")
-    List<BustinaEntity> findCarteInSconto();
+    List<BustinaEntity> findByPrezzoScontatoGreaterThan(double prezzoScontato);
 	List<BustinaEntity> findByNomeContainingIgnoreCase(String nome);
 	List<BustinaEntity> findByPrezzoBetween(double minPrezzo, double maxPrezzo);
 	List<BustinaEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
