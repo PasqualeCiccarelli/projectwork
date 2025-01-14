@@ -1,0 +1,25 @@
+.cart-icon {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cart-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #333;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 5px 8px;
+    display: none;
+}

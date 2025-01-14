@@ -6,15 +6,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.example.projectwork.entity.AccessorioEntity;
+import com.example.projectwork.entity.BoxEntity;
+import com.example.projectwork.entity.BustinaEntity;
+import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.DettaglioOrdineEntity;
+import com.example.projectwork.entity.OrdineEntity;
 
-public interface DettagliOrdineRepository extends JpaRepository<DettaglioOrdineEntity, Long>{
+public interface DettagliOrdineRepository extends JpaRepository<DettaglioOrdineEntity, Long> {
 
-	List<DettaglioOrdineEntity> findByOrdineId(Long ordineId);
-	List<DettaglioOrdineEntity> findByCartaId(Long cartaId);
-	List<DettaglioOrdineEntity> findByBoxId(Long boxId);
-	List<DettaglioOrdineEntity> findByBustinaId(Long bustinaId);
-	List<DettaglioOrdineEntity> findByAccessorioId(Long accessorioId);
-	@Query("SELECT SUM(d.quantita) FROM DettaglioOrdineEntity d WHERE d.carta.id = :cartaId")
+    List<DettaglioOrdineEntity> findByOrdine(OrdineEntity ordine);
+    List<DettaglioOrdineEntity> findByCarta(CardEntity carta);
+    List<DettaglioOrdineEntity> findByBox(BoxEntity box);
+    List<DettaglioOrdineEntity> findByBustina(BustinaEntity bustina); // Corretto
+    List<DettaglioOrdineEntity> findByAccessorio(AccessorioEntity accessorio);
+
+    @Query("SELECT SUM(d.quantita) FROM DettaglioOrdineEntity d WHERE d.carta.id = :cartaId")
     Integer sumQuantitaByCartaId(@Param("cartaId") Long cartaId);
 }

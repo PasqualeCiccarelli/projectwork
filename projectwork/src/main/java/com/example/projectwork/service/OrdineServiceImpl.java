@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
-import com.example.projectwork.entity.AccessoriEntity;
+import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.BustinaEntity;
 import com.example.projectwork.entity.CardEntity;
@@ -61,12 +61,10 @@ public class OrdineServiceImpl implements OrdineService{
 
     private void verificaDisponibilita(DettaglioOrdineRequest request) {
         ProdottoEntity prodotto = getProdottoEntity(request.getTipoProdotto(), request.getProductId());
-        if (!prodotto.isDisponibilita()) {
-            throw new RuntimeException("Il prodotto non è disponibile per l'acquisto");
-        }
+        
         if (prodotto.getRimanenza() < request.getQuantita()) {
             throw new RuntimeException("Rimanenze insufficienti. Disponibili: " + prodotto.getRimanenza()
-                    + ", Richiesti: " + request.getQuantita());
+                    + ", Richiesti: " + request.getQuantita() + " Prodotto: " + prodotto);
         }
     }
 
@@ -120,7 +118,7 @@ public class OrdineServiceImpl implements OrdineService{
         ordineRepository.saveAll(ordini);
     }
 
-    public DettagliOrdineDto aggiungiProdotto(Long userId, DettaglioOrdineRequest request) {
+    public DettagliOrdineDto aggiungiProdotto(Long userId, DettaglioOrdineRequest request) {   
         if (userId == null || userId <= 0) {
             throw new IllegalArgumentException("User ID non valido");
         }
@@ -131,7 +129,8 @@ public class OrdineServiceImpl implements OrdineService{
 
         OrdineEntity ordine = ordineRepository.findByUtenteIdAndStato(userId, Stato.IN_CORSO).orElseGet(() -> {
             OrdineEntity nuovoOrdine = new OrdineEntity();
-            nuovoOrdine.setUtente(utenteRepository.findById(userId).orElseThrow());
+            nuovoOrdine.setUtente(utenteRepository.findById(userId).orElseThrow(() -> 
+                new IllegalArgumentException("Utente non trovato")));
             nuovoOrdine.setStato(Stato.IN_CORSO);
             nuovoOrdine.setData(LocalDate.now());
             nuovoOrdine.setIndirizzo(request.getIndirizzo());
@@ -143,9 +142,11 @@ public class OrdineServiceImpl implements OrdineService{
         DettaglioOrdineEntity dettaglio = new DettaglioOrdineEntity();
         dettaglio.setOrdine(ordine);
         dettaglio.setQuantita(request.getQuantita());
+
         setProdottoEPrezzo(dettaglio, request);
 
-        return DettagliOrdineDto.fromEntity(dettagliOrdineRepository.save(dettaglio));
+        DettaglioOrdineEntity savedDettaglio = dettagliOrdineRepository.save(dettaglio);
+        return DettagliOrdineDto.fromEntity(savedDettaglio);
     }
 
     public void rimuoviDettaglio(Long dettaglioId) {
@@ -202,8 +203,8 @@ public class OrdineServiceImpl implements OrdineService{
             boxRepository.save((BoxEntity) prodotto);
         } else if (prodotto instanceof BustinaEntity) {
             bustineRepository.save((BustinaEntity) prodotto);
-        } else if (prodotto instanceof AccessoriEntity) {
-            accessoriRepository.save((AccessoriEntity) prodotto);
+        } else if (prodotto instanceof AccessorioEntity) {
+            accessoriRepository.save((AccessorioEntity) prodotto);
         }
     }
 
@@ -233,5 +234,10 @@ public class OrdineServiceImpl implements OrdineService{
                 .stream()
                 .mapToDouble(dettaglio -> dettaglio.getPrezzo() * dettaglio.getQuantita())
                 .sum();
+    }
+    
+    public OrdineEntity getOrdineInCorso(Long userId) {
+        return ordineRepository.findByUtenteIdAndStato(userId, Stato.IN_CORSO)
+                .orElseThrow(() -> new RuntimeException("Nessun ordine in corso trovato per l'utente"));
     }
 }

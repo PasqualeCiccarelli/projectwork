@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/carrello.css">
+</head>
+<body>
+    <header>
+        <h1>Il Tuo Carrello</h1>
+    </header>
+
+    <main>
+        <section id="cart-section">
+            <div id="order-details-container">
+                <h2>Dettagli Ordine</h2>
+                <div id="order-details">
+                    <!-- Le carte dei prodotti saranno inserite dinamicamente qui -->
+                </div>
+            </div>
+
+            <div id="order-summary">
+                <h2>Riepilogo Ordine</h2>
+                <p>Totale: €<span id="order-total">0.00</span></p>
+                <div class="action-buttons">
+                    <button id="complete-order">Effettua Acquisto</button>
+                    <button id="cancel-order" class="cancel-button">Annulla Ordine</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Negozio di Carte. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="controlloUtenteLoggato.js"></script>
+    <script src="cartUtils.js" type="module"></script>
+    <script src="cartActions.js" type="module"></script>
+    <script src="cartRender.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+    
+</body>
+</html>

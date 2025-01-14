@@ -52,7 +52,7 @@ public class AdminEntity implements UserDetails{
 	private List<CardEntity> carte;
 
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
-	private List<AccessoriEntity> accessori;
+	private List<AccessorioEntity> accessori;
 	
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	private List<BoxEntity> box;
@@ -65,7 +65,7 @@ public class AdminEntity implements UserDetails{
 	}
 
 	public AdminEntity(long id, String nome, String cognome, String email, String password, Ruolo ruolo,
-			LocalDate data_nascita, List<CardEntity> carte, List<AccessoriEntity> accessori, List<BoxEntity> box,
+			LocalDate data_nascita, List<CardEntity> carte, List<AccessorioEntity> accessori, List<BoxEntity> box,
 			List<BustinaEntity> bustine) {
 		super();
 		this.id = id;
@@ -137,11 +137,11 @@ public class AdminEntity implements UserDetails{
 		this.carte = carte;
 	}
 
-	public List<AccessoriEntity> getAccessori() {
+	public List<AccessorioEntity> getAccessori() {
 		return accessori;
 	}
 
-	public void setAccessori(List<AccessoriEntity> accessori) {
+	public void setAccessori(List<AccessorioEntity> accessori) {
 		this.accessori = accessori;
 	}
 

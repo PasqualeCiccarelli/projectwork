@@ -60,4 +60,9 @@ public class HtmlCtrl {
 	public String mioNegozioYuGiHo() {
 		return "negozioYuGiHo";
 	}
+	
+	@GetMapping("/carrello")
+	public String mioCarrello() {
+		return "carrello";
+	}
 }

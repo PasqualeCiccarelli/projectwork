@@ -1,29 +1,83 @@
 package com.example.projectwork.entity;
 
-import com.example.projectwork.entity.entityenum.Categoria;
+import java.time.LocalDate;
 
+import com.example.projectwork.entity.entityenum.Brand;
+import com.example.projectwork.entity.entityenum.Categoria;
+import com.example.projectwork.entity.entityenum.Tipo;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import jakarta.persistence.MappedSuperclass;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class ProdottoEntity {
-	
-	private Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 100, nullable = false)
     private String nome;
+    
+    @Column(length = 100, nullable = false)
+    private String immagine;
+
+    @Column(length = 500)
+    private String descrizione;
+
+    @Column(nullable = false)
     private double prezzo;
+
+    @Column
     private double prezzoScontato;
+
+    @Column
     private int rimanenza;
+    
+    @Column
+    private LocalDate DataInizio;
+
+    @Column
     private boolean disponibilita;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 100, nullable = false)
     private Categoria categoria;
     
+    @Enumerated(EnumType.STRING)
+    @Column(length = 100, nullable = false)
+    private Tipo tipo;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Brand brand;
+
     public ProdottoEntity() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public ProdottoEntity(Long id, String nome, double prezzo, double prezzoScontato, int rimanenza,
-			boolean disponibilita, Categoria categoria) {
+	public ProdottoEntity(Long id, String nome, String immagine, String descrizione, double prezzo,
+			double prezzoScontato, int rimanenza, LocalDate dataInizio, boolean disponibilita, Categoria categoria,
+			Tipo tipo, Brand brand) {
+		super();
 		this.id = id;
 		this.nome = nome;
+		this.immagine = immagine;
+		this.descrizione = descrizione;
 		this.prezzo = prezzo;
 		this.prezzoScontato = prezzoScontato;
 		this.rimanenza = rimanenza;
+		DataInizio = dataInizio;
 		this.disponibilita = disponibilita;
 		this.categoria = categoria;
+		this.tipo = tipo;
+		this.brand = brand;
 	}
 
 	public Long getId() {
@@ -40,6 +94,22 @@ public abstract class ProdottoEntity {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	public double getPrezzo() {
@@ -66,6 +136,14 @@ public abstract class ProdottoEntity {
 		this.rimanenza = rimanenza;
 	}
 
+	public LocalDate getDataInizio() {
+		return DataInizio;
+	}
+
+	public void setDataInizio(LocalDate dataInizio) {
+		DataInizio = dataInizio;
+	}
+
 	public boolean isDisponibilita() {
 		return disponibilita;
 	}
@@ -82,14 +160,28 @@ public abstract class ProdottoEntity {
 		this.categoria = categoria;
 	}
 
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+	
 	public double getPrezzoFinale() {
-        if(categoria == Categoria.SPECIALE) {
-        	return prezzoScontato;
-        }else {
-        	return prezzo;
-        }
-    }
-    
-    
+		if(categoria.equals(Categoria.SPECIALE)) {
+			return prezzoScontato;
+		}else {
+			return prezzo;
+		}
+	}
 
 }
