@@ -45,16 +45,79 @@ initializeSwiper2();
 
 
 
-//chiamata fetch per recuperare gli accessori (action-figure e gadget)
+const gadget= document.querySelector('.gadget');
+const novita= document.querySelector('.novita');
+
+
+
+//chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Novità
+async function getCardNovita(){
+	
+	let response= await fetch('/api/card/brand/pokemon-novita');
+	let data= await response.json();
+	
+	console.log(data);
+	
+	novita.innerHTML= '';
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<img src=${data[i].immagine}>
+					<p class="product-category">${data[i].categoria}</p>
+					<h3 class="product-name">${data[i].nome}</h3>
+					<p class="product-price">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button">Ordina</button>
+				</div>
+			</div>
+				
+			`;
+		
+		novita.innerHTML += card;
+	}
+}
+
+//getCardNovita();
+
+
+
+
+
+
+//chiamata fetch per recuperare gli accessori (action-figure e gadget) da inserire nello swiper Gadget
 async function getAccessoriActionFigure(){
 
     const response= await fetch('http://localhost:8080/api/accessori/brand/pokemon/action-figure');
     const data= await response.json();
 
     console.log(data);
+	
+	gadget.innerHTML = '';
+	
+	for(let i=0; i<data.length; i++){
+		
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<img src=${data[i].immagine}>
+					<p class="product-category">${data[i].categoria}</p>
+					<h3 class="product-name">${data[i].nome}</h3>
+					<p class="product-price">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button">Ordina</button>
+				</div>
+			</div>
+			
+			`;
+		
+		gadget.innerHTML += card;
+	}
 }
 
-getAccessoriActionFigure();
+//getAccessoriActionFigure();
 
 
 
@@ -64,14 +127,50 @@ async function getAccessoriGadget(){
     const data= await response.json();
 
     console.log(data);
+	
+	gadget.innerHTML = '';
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<img src=${data[i].immagine}>
+					<p class="product-category">${data[i].categoria}</p>
+					<h3 class="product-name">${data[i].nome}</h3>
+					<p class="product-price">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button">Ordina</button>
+				</div>
+			</div>
+				
+			`;
+		
+		gadget.innerHTML += card;
+	}
 }
 
-getAccessoriGadget();
+//getAccessoriGadget();
 
 
 
 
+//per quando si clicca sul Brand Pokemon, mostra card, accessori, .. riferiti a questo brand
+const switchBrand= document.querySelector('.logo-icon-pokeball');
 
+switchBrand.addEventListener('click', () => {
+	
+	getCardNovita();
+	getAccessoriActionFigure();
+	getAccessoriGadget();	
+	
+	//reinizializzo gli swiper per farli ripartire dalla prima slide
+	initializeSwiper();
+	initializeSwiper2();
+});
+
+
+  
 
 
 
