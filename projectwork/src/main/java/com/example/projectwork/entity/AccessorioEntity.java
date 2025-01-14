@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class AccessorioEntity extends ProdottoEntity {
 
-    @Column(nullable = false, length = 50)
+    @Column( length = 50)
     private String colore;
     
     @Column

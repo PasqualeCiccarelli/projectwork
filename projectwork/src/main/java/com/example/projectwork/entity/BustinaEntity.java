@@ -34,7 +34,7 @@ public class BustinaEntity extends ProdottoEntity {
     @Column(nullable = false)
     private int quantitaCarte;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String nomeSet;
     
     @ManyToOne

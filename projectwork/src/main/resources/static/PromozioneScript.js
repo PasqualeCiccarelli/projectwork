@@ -67,7 +67,7 @@ function handlePromoteFormSubmit(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    checkLoginStatus();
+    checkUtenteStatus()
 
     const promoteForm = document.getElementById("promoteForm");
 

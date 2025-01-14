@@ -23,18 +23,18 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class CardEntity extends ProdottoEntity {
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String edizione;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private Rarita rarita;
 
     @ManyToOne
     @JoinColumn(name = "id_admin")
     private AdminEntity admin;
     
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String nomeSet;
 
     @OneToMany(mappedBy = "carta", cascade = CascadeType.ALL)
