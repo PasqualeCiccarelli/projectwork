@@ -29,49 +29,51 @@
 </head>
 
 <body id="background" class="background-base">
-
   <!-- inizio-navbar 1 -->
+ 
+  
   <header id="main-header">
     <nav class="navbar navbar-expand-lg" style="background: none;">
-      <div class="container d-flex  flex-column">
+      <div class="container d-flex flex-column">
+        <!-- Logo -->
         <div>
-           <!-- logo -->
-        <a class="navbar-brand" href="home.html">
-          <img src="../static/img/LOGO.png" class="logo mt-3">
-        </a>
+          <a class="navbar-brand" href="home.html">
+            <img src="../static/img/LOGO.png" class="logo mt-3">
+          </a>
         </div>
-        <div style="width: 100%">
-           <!-- search form -->
-             <div class="search-form mt-5 mb-3">
+        
+        <!-- Search form -->
+        <div style="width: 100%;">
+          <div class="search-form mt-5 mb-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="floatingInput" placeholder="" style="background-color: #efefef; border: rgb(0, 0, 0);">
               <label for="floatingInput">Cerca nel sito...</label>
             </div>
-            </div>
-          <!-- fine search form -->
+          </div>
         </div>
-
+        
+        <!-- Navbar items -->
         <div class="container d-flex justify-content-end">
- </div>           <ul class="navbar-nav first-navbar d-flex flex-row">
-              <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
-          <div class=>
-            <i class="fa-solid fa-user fa-3x" style="color:#ffffff"></i>
-          </div>
-          <p style="color: #ffffff;"><strong>ACCOUNT</strong></p>
-              </li>
-              <li class="nav-item d-flex flex-column justify-content-center align-items-center">
-          <div class="cart-icon">
-            <i class="fa-solid fa-cart-shopping fa-3x" style="color: #ffffff;"></i>
-          </div>
-          <p style="color: #ffffff;"><STRONG>CARRELLO</STRONG></p>
-              </li>
-            </ul>
-        </div>
-          </div>
+          <ul class="navbar-nav first-navbar d-flex flex-row">
+            <li class="nav-item me-3 d-flex flex-column justify-content-center align-items-center">
+              <div>
+                <i class="fa-solid fa-user fa-3x" style="color:#ffffff;"></i>
+              </div>
+              <p style="color: #ffffff;"><strong>ACCOUNT</strong></p>
+            </li>
+            <li class="nav-item d-flex flex-column justify-content-center align-items-center">
+              <div class="cart-icon">
+                <i class="fa-solid fa-cart-shopping fa-3x" style="color: #ffffff;"></i>
+              </div>
+              <p style="color: #ffffff;"><strong>CARRELLO</strong></p>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
   </header>
+
+
   <!-- fine navbar -->
 
     <!-- inizio-navbar 2-->
@@ -86,42 +88,53 @@
                   <button class="navbar-toggler navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                   </button >
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+                    <div class="navbar-nav d-flex mx-auto">
                       <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-home mt-3"></i>
                           <a class="nav-link active" aria-current="page" href="home.html">Home</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="../templates/login.html">login</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-sign-in-alt mt-3"></i>
+                          <a class="nav-link" href="../templates/login.html">Login</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/registrati">Sing in</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-user-plus mt-3"></i>
+                          <a class="nav-link" href="/registrati">Sign-in</a>
                         </li>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/promozione">Diventa Admin</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-user-shield mt-3"></i>
+                          <a class="nav-link" href="/promozione">Diventa<br>Admin</a>
                         </li>
           
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-card">creazione carte</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-clone mt-3"></i>
+                          <a class="nav-link" href="/creazione-card">Creazione<br>Carte</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-accessori">creazione accessori</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-tools mt-3"></i>
+                          <a class="nav-link" href="/creazione-accessori">Creazione<br>Accessori</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-bustine">creazione bustine</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fa-regular fa-rectangle-list mt-3"></i>
+                          <a class="nav-link" href="/creazione-bustine">Creazione<br>Bustine</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/creazione-box">creazione box</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-box mt-3"></i>
+                          <a class="nav-link" href="/creazione-box">Creazione<br>Box</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-pokemon">negozio pokemon</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-dragon mt-3"></i>
+                          <a class="nav-link" href="/negozio-pokemon">Negozio<br>Pokémon</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-magic">negozio magic</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-hat-wizard mt-3"></i>
+                          <a class="nav-link" href="/negozio-magic">Negozio<br>Magic</a>
                         </li>
-                        <li class="nav-item bordo">
-                          <a class="nav-link" href="/negozio-yugiho">negozio yugiho</a>
+                        <li class="nav-item bordo text-center">
+                          <i class="fas fa-scroll mt-3"></i>
+                          <a class="nav-link" href="/negozio-yugiho">Negozio<br>Yu-Gi-Oh!</a>
                         </li>
         
                     </div>
@@ -172,7 +185,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-    <!-- <script>
+    <script>
       var swiper = new Swiper(".mySwiper", {
         centeredSlides: true,
         loop: true,
@@ -208,7 +221,7 @@
       // Now you can use all slider methods like
       swiperbutton2.slideNext();
 
-    </script> -->
+    </script> 
     <!-- End  Swiper -->
 
 
@@ -235,7 +248,7 @@
 
 
     <!-- Initialize Swiper -->
-    <!-- <script>
+    <script>
       var swiper = new Swiper(".mySwiper2", {
         centeredSlides: true,
         loop: true,
@@ -271,7 +284,7 @@
       // Now you can use all slider methods like
       swiperbutton2.slideNext();
 
-    </script> -->
+    </script> 
 
 
     <img id="Gadgets" src="../static/img/immagini-font/gadgets.png" class="pokemon-font mx-auto" alt="">
@@ -443,6 +456,8 @@
   <script src="../static/switch-style.js"></script>
   <script src="../static/forPokemon.js"></script> <!-- PER CARICARE PAGINA DA VISUAL STUDIO -->
   <!-- <script src="forPokemon.js"></script> --> <!-- PER CARICARE PAGINA DA ECLIPSE -->
+</video>
+ 
 
 </body>
 
