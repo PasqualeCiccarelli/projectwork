@@ -156,9 +156,16 @@ function createCarousel(containerId, data) {
         card.classList.add('product-card');
         
         // Immagine con percorso corretto
+        const a = document.createElement('a');
+        a.href = `/DettagiProdotto.html?id=${item.id}`;  
+
+
         const img = document.createElement('img');
-        img.src = `img/magic/${item.immagine}`;
+        img.src = `img${item.immagine}`;
         img.alt = item.nome;
+
+
+        a.appendChild(img);
         /*img.onerror = () => {
             img.src = 'img/placeholder.jpg';
         };*/
@@ -184,7 +191,7 @@ function createCarousel(containerId, data) {
         button.textContent = 'Ordina';
         button.onclick = () => handleOrder(item);
 
-        card.appendChild(img);
+        card.appendChild(a);
         card.appendChild(category);
         card.appendChild(name);
         card.appendChild(price);

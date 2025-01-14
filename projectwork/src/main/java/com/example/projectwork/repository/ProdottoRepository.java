@@ -8,6 +8,4 @@ import com.example.projectwork.entity.ProdottoEntity;
 
 public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 	
-	Optional<ProdottoEntity> findById(Long id);
-
 }
