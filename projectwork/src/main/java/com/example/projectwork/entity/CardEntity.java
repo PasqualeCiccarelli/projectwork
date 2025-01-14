@@ -35,7 +35,7 @@ public class CardEntity extends ProdottoEntity{
 	private String descrizione;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, columnDefinition = "ENUM('PREVENDITA', 'NOVITA', 'DEFAULT', 'SPECIALE')")
+	@Column(length=100, nullable = false, columnDefinition = "ENUM('PREVENDITA', 'NOVITA', 'DEFAULT', 'SPECIALE')")
 	private Categoria categoria;
 
 	@Enumerated(EnumType.STRING)
