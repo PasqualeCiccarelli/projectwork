@@ -1,4 +1,3 @@
-
 //Configurazione degli swiper
 const configurazioneSwiper= {
     centeredSlides: true,
@@ -42,11 +41,12 @@ function initializeSwiper2() {
 initializeSwiper();
 initializeSwiper2();
 
+console.log("ciao");
 
 
 
 const gadget= document.querySelector('.gadget');
-const novita= document.querySelector('.novita');
+const swiperNovita= document.querySelector('.swiper-novita');
 
 
 
@@ -76,7 +76,7 @@ async function getCardNovita(){
 				
 			`;
 		
-		novita.innerHTML += card;
+		swiperNovita.innerHTML += card;
 	}
 }
 
