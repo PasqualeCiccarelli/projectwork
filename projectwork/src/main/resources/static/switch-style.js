@@ -39,12 +39,14 @@ btnYugi.addEventListener("click", () => {
 });
 
 btnMagic.addEventListener("click", () => {
-  background.classList.add("background-magic");
   novita.src = "../static/img/immagini-font/magic-novità.png";
   gadgets.src = "../static/img/immagini-font/magic-gadgets.png";
-  videoSource.src = "../static/img/sfondi/magic.mp4";
+  videoSource.src = "../static/img/sfondi/magic.mp4"; 
+  videoSource2.src = "../static/img/sfondi/magic-back.mp4"; 
   navbarVideo.load(); 
   navbarVideo.play(); 
+  navbarVideo2.load(); 
+  navbarVideo2.play(); 
 });
 
 function checkResolutionIcons() {
