@@ -11,10 +11,11 @@
 #main-header{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/1000_F_526978622_dayjHFDSjD1r7SiplcnxzTaUOjDlnuIp.jpg");
+    background-image: url("../img/sfondi/sfondo-blu.jpg");
     background-attachment: fixed;
     background-size: cover;
-    
+    position: relative;
+    z-index: 1;
 }
 
 .background-pokemon{
@@ -86,6 +87,7 @@ display: flex;
 
 .logo {
     height: 10rem;
+    margin-left: 16px;
 }
 
 .navbar-toggler {
@@ -140,6 +142,17 @@ display: flex;
     filter: drop-shadow(8px 8px 4px black);
 }
 
+#btn-yugi{
+   width: 400px !important;
+}
+
+.hero{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button{
     border: none;
     background: none;
@@ -161,9 +174,11 @@ color: #e72929;
 }
 /* ----------------------------font pokemon---------------------------------------------- */
 
+
 .pokemon-font{
 width: 50%;
 display: flex;
+
 }
 
 /* ----------------------------media query---------------------------------------------- */
@@ -174,13 +189,25 @@ display: flex;
     }
 
     .logo{
-        height: 5rem;
+        height: 10rem;
     }
 
     .animazioni{
         width: 40%;
     }
 
+    .navtest{
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .container-icone-switch img{
+        background: rgba(255, 255, 255, 0.164);
+        border-radius: 20px;
+
+    }
 }
 
 
