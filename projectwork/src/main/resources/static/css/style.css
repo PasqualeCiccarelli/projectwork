@@ -86,17 +86,12 @@ display: flex;
 }
 
 .logo {
-    height: 10rem;
+    height: 5rem;
     margin-left: 16px;
 }
 
 .navbar-toggler {
     background-color: #ffffff7d;
-}
-
-.fa-user {
-    height: 70%;
-    width: auto;
 }
 
 .offcanvas-body {
@@ -189,6 +184,7 @@ display: flex;
 
 }
 
+
 /* ----------------------------media query---------------------------------------------- */
 @media screen and (min-width: 1024px){
     .logo-icon-magic, .logo-icon-pokeball, .logo-icon-puzzle{
@@ -197,7 +193,7 @@ display: flex;
     }
 
     .logo{
-        height: 10rem;
+        height: 5rem;
     }
 
     .animazioni{
