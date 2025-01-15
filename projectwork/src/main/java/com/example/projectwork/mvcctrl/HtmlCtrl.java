@@ -69,5 +69,10 @@ public class HtmlCtrl {
 	public String mioCarrello() {
 		return "carrello";
 	}
+
+	@GetMapping("/pagina-admin")
+	public String paginaAdmin(){
+		return "admin";
+	}
 	
 }
