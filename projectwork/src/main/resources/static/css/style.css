@@ -148,7 +148,7 @@ li a strong{
 #btn-yugi{
    width: 400px !important;
 }
-
+ 
 .hero{
     height: 400px;
     display: flex;
@@ -171,19 +171,26 @@ color: #e72929;
 .card{
     margin-bottom: 40px;
 }
-.accordion-button{
-    padding: .5rem;
-    
-}
+.accordion-button {
+    color: #d4dbe1;
+    background-color: rgb(5 17 30);
+  }
+  .accordion-item {
+    color: white;
+    background-color: rgb(4, 17, 31);
+  }
 /* ----------------------------font pokemon---------------------------------------------- */
 
 
 .pokemon-font{
-width: 50%;
+width: 30%;
 display: flex;
 
 }
 
+.magic-font{
+    width: 18%;
+}
 
 /* ----------------------------media query---------------------------------------------- */
 @media screen and (min-width: 1024px){
@@ -193,7 +200,7 @@ display: flex;
     }
 
     .logo{
-        height: 5rem;
+        height: 10rem;
     }
 
     .animazioni{
