@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/negozio-pokemon.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/stylePagAdmin.css">
 </head>
 <body style="background: rgb(255,243,59);
 background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 62%, rgba(63,150,193,1) 80%);">
@@ -117,6 +120,22 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
 
         <!-- Inizio contenitore con gli articoli -->
         <section id="card" class="">
+
+            <div class="swiper swiperScorrimentoProdotti">
+                <div class="swiper-wrapper sw-prodotti">
+        
+                <!-- qui vanno i prodotti -->
+                
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                <i class="bi bi-caret-left"></i>
+                <div class="swiper-pagination"></div>
+                <i class="bi bi-caret-right"></i>
+                </div>
+            </div>
+        
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       
         </section>
         <!-- Fine contenitore con gli articoli -->
@@ -269,7 +288,11 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
     <!-- <script src="scriptIserisciItem"></script> -->
     <!-- <script src="/main.js" type="module"></script> -->
     <!-- <script src="negozioMagicScript.js" type="module"></script> -->
-     <script src="scriptNegozioMagicGiuseppe.js"></script>
+     <!-- <script src="scriptNegozioMagicGiuseppe.js"></script> -->
+
+     <script src="scorrimentoPagine.js"></script>
+     <script src="negozioPokeScript.js"></script>
+
 </body>
 <!-- JS DI BOOTSTRAP -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

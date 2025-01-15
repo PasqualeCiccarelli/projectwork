@@ -10,7 +10,7 @@ async function loadData() {
             }
             const cardData = await cardResponse.json();
             console.log('Card Data:', cardData);
-            createCarousel('card-container', cardData);
+            creazioneEinserimentoProdotti(cardData)
         } catch (error) {
             console.error('Errore carte:', error);
         }
@@ -22,7 +22,7 @@ async function loadData() {
             }
             const bustineData = await bustineResponse.json();
             console.log('Bustine Data:', bustineData);
-            createCarousel('bustine-container', bustineData);
+            creazioneEinserimentoProdotti(bustineData)
         } catch (error) {
             console.error('Errore bustine:', error);
         }
@@ -34,7 +34,7 @@ async function loadData() {
             }
             const boxData = await boxResponse.json();
             console.log('Box Data:', boxData);
-            createCarousel('box-container', boxData);
+            creazioneEinserimentoProdotti(boxData)
         } catch (error) {
             console.error('Errore box:', error);
         }
@@ -46,7 +46,7 @@ async function loadData() {
             }
             const accessoriData = await accessoriResponse.json();
             console.log('Accessori Data:', accessoriData);
-            createCarousel('accessori-container', accessoriData);
+            creazioneEinserimentoProdotti(accessoriData)
         } catch (error) {
             console.error('Errore accessori:', error);
         }

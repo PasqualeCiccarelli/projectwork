@@ -135,7 +135,7 @@ function creazioneEinserimentoProdotti(data){
             selNumeroSlide.innerHTML += card;
         }
 
-        //console.log(cont_card);
+        console.log(cont_card);
     }  
 
     inizializzazioneSwiperAdmin();
