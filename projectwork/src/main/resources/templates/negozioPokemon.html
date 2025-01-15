@@ -1,62 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Negozio-Pokemon</title>
+    <!-- CSS DI BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CSS DI SWIPER -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/negizi.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/negozio-pokemon.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/stylePagAdmin.css">
 </head>
-<body>
-    <header>
-        <h1>Pokémon Store</h1>
-    </header>
+<body style="background: rgb(255,243,59);
+background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 62%, rgba(63,150,193,1) 80%);">
+   <!-- inizio navbar -->
+<!-- inizio navbar -->
+<nav class="navbar navbar-expand-lg navina" style="background-color:#304492;">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="../static/img/LOGO.png" alt="">
+        </a>
 
-    <section id="card" class="carousel-section">
-        <h2>Card</h2>
-        <div class="swiper mySwiper">
-		    <div class="swiper-wrapper" id="card-container">
-		    </div>
-		    <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-		</div>
-    </section>
-    
-    <section id="bustine" class="carousel-section">
-        <h2>Bustine</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="bustine-container">
-            </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-    
-    <section id="box" class="carousel-section">
-        <h2>Box</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="box-container">
-            </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-    
-    <section id="accessori" class="carousel-section">
-        <h2>Accessori</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="accessori-container">
-            </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-        </div>
-    </section>
+        <!-- Menu hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <!-- Barra di ricerca -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
+                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+            </form>
 
+            <!-- Menu -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-home fa-2x"></i>
+                    <a class="nav-link active" aria-current="page" href="#"><p>Home</p></a>
+               </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-scroll fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Negozio Yu-Gi-Oh</p></a>
+                </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-hat-wizard fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Negozio Magic</p></a>
+                </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fa-solid fa-user fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Profilo</p></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- fine navbar -->
+
+        <!-- inizio sezione hero con immagini singole pubblicitarie -->
+        <div class="container2">
+
+            <div id="hero-slider" class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- prima slide -->
+                    <div class="swiper-slide slide-parent">
+                        <img src="" class="img-fluid slide-absolute" alt="">
+                        <img src="../static/img/sfondi/banner-evo.png" class="img-fluid slide-relative" alt="">
+                    </div>
+                    <!-- seconda slide -->
+                    <div class="swiper-slide slide-parent ">
+                        <img src="../static/img/sfondi/scintille.png" class="img-fluid slide-absolute2" alt="">
+                        <img src="../static/img/sfondi/folgoranti.jpg" class="img-fluid slide-relative" alt="">
+                    </div>
+                    <!-- terza slide -->
+                    <div class="swiper-slide slide-parent">
+                        <img src="../static/img/sfondi/pokemon-scarlet-logo.png" class="img-fluid  slide-absolute3 scarlet" alt="">
+                        <img src="../static/img/sfondi/pokemon-violet-logo.png" class="img-fluid  slide-absolute4 violet" alt="">
+                        <img src="../static/img/sfondi/scarlatto-violetto.jpg " class="img-fluid slide-relative" alt="">
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <!-- fine sezione hero con slide singole -->
+
+        <!-- START sezione trailer -->
+        <section id="info">
+            <div class="container  mb-3 mt-2">
+                <div class="section-title mt-2">
+                    <br>
+                    <br>
+                </div>
+                <div>
+                    <div class="info-box row ">
+                        <div class="info-image col-12 col-md-8">
+                            <video width="100%" height="100%" muted autoplay loop controls>
+                                <source src="../static/img/sfondi/trailer-pokemon.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="info-text col-12 col-md-4 ">
+                            <h2 class="text-color">
+                            <strong>Scintille Folgoranti</strong></h2>
+                            <p class="h4 text-color"><strong>Preparati a scoprire un mondo di energia e scintille con "Scintille Folgoranti", la nuova espansione di carte Pokémon che rivoluzionerà le tue battaglie! Questa collezione porta con sé nuovi Pokémon potenti, abilità travolgenti e design straordinari che conquisteranno allenatori di ogni livello.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END sezione trailer BOX -->
+
+        <!-- Inizio contenitore con gli articoli -->
+        <section id="card" class="">
+
+            <div class="swiper swiperScorrimentoProdotti">
+                <div class="swiper-wrapper sw-prodotti">
+        
+                <!-- qui vanno i prodotti -->
+                
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                <i class="bi bi-caret-left"></i>
+                <div class="swiper-pagination"></div>
+                <i class="bi bi-caret-right"></i>
+                </div>
+            </div>
+        
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      
+        </section>
+        <!-- Fine contenitore con gli articoli -->
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-muted" style="background-color: #3f96c1;">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-1">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-3">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>Sbust
+                            </h6>
+                            <p>
+                                Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di
+                                riferimento per
+                                carte collezionabili, dai classici alle novità!
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"  style="background-color: #2688b9;">
+                                        <p>PRODOTTI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            <a href="#!" class="text-reset">Carte singole</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Box</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Accessori</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Merchandising</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #2688b9;">
+                                        <p>LINK UTILI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            <a href="#!" class="text-reset">FAQ</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Termini e condizioni</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Privacy e sicurezza</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Assistenza</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree" style="background-color: #2688b9;">
+                                        <p>CONTATTI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                                        <p>
+                                            <i class="fas fa-envelope me-3"></i>
+                                            SpuTTnikk@example.com
+                                        </p>
+                                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="swiperNegozio.js"></script>
-    <script src="controlloUtenteLoggato.js"></script>
-    <script src="crezioneCarosello.js"></script>
-    <script src="negozioPokeScript.js"></script>
+    <!-- <script src="swiperNegozio.js"></script>
+    <script src="controlloUtenteLoggato.js"></script> -->
+    <!-- <script src="crezioneCarosello.js"></script>
+    <script src="negozioMagicScript.js"></script>
+    <script src="cartUtils.js" type="module"></script>
+    <script src="cartActions.js" type="module"></script> -->
+    <!-- <script src="scriptCompleto.js"></script> -->
+    <!-- <script src="scriptIserisciItem"></script> -->
+    <!-- <script src="/main.js" type="module"></script> -->
+    <!-- <script src="negozioMagicScript.js" type="module"></script> -->
+     <!-- <script src="scriptNegozioMagicGiuseppe.js"></script> -->
+
+     <script src="scorrimentoPagine.js"></script>
+     <script src="negozioPokeScript.js"></script>
+
 </body>
+<!-- JS DI BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<!-- JS di SWIPER: -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- <script src="negozioMagicScript.js"></script> -->
+<!-- inizializzo swiper hero con immagine singola -->
+<script>
+    var swiperHero = new Swiper("#hero-slider", {
+        //inizializzo su ID del primo slider
+        autoHeight: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+<!-- fine swiper hero immagine singola -->
+
+<!-- Initialize Swiper prodotti negozi -->
+<!-- <script>
+    var swiper = new Swiper(".swiper-prodotti", {
+        cssMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+            },
+        },
+    });
+</script> -->
+<!-- fine script swiper prodotti negozi -->
+
 </html>

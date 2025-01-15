@@ -1,65 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Negozio Yu-Gi-Oh</title>
+    <!-- CSS DI BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CSS DI SWIPER -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/negizi.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/negozio-yugi.css">
 
-    <header>
-        <h1>Yugiho Store</h1>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/stylePagAdmin.css">
+</head>
+
+<body>
+   
+<!-- inizio navbar -->
+<nav class="navbar navbar-expand-lg navina" style="background-color: rgba(22, 24, 31, 1);">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="../static/img/LOGO.png" alt="">
+        </a>
+
+        <!-- Menu hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Barra di ricerca -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
+                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+            </form>
+
+            <!-- Menu -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-home fa-2x"></i>
+                    <a class="nav-link active" aria-current="page" href="#"><p>Home</p></a>
+               </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-dragon mb-2 fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Negozio<br>Pokémon</p></a>
+                </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fas fa-scroll fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Negozio<br>Magic</p></a>
+                </li>
+                <li class="nav-item text-center mx-1">
+                    <i class="fa-solid fa-user fa-2x"></i>
+                    <a class="nav-link active" href="#"><p>Profilo</p></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- fine navbar -->
+
+        <!-- <a href="/carrello" class="cart-icon" id="cart-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l3 9h10l3-9H6l3 9M1 1h4l1 3h12l1-3h4M1 1h4l1 3h12l1-3h4M1 1h4l1 3h12l1-3h4"/>
+            </svg>
+            <span id="cart-badge" class="cart-badge">0</span>
+        </a>
+
+        <div class="cart-icon-container" style="position: relative; cursor: pointer;" onclick="window.location.href='/carrello'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <div id="cart-badge" style="position: absolute; top: -8px; right: -8px; background-color: #ff4444; color: white; border-radius: 50%; width: 18px; height: 18px; display: none; justify-content: center; align-items: center; font-size: 12px; font-weight: bold;">0</div>
+        </div> -->
     </header>
 
-    <section id="card" class="carousel-section">
-        <h2>Card</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="card-container">
+        <!-- inizio sezione hero con immagini singole pubblicitarie -->
+        <div class="container2">
+
+            <div id="hero-slider" class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- prima slide -->
+                    <div class="swiper-slide slide-parent">
+                        <!-- <img src="../static/img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                        <img src="../static/img/negozio-yugi/yugi-slide1.png" class="img-fluid slide-relative" alt="">
+                    </div>
+                    <!-- seconda slide -->
+                    <div class="swiper-slide slide-parent">
+                        <!-- <img src="../static/img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                        <img src="../static/img/negozio-yugi/yugi-slide2.png" class="img-fluid slide-relative" alt="">
+                    </div>
+                    <!-- terza slide -->
+                    <div class="swiper-slide slide-parent">
+                        <!-- <img src="../static/img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                        <img src="../static/img/negozio-yugi/yugi-slide3.png" class="img-fluid slide-relative" alt="">
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
         </div>
-    </section>
-    
-    <section id="bustine" class="carousel-section">
-        <h2>Bustine</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="bustine-container">
+        <!-- fine sezione hero con slide singole -->
+
+        <!-- START sezione trailer -->
+        <section id="info" class="mt-5">
+            <div class="container  mb-3 mt-2">
+                <div class="section-title mt-2">
+                   
+                </div>
+                <div>
+                    <div class="info-box row ">
+                        <div class="info-image col-12 col-md-8">
+                            <video width="100%" height="100%" muted autoplay loop controls>
+                                <source src="../static/video-negozio-magic/trailer-yugi.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="info-text col-12 col-md-4 ">
+                            <h2 class=>YU-GI-OH! WCL CELEBRA L’OTTAVO ANNIVERSARIO<br></h2>
+                            <p class="h4">Konami Digital Entertainment, B.V. (KONAMI) si prepara a celebrare l’8° anniversario di Yu‑Gi‑Oh! DUEL LINKS. KONAMI commemorerà il nuovo importante traguardo a partire dal 12 gennaio 2025 con la Campagna Celebrativa Yu‑Gi‑Oh!<br></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-    
-    <section id="box" class="carousel-section">
-        <h2>Box</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="box-container">
+        </section>
+        <!-- END sezione trailer BOX -->
+        <!-- <section id="card" class="carousel-section">
+            <h2>Card</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="card-container">
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
-        </div>
-    </section>
-    
-    <section id="accessori" class="carousel-section">
-        <h2>Accessori</h2>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper" id="accessori-container">
+        </section>
+
+        <section id="bustine" class="carousel-section">
+            <h2>Bustine</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="bustine-container">
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-            <div class="swiper-button-next"></div>
-		    <div class="swiper-button-prev"></div>
+        </section>
+
+        <section id="box" class="carousel-section">
+            <h2>Box</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="box-container">
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section id="accessori" class="carousel-section">
+            <h2>Accessori</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="accessori-container">
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section> -->
+
+
+<!-- Inizio contenitore con gli articoli -->
+<section id="card" class="">
+
+    <div class="swiper swiperScorrimentoProdotti">
+        <div class="swiper-wrapper sw-prodotti">
+
+        <!-- qui vanno i prodotti -->
+        
         </div>
+        <div class="d-flex justify-content-center align-items-center">
+        <i class="bi bi-caret-left"></i>
+        <div class="swiper-pagination"></div>
+        <i class="bi bi-caret-right"></i>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</section>
+<!-- Fine contenitore con gli articoli -->
+
+ 
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset" style="text-decoration: none;">
+          <i class="fa-brands fa-facebook fa-2x"></i>
+        </a>
+        <a href="" class="me-4 text-reset" style="text-decoration: none;">
+          <i class="fa-brands fa-x-twitter fa-2x"></i>
+        </a>
+        <a href="" class="me-4 text-reset" style="text-decoration: none;">
+          <i class="fa-brands fa-youtube fa-2x"></i>
+        </a>
+        <a href="" class="me-4 text-reset" >
+          <i class="fab fa-instagram fa-2x"></i>
+        </a>
+      </div>
+      <!-- Right -->
     </section>
-    
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-1">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-3">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>SBOOST!
+            </h6>
+            <p>
+              Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di riferimento per
+              carte collezionabili, dai classici alle novità!
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="accordion"  id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne">
+                        PRODOTTI
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            <a href="#!" class="text-reset">Carte singole</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Box</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Accessori</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Merchandising</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        LINK UTILI
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>
+                            <a href="#!" class="text-reset">FAQ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Termini e condizioni</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Privacy e sicurezza</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Assistenza</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        CONTATTI
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            SBOOST!@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="swiperNegozio.js"></script>
-    <script src="controlloUtenteLoggato.js"></script>
-    <script src="crezioneCarosello.js"></script>
+    <!-- <script src="swiperNegozio.js"></script>
+    <script src="controlloUtenteLoggato.js"></script> -->
+    <!-- <script src="crezioneCarosello.js"></script>
+    <script src="negozioMagicScript.js"></script>
+    <script src="cartUtils.js" type="module"></script>
+    <script src="cartActions.js" type="module"></script> -->
+    <!-- <script src="scriptCompleto.js"></script> -->
+    <!-- <script src="scriptIserisciItem"></script> -->
+    <!-- <script src="/main.js" type="module"></script> -->
+    <!-- <script src="negozioMagicScript.js" type="module"></script> -->
+    <!-- <script src="scriptNegozioMagicGiuseppe.js"></script> -->
+
+    <script src="scorrimentoPagine.js"></script>
     <script src="negozioYuGiHoScript.js"></script>
     <script src="scriptIserisciItem.js"></script>
 
 </body>
+<!-- JS DI BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<!-- JS di SWIPER: -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- <script src="negozioMagicScript.js"></script> -->
+<!-- inizializzo swiper hero con immagine singola -->
+<script>
+    var swiperHero = new Swiper("#hero-slider", {
+        //inizializzo su ID del primo slider
+        autoHeight: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+<!-- fine swiper hero immagine singola -->
+
+<!-- Initialize Swiper prodotti negozi -->
+<!-- <script>
+    var swiper = new Swiper(".swiper-prodotti", {
+        cssMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+            },
+        },
+    });
+</script> -->
+<!-- fine script swiper prodotti negozi -->
+
 </html>

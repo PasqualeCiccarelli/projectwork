@@ -24,10 +24,10 @@ async function getCardNovita3(){
 				<div class="product-card">
 					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
-					<p class="product-category">${data[i].categoria}</p>
-					<h3 class="product-name">${data[i].nome}</h3>
-					<p class="product-price">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button">Ordina</button>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
 				</div>
 			</div>
 				
@@ -70,11 +70,12 @@ async function getCardSpeciale3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
-					<p class="product-category">${data[i].categoria}</p>
-					<h3 class="product-name">${data[i].nome}</h3>
-					<p class="product-price">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button">Ordina</button>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
 				</div>
 			</div>
 				
@@ -113,11 +114,12 @@ async function getAccessoriActionFigure3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
-					<p class="product-category">${data[i].categoria}</p>
-					<h3 class="product-name">${data[i].nome}</h3>
-					<p class="product-price">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button">Ordina</button>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
 				</div>
 			</div>
 			
@@ -152,11 +154,12 @@ async function getAccessoriGadget3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
-					<p class="product-category">${data[i].categoria}</p>
-					<h3 class="product-name">${data[i].nome}</h3>
-					<p class="product-price">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button">Ordina</button>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
 				</div>
 			</div>
 				

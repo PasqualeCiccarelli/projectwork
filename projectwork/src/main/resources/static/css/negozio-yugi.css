@@ -1,0 +1,350 @@
+/* .carousel-section {
+  padding: 20px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+  margin: 10px;
+}
+
+.item {
+  text-align: center;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.item h3 {
+  margin: 10px 0;
+}
+
+.item button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.item button:hover {
+  background-color: #0056b3;
+}
+
+.product-card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.product-category {
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.order-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+  background-color: #2980b9;
+}
+
+.swiper-container {
+  padding: 20px;
+}
+
+.carousel-section {
+  margin-bottom: 40px;
+}
+
+.carousel-section h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+} */
+
+
+
+/* inizio css di max per negozio  */
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: rgb(3,1,82);
+    background: linear-gradient(180deg, rgba(3,1,82,1) 0%, rgba(84,5,42,1) 52%);
+    color: aliceblue;
+  }
+  
+
+  /* navbar*/
+
+  .navbar {
+    background-color: rgb(26 32 39);
+  }
+
+  .navbar-toggler {
+    border-color: rgba(191, 191, 191, 1); /* Bianco scurino */
+    background-color: rgba(22, 24, 31, 1); /* Usa lo stesso colore dello sfondo navbar */
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(191, 191, 191, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+  .text-color{
+    background-clip: text;
+    background-image: linear-gradient(186deg, #F68321 0%, #790000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .logo {
+    height: 5rem;
+    margin-left: 16px;
+}
+
+li{
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+  .container {
+    /*centrare e staccare dal bordo */
+    width: 94%;
+    margin: 0 auto;
+  }
+  
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+  section#hero {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    
+  }
+  
+/* footer */
+
+
+  footer {
+    background-color: #410521; 
+    color: white; 
+  }
+
+  footer a {
+    color: #e0e0e0; 
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: white; 
+  }
+
+  .accordion-button {
+    background-color: #230412;/* Sfondo nero per i bottoni dell'accordion */
+    color: white; /* Colore del testo bianco */
+    border: none;
+  }
+
+  .accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #ffffff; /* Sfondo più scuro per i bottoni attivi */
+  }
+
+  .accordion-body {
+    background-color: #ffffff; /* Sfondo per il contenuto dell'accordion */
+    color: white; /* Colore del testo */
+  }
+
+  .border-bottom {
+    border-color: #444444 !important; /* Colore del bordo in grigio scuro */
+  }
+
+
+  footer#main-footer {
+    background: #666;
+    color: #ddd;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  footer#main-footer a {
+    color: #ddd;
+    text-decoration: none;
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .container {
+      width: 80%;
+      /*non serve margin:0 auto perché è ereditato dagli stili precedenti */
+    }
+
+  
+
+/* Centrare la barra di ricerca in desktop */
+@media (min-width: 992px) {
+    .search-bar {
+        width: 50%;
+    }
+}
+
+/* Centrare la barra di ricerca in alto nella versione mobile */
+@media (max-width: 991px) {
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+  
+    /*mostriamo nuovamente il main-menu da desktop */
+    .main-menu {
+      display: block;
+    }
+  
+    .main-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    .main-menu a {
+      color: #666;
+      text-decoration: none;
+      text-transform: uppercase; /*rende tutto maiuscolo */
+      /*altre opzioni:
+            text-transform: capitalize (solo iniziali maiuscole)
+            text-transform: lowercase (tutto minuscolo).
+            */
+    }
+  
+    /*SEZIONE HERO */
+  
+    .hero-wrapper,
+    .swiper-wrapper {
+      display: flex;
+      align-items: center;
+    }
+    .follow-wrapper {
+      display: flex;
+      align-items: center;
+    }
+  
+    .follow-image {
+      order: 1;
+    }
+  
+    .follow-text {
+      text-align: right;
+    }
+    .container {
+      width: 82%;
+    }
+    /* SEZIONE INFO */
+  
+    .info-box {
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* hero sezione negozi con immagini a scorrimento-multistrato */
+  .slide-parent {
+    left: 0px;
+    top: 0px;
+    position: relative;
+  }
+  .slide-relative {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .slide-absolute {
+    padding: 0 5rem;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
