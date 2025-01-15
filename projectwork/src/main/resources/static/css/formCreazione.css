@@ -44,7 +44,6 @@
 
   
 body {
-  background-image: url('../img/carteSfondo/90d40fa405e54e22f4ed01608fb48f23.jpg');
   background-size: contain;
   background-size: cover; /* Assicura che l'immagine copra tutta la pagina */
   background-position: center; /* Centra l'immagine di sfondo */
@@ -64,7 +63,6 @@ h1 {
 
 /* Stili per il form */
 form {
-  background-image: url('../img/carteSfondo/1576f123b92ab80ccbfe386a4c3f16fc.jpg');
 
   background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per il form */
   border-radius: 10px;
