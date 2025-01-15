@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+      background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .container {
+    /*centrare e staccare dal bordo */
+    width: 94%;
+    margin: 0 auto;
+  }
+  
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  section#hero {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  footer#main-footer {
+    background: #666;
+    color: #ddd;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  footer#main-footer a {
+    color: #ddd;
+    text-decoration: none;
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .container {
+      width: 80%;
+      /*non serve margin:0 auto perché è ereditato dagli stili precedenti */
+    }
+  
+    /*mostriamo nuovamente il main-menu da desktop */
+    .main-menu {
+      display: block;
+    }
+  
+    .main-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    .main-menu a {
+      color: #666;
+      text-decoration: none;
+      text-transform: uppercase; /*rende tutto maiuscolo */
+      /*altre opzioni:
+            text-transform: capitalize (solo iniziali maiuscole)
+            text-transform: lowercase (tutto minuscolo).
+            */
+    }
+  
+    /*SEZIONE HERO */
+  
+    .hero-wrapper,
+    .swiper-wrapper {
+      display: flex;
+      align-items: center;
+    }
+    .follow-wrapper {
+      display: flex;
+      align-items: center;
+    }
+  
+    .follow-image {
+      order: 1;
+    }
+  
+    .follow-text {
+      text-align: right;
+    }
+    .container {
+      width: 82%;
+    }
+    /* SEZIONE INFO */
+  
+    .info-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .icone{
+        margin-top: 2rem;
+    }
+    
+  }
+@media (min-width: 992px) {
+    .search-bar {
+        width: 50%;
+    }
+    ul{
+        margin-right: 5rem;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+  /* hero sezione negozi con immagini a scorrimento-multistrato */
+  .slide-parent {
+    left: 0px;
+    top: 0px;
+    position: relative;
+  }
+  .slide-relative {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .slide-absolute {
+    padding: 0 5rem;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .slide-absolute2 {
+    padding: 0 5rem;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 5rem;
+  }
+  
+.slide-absolute4 {
+    z-index: 1;
+    position: absolute;
+    top: 70%;
+    right: 15%;
+    transform: translateY(-50%);
+    padding: 0 5rem;
+}
+
+.slide-absolute3 {
+    z-index: 1;
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    transform: translateY(-50%);
+}
+  
+  .text-color{
+   color: #790000;
+  }
+
+  .logo {
+    height: 5rem;
+    margin-left: 16px;
+}
+
+ li{
+    color: white;
+}
+
+a, h6,i,p{
+    color: white;
+}
+
+.navbar{
+    padding: 0;
+}
+

@@ -91,11 +91,16 @@ async function fetchProductData() {
     }
 }
 
+
+
+
 console.log(typeof prodotto);
 
 
 function isCard(prodotto) {
-    return prodotto.specificDetails && prodotto.specificDetails.includes('Edizione:');
+    return prodotto.specificDetails && 
+           !prodotto.specificDetails.includes('Colore:') && 
+           !prodotto.specificDetails.includes('Numero Bustine:');
 }
 
 function addTiltEffect(element) {
