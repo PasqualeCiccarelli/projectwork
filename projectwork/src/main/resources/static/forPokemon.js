@@ -4,10 +4,10 @@ const configurazioneSwiper= {
     loop: true,
     slidesPerView: 6,
     spaceBetween: 30,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
+    // autoplay: {
+    //     delay: 3000,
+    //     disableOnInteraction: false,
+    // },
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -87,7 +87,7 @@ async function getCardNovita(){
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button">Ordina</button>
+					<div><button type="button"  id ="${data[i].id}" class="btn btn-primary order-button btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -101,47 +101,6 @@ async function getCardNovita(){
 }
 
 //getCardNovita();
-
-
-
-
-
-//chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Prevendita
-// async function getCardPrevendita(){
-	
-// 	let response= await fetch('/api/card/brand/pokemon-prevendita');
-// 	let data= await response.json();
-	
-// 	console.log(data);
-	
-// 	swiperPrevendita.innerHTML= '';
-	
-// 	for(let i=0; i<data.length; i++){
-			
-// 		let card= 
-// 			`
-// 			<div class="swiper-slide">
-// 				<div class="product-card">
-// 					<img src=${data[i].immagine}>
-// 					<p class="product-category">${data[i].categoria}</p>
-// 					<h3 class="product-name">${data[i].nome}</h3>
-// 					<p class="product-price">${data[i].prezzo}</p>
-// 					<button type="button" class="btn btn-primary order-button">Ordina</button>
-// 				</div>
-// 			</div>
-				
-// 			`;
-		
-// 		swiperPrevendita.innerHTML += card;
-// 	}
-// }
-
-//getCardPrevendita();
-
-
-
-
-
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
@@ -297,7 +256,8 @@ function aperturaHome(){
 	//getCardPrevendita();
 	getCardSpeciale();
 	getAccessoriActionFigure();
-	getAccessoriGadget();	
+	getAccessoriGadget();
+	
 
 	//prendo il brand che viene mostrato all'apertura della pagina web
 	brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);

@@ -16,70 +16,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.projectwork.dto.AggiungiProdottoRequest;
+import com.example.projectwork.dto.CompletaOrdineRequest;
 import com.example.projectwork.dto.CreaOrdineRequest;
 import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
+import com.example.projectwork.dto.EliminaOrdineRequest;
 import com.example.projectwork.dto.OrdineDto;
+import com.example.projectwork.dto.RimuoviProdottoRequest;
 import com.example.projectwork.entity.OrdineEntity;
 import com.example.projectwork.service.interf.OrdineService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/ordini")
+@RequiredArgsConstructor
 public class OrdineCtrl {
 
     @Autowired
     private OrdineService ordineService;
-
-    @PostMapping("/crea-ordine-e-aggiungi-prodotto")
-    public ResponseEntity<DettagliOrdineDto> creaOrdineEAggiungiProdotto(@RequestBody CreaOrdineRequest creaOrdineRequest) {
-        System.out.println("Ricevuto CreaOrdineRequest: " + creaOrdineRequest);
-        Long userId = ordineService.getUserIdByEmail(creaOrdineRequest.getEmailUtente());
-        DettaglioOrdineRequest ordineRequest = new DettaglioOrdineRequest();
-        ordineRequest.setTipoProdotto(creaOrdineRequest.getTipoProdotto());
-        ordineRequest.setProductId(creaOrdineRequest.getIdProdotto());
-        ordineRequest.setQuantita(creaOrdineRequest.getQuantita());
-
-        return ResponseEntity.ok(ordineService.aggiungiProdotto(userId, ordineRequest));
-    }
-
+    
     @PostMapping("/aggiungi-prodotto")
-    public ResponseEntity<DettagliOrdineDto> aggiungiProdotto(@RequestParam Long userId,
-            @RequestBody DettaglioOrdineRequest request) {
-        return ResponseEntity.ok(ordineService.aggiungiProdotto(userId, request));
+    public ResponseEntity<OrdineDto> aggiungiProdotto(@RequestBody AggiungiProdottoRequest request) {
+        System.out.println("Richiesta ricevuta: " + request);
+        return ResponseEntity.ok(ordineService.aggiungiProdottoAlCarrello(
+            request.getEmail(), 
+            request.getProdotto(), 
+            request.getQuantita()
+        ));
     }
-
-    @DeleteMapping("rimuovi/dettaglio/{dettaglioId}")
-    public ResponseEntity<Void> rimuoviDettaglio(@PathVariable Long dettaglioId) {
-        ordineService.rimuoviDettaglio(dettaglioId);
+    
+    @GetMapping("/{email}/carrello")
+    public ResponseEntity<OrdineDto> getCarrello(@PathVariable String email) {
+        return ResponseEntity.ok(ordineService.getOrdineInCorso(email));
+    }
+    
+    @PostMapping("/rimuovi-prodotto")
+    public ResponseEntity<OrdineDto> rimuoviProdotto(@RequestBody RimuoviProdottoRequest request) {
+        return ResponseEntity.ok(ordineService.rimuoviProdottoDaCarrello(
+            request.getEmail(),
+            request.getDettaglioId(),
+            request.getQuantita()
+        ));
+    }
+    
+    @DeleteMapping("/elimina")
+    public ResponseEntity<Void> eliminaOrdine(@RequestBody EliminaOrdineRequest request) {
+        ordineService.eliminaOrdineInCorso(request.getEmail());
         return ResponseEntity.ok().build();
     }
-
-    @PostMapping("/{ordineId}/conferma")
-    public ResponseEntity<Void> confermaOrdine(@PathVariable Long ordineId) {
-        ordineService.confermaOrdine(ordineId);
-        return ResponseEntity.ok().build();
+    
+    @PostMapping("/completa")
+    public ResponseEntity<OrdineDto> completaOrdine(@RequestBody CompletaOrdineRequest request) {
+        return ResponseEntity.ok(ordineService.completaOrdine(request.getEmail(), request.getIndirizzo()));
     }
 
-    @PostMapping("/{ordineId}/annulla")
-    public ResponseEntity<Void> annullaOrdine(@PathVariable Long ordineId) {
-        ordineService.annullaOrdine(ordineId);
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/{ordineId}/totale")
-    public ResponseEntity<Double> getTotaleOrdine(@PathVariable Long ordineId) {
-        return ResponseEntity.ok(ordineService.calcolaTotaleOrdine(ordineId));
-    }
-
-    @GetMapping("/in-corso/{email}")
-    public ResponseEntity<OrdineDto> getOrdineInCorso(@PathVariable String email) {
-        try {
-            email = URLDecoder.decode(email, StandardCharsets.UTF_8.name());
-            Long userId = ordineService.getUserIdByEmail(email);
-            OrdineEntity ordine = ordineService.getOrdineInCorso(userId);
-            return ResponseEntity.ok(OrdineDto.fromEntity(ordine));
-        } catch (UnsupportedEncodingException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
 }

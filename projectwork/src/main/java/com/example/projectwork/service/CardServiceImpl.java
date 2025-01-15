@@ -62,7 +62,7 @@ public class CardServiceImpl implements CardService {
         return cardRepository.save(newCard);
     }
     
-    private List<CardDto> getCardsByBrand(Brand brand) {
+    public List<CardDto> getCardsByBrand(Brand brand) {
         try {
             List<CardEntity> cards = cardRepository.findByBrand(brand);
             logger.info("Trovate {} carte per il brand {}", cards.size(), brand);

@@ -39,7 +39,7 @@ public class OrdineEntity {
     @JoinColumn(name = "utente_id", nullable = false)
     private UtenteEntity utente;
 
-    @Column(nullable = false, length = 200)
+    @Column(length = 200)
     private String indirizzo;
 
     @Column(nullable = false)

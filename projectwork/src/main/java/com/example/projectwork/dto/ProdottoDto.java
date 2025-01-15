@@ -160,6 +160,11 @@ public class ProdottoDto {
 		public void setSpecificDetails(String specificDetails) {
 			this.specificDetails = specificDetails;
 		}
+		
+		public double getPrezzoEffettivo() {
+	        return (categoria == Categoria.SPECIALE || categoria == Categoria.PREVENDITA) 
+	               ? prezzoScontato : prezzo;
+	    }
 
 		public ProdottoDto toDto(ProdottoEntity prodotto) {
 	        ProdottoDto dto = new ProdottoDto();
