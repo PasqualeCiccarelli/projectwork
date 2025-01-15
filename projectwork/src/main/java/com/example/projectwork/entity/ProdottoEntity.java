@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +18,17 @@ import jakarta.persistence.MappedSuperclass;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "type"
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = CardEntity.class, name = "card"),
+    @JsonSubTypes.Type(value = BoxEntity.class, name = "box"),
+    @JsonSubTypes.Type(value = BustinaEntity.class, name = "bustina"),
+    @JsonSubTypes.Type(value = AccessorioEntity.class, name = "accessorio")
+})
 public abstract class ProdottoEntity {
 
     @Id

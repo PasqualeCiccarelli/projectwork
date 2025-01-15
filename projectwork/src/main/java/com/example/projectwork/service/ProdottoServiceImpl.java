@@ -1,31 +1,31 @@
 package com.example.projectwork.service;
 
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.example.projectwork.dto.ProdottoDto;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.repository.ProdottoRepository;
+import com.example.projectwork.service.interf.ProdottoService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 @Service
-public class ProdottoServiceImpl {
+public class ProdottoServiceImpl implements ProdottoService {
 	
 	@Autowired
 	private ProdottoRepository prodottoRepository;
 	
+	public ProdottoDto getProdottoById(Long id) {
+        ProdottoEntity prodotto = prodottoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Prodotto con ID " + id + " non trovato"));
+
+        return new ProdottoDto().toDto(prodotto);
+    }
 	
-//	public ProdottoDto getProdottoById(Long id) {
-//		
-//		ProdottoEntity prodotto= prodottoRepository.findById(id)
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto non trovato!"));
-//		
-//		if(CardEntity)
-//		
-//		return null;
-//	}
+	
 	
 }

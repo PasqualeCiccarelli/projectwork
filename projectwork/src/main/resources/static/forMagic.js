@@ -23,7 +23,7 @@ async function getCardNovita3(){
 			<div class="swiper-slide">
 				<div class="product-card">
 					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -70,7 +70,7 @@ async function getCardSpeciale3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -113,7 +113,7 @@ async function getAccessoriActionFigure3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
@@ -152,7 +152,7 @@ async function getAccessoriGadget3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<a href="/${data[i].id}"><img src=${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
 					<p class="product-category">${data[i].categoria}</p>
 					<h3 class="product-name">${data[i].nome}</h3>
 					<p class="product-price">${data[i].prezzo}</p>
