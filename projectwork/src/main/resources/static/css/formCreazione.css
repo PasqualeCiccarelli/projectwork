@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 20px;
   }
@@ -37,6 +37,85 @@ body {
   }
   .hidden {
     display: none;
-  }
+  } */
 
   
+  /* Aggiungiamo uno sfondo per tutta la pagina, usando il dorso della carta Yu-Gi-Oh! */
+
+  
+body {
+  background-image: url('../img/carteSfondo/90d40fa405e54e22f4ed01608fb48f23.jpg');
+  background-size: contain;
+  background-size: cover; /* Assicura che l'immagine copra tutta la pagina */
+  background-position: center; /* Centra l'immagine di sfondo */
+  background-repeat: no-repeat; /* Impedisce che l'immagine si ripeta */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stili per il titolo */
+h1 {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  padding-top: 50px;
+}
+
+/* Stili per il form */
+form {
+  background-image: url('../img/carteSfondo/1576f123b92ab80ccbfe386a4c3f16fc.jpg');
+
+  background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per il form */
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 50px auto;
+  color: white;
+}
+
+form label {
+  font-size: 1em;
+  margin-bottom: 5px;
+  display: block;
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+form input[type="file"] {
+  padding: 5px;
+}
+
+form button {
+  background-color: #ffcc00;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #ff9900;
+}
+
+/* Nascondere il wrapper per la data di inizio */
+#dataInizioWrapper.hidden {
+  display: none;
+}
+
+/* Stile per il messaggio di login */
+#loginStatus {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
