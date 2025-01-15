@@ -96,6 +96,10 @@ footer a, footer h6, footer i, footer p {
 
 }
 
+.logo{
+    height: 5rem;
+}
+
 @media (min-width: 992px) {
     .search-bar {
         width: 50%;
