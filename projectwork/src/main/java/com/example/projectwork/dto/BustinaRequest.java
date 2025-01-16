@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 public class BustinaRequest {
 	
@@ -21,6 +22,30 @@ public class BustinaRequest {
     private double prezzo_scontato;
     private String emailAdmin;
     private int numero_carte;
+    private String nomeSet;
+    private TipoCategoria tipoCategoria;
+    private String edizione;
+    
+    
+    
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
+	public String getEdizione() {
+		return edizione;
+	}
+	public void setEdizione(String edizione) {
+		this.edizione = edizione;
+	}
+	public String getNomeSet() {
+		return nomeSet;
+	}
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
+	}
 	public String getNome() {
 		return nome;
 	}

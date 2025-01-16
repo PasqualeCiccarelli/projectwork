@@ -1,10 +1,7 @@
 function getEmailFromCookie() {
- 
   const userData = getUserDataFromSessionStorage();
   console.log(userData.email);
-  
   return userData.email;
-
 }
 
 const disponibilita = document.getElementById("disponibilita");
@@ -26,6 +23,7 @@ document.getElementById("cardForm").addEventListener("submit", async function (e
 
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData.entries());
+  
   data.disponibilita = data.disponibilita === "true";
   data.prezzo_scontato = (data.prezzo * 0.8).toFixed(2);
 
@@ -40,19 +38,24 @@ document.getElementById("cardForm").addEventListener("submit", async function (e
   const emailAdmin = getEmailFromCookie();
 
   if (!emailAdmin) {
-      alert("Email dell'utente non trovata nel cookie.");
-      console.error("Email non trovata nel cookie.");
-      return;
+    alert("Email dell'utente non trovata nel cookie.");
+    console.error("Email non trovata nel cookie.");
+    return;
   }
 
   data.emailAdmin = emailAdmin;
 
-  if (data.disponibilita) {
+  data.edizione = data.edizione || '';
+  data.rarita = data.rarita || 'COMUNE';
+  data.nomeSet = data.nomeSet || '';
+  data.adminId = parseInt(data.adminId, 10);
+
+  data.categoria = "NOVITA";
+  data.tipoCategoria = "CARD";
+
+  if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 
     data.data_inizio = today;
-    data.categoria = "DEFAULT";
-  } else {
-    data.categoria = "PREVENDITA";
   }
 
   if (data.data_inizio) {

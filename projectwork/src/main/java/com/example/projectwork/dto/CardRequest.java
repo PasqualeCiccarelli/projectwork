@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
+import com.example.projectwork.entity.entityenum.Rarita;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 public class CardRequest {
 	
@@ -19,8 +21,20 @@ public class CardRequest {
     private String immagine;
     private LocalDate data_inizio;
     private double prezzo_scontato;
+    private String edizione;
+    private Rarita rarita; 
+    private String nomeSet;
+    private TipoCategoria tipoCategoria;
     private String emailAdmin;
     
+    
+    
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -87,6 +101,24 @@ public class CardRequest {
 	public void setPrezzo_scontato(double prezzo_scontato) {
 		this.prezzo_scontato = prezzo_scontato;
 	}
+	public String getEdizione() {
+		return edizione;
+	}
+	public void setEdizione(String edizione) {
+		this.edizione = edizione;
+	}
+	public Rarita getRarita() {
+		return rarita;
+	}
+	public void setRarita(Rarita rarita) {
+		this.rarita = rarita;
+	}
+	public String getNomeSet() {
+		return nomeSet;
+	}
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
+	}
 	public String getEmailAdmin() {
 		return emailAdmin;
 	}
@@ -94,6 +126,5 @@ public class CardRequest {
 		this.emailAdmin = emailAdmin;
 	}
     
-    
-
+	
 }

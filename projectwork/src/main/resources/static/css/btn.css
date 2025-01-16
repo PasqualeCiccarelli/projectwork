@@ -1,0 +1,30 @@
+.form-carrello {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.form-carrello label {
+    margin-right: 10px;
+}
+
+.form-carrello input {
+    width: 50px;
+    text-align: center;
+}
+
+.btn-aggiungi {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-aggiungi:hover {
+    background-color: #218838;
+}

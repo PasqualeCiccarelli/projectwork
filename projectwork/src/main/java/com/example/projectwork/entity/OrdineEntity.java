@@ -39,7 +39,7 @@ public class OrdineEntity {
     @JoinColumn(name = "utente_id", nullable = false)
     private UtenteEntity utente;
 
-    @Column(nullable = false, length = 200)
+    @Column(length = 200)
     private String indirizzo;
 
     @Column(nullable = false)
@@ -51,14 +51,17 @@ public class OrdineEntity {
 
     @OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DettaglioOrdineEntity> dettagliOrdine;
+    
+    private double PrezzoTotale;
 
 
     public OrdineEntity() {
 
     }
 
+
 	public OrdineEntity(Long id, UtenteEntity utente, String indirizzo, LocalDate data, Stato stato,
-			List<DettaglioOrdineEntity> dettagliOrdine) {
+			List<DettaglioOrdineEntity> dettagliOrdine, double prezzoTotale) {
 		super();
 		this.id = id;
 		this.utente = utente;
@@ -66,56 +69,78 @@ public class OrdineEntity {
 		this.data = data;
 		this.stato = stato;
 		this.dettagliOrdine = dettagliOrdine;
+		PrezzoTotale = prezzoTotale;
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public UtenteEntity getUtente() {
 		return utente;
 	}
 
+
 	public void setUtente(UtenteEntity utente) {
 		this.utente = utente;
 	}
+
 
 	public String getIndirizzo() {
 		return indirizzo;
 	}
 
+
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
+
 
 	public LocalDate getData() {
 		return data;
 	}
 
+
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+
 
 	public Stato getStato() {
 		return stato;
 	}
 
+
 	public void setStato(Stato stato) {
 		this.stato = stato;
 	}
+
 
 	public List<DettaglioOrdineEntity> getDettagliOrdine() {
 		return dettagliOrdine;
 	}
 
+
 	public void setDettagliOrdine(List<DettaglioOrdineEntity> dettagliOrdine) {
 		this.dettagliOrdine = dettagliOrdine;
 	}
 
-    
 
+	public double getPrezzoTotale() {
+		return PrezzoTotale;
+	}
+
+
+	public void setPrezzoTotale(double prezzoTotale) {
+		PrezzoTotale = prezzoTotale;
+	}
+
+	
 }

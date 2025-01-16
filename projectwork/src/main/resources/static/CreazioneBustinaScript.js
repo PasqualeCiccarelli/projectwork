@@ -47,12 +47,12 @@ document.getElementById("bustinaForm").addEventListener("submit", async function
   
   data.emailAdmin = emailAdmin;
   
-  if (data.disponibilita) {
+  data.categoria = "NOVITA";
+  data.tipoCategoria = "BUSTINA";
+
+  if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 
     data.data_inizio = today;
-    data.categoria = "DEFAULT";
-  } else {
-    data.categoria = "PREVENDITA";
   }
   
   if (data.data_inizio) {

@@ -2,8 +2,10 @@ package com.example.projectwork.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
+import com.example.projectwork.dto.OrdineDto;
+import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.eccezioni.UnauthorizedException;
 import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.BustinaEntity;
@@ -18,6 +23,7 @@ import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.DettaglioOrdineEntity;
 import com.example.projectwork.entity.OrdineEntity;
 import com.example.projectwork.entity.ProdottoEntity;
+import com.example.projectwork.entity.UtenteEntity;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Stato;
 import com.example.projectwork.repository.AccessoriRepository;
@@ -26,10 +32,16 @@ import com.example.projectwork.repository.BustineRepository;
 import com.example.projectwork.repository.CardRepository;
 import com.example.projectwork.repository.DettagliOrdineRepository;
 import com.example.projectwork.repository.OrdineRepository;
+import com.example.projectwork.repository.ProdottoRepository;
 import com.example.projectwork.repository.UtenteRepository;
 import com.example.projectwork.service.interf.OrdineService;
 
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class OrdineServiceImpl implements OrdineService{
 
     @Autowired
@@ -39,205 +51,142 @@ public class OrdineServiceImpl implements OrdineService{
     private DettagliOrdineRepository dettagliOrdineRepository;
 
     @Autowired
-    private CardRepository cardRepository;
-
-    @Autowired
-    private BustineRepository bustineRepository;
-
-    @Autowired
-    private BoxRepository boxRepository;
-
-    @Autowired
-    private AccessoriRepository accessoriRepository;
-
-    @Autowired
     private UtenteRepository utenteRepository;
+    
+    @Autowired
+    private ProdottoRepository prodottoRepository;
+    
+    @Transactional
+    public OrdineDto aggiungiProdottoAlCarrello(String email, ProdottoDto prodottoDto, int quantita) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Utente non trovato"));
 
-    public Long getUserIdByEmail(String email) {
-        return utenteRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Utente non trovato con l'email fornita"))
-                .getId();
-    }
+        ProdottoEntity prodotto = prodottoRepository.findById(prodottoDto.getId())
+            .orElseThrow(() -> new RuntimeException("Prodotto non trovato"));
 
-    private void verificaDisponibilita(DettaglioOrdineRequest request) {
-        ProdottoEntity prodotto = getProdottoEntity(request.getTipoProdotto(), request.getProductId());
-        
-        if (prodotto.getRimanenza() < request.getQuantita()) {
-            throw new RuntimeException("Rimanenze insufficienti. Disponibili: " + prodotto.getRimanenza()
-                    + ", Richiesti: " + request.getQuantita() + " Prodotto: " + prodotto);
-        }
-    }
-
-    private ProdottoEntity getProdottoEntity(String tipoProdotto, Long productId) {
-        switch (tipoProdotto) {
-            case "CARTA":
-                return cardRepository.findById(productId).orElseThrow(() -> new RuntimeException("Carta non trovata"));
-            case "BOX":
-                return boxRepository.findById(productId).orElseThrow(() -> new RuntimeException("Box non trovato"));
-            case "BUSTINA":
-                return bustineRepository.findById(productId).orElseThrow(() -> new RuntimeException("Bustina non trovata"));
-            case "ACCESSORIO":
-                return accessoriRepository.findById(productId).orElseThrow(() -> new RuntimeException("Accessorio non trovato"));
-            default:
-                throw new RuntimeException("Tipo prodotto non valido");
-        }
-    }
-
-    private void setProdottoEPrezzo(DettaglioOrdineEntity dettaglio, DettaglioOrdineRequest request) {
-        ProdottoEntity prodotto = getProdottoEntity(request.getTipoProdotto(), request.getProductId());
-        dettaglio.setProdotto(prodotto);
-        dettaglio.setPrezzo(prodotto.getPrezzoFinale());
-    }
-
-    @Scheduled(fixedDelay = 3600000)
-    public void aggiornaStatoOrdini() {
-        List<OrdineEntity> ordini = ordineRepository
-                .findAllByStatoNotIn(Arrays.asList(Stato.CONSEGNATO, Stato.ANNULLATO));
-
-        LocalDate now = LocalDate.now();
-
-        for (OrdineEntity ordine : ordini) {
-            switch (ordine.getStato()) {
-                case ORDINATO:
-                    if (ChronoUnit.DAYS.between(ordine.getData(), now) >= 3) {
-                        ordine.setStato(Stato.SPEDITO);
-                    }
-                    break;
-                case SPEDITO:
-                    if (ChronoUnit.DAYS.between(ordine.getData(), now) >= 5) {
-                        ordine.setStato(Stato.IN_CONSEGNA);
-                    }
-                    break;
-                case IN_CONSEGNA:
-                    if (ChronoUnit.HOURS.between(ordine.getData().atStartOfDay(), now.atStartOfDay()) >= 12) {
-                        ordine.setStato(Stato.CONSEGNATO);
-                    }
-                    break;
-            }
-        }
-        ordineRepository.saveAll(ordini);
-    }
-
-    public DettagliOrdineDto aggiungiProdotto(Long userId, DettaglioOrdineRequest request) {   
-        if (userId == null || userId <= 0) {
-            throw new IllegalArgumentException("User ID non valido");
+        if (prodotto.getRimanenza() < quantita) {
+            throw new RuntimeException("Quantità richiesta non disponibile");
         }
 
-        if (request == null) {
-            throw new IllegalArgumentException("La richiesta non può essere nulla");
-        }
+        OrdineEntity ordine = ordineRepository.findByUtenteAndStato(utente, Stato.IN_CORSO)
+            .orElseGet(() -> {
+                OrdineEntity nuovoOrdine = new OrdineEntity();
+                nuovoOrdine.setUtente(utente);
+                nuovoOrdine.setStato(Stato.IN_CORSO);
+                nuovoOrdine.setData(LocalDate.now());
+                nuovoOrdine.setDettagliOrdine(new ArrayList<>());
+                return ordineRepository.save(nuovoOrdine);
+            });
 
-        OrdineEntity ordine = ordineRepository.findByUtenteIdAndStato(userId, Stato.IN_CORSO).orElseGet(() -> {
-            OrdineEntity nuovoOrdine = new OrdineEntity();
-            nuovoOrdine.setUtente(utenteRepository.findById(userId).orElseThrow(() -> 
-                new IllegalArgumentException("Utente non trovato")));
-            nuovoOrdine.setStato(Stato.IN_CORSO);
-            nuovoOrdine.setData(LocalDate.now());
-            nuovoOrdine.setIndirizzo(request.getIndirizzo());
-            return ordineRepository.save(nuovoOrdine);
-        });
-
-        verificaDisponibilita(request);
+        prodotto.setRimanenza(prodotto.getRimanenza() - quantita);
+        prodottoRepository.save(prodotto);
 
         DettaglioOrdineEntity dettaglio = new DettaglioOrdineEntity();
         dettaglio.setOrdine(ordine);
-        dettaglio.setQuantita(request.getQuantita());
+        dettaglio.setPrezzo(prodotto.getPrezzo());
+        dettaglio.setQuantita(quantita);
 
-        setProdottoEPrezzo(dettaglio, request);
-
-        DettaglioOrdineEntity savedDettaglio = dettagliOrdineRepository.save(dettaglio);
-        return DettagliOrdineDto.fromEntity(savedDettaglio);
-    }
-
-    public void rimuoviDettaglio(Long dettaglioId) {
-        DettaglioOrdineEntity dettaglio = dettagliOrdineRepository.findById(dettaglioId)
-                .orElseThrow(() -> new RuntimeException("Dettaglio non trovato"));
-
-        if (dettaglio.getOrdine().getStato() != Stato.IN_CORSO) {
-            throw new RuntimeException("Non puoi modificare un ordine già confermato");
-        }
-
-        dettagliOrdineRepository.delete(dettaglio);
-    }
-
-    public void confermaOrdine(Long ordineId) {
-        OrdineEntity ordine = ordineRepository.findById(ordineId)
-                .orElseThrow(() -> new RuntimeException("Ordine non trovato"));
-
-        if (ordine.getStato() != Stato.IN_CORSO) {
-            throw new RuntimeException("L'ordine è già stato confermato");
-        }
-
-        for (DettaglioOrdineEntity dettaglio : ordine.getDettagliOrdine()) {
-            aggiornaRimanenze(dettaglio);
-        }
-
-        ordine.setStato(Stato.ORDINATO);
-        ordineRepository.save(ordine);
-    }
-    
-
-    private void aggiornaRimanenze(DettaglioOrdineEntity dettaglio) {
-        ProdottoEntity prodotto = dettaglio.getProdotto();
-        if (prodotto.getRimanenza() < dettaglio.getQuantita()) {
-            throw new RuntimeException("Rimanenze insufficienti per " + prodotto.getNome());
-        }
-        prodotto.setRimanenza(prodotto.getRimanenza() - dettaglio.getQuantita());
-        if (prodotto.getRimanenza() == 0) {
-            prodotto.setDisponibilita(false);
-        }
-        salvaProdotto(prodotto);
-    }
-
-    private void ripristinaRimanenze(DettaglioOrdineEntity dettaglio) {
-        ProdottoEntity prodotto = dettaglio.getProdotto();
-        prodotto.setRimanenza(prodotto.getRimanenza() + dettaglio.getQuantita());
-        prodotto.setDisponibilita(true);
-        salvaProdotto(prodotto);
-    }
-
-    private void salvaProdotto(ProdottoEntity prodotto) {
         if (prodotto instanceof CardEntity) {
-            cardRepository.save((CardEntity) prodotto);
+            dettaglio.setCarta((CardEntity) prodotto);
         } else if (prodotto instanceof BoxEntity) {
-            boxRepository.save((BoxEntity) prodotto);
+            dettaglio.setBox((BoxEntity) prodotto);
         } else if (prodotto instanceof BustinaEntity) {
-            bustineRepository.save((BustinaEntity) prodotto);
+            dettaglio.setBustina((BustinaEntity) prodotto);
         } else if (prodotto instanceof AccessorioEntity) {
-            accessoriRepository.save((AccessorioEntity) prodotto);
+            dettaglio.setAccessorio((AccessorioEntity) prodotto);
         }
+
+        ordine.getDettagliOrdine().add(dettaglio);
+        ordine = ordineRepository.save(ordine);
+
+        return OrdineDto.fromEntity(ordine);
     }
 
-    public void annullaOrdine(Long ordineId) {
-        OrdineEntity ordine = ordineRepository.findById(ordineId)
-                .orElseThrow(() -> new RuntimeException("Ordine non trovato"));
+    public OrdineDto getOrdineInCorso(String email) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Utente non trovato"));
 
-        if (ordine.getStato() == Stato.SPEDITO || ordine.getStato() == Stato.IN_CONSEGNA
-                || ordine.getStato() == Stato.CONSEGNATO) {
-            throw new RuntimeException("Non puoi annullare un ordine già spedito");
-        }
+        OrdineEntity ordine = ordineRepository.findByUtenteAndStato(utente, Stato.IN_CORSO)
+            .orElseThrow(() -> new RuntimeException("Nessun ordine in corso"));
 
-        if (ordine.getStato() == Stato.ORDINATO) {
-            for (DettaglioOrdineEntity dettaglio : ordine.getDettagliOrdine()) {
-                ripristinaRimanenze(dettaglio);
-            }
-        }
-
-        ordine.setStato(Stato.ANNULLATO);
-        ordineRepository.save(ordine);
+        return OrdineDto.fromEntity(ordine);
     }
 
-    public double calcolaTotaleOrdine(Long ordineId) {
-        return ordineRepository.findById(ordineId)
-                .orElseThrow(() -> new RuntimeException("Ordine non trovato"))
-                .getDettagliOrdine()
-                .stream()
-                .mapToDouble(dettaglio -> dettaglio.getPrezzo() * dettaglio.getQuantita())
-                .sum();
+    @Transactional
+    public void eliminaOrdineInCorso(String email) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+
+        OrdineEntity ordine = ordineRepository.findByUtenteAndStato(utente, Stato.IN_CORSO)
+            .orElseThrow(() -> new RuntimeException("Nessun ordine in corso"));
+
+        ordineRepository.delete(ordine);
+    }
+
+    @Transactional
+    public OrdineDto completaOrdine(String email, String indirizzo) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+
+        OrdineEntity ordine = ordineRepository.findByUtenteAndStato(utente, Stato.IN_CORSO)
+            .orElseThrow(() -> new RuntimeException("Nessun ordine in corso"));
+
+        ordine.setIndirizzo(indirizzo);
+        ordine.setStato(Stato.ORDINATO);
+        ordine = ordineRepository.save(ordine);
+
+        return OrdineDto.fromEntity(ordine);
     }
     
-    public OrdineEntity getOrdineInCorso(Long userId) {
-        return ordineRepository.findByUtenteIdAndStato(userId, Stato.IN_CORSO)
-                .orElseThrow(() -> new RuntimeException("Nessun ordine in corso trovato per l'utente"));
+    public OrdineDto rimuoviProdottoDaCarrello(String email, Long dettaglioId, int quantita) {
+    	
+        if (quantita <= 0) {
+            throw new IllegalArgumentException("La quantità deve essere maggiore di zero");
+        }
+
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new EntityNotFoundException("Utente non trovato con email: " + email));
+
+        DettaglioOrdineEntity dettaglio = dettagliOrdineRepository.findById(dettaglioId)
+            .orElseThrow(() -> new EntityNotFoundException("Dettaglio ordine non trovato con id: " + dettaglioId));
+
+        if (dettaglio.getOrdine().getUtente().getId() != utente.getId()) {
+            throw new UnauthorizedException("Non sei autorizzato a modificare questo ordine");
+        }
+
+        if (quantita > dettaglio.getQuantita()) {
+            throw new IllegalArgumentException("Quantità richiesta maggiore di quella presente nel carrello");
+        }
+
+        ProdottoEntity prodotto = getProdottoFromDettaglio(dettaglio);
+        if (prodotto == null) {
+            throw new RuntimeException("Nessun prodotto trovato nel dettaglio ordine");
+        }
+
+        prodotto.setRimanenza(prodotto.getRimanenza() + quantita);
+        prodottoRepository.save(prodotto);
+
+        OrdineEntity ordine = dettaglio.getOrdine();
+        if (dettaglio.getQuantita() == quantita) {
+            dettagliOrdineRepository.delete(dettaglio);
+
+            if (ordine.getDettagliOrdine().size() <= 1) {
+                return new OrdineDto();
+            }
+        } else {
+            dettaglio.setQuantita(dettaglio.getQuantita() - quantita);
+            dettagliOrdineRepository.save(dettaglio);
+        }
+
+        return OrdineDto.fromEntity(ordine);
     }
+
+    private ProdottoEntity getProdottoFromDettaglio(DettaglioOrdineEntity dettaglio) {
+        if (dettaglio.getCarta() != null) return dettaglio.getCarta();
+        if (dettaglio.getBox() != null) return dettaglio.getBox();
+        if (dettaglio.getBustina() != null) return dettaglio.getBustina();
+        if (dettaglio.getAccessorio() != null) return dettaglio.getAccessorio();
+        return null;
+    }
+
 }

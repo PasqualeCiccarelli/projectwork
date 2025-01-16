@@ -31,9 +31,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class AccessorioEntity extends ProdottoEntity {
 
-    @Column( length = 50)
-    private String colore;
-    
     @Column
     private double peso;
     
@@ -54,19 +51,10 @@ public class AccessorioEntity extends ProdottoEntity {
 	public AccessorioEntity(String colore, double peso, String dimensioni, AdminEntity admin,
 			List<DettaglioOrdineEntity> dettagliOrdine) {
 		super();
-		this.colore = colore;
 		this.peso = peso;
 		this.dimensioni = dimensioni;
 		this.admin = admin;
 		this.dettagliOrdine = dettagliOrdine;
-	}
-
-	public String getColore() {
-		return colore;
-	}
-
-	public void setColore(String colore) {
-		this.colore = colore;
 	}
 
 	public double getPeso() {

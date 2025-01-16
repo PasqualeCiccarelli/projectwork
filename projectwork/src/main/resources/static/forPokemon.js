@@ -2,12 +2,12 @@
 const configurazioneSwiper= {
     centeredSlides: true,
     loop: true,
-    slidesPerView: 3,
-    spaceBetween: 50,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
+    slidesPerView: 6,
+    spaceBetween: 30,
+    // autoplay: {
+    //     delay: 3000,
+    //     disableOnInteraction: false,
+    // },
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -87,7 +87,7 @@ async function getCardNovita(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -101,47 +101,6 @@ async function getCardNovita(){
 }
 
 //getCardNovita();
-
-
-
-
-
-//chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Prevendita
-// async function getCardPrevendita(){
-	
-// 	let response= await fetch('/api/card/brand/pokemon-prevendita');
-// 	let data= await response.json();
-	
-// 	console.log(data);
-	
-// 	swiperPrevendita.innerHTML= '';
-	
-// 	for(let i=0; i<data.length; i++){
-			
-// 		let card= 
-// 			`
-// 			<div class="swiper-slide">
-// 				<div class="product-card">
-// 					<img src=${data[i].immagine}>
-// 					<p class="product-category">${data[i].categoria}</p>
-// 					<h3 class="product-name">${data[i].nome}</h3>
-// 					<p class="product-price">${data[i].prezzo}</p>
-// 					<button type="button" class="btn btn-primary order-button">Ordina</button>
-// 				</div>
-// 			</div>
-				
-// 			`;
-		
-// 		swiperPrevendita.innerHTML += card;
-// 	}
-// }
-
-//getCardPrevendita();
-
-
-
-
-
 
 
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
@@ -169,7 +128,7 @@ async function getCardSpeciale(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -218,7 +177,7 @@ async function getAccessoriActionFigure(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 			
@@ -258,7 +217,7 @@ async function getAccessoriGadget(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -300,7 +259,8 @@ function aperturaHome(){
 	//getCardPrevendita();
 	getCardSpeciale();
 	getAccessoriActionFigure();
-	getAccessoriGadget();	
+	getAccessoriGadget();
+	
 
 	//prendo il brand che viene mostrato all'apertura della pagina web
 	brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);

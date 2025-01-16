@@ -10,6 +10,7 @@ import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,15 +33,16 @@ public class ProdottoDto {
 	    private Categoria categoria;
 	    private Tipo tipo;
 	    private Brand brand;
+	    private TipoCategoria tipoCategoria;
 	    private String specificDetails;
 	    
 	    public ProdottoDto() {
 			// TODO Auto-generated constructor stub
 		}
-	    
+
 		public ProdottoDto(Long id, String nome, String immagine, String descrizione, double prezzo,
 				double prezzoScontato, int rimanenza, LocalDate dataInizio, boolean disponibilita, Categoria categoria,
-				Tipo tipo, Brand brand, String specificDetails) {
+				Tipo tipo, Brand brand, TipoCategoria tipoCategoria, String specificDetails) {
 			super();
 			this.id = id;
 			this.nome = nome;
@@ -54,6 +56,7 @@ public class ProdottoDto {
 			this.categoria = categoria;
 			this.tipo = tipo;
 			this.brand = brand;
+			this.tipoCategoria = tipoCategoria;
 			this.specificDetails = specificDetails;
 		}
 
@@ -160,8 +163,37 @@ public class ProdottoDto {
 		public void setSpecificDetails(String specificDetails) {
 			this.specificDetails = specificDetails;
 		}
+		
+		
 
-		public ProdottoDto toDto(ProdottoEntity prodotto) {
+		public TipoCategoria getTipoCategoria() {
+			return tipoCategoria;
+		}
+
+		public TipoCategoria getTipoCategoria(ProdottoEntity prodotto) {
+			if (prodotto instanceof CardEntity) {
+				tipoCategoria = TipoCategoria.CARD; 
+	        } else if (prodotto instanceof BoxEntity) {
+	        	tipoCategoria = TipoCategoria.BOX;
+	        } else if (prodotto instanceof BustinaEntity) {
+	        	tipoCategoria = TipoCategoria.BUSTINA;
+	        } else if (prodotto instanceof AccessorioEntity) {
+	        	tipoCategoria = TipoCategoria.ACCESSORIO;
+	        }
+			
+			return tipoCategoria;
+		}
+
+		public void setTipoCategoria(TipoCategoria tipoCategoria) {
+			this.tipoCategoria = tipoCategoria;
+		}
+
+		public double getPrezzoEffettivo() {
+	        return (categoria == Categoria.SPECIALE || categoria == Categoria.PREVENDITA) 
+	               ? prezzoScontato : prezzo;
+	    }
+
+		public static ProdottoDto toDto(ProdottoEntity prodotto) {
 	        ProdottoDto dto = new ProdottoDto();
 
 	        dto.setId(prodotto.getId());
@@ -175,6 +207,7 @@ public class ProdottoDto {
 	        dto.setDisponibilita(prodotto.isDisponibilita());
 	        dto.setCategoria(prodotto.getCategoria());
 	        dto.setTipo(prodotto.getTipo());
+	        dto.setTipoCategoria(prodotto.getTipoCategoria());
 	        dto.setBrand(prodotto.getBrand());
 
 	        if (prodotto instanceof CardEntity) {
@@ -188,7 +221,7 @@ public class ProdottoDto {
 	            dto.setSpecificDetails("Quantità Carte: " + bustina.getQuantitaCarte());
 	        } else if (prodotto instanceof AccessorioEntity) {
 	            AccessorioEntity accessorio = (AccessorioEntity) prodotto;
-	            dto.setSpecificDetails("Colore: " + accessorio.getColore() + ", Peso: " + accessorio.getPeso() + ", Dimensioni: " + accessorio.getDimensioni());
+	            dto.setSpecificDetails("Peso: " + accessorio.getPeso() + ", Dimensioni: " + accessorio.getDimensioni());
 	        }
 
 	        return dto;

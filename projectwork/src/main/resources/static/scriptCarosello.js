@@ -52,17 +52,21 @@ function createCarousel(containerId, data) {
         price.classList.add('product-price');
         price.textContent = `€ ${item.prezzo.toFixed(2)}`;
  
+        const div = document.createElement('div');
+        div.id = `prodotto-${item.id}`
 
         const button = document.createElement('button');
-        button.classList.add('order-button');
+        button.classList.add('order-button btn-carrello');
         button.textContent = 'Ordina';
+
+        div.appendChild(button);
         
 
         card.appendChild(a);
         card.appendChild(category);
         card.appendChild(name);
         card.appendChild(price);
-        card.appendChild(button);
+        card.appendChild(div);
         slide.appendChild(card);
         container.appendChild(slide);
     });

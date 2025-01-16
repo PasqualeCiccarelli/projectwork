@@ -4,13 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il mio carrello</title>
-    <link rel="stylesheet" href="../static/css/carrello.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-        <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- fontawesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carrello.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- fontawesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .cart-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        
+        .product-image {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        .cart-footer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .cart-total {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        #cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        #shipping-address {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #complete-order-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        #delete-order-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .remove-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navina" style="background-color:#f5db13;">
@@ -28,7 +93,7 @@
             <!-- Barra di ricerca -->
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 </form>
     
                 <!-- Menu -->
@@ -36,7 +101,7 @@
                     <li class="nav-item text-center mx-1">
                         <i class="fas fa-home fa-2x"></i>
                         <a class="nav-link active" aria-current="page" href="#"><p>Home</p></a>
-                   </li>
+                    </li>
                     <li class="nav-item text-center mx-1">
                         <i class="fas fa-scroll fa-2x"></i>
                         <a class="nav-link active" href="#"><p>Negozio Yu-Gi-Oh</p></a>
@@ -53,174 +118,134 @@
             </div>
         </div>
     </nav>
-    <!-- fine navbar -->
-    <header>
-        <h1>Il Tuo Carrello</h1>
-    </header>
 
-    <main>
-        <section id="cart-section">
-            <div id="order-details-container">
-                <h2>Dettagli Ordine</h2>
-                <div id="order-details">
-                    <!-- Le carte dei prodotti saranno inserite dinamicamente qui -->
-                </div>
+    <div class="cart-container">
+        <header>
+            <h1>Il Tuo Carrello</h1>
+        </header>
+
+        <div id="cart-items"></div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Totale: </span>
+                <span id="total-price"></span>
             </div>
 
-            <div id="order-summary">
-                <h2>Riepilogo Ordine</h2>
-                <p>Totale: €<span id="order-total">0.00</span></p>
-                <div class="action-buttons">
-                    <button id="complete-order">Effettua Acquisto</button>
-                    <button id="cancel-order" class="cancel-button">Annulla Ordine</button>
+            <div id="cart-actions">
+                <input type="text" id="shipping-address" placeholder="Inserisci l'indirizzo di spedizione">
+                <button id="complete-order-btn">Completa Ordine</button>
+                <button id="delete-order-btn">Elimina Ordine</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                    <i class="fa-brands fa-facebook fa-2x"></i>
+                </a>
+                <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                    <i class="fa-brands fa-x-twitter fa-2x"></i>
+                </a>
+                <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section: Links  -->
+        <section>
+            <div class="container text-center text-md-start mt-1">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-3">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>SBOOST!
+                        </h6>
+                        <p>
+                            Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di riferimento per
+                            carte collezionabili, dai classici alle novità!
+                        </p>
+                    </div>
+
+                    <div class="accordion" id="accordionExample">
+                        <!-- Prodotti -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="false" aria-controls="collapseOne">
+                                    PRODOTTI
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p><a href="#!" class="text-reset">Carte singole</a></p>
+                                    <p><a href="#!" class="text-reset">Box</a></p>
+                                    <p><a href="#!" class="text-reset">Accessori</a></p>
+                                    <p><a href="#!" class="text-reset">Merchandising</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Link Utili -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    LINK UTILI
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p><a href="#!" class="text-reset">FAQ</a></p>
+                                    <p><a href="#!" class="text-reset">Termini e condizioni</a></p>
+                                    <p><a href="#!" class="text-reset">Privacy e sicurezza</a></p>
+                                    <p><a href="#!" class="text-reset">Assistenza</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contatti -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    CONTATTI
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                                    <p><i class="fas fa-envelope me-3"></i>SBOOST!@example.com</p>
+                                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    </main>
 
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-body-tertiary text-muted">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-    </div>
-    <!-- Left -->
-
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset" style="text-decoration: none;">
-        <i class="fa-brands fa-facebook fa-2x"></i>
-      </a>
-      <a href="" class="me-4 text-reset" style="text-decoration: none;">
-        <i class="fa-brands fa-x-twitter fa-2x"></i>
-      </a>
-      <a href="" class="me-4 text-reset" style="text-decoration: none;">
-        <i class="fa-brands fa-youtube fa-2x"></i>
-      </a>
-      <a href="" class="me-4 text-reset" >
-        <i class="fab fa-instagram fa-2x"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
-
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-1">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-3">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>SBOOST!
-          </h6>
-          <p>
-            Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di riferimento per
-            carte collezionabili, dai classici alle novità!
-          </p>
+        <!-- Copyright -->
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
         </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="accordion"  id="accordionExample">
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                      aria-expanded="false" aria-controls="collapseOne">
-                      PRODOTTI
-                  </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                      <p>
-                          <a href="#!" class="text-reset">Carte singole</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Box</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Accessori</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Merchandising</a>
-                      </p>
-                  </div>
-              </div>
-          </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      LINK UTILI
-                  </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                      <p>
-                          <a href="#!" class="text-reset">FAQ</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Termini e condizioni</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Privacy e sicurezza</a>
-                      </p>
-                      <p>
-                          <a href="#!" class="text-reset">Assistenza</a>
-                      </p>
-                  </div>
-              </div>
-          </div>
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      CONTATTI
-                  </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                      <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                      <p>
-                          <i class="fas fa-envelope me-3"></i>
-                          SBOOST!@example.com
-                      </p>
-                      <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                      <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-
-  <!-- Copyright -->
-  <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="controlloUtenteLoggato.js"></script>
-    <script src="cartUtils.js" type="module"></script>
-    <script src="cartActions.js" type="module"></script>
-    <script src="cartRender.js" type="module"></script>
-    <script src="main.js" type="module"></script>
-    
+    <script src="scriptCarrello.js"></script>
 </body>
 </html>

@@ -37,6 +37,9 @@ public class BustinaEntity extends ProdottoEntity {
     @Column(length = 100)
     private String nomeSet;
     
+    @Column(length = 50)
+    private String edizione;
+    
     @ManyToOne
     @JoinColumn(name = "id_admin")
     private AdminEntity admin;
@@ -48,14 +51,25 @@ public class BustinaEntity extends ProdottoEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BustinaEntity(int quantitaCarte, String nomeSet, AdminEntity admin, List<DettaglioOrdineEntity> dettagliOrdine) {
+	public BustinaEntity(int quantitaCarte, String nomeSet, String edizione, AdminEntity admin,
+			List<DettaglioOrdineEntity> dettagliOrdine) {
 		super();
 		this.quantitaCarte = quantitaCarte;
 		this.nomeSet = nomeSet;
+		this.edizione = edizione;
 		this.admin = admin;
 		this.dettagliOrdine = dettagliOrdine;
 	}
 
+
+	public String getEdizione() {
+		return edizione;
+	}
+
+	public void setEdizione(String edizione) {
+		this.edizione = edizione;
+	}
+	
 	public int getQuantitaCarte() {
 		return quantitaCarte;
 	}
