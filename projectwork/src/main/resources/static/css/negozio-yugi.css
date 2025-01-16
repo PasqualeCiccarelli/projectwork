@@ -231,7 +231,7 @@ p{
   }
 
   .accordion-body {
-    background-color: #ffffff; /* Sfondo per il contenuto dell'accordion */
+    background-color: #000000; /* Sfondo per il contenuto dell'accordion */
     color: white; /* Colore del testo */
   }
 

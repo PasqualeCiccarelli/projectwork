@@ -83,8 +83,8 @@ async function getCardNovita(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<!-- <img src=img/pokemon/${data[i].immagine}> -->
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/pokemon/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
