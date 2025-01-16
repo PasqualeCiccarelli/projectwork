@@ -1,10 +1,11 @@
 package com.example.projectwork.service.interf;
 
-import com.example.projectwork.dto.DettagliOrdineDto;
-import com.example.projectwork.dto.DettaglioOrdineRequest;
+import java.util.List;
+import java.util.Optional;
+
 import com.example.projectwork.dto.OrdineDto;
 import com.example.projectwork.dto.ProdottoDto;
-import com.example.projectwork.entity.OrdineEntity;
+import com.example.projectwork.entity.entityenum.Stato;
 
 
 public interface OrdineService {
@@ -14,5 +15,10 @@ public interface OrdineService {
 	public void eliminaOrdineInCorso(String email);
 	public OrdineDto completaOrdine(String email, String indirizzo);
 	public OrdineDto rimuoviProdottoDaCarrello(String email, Long dettaglioId, int quantita);
+	public List<OrdineDto> getOrdiniByStatoAndEmail(String email, Stato... stati);
+	public List<OrdineDto> getOrdiniInArrivo(String email);
+	public List<OrdineDto> getOrdiniConsegnati(String email);
+	public Optional<OrdineDto> findOrdineByUtenteAndStato(String email, Stato stato);
+	public void eliminaOrdine(String email, Long ordineId);
 
 }
