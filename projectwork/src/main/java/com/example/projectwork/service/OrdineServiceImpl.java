@@ -1,11 +1,14 @@
 package com.example.projectwork.service;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,6 +18,7 @@ import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
 import com.example.projectwork.dto.OrdineDto;
 import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.eccezioni.ResourceNotFoundException;
 import com.example.projectwork.eccezioni.UnauthorizedException;
 import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.BoxEntity;
@@ -188,5 +192,93 @@ public class OrdineServiceImpl implements OrdineService{
         if (dettaglio.getAccessorio() != null) return dettaglio.getAccessorio();
         return null;
     }
+    
+    public List<OrdineDto> getOrdiniByStatoAndEmail(String email, Stato... stati) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new ResourceNotFoundException("Utente non trovato con email: " + email));
+            
+        List<OrdineEntity> ordini = ordineRepository.findByUtenteAndStatoIn(
+            utente, 
+            Arrays.asList(stati)
+        );
+        
+        return ordini.stream()
+                    .map(OrdineDto::fromEntity)
+                    .collect(Collectors.toList());
+    }
+    
+    public List<OrdineDto> getOrdiniInArrivo(String email) {
+        return getOrdiniByStatoAndEmail(
+            email,
+            Stato.ORDINATO,
+            Stato.SPEDITO,
+            Stato.IN_CONSEGNA
+        );
+    }
+    
+    public List<OrdineDto> getOrdiniConsegnati(String email) {
+        return getOrdiniByStatoAndEmail(
+            email,
+            Stato.CONSEGNATO
+        );
+    }
+    
+    public Optional<OrdineDto> findOrdineByUtenteAndStato(String email, Stato stato) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+            .orElseThrow(() -> new ResourceNotFoundException("Utente non trovato con email: " + email));
+            
+        return ordineRepository.findByUtenteAndStato(utente, stato)
+                             .map(OrdineDto::fromEntity);
+    }
+    
+    public void eliminaOrdine(String email, Long ordineId) {
+        UtenteEntity utente = utenteRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Utente non trovato con email: " + email));
+
+        OrdineEntity ordine = ordineRepository.findByUtenteAndId(utente, ordineId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ordine non trovato con ID: " + ordineId + " per l'utente specificato."));
+
+        if (ordine.getStato() != Stato.ORDINATO) {
+            throw new IllegalStateException("Solo gli ordini con stato 'ORDINATO' possono essere eliminati.");
+        }
+
+        ordineRepository.delete(ordine);
+    }
+    
+    @Scheduled(fixedRate = 3600000)
+    public void aggiornaStatoOrdini() {
+        List<OrdineEntity> ordini = ordineRepository.findAll();
+
+        for (OrdineEntity ordine : ordini) {
+            aggiornaStato(ordine);
+        }
+    }
+
+    private void aggiornaStato(OrdineEntity ordine) {
+        LocalDateTime dataCreazione = ordine.getData().atStartOfDay();
+        LocalDateTime now = LocalDateTime.now();
+
+        Duration durata = Duration.between(dataCreazione, now);
+
+        Stato statoAttuale = ordine.getStato();
+        
+        if (statoAttuale == Stato.ORDINATO) {
+
+            if (durata.toDays() >= 3) {
+                ordine.setStato(Stato.SPEDITO);
+            }
+        } else if (statoAttuale == Stato.SPEDITO) {
+
+            if (durata.toDays() >= 2) {
+                ordine.setStato(Stato.IN_CONSEGNA);
+            }
+        } else if (statoAttuale == Stato.IN_CONSEGNA) {
+            if (durata.toHours() >= 12) {
+                ordine.setStato(Stato.CONSEGNATO);
+            }
+        }
+        ordineRepository.save(ordine);
+    }
+
 
 }
