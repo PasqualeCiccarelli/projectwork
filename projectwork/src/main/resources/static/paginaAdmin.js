@@ -14,13 +14,7 @@ console.log(oggettoDatiAdmin);
 
 function inserDatiAdmin(){
 
-    if(oggettoDatiAdmin != null){
-        let admin=
-            `
-                <p>${oggettoDatiAdmin.nome}</p>
-                <p>${oggettoDatiAdmin.email}</p>
-            `;
-        
+    if(oggettoDatiAdmin != null){        
         adminLoggato.textContent= oggettoDatiAdmin.nome;
         adminLoggatoEmail.textContent= oggettoDatiAdmin.email;
     }
@@ -124,81 +118,94 @@ document.addEventListener('DOMContentLoaded', loadData);
 //click sul bottone del prodotto per modificare la categoria
 function clickBottoni(){
     const bottoni= document.querySelectorAll('.btn-carrello');
-    console.log(bottoni);
-
-
-    bottoni.forEach(bottone => {
-        bottone.addEventListener('click', async e => {
-
-            let padre= e.target.parentElement.parentElement;
-            let figlio= e.target.parentElement.parentElement.children[1];
-            padre.removeChild(figlio);
-            console.log(padre, figlio);
-
-            inserFormScelta('DEFAULT', 'NOVITA', 'SPECIALE', padre);           
-            scelta(padre, figlio);       
-            // try{
-            //     let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}`, {
-            //         method: 'PUT',
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         },
-            //     });
     
-            //     let data= await response.json();
-            //     console.log(data);
-            //     window.alert('Ricarica pagina per applicare la modifica');
-            //     location.reload();
-            // }
-            // catch(e){
-            //     console.log(e);
-            // }
+    for(let i=0; i<bottoni.length; i++){
+        bottoni[i].addEventListener('click', e => {
+            console.log(bottoni[i]);
+            
+            let figlio= e.target.parentElement.parentElement.children[2];
+            let inserSelect= document.querySelectorAll('.inser-select');
+
+            let categoria1= '';
+            let categoria2= '';
+            if(figlio.textContent == 'DEFAULT'){
+                categoria1= 'SPECIALE'
+            }
+            else if(figlio.textContent == 'SPECIALE'){
+                categoria1= 'DEFAULT'
+            }
+            else if(figlio.textContent == 'NOVITA'){
+                categoria1= 'SPECIALE';
+                categoria2= 'DEFAULT';
+            }
+            
+            let select=
+                `
+                <select id="categoria" class="attivo" onchange="scelta()">
+                    <option value=${figlio.textContent}>${figlio.textContent}</option>
+                    <option value=${categoria1}>${categoria1}</option>
+                    <option value=${categoria2}>${categoria2}</option>
+                </select>
+                `;
+            
+            let categoriaScelta= '';
+            for(let j=0; j<inserSelect.length; j++){
+                if(i == j){
+                    inserSelect[j].innerHTML= select;
+                    figlio.style.display= 'none';
+                }
+            }
+            console.log(categoriaScelta);
         });
-    });
+    };
 };
 
 
 
-function inserFormScelta(a,b,c,padre){
+
+//function chiamata dal tag select creato sopra
+function scelta(){
+    let x= document.querySelector('.attivo');
+    let applicaModifiche= document.querySelector('.applica-modifiche');
     
-    let select= document.createElement('select');
-    let divSelect= document.querySelectorAll('.div-select');
-    select.id= 'categoria';
+    //seleziono la categoria scelta dall'utente
+    //nascondo il tag select e rimostro il tag che contiene la categoria
+    let fratello= x.parentNode.nextElementSibling;
+    console.log(fratello);
+    fratello.textContent= x.value;
+    x.style.display= "none";
+    fratello.style.display= "block";
 
-    let option= document.createElement('option');
-    option.textContent= a;
-    option.setAttribute('value', a);
+    //mostro il bottone per applicare le modifiche
+    let bottone= fratello.nextElementSibling.nextElementSibling.nextElementSibling.firstChild;
+    applicaModifiche.style.display= "block";
 
-    let option2= document.createElement('option');
-    option2.textContent= b;
-    option2.setAttribute('value', b);
-
-    let option3= document.createElement('option');
-    option3.textContent= c;
-    option3.setAttribute('value', c);
-
-    select.append(option, option2, option3);
+    x.className= "disattivo";
     
-    divSelect.forEach(element => {
-        element.append(select);    
+    //chiamata fetch per aggiornare il db
+    console.log(fratello, bottone.id);
+    applicaModifiche.addEventListener('click', () =>{
+        chiamataFetch(x.value, bottone);
+        location.reload();
     });
-    
 }
 
 
-
-//function chiamata dal tag select creato sopra
-function scelta(padre, figlio){
-    let x= document.querySelector('#categoria');
-    let array= [];
-    console.log(x);
-
-    x.addEventListener('click', () => {
-        array.push(x.value);   
-    });
-    //console.log(array, padre, figlio);
-    let l= array.length;
-    padre.removeChild(x);
-    figlio.textContent= array[l-1];
-    padre.children[0].append(figlio);
+//aggiorna la categoria scelta anche nel db
+async function chiamataFetch(categoria, bottone){
+    try{
+        let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}&categoria=${categoria}`, {
+            method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+    
+            let data= await response.json();
+            console.log(data);
+            //window.alert('Ricarica pagina per applicare la modifica');
+        }
+    catch(e){
+        console.log(e);
+    }
 }

@@ -35,12 +35,12 @@ public class ProdottoServiceImpl implements ProdottoService {
 
 	
 	@Override
-	public ProdottoDto modificaCategoriaProdotto(Long id) {
+	public ProdottoDto modificaCategoriaProdotto(Long id, Categoria categoria) {
 		
 		ProdottoEntity prodotto=  prodottoRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Prodotto con ID " + id + " non trovato"));
 		
-		prodotto.setCategoria(Categoria.SPECIALE);
+		prodotto.setCategoria(categoria);
 		prodottoRepository.save(prodotto);
 		
 		return new ProdottoDto().toDto(prodotto);

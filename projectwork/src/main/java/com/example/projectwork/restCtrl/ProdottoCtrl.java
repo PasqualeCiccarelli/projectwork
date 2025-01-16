@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.service.interf.ProdottoService;
 
 @RestController
@@ -26,8 +27,8 @@ public class ProdottoCtrl {
 	
 	
 	@PutMapping("/modifica-categoria")
-	public ResponseEntity<ProdottoDto> modCategoriaProd(@RequestParam("id") Long id){
-		ProdottoDto prodotto= prodottoService.modificaCategoriaProdotto(id);
+	public ResponseEntity<ProdottoDto> modCategoriaProd(@RequestParam("id") Long id, @RequestParam("categoria") Categoria categoria){
+		ProdottoDto prodotto= prodottoService.modificaCategoriaProdotto(id, categoria);
 		return ResponseEntity.ok(prodotto);
 	}
 
