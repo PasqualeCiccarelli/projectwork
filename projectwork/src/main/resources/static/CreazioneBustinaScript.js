@@ -48,6 +48,7 @@ document.getElementById("bustinaForm").addEventListener("submit", async function
   data.emailAdmin = emailAdmin;
   
   data.categoria = "NOVITA";
+  data.tipoCategoria = "BUSTINA";
 
   if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 

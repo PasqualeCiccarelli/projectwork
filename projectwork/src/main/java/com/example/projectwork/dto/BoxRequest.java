@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 public class BoxRequest {
 	
@@ -24,9 +25,16 @@ public class BoxRequest {
     private int numero_bustine;
     private String nomeSet;
     private String edizione;
+    private TipoCategoria tipoCategoria;
     
     
     
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
 	public String getNomeSet() {
 		return nomeSet;
 	}

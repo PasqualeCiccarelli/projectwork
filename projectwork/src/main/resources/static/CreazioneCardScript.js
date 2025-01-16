@@ -51,6 +51,7 @@ document.getElementById("cardForm").addEventListener("submit", async function (e
   data.adminId = parseInt(data.adminId, 10);
 
   data.categoria = "NOVITA";
+  data.tipoCategoria = "CARD";
 
   if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 

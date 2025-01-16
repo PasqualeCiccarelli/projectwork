@@ -31,6 +31,9 @@ public class UtenteEntity implements UserDetails{
 
 	@Column(length = 100)
 	private String nome;
+	
+	@Column(length = 100)
+    private String immagine;
 
 	@Column(length = 100)
 	private String cognome;
