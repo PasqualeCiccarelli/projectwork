@@ -61,6 +61,7 @@ public class BoxServiceImpl implements BoxService {
         newBox.setNumeroBustine(boxRequest.getNumero_bustine());
         newBox.setEdizione(boxRequest.getEdizione());
         newBox.setNomeSet(boxRequest.getNomeSet());
+        newBox.setTipoCategoria(boxRequest.getTipoCategoria());
         newBox.setAdmin(adminLoggato);
 
         return boxRepository.save(newBox);

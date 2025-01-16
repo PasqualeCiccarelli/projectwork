@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 
 public class AccessoriRequest {
@@ -23,7 +24,16 @@ public class AccessoriRequest {
     private String emailAdmin;
     private double peso;
 	private String dimensioni;
+	private TipoCategoria tipoCategoria;
 	
+	
+	
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
 	public String getNome() {
 		return nome;
 	}
