@@ -75,4 +75,9 @@ public class HtmlCtrl {
 		return "admin";
 	}
 	
+	@GetMapping("/utente")
+	public String paginaOrdini(){
+		return "utente";
+	}
+	
 }

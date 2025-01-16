@@ -16,4 +16,7 @@ import com.example.projectwork.entity.entityenum.Stato;
 public interface OrdineRepository extends JpaRepository<OrdineEntity, Long>{
 	
 	Optional<OrdineEntity> findByUtenteAndStato(UtenteEntity utente, Stato stato);
+	List<OrdineEntity> findByUtenteAndStatoIn(UtenteEntity utente, List<Stato> stati);
+	Optional<OrdineEntity> findByUtenteAndId(UtenteEntity utente, Long id);
+	List<OrdineEntity> findAll();
 }

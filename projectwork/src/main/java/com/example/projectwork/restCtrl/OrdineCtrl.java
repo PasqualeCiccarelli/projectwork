@@ -2,6 +2,8 @@ package com.example.projectwork.restCtrl;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projectwork.dto.AggiungiProdottoRequest;
@@ -19,6 +22,7 @@ import com.example.projectwork.dto.EliminaOrdineRequest;
 import com.example.projectwork.dto.OrdineDto;
 import com.example.projectwork.dto.RimuoviProdottoRequest;
 import com.example.projectwork.eccezioni.ErrorResponse;
+import com.example.projectwork.eccezioni.ResourceNotFoundException;
 import com.example.projectwork.eccezioni.UnauthorizedException;
 import com.example.projectwork.service.interf.OrdineService;
 
@@ -84,5 +88,22 @@ public class OrdineCtrl {
     public ResponseEntity<OrdineDto> completaOrdine(@RequestBody CompletaOrdineRequest request) {
         return ResponseEntity.ok(ordineService.completaOrdine(request.getEmail(), request.getIndirizzo()));
     }
+    
+    @GetMapping("/in-arrivo/{email}")
+    public ResponseEntity<List<OrdineDto>> getOrdiniInArrivo(@PathVariable String email) {
+        return ResponseEntity.ok(ordineService.getOrdiniInArrivo(email));
+    }
+    
+    @GetMapping("/consegnati/{email}")
+    public ResponseEntity<List<OrdineDto>> getOrdiniConsegnati(@PathVariable String email) {
+        return ResponseEntity.ok(ordineService.getOrdiniConsegnati(email));
+    }
+    
+    @DeleteMapping("/elimina-ordine")
+    public ResponseEntity<Void> eliminaOrdine(@RequestParam String email, @RequestParam Long ordineId) {
+        ordineService.eliminaOrdine(email, ordineId);
+        return ResponseEntity.ok().build();
+    }
+    
 
 }
