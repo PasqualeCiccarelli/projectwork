@@ -150,6 +150,8 @@ footer a, footer h6, footer i, footer p {
         height: 130%; /* Più alta */
     }
     
-
+    .login-container{
+        width: 25%;
+    }
   }
 
