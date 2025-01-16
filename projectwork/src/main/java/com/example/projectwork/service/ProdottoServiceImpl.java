@@ -46,6 +46,7 @@ public class ProdottoServiceImpl implements ProdottoService {
 		return new ProdottoDto().toDto(prodotto);
 	}
 	
+	
 	@Scheduled(fixedRate = 86400000)
     public void aggiornaCategoriaProdotti() {
         List<ProdottoEntity> prodotti = prodottoRepository.findAll();
