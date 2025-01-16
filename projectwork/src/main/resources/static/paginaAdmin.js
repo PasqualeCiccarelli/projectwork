@@ -110,6 +110,7 @@ async function loadData() {
     }
 
     clickBottoni();
+    
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
@@ -129,24 +130,75 @@ function clickBottoni(){
     bottoni.forEach(bottone => {
         bottone.addEventListener('click', async e => {
 
-            console.log(e);
-            
-            try{
-                let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                });
+            let padre= e.target.parentElement.parentElement;
+            let figlio= e.target.parentElement.parentElement.children[1];
+            padre.removeChild(figlio);
+            console.log(padre, figlio);
+
+            inserFormScelta('DEFAULT', 'NOVITA', 'SPECIALE', padre);           
+            scelta(padre, figlio);       
+            // try{
+            //     let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}`, {
+            //         method: 'PUT',
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //     });
     
-                let data= await response.json();
-                console.log(data);
-                window.alert('Ricarica pagina per applicare la modifica');
-                location.reload();
-            }
-            catch(e){
-                console.log(e);
-            }
+            //     let data= await response.json();
+            //     console.log(data);
+            //     window.alert('Ricarica pagina per applicare la modifica');
+            //     location.reload();
+            // }
+            // catch(e){
+            //     console.log(e);
+            // }
         });
     });
 };
+
+
+
+function inserFormScelta(a,b,c,padre){
+    
+    let select= document.createElement('select');
+    let divSelect= document.querySelectorAll('.div-select');
+    select.id= 'categoria';
+
+    let option= document.createElement('option');
+    option.textContent= a;
+    option.setAttribute('value', a);
+
+    let option2= document.createElement('option');
+    option2.textContent= b;
+    option2.setAttribute('value', b);
+
+    let option3= document.createElement('option');
+    option3.textContent= c;
+    option3.setAttribute('value', c);
+
+    select.append(option, option2, option3);
+    
+    divSelect.forEach(element => {
+        element.append(select);    
+    });
+    
+}
+
+
+
+//function chiamata dal tag select creato sopra
+function scelta(padre, figlio){
+    let x= document.querySelector('#categoria');
+    let array= [];
+    console.log(x);
+
+    x.addEventListener('click', () => {
+        array.push(x.value);   
+    });
+    //console.log(array, padre, figlio);
+    let l= array.length;
+    padre.removeChild(x);
+    figlio.textContent= array[l-1];
+    padre.children[0].append(figlio);
+}
