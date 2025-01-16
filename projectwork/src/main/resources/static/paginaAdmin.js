@@ -108,6 +108,45 @@ async function loadData() {
     } catch (error) {
         console.error('Errore generale durante il caricamento dei dati:', error);
     }
+
+    clickBottoni();
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
+
+
+
+
+
+
+
+//click sul bottone del prodotto per modificare la categoria
+function clickBottoni(){
+    const bottoni= document.querySelectorAll('.btn-carrello');
+    console.log(bottoni);
+
+
+    bottoni.forEach(bottone => {
+        bottone.addEventListener('click', async e => {
+
+            console.log(e);
+            
+            try{
+                let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+    
+                let data= await response.json();
+                console.log(data);
+                window.alert('Ricarica pagina per applicare la modifica');
+                location.reload();
+            }
+            catch(e){
+                console.log(e);
+            }
+        });
+    });
+};

@@ -15,7 +15,7 @@ function inizializzazioneSwiperAdmin(){
 }
 
 
-const numeroPagine= document.querySelector('.numero-pagine');
+//const numeroPagine= document.querySelector('.numero-pagine');
 const numP= document.querySelector('.num-p');
 const frecciaSinistra= document.querySelector('.bi-caret-left');
 const frecciaDestra= document.querySelector('.bi-caret-right');
@@ -47,7 +47,7 @@ function creazioneEinserimentoProdotti(data){
                 <p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
                 <h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
                 <p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-                <button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+                <div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
             </div>
             `;
         
@@ -60,6 +60,7 @@ function creazioneEinserimentoProdotti(data){
         
         if(cont_card == 1){
             numeroSlide= data[i].nome;
+            numeroSlide= controllaSpazi(numeroSlide);
 
             let contenitore= 
                 `
@@ -76,7 +77,7 @@ function creazioneEinserimentoProdotti(data){
             let s= '.'+numeroSlide;
             //console.log(s);    
             selNumeroSlide= document.querySelector(s);
-            //console.log(selNumeroSlide);
+            console.log(selNumeroSlide);
 
             selNumeroSlide.innerHTML += card;
         }
@@ -91,6 +92,23 @@ function creazioneEinserimentoProdotti(data){
     inserimentoFrecce();
 }
 
+
+
+//se nel nome della card, che uso come class, c'è uno spazio gli mette
+//il '-'
+function controllaSpazi(stringa){
+    let s= '';
+
+    for(let i=0; i<stringa.length; i++){
+        if(stringa[i] == ' '){
+            s += '-';
+        }
+        else{
+            s += stringa[i];
+        }
+    }
+    return s;
+}
 
 
 
@@ -134,12 +152,34 @@ function inserimentoFrecce(){
 
 
 //click freccia sinistra
-const fs= document.querySelector('.bi-caret-left');
+// let fs= document.querySelector('.f-sinistra');
+// console.log(fs);
 
-fs.addEventListener('click', e => {
 
-     e.preventDefault();
+// fs.addEventListener('click', e => {
 
-     console.log(e);
-    
-});
+//     e.preventDefault();
+
+//     console.log(e.target.nextElementSibling.children);  
+//     let pagine= e.target.nextElementSibling.children;
+//     let numeroPagine= e.target.nextElementSibling.children.length;
+
+//     for(let i=0; i<numeroPagine; i++){
+//         let classi= pagine[i].className.split(' ');
+//         for(let j=0; j<classi.length; j++){
+//             if(classi[j] == 'swiper-pagination-bullet-active'){
+//                 pagine[i].classList.remove('swiper-pagination-bullet-active');
+//                 pagine[i].removeAttribute('aria-current');
+//                 if(i-1 >= 0){
+//                     pagine[i-1].classList.add('swiper-pagination-bullet-active');
+//                     pagine[i-1].setAttribute('aria-current', 'true');
+//                 }
+//                 else{
+//                     pagine[numeroPagine-1].classList.add('swiper-pagination-bullet-active');
+//                     pagine[numeroPagine-1].setAttribute('aria-current', 'true');
+//                 }
+//                 break;
+//             }
+//         }
+//     }
+// });
