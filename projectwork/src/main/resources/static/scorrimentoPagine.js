@@ -15,8 +15,13 @@ function inizializzazioneSwiperAdmin(){
 }
 
 
+const numeroPagine= document.querySelector('.numero-pagine');
+const numP= document.querySelector('.num-p');
+const frecciaSinistra= document.querySelector('.bi-caret-left');
+const frecciaDestra= document.querySelector('.bi-caret-right');
 
-
+console.log(numP.children.length);
+let dim= localStorage.setItem('dim', numP.children.length);
 
 
 
@@ -83,4 +88,58 @@ function creazioneEinserimentoProdotti(data){
     }  
 
     inizializzazioneSwiperAdmin();
+    inserimentoFrecce();
 }
+
+
+
+
+
+function inserimentoFrecce(){
+    //console.log(cc.offsetWidth);
+    
+    let getDim= localStorage.getItem('dim');
+
+    if(getDim != numP.children.length){
+        let ms= frecciaSinistra.style.marginRight;
+        let md= frecciaDestra.style.marginLeft;
+        
+        let nuovo= ms + '1.5rem';
+        frecciaSinistra.style.marginRight= nuovo;
+        frecciaSinistra.style.marginBottom= '0.5rem';
+        nuovo= md + '1.5rem'
+        frecciaDestra.style.marginLeft= nuovo;
+        frecciaDestra.style.marginBottom= '0.5rem';
+        console.log(ms, md);
+    }
+    
+    // for(let i=0; i<numeroPagine.children.length; i++){
+    //     if(numeroPagine.children[i].className != 'bi bi-caret-left'){
+    //         let frecciaSinistra= document.createElement('i');
+    //         frecciaSinistra.classList.add('bi', 'bi-caret-left');
+            
+    //         let frecciaDestra= document.createElement('i');
+    //         frecciaDestra.classList.add('bi', 'bi-caret-right');
+
+    //         numeroPagine.prepend(frecciaSinistra);
+    //         numeroPagine.append(frecciaDestra);
+    //     }
+    //     break;   
+    // }
+}
+
+
+
+
+
+
+//click freccia sinistra
+const fs= document.querySelector('.bi-caret-left');
+
+fs.addEventListener('click', e => {
+
+     e.preventDefault();
+
+     console.log(e);
+    
+});
