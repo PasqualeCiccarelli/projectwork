@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -68,6 +69,10 @@ public abstract class ProdottoEntity {
     private Tipo tipo;
     
     @Enumerated(EnumType.STRING)
+    @Column(length = 100)
+    private TipoCategoria tipoCategoria;
+    
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Brand brand;
 
@@ -77,7 +82,7 @@ public abstract class ProdottoEntity {
 
 	public ProdottoEntity(Long id, String nome, String immagine, String descrizione, double prezzo,
 			double prezzoScontato, int rimanenza, LocalDate dataInizio, boolean disponibilita, Categoria categoria,
-			Tipo tipo, Brand brand) {
+			Tipo tipo, TipoCategoria tipoCategoria, Brand brand) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -90,6 +95,7 @@ public abstract class ProdottoEntity {
 		this.disponibilita = disponibilita;
 		this.categoria = categoria;
 		this.tipo = tipo;
+		this.tipoCategoria = tipoCategoria;
 		this.brand = brand;
 	}
 
@@ -181,6 +187,14 @@ public abstract class ProdottoEntity {
 		this.tipo = tipo;
 	}
 
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
+
 	public Brand getBrand() {
 		return brand;
 	}
@@ -188,7 +202,7 @@ public abstract class ProdottoEntity {
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-	
+
 	public double getPrezzoFinale() {
 		if(categoria.equals(Categoria.SPECIALE)) {
 			return prezzoScontato;

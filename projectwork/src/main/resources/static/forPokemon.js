@@ -87,7 +87,7 @@ async function getCardNovita(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -128,7 +128,7 @@ async function getCardSpeciale(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				
@@ -177,7 +177,7 @@ async function getAccessoriActionFigure(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 			
@@ -217,7 +217,7 @@ async function getAccessoriGadget(){
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-					<button type="button" class="btn btn-primary order-button mb-5">Ordina</button>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
 				</div>
 			</div>
 				

@@ -21,6 +21,21 @@ public class BustinaRequest {
     private double prezzo_scontato;
     private String emailAdmin;
     private int numero_carte;
+    private String nomeSet;
+    private String edizione;
+    
+	public String getEdizione() {
+		return edizione;
+	}
+	public void setEdizione(String edizione) {
+		this.edizione = edizione;
+	}
+	public String getNomeSet() {
+		return nomeSet;
+	}
+	public void setNomeSet(String nomeSet) {
+		this.nomeSet = nomeSet;
+	}
 	public String getNome() {
 		return nome;
 	}

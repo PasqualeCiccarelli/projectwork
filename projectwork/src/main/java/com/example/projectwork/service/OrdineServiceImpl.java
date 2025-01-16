@@ -15,6 +15,7 @@ import com.example.projectwork.dto.DettagliOrdineDto;
 import com.example.projectwork.dto.DettaglioOrdineRequest;
 import com.example.projectwork.dto.OrdineDto;
 import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.eccezioni.UnauthorizedException;
 import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.BustinaEntity;
@@ -35,6 +36,7 @@ import com.example.projectwork.repository.ProdottoRepository;
 import com.example.projectwork.repository.UtenteRepository;
 import com.example.projectwork.service.interf.OrdineService;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -136,38 +138,55 @@ public class OrdineServiceImpl implements OrdineService{
         return OrdineDto.fromEntity(ordine);
     }
     
-    @Transactional
     public OrdineDto rimuoviProdottoDaCarrello(String email, Long dettaglioId, int quantita) {
+    	
+        if (quantita <= 0) {
+            throw new IllegalArgumentException("La quantità deve essere maggiore di zero");
+        }
+
         UtenteEntity utente = utenteRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+            .orElseThrow(() -> new EntityNotFoundException("Utente non trovato con email: " + email));
 
         DettaglioOrdineEntity dettaglio = dettagliOrdineRepository.findById(dettaglioId)
-            .orElseThrow(() -> new RuntimeException("Dettaglio ordine non trovato"));
+            .orElseThrow(() -> new EntityNotFoundException("Dettaglio ordine non trovato con id: " + dettaglioId));
 
         if (dettaglio.getOrdine().getUtente().getId() != utente.getId()) {
-            throw new RuntimeException("Operazione non autorizzata");
+            throw new UnauthorizedException("Non sei autorizzato a modificare questo ordine");
         }
 
-        ProdottoEntity prodotto = null;
-        if (dettaglio.getCarta() != null) prodotto = dettaglio.getCarta();
-        else if (dettaglio.getBox() != null) prodotto = dettaglio.getBox();
-        else if (dettaglio.getBustina() != null) prodotto = dettaglio.getBustina();
-        else if (dettaglio.getAccessorio() != null) prodotto = dettaglio.getAccessorio();
-
-        if (prodotto != null) {
-            prodotto.setRimanenza(prodotto.getRimanenza() + quantita);
-            prodottoRepository.save(prodotto);
+        if (quantita > dettaglio.getQuantita()) {
+            throw new IllegalArgumentException("Quantità richiesta maggiore di quella presente nel carrello");
         }
 
-        if (dettaglio.getQuantita() > quantita) {
-            dettaglio.setQuantita(dettaglio.getQuantita() - quantita);
-            dettagliOrdineRepository.save(dettaglio);
-        } else {
-        	dettagliOrdineRepository.delete(dettaglio);
+        ProdottoEntity prodotto = getProdottoFromDettaglio(dettaglio);
+        if (prodotto == null) {
+            throw new RuntimeException("Nessun prodotto trovato nel dettaglio ordine");
         }
+
+        prodotto.setRimanenza(prodotto.getRimanenza() + quantita);
+        prodottoRepository.save(prodotto);
 
         OrdineEntity ordine = dettaglio.getOrdine();
+        if (dettaglio.getQuantita() == quantita) {
+            dettagliOrdineRepository.delete(dettaglio);
+
+            if (ordine.getDettagliOrdine().size() <= 1) {
+                return new OrdineDto();
+            }
+        } else {
+            dettaglio.setQuantita(dettaglio.getQuantita() - quantita);
+            dettagliOrdineRepository.save(dettaglio);
+        }
+
         return OrdineDto.fromEntity(ordine);
+    }
+
+    private ProdottoEntity getProdottoFromDettaglio(DettaglioOrdineEntity dettaglio) {
+        if (dettaglio.getCarta() != null) return dettaglio.getCarta();
+        if (dettaglio.getBox() != null) return dettaglio.getBox();
+        if (dettaglio.getBustina() != null) return dettaglio.getBustina();
+        if (dettaglio.getAccessorio() != null) return dettaglio.getAccessorio();
+        return null;
     }
 
 }

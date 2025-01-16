@@ -46,13 +46,13 @@ document.getElementById("boxForm").addEventListener("submit", async function (ev
   
   data.emailAdmin = emailAdmin;
 
-  if (data.disponibilita) {
+  data.categoria = "NOVITA";
+
+  if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 
     data.data_inizio = today;
-    data.categoria = "DEFAULT";
-  } else {
-    data.categoria = "PREVENDITA";
   }
+
   
   if (data.data_inizio) {
     data.data_inizio = new Date(data.data_inizio).toISOString().split("T")[0];

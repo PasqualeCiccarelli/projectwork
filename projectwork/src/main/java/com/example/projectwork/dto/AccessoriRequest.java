@@ -23,6 +23,7 @@ public class AccessoriRequest {
     private String emailAdmin;
     private double peso;
 	private String dimensioni;
+	
 	public String getNome() {
 		return nome;
 	}

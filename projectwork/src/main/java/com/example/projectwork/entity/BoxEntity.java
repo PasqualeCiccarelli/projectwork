@@ -27,6 +27,9 @@ public class BoxEntity extends ProdottoEntity {
 
     @Column(length = 100)
     private String nomeSet;
+    
+    @Column(length = 50)
+    private String edizione;
 
     @ManyToOne
     @JoinColumn(name = "id_admin")
@@ -40,15 +43,29 @@ public class BoxEntity extends ProdottoEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoxEntity(int numeroBustine, int quantitaCarte, String nomeSet, AdminEntity admin,
+
+	public BoxEntity(int numeroBustine, int quantitaCarte, String nomeSet, String edizione, AdminEntity admin,
 			List<DettaglioOrdineEntity> dettagliOrdine) {
 		super();
 		this.numeroBustine = numeroBustine;
 		this.quantitaCarte = quantitaCarte;
 		this.nomeSet = nomeSet;
+		this.edizione = edizione;
 		this.admin = admin;
 		this.dettagliOrdine = dettagliOrdine;
 	}
+
+
+
+	public String getEdizione() {
+		return edizione;
+	}
+
+
+	public void setEdizione(String edizione) {
+		this.edizione = edizione;
+	}
+
 
 	public int getNumeroBustine() {
 		return numeroBustine;

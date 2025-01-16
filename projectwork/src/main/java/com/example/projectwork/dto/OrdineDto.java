@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.example.projectwork.entity.DettaglioOrdineEntity;
 import com.example.projectwork.entity.OrdineEntity;
 import com.example.projectwork.entity.UtenteEntity;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Stato;
 
 import lombok.AllArgsConstructor;
@@ -92,43 +93,46 @@ public class OrdineDto {
 	}
 
 	public double getPrezzoTotale() {
-		return prezzoTotale;
-	}
+        if (this.dettagliOrdine != null) {
+            double total = 0;
+            for (DettagliOrdineDto dettaglio : this.dettagliOrdine) {
+                
+                double prezzoUnitario = dettaglio.getProdottoDto().getPrezzo();
+
+                if (dettaglio.getProdottoDto().getCategoria() == Categoria.SPECIALE
+                        || dettaglio.getProdottoDto().getCategoria() == Categoria.PREVENDITA) {
+                    prezzoUnitario = dettaglio.getProdottoDto().getPrezzoScontato();
+                }
+
+                total += prezzoUnitario * dettaglio.getQuantita();
+            }
+            return total;
+        }
+        return 0;
+    }
 
 	public void setPrezzoTotale(double prezzoTotale) {
 		this.prezzoTotale = prezzoTotale;
 	}
 
-	public static OrdineDto fromEntity(OrdineEntity entity) {
-        if (entity == null) {
-            return null;
-        }
+	public static OrdineDto fromEntity(OrdineEntity ordine) {
+	    OrdineDto dto = new OrdineDto();
+	    dto.setId(ordine.getId());
+	    dto.setUtenteId(ordine.getUtente().getId());
+	    dto.setIndirizzo(ordine.getIndirizzo());
+	    dto.setData(ordine.getData());
+	    dto.setStato(ordine.getStato());
+	    dto.setPrezzoTotale(ordine.getPrezzoTotale());
 
-        OrdineDto dto = new OrdineDto();
-        dto.setId(entity.getId());
-        dto.setUtenteId(entity.getUtente().getId());
-        dto.setIndirizzo(entity.getIndirizzo());
-        dto.setData(entity.getData());
-        dto.setStato(entity.getStato());
-        
-        if (entity.getDettagliOrdine() != null) {
-            List<DettagliOrdineDto> dettagli = entity.getDettagliOrdine().stream()
-                .map(DettagliOrdineDto::fromEntity)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-            dto.setDettagliOrdine(dettagli);
+	    
+	    dto.setDettagliOrdine(
+	        ordine.getDettagliOrdine().stream()
+	            .map(DettagliOrdineDto::fromEntity)
+	            .collect(Collectors.toList())
+	    );
 
-            double totale = dettagli.stream()
-                .mapToDouble(d -> d.getPrezzo() * d.getQuantita())
-                .sum();
-            dto.setPrezzoTotale(totale);
-        } else {
-            dto.setDettagliOrdine(new ArrayList<>());
-            dto.setPrezzoTotale(0.0);
-        }
-
-        return dto;
-    }
+	    return dto;
+	}
 
     public OrdineEntity toEntity(OrdineEntity existingEntity) {
         OrdineEntity entity = (existingEntity != null && this.getId() != null) ? 

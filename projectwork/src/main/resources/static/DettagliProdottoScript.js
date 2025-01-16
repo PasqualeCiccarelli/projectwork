@@ -21,6 +21,11 @@ async function fetchProductData() {
             throw new Error('Elemento .dettagli-carta non trovato nella pagina');
         }
 
+        console.log(prodotto );
+        console.log(prodotto);
+        
+        
+
         dettagliCartaDiv.innerHTML = `
         <div class="prodotto-container">
             <div class="immagine-container">
@@ -91,15 +96,14 @@ async function fetchProductData() {
     }
 }
 
-
-
-
 console.log(typeof prodotto);
+
+
 
 
 function isCard(prodotto) {
     return prodotto.specificDetails && 
-           !prodotto.specificDetails.includes('Colore:') && 
+           !prodotto.specificDetails.includes('Peso:') && 
            !prodotto.specificDetails.includes('Numero Bustine:');
 }
 
