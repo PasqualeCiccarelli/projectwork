@@ -60,6 +60,7 @@ public class BustinaServiceImpl implements BustinaService {
         newBustina.setQuantitaCarte(bustinaRequest.getNumero_carte());
         newBustina.setNomeSet(bustinaRequest.getNomeSet());
         newBustina.setEdizione(bustinaRequest.getEdizione());
+        newBustina.setTipoCategoria(bustinaRequest.getTipoCategoria());
         newBustina.setAdmin(adminLoggato);
 
 

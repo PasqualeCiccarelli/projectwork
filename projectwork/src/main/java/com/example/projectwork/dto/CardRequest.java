@@ -6,6 +6,7 @@ import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Rarita;
 import com.example.projectwork.entity.entityenum.Tipo;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 public class CardRequest {
 	
@@ -23,9 +24,17 @@ public class CardRequest {
     private String edizione;
     private Rarita rarita; 
     private String nomeSet;
+    private TipoCategoria tipoCategoria;
     private String emailAdmin;
     
     
+    
+	public TipoCategoria getTipoCategoria() {
+		return tipoCategoria;
+	}
+	public void setTipoCategoria(TipoCategoria tipoCategoria) {
+		this.tipoCategoria = tipoCategoria;
+	}
 	public String getNome() {
 		return nome;
 	}

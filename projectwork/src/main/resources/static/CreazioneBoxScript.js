@@ -47,6 +47,7 @@ document.getElementById("boxForm").addEventListener("submit", async function (ev
   data.emailAdmin = emailAdmin;
 
   data.categoria = "NOVITA";
+  data.tipoCategoria = "BOX";
 
   if (data.disponibilita === "false") {
     const today = new Date().toISOString().split("T")[0]; 

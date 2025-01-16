@@ -59,6 +59,7 @@ public class AccessoriServiceImpl implements AccessoriService {
 		newAccessorio.setPrezzoScontato(accessoriRequest.getPrezzo_scontato());
 		newAccessorio.setDimensioni(accessoriRequest.getDimensioni());
 		newAccessorio.setPeso(accessoriRequest.getPeso());
+		newAccessorio.setTipoCategoria(accessoriRequest.getTipoCategoria());
 		newAccessorio.setAdmin(adminLoggato);
 
 		return accessoriRepository.save(newAccessorio);
