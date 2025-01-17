@@ -76,3 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Form di promozione non trovato.");
     }
 });
+
+
+
+const signOut= document.querySelector('.sign-out');
+function esciDalSito(){
+    signOut.addEventListener('click', () => {
+        sessionStorage.clear();
+        window.location.href = "http://localhost:8080";
+    });
+}
+
+esciDalSito();
