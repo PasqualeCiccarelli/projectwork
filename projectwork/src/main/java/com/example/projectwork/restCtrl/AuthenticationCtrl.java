@@ -60,11 +60,19 @@ public class AuthenticationCtrl {
 	    return ResponseEntity.ok(registrazioneResponse);
 	}
 
+//	@PostMapping("/promote/{userId}")
+//	public ResponseEntity<String> promoteToAdmin(@PathVariable Long userId, @RequestParam boolean acceptedPolicies) {
+//
+//		System.out.println("\n\n"+acceptedPolicies+"\n\n");
+//		
+//		authenticationService.promozioneToAdmin(userId, acceptedPolicies);
+//		return ResponseEntity.ok("Utente promosso a partner con successo");
+//	}
+	
 	@PostMapping("/promote/{userId}")
-	public ResponseEntity<String> promoteToAdmin(@PathVariable Long userId, @RequestParam boolean acceptedPolicies) {
-
-		authenticationService.promozioneToAdmin(userId, acceptedPolicies);
-		return ResponseEntity.ok("Utente promosso a partner con successo");
+	public ResponseEntity<String> promoteToAdmin(@PathVariable Long userId, @RequestParam boolean acceptedPolicies) {	
+		LoginResponse data= authenticationService.promozioneToAdmin(userId, acceptedPolicies);
+		return ResponseEntity.ok(data.getRuolo2());
 	}
 
 }

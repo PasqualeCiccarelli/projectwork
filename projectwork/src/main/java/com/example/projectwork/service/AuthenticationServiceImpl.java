@@ -131,6 +131,7 @@ public class AuthenticationServiceImpl implements  AuthenticationService{
 	    Long id = admin.getId();
 	    String nome = admin.getNome();
 
+	    System.out.println("\n\nLoginResponse: "+email+" "+ruolo1+" "+ruolo2+" "+id+" "+nome+"\n\n");
 	    
 	    return new LoginResponse(nome, ruolo1, ruolo2, email, id);
 	}
