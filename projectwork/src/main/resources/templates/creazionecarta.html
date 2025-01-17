@@ -82,227 +82,11 @@
 
     <!-- Form Creazione Carte -->
     <div class="container d-flex justify-content-center align-items-center my-5">
-      <form id="cardForm" class="p-4 bg-light rounded shadow" style="width: 100%; max-width: 600px;">
-        <h2 class="mb-5 bg-body-tertiary">Creazione Carte</h2>
-          <div class="mb-3">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" id="nome" name="nome" class="form-control" required>
-          </div>
-          <div class="mb-3">
-              <label for="descrizione" class="form-label">Descrizione</label>
-              <textarea id="descrizione" name="descrizione" rows="4" class="form-control" required></textarea>
-          </div>
-
-          <div class="mb-3">
-            <label for="brand" class="form-label">Brand</label>
-            <select id="brand" name="brand" class="form-select" required>
-                <option value="POKEMON">Pokemon</option>
-                <option value="MAGIC">Magic</option>
-                <option value="YUGIHO">Yu-gi-oh</option>
-            </select>
-        </div>
-
-          <!-- <div class="container"> -->
-            <div class="row">
-              <div class="col-lg-6 mb-3">
-                  <label for="tipo" class="form-label">Tipo</label>
-                  <select id="tipo" name="tipo" class="form-select" required>
-                      <option value="DEFAULT">Default</option>
-                      <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
-                  </select>
-              </div>
-              <div class="col-lg-6 mb-3">
-                  <label for="prezzo" class="form-label">Prezzo (€)</label>
-                  <input type="number" id="prezzo" name="prezzo" class="form-control" step="0.01" required>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-6 mb-3">
-                  <label for="rimanenze" class="form-label">Rimanenze</label>
-                  <input type="number" id="rimanenze" name="rimanenze" class="form-control" required>
-              </div>
-              <div class="col-lg-6 mb-3">
-                  <label for="disponibilita" class="form-label">Disponibilità Immediata</label>
-                  <select id="disponibilita" name="disponibilita" class="form-select" required>
-                      <option value="true">Sì</option>
-                      <option value="false">No</option>
-                  </select>
-              </div>
-            </div>
-            
-          <!-- </div> -->
-
-          <div id="dataInizioWrapper" class="mb-3 hidden">
-              <label for="data_inizio" class="form-label">Data di Inizio</label>
-              <input type="date" id="data_inizio" name="data_inizio" class="form-control">
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6 mb-3">
-                <label for="edizione" class="form-label">Edizione</label>
-                <input type="text" id="edizione" name="edizione" class="form-control" placeholder="Es. Edizione Limitata">
-            </div>
-            <div class="col-lg-6 mb-3">
-                <label for="rarita" class="form-label">Rarità</label>
-                <select id="rarita" name="rarita" class="form-select">
-                    <option value="COMUNE">Comune</option>
-                    <option value="NON_COMUNE">Non Comune</option>
-                    <option value="RARA">Rara</option>
-                    <option value="ULTRA_RARA">Ultra Rara</option>
-                    <option value="LEGGENDARIA">Leggendaria</option>
-                </select>
-            </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-lg-6 mb-3">
-                <label for="nomeSet" class="form-label">Nome Set</label>
-                <input type="text" id="nomeSet" name="nomeSet" class="form-control" placeholder="Nome del Set">
-            </div>
-            <div class="col-lg-6 mb-3">
-                <label for="immagine" class="form-label">Carica Immagine</label>
-                <input type="file" id="immagine" name="immagine" class="form-control" accept="image/*" required>
-            </div>
-          </div>
-
-
-          <button type="submit" class="btn btn-primary w-100 mt-5">Crea Carta</button>
-      </form>
-  </div>
-  <!-- Fine Form -->
-
-        <!-- Footer -->
-        <footer class="text-center text-lg-start text-muted" style="background-color: #3f96c1;">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
-                <!-- Left -->
-                <div class="me-5 d-none d-lg-block">
-                
-                </div>
-                <!-- Left -->
-
-                <!-- Right -->
-                <div>
-                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <!-- Right -->
-            </section>
-            <!-- Section: Social media -->
-
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container text-center text-md-start mt-1">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                       <div class="mx-auto mb-3" style="font-size:24px;">
-                            <!-- Content -->
-                            <p>
-                                Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di
-                                riferimento per
-                                carte collezionabili, dai classici alle novità!
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"  style="background-color: #2688b9;">
-                                        <p>PRODOTTI</p>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>
-                                            <a href="#!" class="text-reset">Carte singole</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Box</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Accessori</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Merchandising</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-color: #2688b9;">
-                                        <p>LINK UTILI</p>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>
-                                            <a href="#!" class="text-reset">FAQ</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Termini e condizioni</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Privacy e sicurezza</a>
-                                        </p>
-                                        <p>
-                                            <a href="#!" class="text-reset">Assistenza</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree" style="background-color: #2688b9;">
-                                        <p>CONTATTI</p>
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                                        <p>
-                                            <i class="fas fa-envelope me-3"></i>
-                                            Sboost@example.com
-                                        </p>
-                                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-            </section>
-            <!-- Section: Links  -->
-
-            <!-- Copyright -->
-            <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
+        <form id="cardForm" class="p-4 bg-light rounded shadow" style="width: 100%; max-width: 600px;">
+            <h2 class="mb-5 bg-body-tertiary">Creazione Carte</h2>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="descrizione" class="form-label">Descrizione</label>
@@ -523,26 +307,245 @@
             © 2021 Copyright:
             <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
         </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- <script src="swiperNegozio.js"></script>
+        <div class="mb-3">
+            <label for="descrizione" class="form-label">Descrizione</label>
+            <textarea id="descrizione" name="descrizione" rows="4" class="form-control" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <select id="brand" name="brand" class="form-select" required>
+                <option value="POKEMON">Pokemon</option>
+                <option value="MAGIC">Magic</option>
+                <option value="YUGIHO">Yu-gi-oh</option>
+            </select>
+        </div>
+
+        <!-- <div class="container"> -->
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label for="tipo" class="form-label">Tipo</label>
+                <select id="tipo" name="tipo" class="form-select" required>
+                    <option value="DEFAULT">Default</option>
+                    <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
+                </select>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label for="prezzo" class="form-label">Prezzo (€)</label>
+                <input type="number" id="prezzo" name="prezzo" class="form-control" step="0.01" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label for="rimanenze" class="form-label">Rimanenze</label>
+                <input type="number" id="rimanenze" name="rimanenze" class="form-control" required>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label for="disponibilita" class="form-label">Disponibilità Immediata</label>
+                <select id="disponibilita" name="disponibilita" class="form-select" required>
+                    <option value="true">Sì</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- </div> -->
+
+        <div id="dataInizioWrapper" class="mb-3 hidden">
+            <label for="data_inizio" class="form-label">Data di Inizio</label>
+            <input type="date" id="data_inizio" name="data_inizio" class="form-control">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label for="edizione" class="form-label">Edizione</label>
+                <input type="text" id="edizione" name="edizione" class="form-control"
+                    placeholder="Es. Edizione Limitata">
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label for="rarita" class="form-label">Rarità</label>
+                <select id="rarita" name="rarita" class="form-select">
+                    <option value="COMUNE">Comune</option>
+                    <option value="NON_COMUNE">Non Comune</option>
+                    <option value="RARA">Rara</option>
+                    <option value="ULTRA_RARA">Ultra Rara</option>
+                    <option value="LEGGENDARIA">Leggendaria</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label for="nomeSet" class="form-label">Nome Set</label>
+                <input type="text" id="nomeSet" name="nomeSet" class="form-control" placeholder="Nome del Set">
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label for="immagine" class="form-label">Carica Immagine</label>
+                <input type="file" id="immagine" name="immagine" class="form-control" accept="image/*" required>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary w-100 mt-5">Crea Carta</button>
+        </form>
+        </div>
+        <!-- Fine Form -->
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-muted" style="background-color: #3f96c1;">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset" style="text-decoration: none;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-1">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="mx-auto mb-3" style="font-size:24px;">
+                            <!-- Content -->
+                            <p>
+                                Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di
+                                riferimento per
+                                carte collezionabili, dai classici alle novità!
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+                                        style="background-color: #2688b9;">
+                                        <p>PRODOTTI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            <a href="#!" class="text-reset">Carte singole</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Box</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Accessori</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Merchandising</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                                        style="background-color: #2688b9;">
+                                        <p>LINK UTILI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            <a href="#!" class="text-reset">FAQ</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Termini e condizioni</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Privacy e sicurezza</a>
+                                        </p>
+                                        <p>
+                                            <a href="#!" class="text-reset">Assistenza</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree" style="background-color: #2688b9;">
+                                        <p>CONTATTI</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                                        <p>
+                                            <i class="fas fa-envelope me-3"></i>
+                                            Sboost@example.com
+                                        </p>
+                                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <!-- <script src="swiperNegozio.js"></script>
     <script src="controlloUtenteLoggato.js"></script> -->
-    <!-- <script src="crezioneCarosello.js"></script>
+        <!-- <script src="crezioneCarosello.js"></script>
     <script src="negozioMagicScript.js"></script>
     <script src="cartUtils.js" type="module"></script>
     <script src="cartActions.js" type="module"></script> -->
-    <!-- <script src="scriptCompleto.js"></script> -->
-    <!-- <script src="scriptIserisciItem"></script> -->
-    <!-- <script src="/main.js" type="module"></script> -->
-    <!-- <script src="negozioMagicScript.js" type="module"></script> -->
-    <!-- <script src="scriptNegozioMagicGiuseppe.js"></script> -->
+        <!-- <script src="scriptCompleto.js"></script> -->
+        <!-- <script src="scriptIserisciItem"></script> -->
+        <!-- <script src="/main.js" type="module"></script> -->
+        <!-- <script src="negozioMagicScript.js" type="module"></script> -->
+        <!-- <script src="scriptNegozioMagicGiuseppe.js"></script> -->
 
-    <script src="scorrimentoPagine.js"></script>
-    <script src="negozioPokeScript.js"></script>
-    <script src="controlloUtenteLoggato.js"></script>
-    <script src="scriptIserisciItem.js"></script>
+        <script src="scorrimentoPagine.js"></script>
+        <script src="negozioPokeScript.js"></script>
+        <script src="controlloUtenteLoggato.js"></script>
+        <script src="scriptIserisciItem.js"></script>
 
 </body>
 <!-- JS DI BOOTSTRAP -->
