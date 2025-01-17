@@ -65,30 +65,33 @@
                 <div>
                   <i class="fa-solid fa-user fa-3x omino" style="color:#a3a3a3; display: none;"></i>
                   
-                  <a href="/utente">
+                  <a href="/utente" class="logo-profilo">
                     <div class="profile-image immagine-profilo" id="profile-image">
                       <!-- Immagine di default se non c'è nessuna immagine associata -->
                       <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
                     </div>
                   </a>
-
                 </div>
-                <p style="color: #a3a3a3;"><strong class="nome-utente">ACCOUNT</strong></p>
+                <p class="p-account" style="color: #a3a3a3;"><strong class="nome-utente">ACCOUNT</strong></p>
               </li>
 
-              <li class="nav-item d-flex flex-column justify-content-center align-items-center">
-                <div class="cart-icon">
-                  <i class="bi bi-door-open-fill fa-3x sign-out" style="color: #a3a3a3;"></i>
-                </div>
-                <p style="color: #a3a3a3;"><strong>SIGN-OUT</strong></p>
-              </li>
-
-              <li class="nav-item d-flex flex-column justify-content-center align-items-center">
+              <li class="nav-item d-flex flex-column justify-content-center align-items-center togli-carrello">
                 <div class="cart-icon">
                   <a href="/carrello"><i class="fa-solid fa-cart-shopping fa-3x" style="color: #a3a3a3;"></i></a>
                 </div>
                 <p style="color: #a3a3a3;"><strong>CARRELLO</strong></p>
               </li>
+
+              <li class="nav-item bordo text-center mx-3 classe-login show-loghi">
+                <i class="fas fa-sign-in-alt mt-3 fa-2x"></i>
+                <a class="nav-link active"  href="/login"><strong>Login</strong></a>
+              </li>
+
+              <li class="nav-item bordo text-center mx-3 classe-sign-in show-loghi">
+                <i class="fas fa-user-plus mt-3 fa-2x"></i>
+                <a class="nav-link active" href="/registrati"><strong>Sign-in</strong></a>
+              </li>
+
             </ul>
           </div>
           
@@ -123,39 +126,7 @@
                   </button >
                   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav d-flex mx-auto">
-                        <ul class="navbar-nav"></ul>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-home mt-3 fa-2x"></i>
-                          <a class="nav-link active" aria-current="page" href="/"><strong>Home</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-sign-in-alt mt-3 fa-2x"></i>
-                          <a class="nav-link active"  href="/login"><strong>Login</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-user-plus mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/registrati"><strong>Sign-in</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-user-shield mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/promozione"><strong>Diventa<br>Admin</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-clone mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/creazione-card"><strong>Creazione<br>Carte</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-tools mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/creazione-accessori"><strong>Creazione<br>Accessori</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fa-regular fa-rectangle-list mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/creazione-bustine"><strong>Creazione<br>Bustine</strong></a>
-                        </li>
-                        <li class="nav-item bordo text-center mx-3">
-                          <i class="fas fa-box mt-3 fa-2x"></i>
-                          <a class="nav-link active" href="/creazione-box"><strong>Creazione<br>Box</strong></a>
-                        </li>
+                        <ul class="navbar-nav">  
                         <li class="nav-item bordo text-center mx-3">
                           <i class="fas fa-dragon mt-3 fa-2x"></i>
                           <a class="nav-link active" href="/negozio-pokemon"><strong>Negozio<br>Pokémon</strong></a>
@@ -164,11 +135,11 @@
                           <i class="fas fa-hat-wizard mt-3 fa-2x"></i>
                           <a class="nav-link active" href="/negozio-magic"><strong>Negozio<br>Magic</strong></a>
                         </li>
-                        </ul>
                         <li class="nav-item bordo text-center mx-3">
                           <i class="fas fa-scroll mt-3 fa-2x"></i>
                           <a class="nav-link active" href="/negozio-yugiho"><strong>Negozio<br>Yu-Gi-Oh!</strong></a>
                         </li>
+                        </ul>
         
                     </div>
                   </div>
