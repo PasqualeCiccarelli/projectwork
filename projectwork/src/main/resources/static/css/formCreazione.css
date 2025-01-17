@@ -111,19 +111,21 @@ form button:hover {
 
 .logo{
   height: 5rem;
+  margin-left: 16px;
 }
 
 label{
   color: black;
 }
 
-li,p{
+.navbar li,p{
   color: white;
 }
 
-footer a, footer h6, footer i, footer p {
-  color: white;
+footer li,p{
+  color: black;
 }
+
 
 
 @media (min-width: 992px) {

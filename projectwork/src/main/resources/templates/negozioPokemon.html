@@ -15,6 +15,7 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/stylePagAdmin.css">
+    <link rel="stylesheet" href="css/negozio.css">
     <link rel="stylesheet" href="css/btn.css">
 </head>
 <body style="background: rgb(255,243,59);
@@ -25,7 +26,7 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#">
-            <img class="logo" src="../static/img/LOGO.png" alt="">
+            <img class="logo" src="img/LOGO.png" alt="">
         </a>
 
         <!-- Menu hamburger -->
@@ -71,12 +72,12 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
                     <!-- prima slide -->
                     <div class="swiper-slide slide-parent">
                         <img src="" class="img-fluid slide-absolute" alt="">
-                        <img src="../static/img/sfondi/banner-evo.png" class="img-fluid slide-relative" alt="">
+                        <img src="img/sfondi/banner-evo.png" class="img-fluid slide-relative" alt="">
                     </div>
                     <!-- seconda slide -->
                     <div class="swiper-slide slide-parent ">
-                        <img src="../static/img/sfondi/scintille.png" class="img-fluid slide-absolute2" alt="">
-                        <img src="../static/img/sfondi/folgoranti.jpg" class="img-fluid slide-relative" alt="">
+                        <img src="img/sfondi/scintille.png" class="img-fluid slide-absolute2" alt="">
+                        <img src="img/sfondi/folgoranti.jpg" class="img-fluid slide-relative" alt="">
                     </div>
                     <!-- terza slide -->
                     <div class="swiper-slide slide-parent">
@@ -140,6 +141,96 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
       
         </section>
         <!-- Fine contenitore con gli articoli -->
+
+        <div id="store">
+            <h1>Negozio - Brand</h1>
+        
+            <!-- Container per i filtri -->
+            <div id="filters-container">
+                <!-- Filtro Categoria -->
+                <div class="filter" id="categoria-filter">
+                    <button class="filter-button">
+                        Categoria <span class="arrow">&#9660;</span>
+                    </button>
+                    <div class="radio-list">
+                        <label><input type="radio" class="filter-radio" name="categoria" value="PREVENDITA"> Prevendita</label>
+                        <label><input type="radio" class="filter-radio" name="categoria" value="NOVITA"> Novità</label>
+                        <label><input type="radio" class="filter-radio" name="categoria" value="DEFAULT"> Default</label>
+                        <label><input type="radio" class="filter-radio" name="categoria" value="SPECIALE"> Speciale</label>
+                        <label><input type="radio" class="filter-radio" name="categoria" value="tutti"> Tutti</label>
+                    </div>
+                </div>
+        
+                <!-- Filtro Rarità -->
+                <div class="filter" id="rarita-filter">
+                    <button class="filter-button">
+                        Rarità <span class="arrow">&#9660;</span>
+                    </button>
+                    <div class="radio-list">
+                        <label><input type="radio" class="filter-radio" name="rarita" value="COMUNE"> Comune</label>
+                        <label><input type="radio" class="filter-radio" name="rarita" value="NON_COMUNE"> Non Comune</label>
+                        <label><input type="radio" class="filter-radio" name="rarita" value="RARA"> Rara</label>
+                        <label><input type="radio" class="filter-radio" name="rarita" value="ULTRA_RARA"> Ultra Rara</label>
+                        <label><input type="radio" class="filter-radio" name="rarita" value="LEGGENDARIA"> Leggendaria</label>
+                        <label><input type="radio" class="filter-radio" name="rarita" value="tutti"> Tutti</label>
+                    </div>
+                </div>
+        
+                <!-- Filtro Tipo -->
+                <div class="filter" id="tipo-filter">
+                    <button class="filter-button">
+                        Tipo <span class="arrow">&#9660;</span>
+                    </button>
+                    <div class="radio-list">
+                        <label><input type="radio" class="filter-radio" name="tipo" value="DEFAULT"> Default</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="EDIZIONE_LIMITATA"> Edizione Limitata</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="ACTION_FIGURE"> Action Figure</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="GADGET"> Gadget</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="RACCOGLITORI"> Raccoglitori</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="SLEEVE"> Sleeve</label>
+                        <label><input type="radio" class="filter-radio" name="tipo" value="tutti"> Tutti</label>
+                    </div>
+                </div>
+        
+                <!-- Filtro Tipo Categoria -->
+                <div class="filter" id="tipoCategoria-filter">
+                    <button class="filter-button">
+                        Tipo Categoria <span class="arrow">&#9660;</span>
+                    </button>
+                    <div class="radio-list">
+                        <label><input type="radio" class="filter-radio" name="tipoCategoria" value="CARD"> Card</label>
+                        <label><input type="radio" class="filter-radio" name="tipoCategoria" value="BUSTINA"> Bustina</label>
+                        <label><input type="radio" class="filter-radio" name="tipoCategoria" value="BOX"> Box</label>
+                        <label><input type="radio" class="filter-radio" name="tipoCategoria" value="ACCESSORIO"> Accessorio</label>
+                        <label><input type="radio" class="filter-radio" name="tipoCategoria" value="tutti"> Tutti</label>
+                    </div>
+                </div>
+        
+                <!-- Filtro Prezzo con Slider per Minimo e Massimo -->
+                <div>
+                    <label for="prezzoMinimo">Prezzo Minimo:</label>
+                    <input type="range" id="prezzoMinimo" min="1" max="5000" step="1" value="1">
+                    <span id="prezzoMinimoValue">€1</span>
+                    <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
+                </div>
+        
+                <div>
+                    <label for="prezzoMassimo">Prezzo Massimo:</label>
+                    <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
+                    <span id="prezzoMassimoValue">€5000</span>
+                    <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
+                </div>
+            </div>
+        
+            <!-- Lista dei prodotti -->
+            <div id="product-list"></div>
+            <div id="no-products-message" style="display: none; text-align: center; margin-top: 20px; font-size: 18px; color: #6c757d;">
+                Nessun articolo trovato
+            </div>
+        
+            <!-- Paginazione -->
+            <div id="pagination" class="pagination"></div>
+        </div>
 
         <!-- Footer -->
         <footer class="text-center text-lg-start text-muted" style="background-color: #3f96c1;">
@@ -291,7 +382,8 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
     <script src="scorrimentoPagine.js"></script>
     <script src="negozioPokeScript.js"></script>
     <script src="controlloUtenteLoggato.js"></script>
-    <script src="scriptIserisciItem.js"></script>
+    <script src="scriptIserisciItem2.js"></script>
+    <script src="negozioScriptP.js"></script>
 
 </body>
 <!-- JS DI BOOTSTRAP -->
