@@ -113,24 +113,37 @@
         </div>
 
         <!-- Buttons Section -->
-        <div class="d-flex justify-content-center gap-4 my-4">
-            <div class="card card-button shadow" id="btn-miei-ordini">
-                <span class="icon text-primary">
-                    <i class="bi bi-box"></i>
-                </span>
-                <div>
-                    <h5>I miei Ordini</h5>
-                    <p class="text-muted">Tutti i prodotti acquistati</p>
+        <div class="d-flex justify-content-center align-items-center flex-column gap-2 my-5">
+            <div class="row gap-2">
+                <div class="card card-button shadow col-4" id="btn-miei-ordini" style="max-width: 13rem; width: 13rem;">
+                    <span class="icon text-primary">
+                        <i class="bi bi-box"></i>
+                    </span>
+                    <div>
+                        <h5>I miei Ordini</h5>
+                        <p class="text-muted">Tutti i prodotti acquistati</p>
+                    </div>
+                </div>
+                <div class="card card-button shadow col-4" id="btn-ordini-in-arrivo" style="max-width: 13rem; width: 13rem;">
+                    <span class="icon text-warning">
+                        <i class="bi bi-truck"></i>
+                    </span>
+                    <div>
+                        <h5>Ordini in Arrivo</h5>
+                        <p class="text-muted">Ordini che stanno per arrivare</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="card card-button shadow" id="btn-ordini-in-arrivo">
-                <span class="icon text-warning">
-                    <i class="bi bi-truck"></i>
-                </span>
-                <div>
-                    <h5>Ordini in Arrivo</h5>
-                    <p class="text-muted">Ordini che stanno per arrivare</p>
+            
+            <div class="row">
+                <div class="card card-button shadow col-12 click-diventa-admin" id="btn-ordini-in-arrivo" style="max-width: 26rem; width: 26rem;">
+                    <span class="icon text-warning">
+                        <i class="bi bi-truck"></i>
+                    </span>
+                    <div>
+                        <h5>Diventa Admin</h5>
+                        <p class="text-muted">BISOGNA INSERIRE DEL TESTO</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,6 +158,30 @@
         <div id="ordini-in-arrivo-section" class="order-section d-none">
             <h2 class="section-title">Ordini in Arrivo</h2>
             <div id="ordini-in-arrivo-container"></div>
+        </div>
+    </div>
+
+    <!-- Diventa Admin -->
+    <div class="container col-md-8 blocco-accettazione flex-column" style="display: none;">
+        <div class="container col-md-8" clastyle="text-align: center ;">
+            <h2><strong>Diventa un Amministratore SBoost!</strong></h2>
+            <br>
+            <p style="color: midnightblue;">Assumere il ruolo di amministratore è una grande responsabilità, che richiede il rispetto delle nostre politiche aziendali e il pieno impegno nel garantire la sicurezza e il benessere della comunità. Accettando le nostre politiche, avrai accesso a strumenti avanzati per gestire utenti, contenuti e funzionalità della piattaforma. <p>
+                
+            <p style="color: midnightblue;"> Per candidarti, spunta la casella qui sotto per accettare le politiche aziendali e clicca su "Diventa Partner". Una volta completato, il nostro team esaminerà la tua richiesta e ti contatterà per ulteriori dettagli.</p>
+        </div>
+
+        <div class="container my-5">
+            <div class="row">
+                <form id="promoteForm">
+                    <label for="acceptPolicies">
+                        <input type="checkbox" id="acceptPolicies" name="acceptPolicies" required>
+                        Accetto le <a href="/politiche-aziendali" target="_blank" style="color: #304492;">politiche aziendali</a>.
+                    </label><br>
+                
+                    <button type="submit">Diventa Partner</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -294,6 +331,10 @@
     <script src="controlloUtenteLoggato.js"></script>
     <script src="immagineScript.js"></script>
     <script src="ordiniScripr.js"></script>
+    <script src="scriptDiventaAdmin.js"></script>
+
+    <script src="controlloUtenteLoggato.js"></script>
+    <script src="PromozioneScript.js"></script>
 </body>
 
 </html>
