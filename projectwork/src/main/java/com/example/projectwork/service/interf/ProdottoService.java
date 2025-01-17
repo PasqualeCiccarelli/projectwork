@@ -7,4 +7,5 @@ public interface ProdottoService {
 	
 	public ProdottoDto getProdottoById(Long id);
 	public ProdottoDto modificaCategoriaProdotto(Long id, Categoria categoria);
+	public void eliminaProdottoUtente(Long id);
 }
