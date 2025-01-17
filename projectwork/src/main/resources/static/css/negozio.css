@@ -10,13 +10,6 @@ h1 {
     margin-top: 20px;
 }
 
-#store {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 #filters-container {
     width: 250px;
     position: -webkit-sticky; /* Per supporto su Safari */
@@ -30,21 +23,13 @@ h1 {
     overflow-y: auto;
 }
 
-#product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    margin-left: 270px; /* Per lasciare spazio ai filtri sulla sinistra */
-}
 
-.product {
-    width: 30%; /* Riduce le dimensioni dei prodotti */
+
+.product { /* Riduce le dimensioni dei prodotti */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
-    box-sizing: border-box;
     transition: transform 0.3s ease;
 }
 
@@ -125,4 +110,9 @@ input[type="range"] {
 /* Stili per i filtri */
 button:hover {
     background-color: #0056b3;
+}
+.filtri{
+    position: sticky;
+    top: 1.5rem;
+    
 }
