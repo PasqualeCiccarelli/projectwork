@@ -1,7 +1,9 @@
 package com.example.projectwork.service;
 
 
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import java.util.Optional;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -13,7 +15,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.projectwork.dto.ProdottoDto;
 import com.example.projectwork.entity.ProdottoEntity;
+import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
+import com.example.projectwork.entity.entityenum.Rarita;
+import com.example.projectwork.entity.entityenum.Stato;
+import com.example.projectwork.entity.entityenum.TipoCategoria;
 import com.example.projectwork.repository.ProdottoRepository;
 import com.example.projectwork.service.interf.ProdottoService;
 
@@ -68,6 +74,26 @@ public class ProdottoServiceImpl implements ProdottoService {
         }
 
         prodottoRepository.save(prodotto);
+    }
+    
+    public Page<ProdottoDto> getProdottiFiltrati(
+            TipoCategoria tipoCategoria,
+            Rarita rarita,
+            Categoria categoria,
+            Stato stato,
+            Brand brand,
+            Double prezzoMinimo,
+            Double prezzoMassimo,
+            int page,
+            int size) {
+        
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<ProdottoEntity> prodotti = prodottoRepository.findAllWithFilters(
+                tipoCategoria, rarita, categoria, stato, brand, prezzoMinimo, prezzoMassimo, pageable
+        );
+
+        return prodotti.map(ProdottoDto::toDto);
     }
 	
 	

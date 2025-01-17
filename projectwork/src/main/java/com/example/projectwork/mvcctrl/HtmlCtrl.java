@@ -80,4 +80,9 @@ public class HtmlCtrl {
 		return "utente";
 	}
 	
+	@GetMapping("/negozio")
+	public String paginaNegozio(){
+		return "negozio";
+	}
+	
 }
