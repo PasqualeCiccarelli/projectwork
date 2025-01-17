@@ -19,7 +19,7 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 	
 	 @Query("SELECT p FROM ProdottoEntity p " +
              "WHERE (:tipoCategoria IS NULL OR p.tipoCategoria = :tipoCategoria) " +
-             "AND (:rarita IS NULL OR (TYPE(p) = CardEntity AND p.rarita = :rarita)) " +
+             "AND (:rarita IS NULL OR (p.rarita = :rarita)) " +
              "AND (:categoria IS NULL OR p.categoria = :categoria) " +
              "AND (:stato IS NULL OR p.tipo = :stato) " +
              "AND (:brand IS NULL OR p.brand = :brand) " +
