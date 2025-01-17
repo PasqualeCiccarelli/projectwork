@@ -77,3 +77,36 @@
         margin-bottom: 10px;
     }
   }
+
+  @keyframes cardFlip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+  .card-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: cardFlip 3s ease-in-out infinite;
+    width: 100px;
+    height: 150px;
+    right: 0;
+    margin-left: auto;
+  }
+
+  .card-yugi {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100px;
+    height: 150px;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
