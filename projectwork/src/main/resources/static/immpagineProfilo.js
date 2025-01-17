@@ -63,10 +63,17 @@ function inserisciLogoeNomeUtente(){
     }
     //utente non loggato
     else{
-        logoProfilo.classList.toggle('show-loghi');
-        togliCarrello.classList.toggle("show-loghi");
-        classeSignIn.classList.toggle("show-loghi");
-        classeLogin.classList.toggle("show-loghi");
+        if(logoProfilo != null)
+            logoProfilo.classList.toggle('show-loghi');
+        
+        if(togliCarrello != null)
+            togliCarrello.classList.toggle("show-loghi");
+        
+        if(classeSignIn != null)
+            classeSignIn.classList.toggle("show-loghi");
+        
+        if(classeLogin != null)
+            classeLogin.classList.toggle("show-loghi");
     }
 }
 
