@@ -42,7 +42,7 @@ function creazioneEinserimentoProdotti(data){
             `
             <div class="product-card col-3 text-center">
                 <div>
-                    <a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine} style="max-width: 100%;"></a>
+                    <a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine} style="max-width: 100%;"></a>
                 </div>
                 <div class="inser-select"></div>
                 <p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
