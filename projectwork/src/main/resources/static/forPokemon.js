@@ -18,7 +18,7 @@ const configurazioneSwiper= {
     },
     breakpoints: {
         // Quando la larghezza della finestra è >= 768px
-        768: {
+        320: {
         slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
         spaceBetween: 20,
     },
