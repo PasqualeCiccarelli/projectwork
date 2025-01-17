@@ -127,116 +127,96 @@
 
 
 <!-- Inizio contenitore con gli articoli -->
-<section id="card" class="">
 
-    <div class="swiper swiperScorrimentoProdotti">
-        <div class="swiper-wrapper sw-prodotti">
 
-        <!-- qui vanno i prodotti -->
-        
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-        <i class="bi bi-caret-left"></i>
-        <div class="swiper-pagination num-p"></div>
-        <i class="bi bi-caret-right"></i>
+<section id="store" class="my-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <h1>Negozio - Brand </h1>
+
+            </div>
+
+            <div class="col-lg-3" >
+                <div class="card filtri">
+                    <div class="card-body">
+                        <div class="filter" id="categoria-filter">
+                           <label for="categoria">Categoria</label> 
+                           <select name="categoria" class="form-select">
+                                <option selected>Scegli Categoria</option>
+                                <option value="PREVENDITA">Prevendita</option>
+                                <option value="NOVITA">Novità</option>
+                                <option value="DEFAULT">Default</option>
+                                <option value="SPECIALE">Speciale</option>
+                              </select>
+                        </div>
+                        
+                        <div class="filter" id="rarita-filter">
+                            <label for="rarita">Rarita</label> 
+                           <select name="rarita" class="form-select">
+                                <option selected>Scegli Raritá</option>
+                                <option value="COMUNE">Comune</option>
+                                <option value="NON_COMUNE">Non Comune</option>
+                                <option value="RARA">Rara</option>
+                                <option value="ULTRA_RARA">Ultra Rara</option>
+                                <option value="LEGGENDARIA">Leggendaria</option>
+                              </select>
+                        </div>
+
+                        <div class="filter" id="tipo-filter">
+                            <label for="tipo">Tipo</label> 
+                           <select name="tipo" class="form-select">
+                                <option selected>Scegli Tipo</option>
+                                <option value="DEFAULT">Noramle</option>
+                                <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
+                                <option value="ACTION_FIGURE">Action Figure</option>
+                                <option value="GADGET">Gadget</option>
+                                <option value="RACCOGLITORI">Raccoglitori</option>
+                                <option value="SLEEVE">Sleeve</option>
+                              </select>
+                        </div>
+                        <!-- Filtro Tipo Categoria -->
+                        <div class="filter" id="tipoCategoria-filter">
+                            <label for="tipoCategoria">Categoria</label> 
+                           <select name="tipoCategoria" class="form-select">
+                                <option selected>Scegli Categoria</option>
+                                <option value="CARD">Card</option>
+                                <option value="BUSTINA">Bustine</option>
+                                <option value="BOX">Box</option>
+                                <option value="ACCESSORIO">Accessori</option>
+                              </select>
+                        </div>
+                        
+                        <div>
+                            <label for="prezzoMinimo">Prezzo Minimo:</label>
+                            <input type="range" id="prezzoMinimo" min="1" max="500000" step="1" value="1">
+                            <span id="prezzoMinimoValue">€0.01</span>
+                            <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
+                        </div>
+                        <div>
+                            <label for="prezzoMassimo">Prezzo Massimo:</label>
+                            <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
+                            <span id="prezzoMassimoValue">€5000</span>
+                            <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div id="product-list" class="row row-gap-4"></div>
+                <div id="no-products-message" style="display: none; text-align: center; margin-top: 20px; font-size: 18px; color: #6c757d;">
+                    Nessun articolo trovato
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div id="pagination" class="pagination"></div>
+            </div>
         </div>
     </div>
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 </section>
-<!-- Fine contenitore con gli articoli -->
-
-<div id="store">
-    <h1>Negozio - Brand</h1>
-
-    <!-- Container per i filtri -->
-    <div id="filters-container">
-        <!-- Filtro Categoria -->
-        <div class="filter" id="categoria-filter">
-            <button class="filter-button">
-                Categoria <span class="arrow">&#9660;</span>
-            </button>
-            <div class="radio-list">
-                <label><input type="radio" class="filter-radio" name="categoria" value="PREVENDITA"> Prevendita</label>
-                <label><input type="radio" class="filter-radio" name="categoria" value="NOVITA"> Novità</label>
-                <label><input type="radio" class="filter-radio" name="categoria" value="DEFAULT"> Default</label>
-                <label><input type="radio" class="filter-radio" name="categoria" value="SPECIALE"> Speciale</label>
-                <label><input type="radio" class="filter-radio" name="categoria" value="tutti"> Tutti</label>
-            </div>
-        </div>
-
-        <!-- Filtro Rarità -->
-        <div class="filter" id="rarita-filter">
-            <button class="filter-button">
-                Rarità <span class="arrow">&#9660;</span>
-            </button>
-            <div class="radio-list">
-                <label><input type="radio" class="filter-radio" name="rarita" value="COMUNE"> Comune</label>
-                <label><input type="radio" class="filter-radio" name="rarita" value="NON_COMUNE"> Non Comune</label>
-                <label><input type="radio" class="filter-radio" name="rarita" value="RARA"> Rara</label>
-                <label><input type="radio" class="filter-radio" name="rarita" value="ULTRA_RARA"> Ultra Rara</label>
-                <label><input type="radio" class="filter-radio" name="rarita" value="LEGGENDARIA"> Leggendaria</label>
-                <label><input type="radio" class="filter-radio" name="rarita" value="tutti"> Tutti</label>
-            </div>
-        </div>
-
-        <!-- Filtro Tipo -->
-        <div class="filter" id="tipo-filter">
-            <button class="filter-button">
-                Tipo <span class="arrow">&#9660;</span>
-            </button>
-            <div class="radio-list">
-                <label><input type="radio" class="filter-radio" name="tipo" value="DEFAULT"> Default</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="EDIZIONE_LIMITATA"> Edizione Limitata</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="ACTION_FIGURE"> Action Figure</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="GADGET"> Gadget</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="RACCOGLITORI"> Raccoglitori</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="SLEEVE"> Sleeve</label>
-                <label><input type="radio" class="filter-radio" name="tipo" value="tutti"> Tutti</label>
-            </div>
-        </div>
-
-        <!-- Filtro Tipo Categoria -->
-        <div class="filter" id="tipoCategoria-filter">
-            <button class="filter-button">
-                Tipo Categoria <span class="arrow">&#9660;</span>
-            </button>
-            <div class="radio-list">
-                <label><input type="radio" class="filter-radio" name="tipoCategoria" value="CARD"> Card</label>
-                <label><input type="radio" class="filter-radio" name="tipoCategoria" value="BUSTINA"> Bustina</label>
-                <label><input type="radio" class="filter-radio" name="tipoCategoria" value="BOX"> Box</label>
-                <label><input type="radio" class="filter-radio" name="tipoCategoria" value="ACCESSORIO"> Accessorio</label>
-                <label><input type="radio" class="filter-radio" name="tipoCategoria" value="tutti"> Tutti</label>
-            </div>
-        </div>
-
-        <!-- Filtro Prezzo con Slider per Minimo e Massimo -->
-        <div>
-            <label for="prezzoMinimo">Prezzo Minimo:</label>
-            <input type="range" id="prezzoMinimo" min="1" max="5000" step="1" value="1">
-            <span id="prezzoMinimoValue">€1</span>
-            <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
-        </div>
-
-        <div>
-            <label for="prezzoMassimo">Prezzo Massimo:</label>
-            <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
-            <span id="prezzoMassimoValue">€5000</span>
-            <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
-        </div>
-    </div>
-
-    <!-- Lista dei prodotti -->
-    <div id="product-list"></div>
-    <div id="no-products-message" style="display: none; text-align: center; margin-top: 20px; font-size: 18px; color: #6c757d;">
-        Nessun articolo trovato
-    </div>
-
-    <!-- Paginazione -->
-    <div id="pagination" class="pagination"></div>
-</div>
 
  
 <!-- Footer -->
