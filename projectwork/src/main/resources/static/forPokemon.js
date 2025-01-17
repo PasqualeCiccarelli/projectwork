@@ -62,6 +62,7 @@ const swiperSpeciale= document.querySelector('.swiper-speciale');
 let brandSelezionato= '';
 
 
+//NOVITA
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Novità
 async function getCardNovita(){
 
@@ -100,9 +101,103 @@ async function getCardNovita(){
 	initializeSwiper2();
 }
 
-//getCardNovita();
 
 
+
+//chiamata fetch per recuperare le box con categoria novità da inserire nello swiper Novità
+async function getBoxNovita(){
+
+	swiperNovita.innerHTML= '';
+
+	let response= await fetch('/api/box/brand/pokemon-novita');
+
+	sollevamentoEccezione(response);
+
+	let data= await response.json();
+	
+	console.log(data);
+
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/pokemon/${data[i].immagine}></a>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
+				</div>
+			</div>
+				
+			`;
+		
+		swiperNovita.innerHTML += card;
+	}
+
+	//reinizializzo gli swiper per farli ripartire dalla prima slide
+	initializeSwiper2();
+}
+
+
+
+
+//chiamata fetch per recuperare le bustine con categoria novità da inserire nello swiper Novità
+async function getBustineNovita(){
+
+	swiperNovita.innerHTML= '';
+
+	let response= await fetch('/api/bustina/brand/pokemon-novita');
+
+	sollevamentoEccezione(response);
+
+	let data= await response.json();
+	
+	console.log(data);
+
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/pokemon/${data[i].immagine}></a>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
+				</div>
+			</div>
+				
+			`;
+		
+		swiperNovita.innerHTML += card;
+	}
+
+	//reinizializzo gli swiper per farli ripartire dalla prima slide
+	initializeSwiper2();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************************************************************************************************/
+
+//SPECIALE
 //chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
 async function getCardSpeciale(){
 	
@@ -141,7 +236,86 @@ async function getCardSpeciale(){
 	initializeSwiper();
 }
 
-//getCardSpeciale();
+
+
+
+//chiamata fetch per recuperare le box con categoria novità da inserire nello swiper Speciale
+async function getBoxSpeciale(){
+	
+	swiperSpeciale.innerHTML= '';
+
+	let response= await fetch('/api/box/brand/pokemon-speciale');
+
+	sollevamentoEccezione(response);
+
+	let data= await response.json();
+	
+	console.log(data);
+
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
+				</div>
+			</div>
+				
+			`;
+		
+		swiperSpeciale.innerHTML += card;
+	}
+
+	//reinizializzo gli swiper per farli ripartire dalla prima slide
+	initializeSwiper();
+}
+
+
+
+//chiamata fetch per recuperare le bustine con categoria novità da inserire nello swiper Speciale
+async function getBustineSpeciale(){
+	
+	swiperSpeciale.innerHTML= '';
+
+	let response= await fetch('/api/bustina/brand/pokemon-speciale');
+
+	sollevamentoEccezione(response);
+
+	let data= await response.json();
+	
+	console.log(data);
+
+	
+	for(let i=0; i<data.length; i++){
+			
+		let card= 
+			`
+			<div class="swiper-slide">
+				<div class="product-card">
+					<!-- <img src=img/${data[i].immagine}> -->
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
+					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
+					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
+					<div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
+				</div>
+			</div>
+				
+			`;
+		
+		swiperSpeciale.innerHTML += card;
+	}
+
+	//reinizializzo gli swiper per farli ripartire dalla prima slide
+	initializeSwiper();
+}
 
 
 
@@ -152,7 +326,9 @@ async function getCardSpeciale(){
 
 
 
+/***************************************************************************************************************************/
 
+//ACCESSORI
 //chiamata fetch per recuperare gli accessori (action-figure e gadget) da inserire nello swiper Gadget
 async function getAccessoriActionFigure(){
 
@@ -190,7 +366,7 @@ async function getAccessoriActionFigure(){
 	initializeSwiper3();
 }
 
-//getAccessoriActionFigure();
+
 
 
 
@@ -230,7 +406,7 @@ async function getAccessoriGadget(){
 	initializeSwiper3();
 }
 
-//getAccessoriGadget();
+
 
 
 
@@ -256,8 +432,14 @@ switchBrand.addEventListener('click', () => {
 function aperturaHome(){
 	
 	getCardNovita();
-	//getCardPrevendita();
+	getBoxNovita();
+	getBustineNovita();
+	
 	getCardSpeciale();
+	getBoxSpeciale();
+	getBustineSpeciale();
+
+
 	getAccessoriActionFigure();
 	getAccessoriGadget();
 	

@@ -226,8 +226,8 @@ p{
   }
 
   .accordion-button:not(.collapsed) {
-    color: white;
-    background-color: #ffffff; /* Sfondo più scuro per i bottoni attivi */
+    color: #ffffff;
+    background-color: #7f1947; /* Sfondo più scuro per i bottoni attivi */
   }
 
   .accordion-body {
