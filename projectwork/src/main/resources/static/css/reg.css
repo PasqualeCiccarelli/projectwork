@@ -15,6 +15,11 @@ h2 {
     margin-bottom: 20px;
 }
 
+.sfondo-reg{
+    background-image: url(../img/sfondi/sfondo-pixel-pokemon.jpg);
+}
+
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
