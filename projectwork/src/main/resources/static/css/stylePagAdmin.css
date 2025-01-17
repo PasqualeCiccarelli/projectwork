@@ -51,3 +51,29 @@
   .aggiungi-filtro{
     filter: blur(4px);
   }
+
+  .logo{
+    height: 5rem;
+    margin-left: 16px;
+  }
+
+  footer li, a,p,i {
+    color: black;
+  }
+
+  @media (min-width: 992px) {
+    .search-bar {
+        width: 50%;
+    }
+    ul{
+        margin-right: 5rem;
+    }
+  }
+  
+  
+  @media (max-width: 991px) {
+    .search-bar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+  }
