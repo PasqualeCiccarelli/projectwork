@@ -2,6 +2,7 @@ package com.example.projectwork.service;
 
 
 
+import java.util.Optional;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,6 +32,20 @@ public class ProdottoServiceImpl implements ProdottoService {
 
         return new ProdottoDto().toDto(prodotto);
     }
+
+	
+	@Override
+	public ProdottoDto modificaCategoriaProdotto(Long id, Categoria categoria) {
+		
+		ProdottoEntity prodotto=  prodottoRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Prodotto con ID " + id + " non trovato"));
+		
+		prodotto.setCategoria(categoria);
+		prodottoRepository.save(prodotto);
+		
+		return new ProdottoDto().toDto(prodotto);
+	}
+	
 	
 	@Scheduled(fixedRate = 86400000)
     public void aggiornaCategoriaProdotti() {

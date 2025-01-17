@@ -3,11 +3,13 @@ package com.example.projectwork.restCtrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.service.interf.ProdottoService;
 
 @RestController
@@ -22,5 +24,12 @@ public class ProdottoCtrl {
         ProdottoDto prodottoDto = prodottoService.getProdottoById(id);
         return ResponseEntity.ok(prodottoDto);
     }
+	
+	
+	@PutMapping("/modifica-categoria")
+	public ResponseEntity<ProdottoDto> modCategoriaProd(@RequestParam("id") Long id, @RequestParam("categoria") Categoria categoria){
+		ProdottoDto prodotto= prodottoService.modificaCategoriaProdotto(id, categoria);
+		return ResponseEntity.ok(prodotto);
+	}
 
 }

@@ -10,6 +10,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.projectwork.entity.entityenum.Ruolo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -53,6 +55,7 @@ public class UtenteEntity implements UserDetails{
 	@Column(nullable = false)
     private boolean accettaPolitiche;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "utente", cascade = CascadeType.ALL)
 	private List<OrdineEntity> ordini;
 
@@ -115,6 +118,15 @@ public class UtenteEntity implements UserDetails{
 
 	public void setRuolo(Ruolo ruolo) {
 		this.ruolo = ruolo;
+	}
+
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 	public LocalDate getData_nascita() {
