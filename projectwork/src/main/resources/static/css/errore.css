@@ -1,0 +1,15 @@
+.sfondo{
+    background-image: url("../img/sfondi/pop.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.contorno{
+    border: 1px solid gray;
+    border-radius: 20px;
+    margin-top: 5rem;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.6);
+}
+
