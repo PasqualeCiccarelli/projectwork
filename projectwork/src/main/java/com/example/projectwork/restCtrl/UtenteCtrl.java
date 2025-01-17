@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.projectwork.dto.UtenteImmagineRequest;
@@ -34,6 +35,20 @@ public class UtenteCtrl {
     @GetMapping("/{email}")
     public UtenteEntity getUtente(@PathVariable String email) {
         return utenteService.getUtenteByEmail(email);
+    }
+    
+    
+    @GetMapping("/recupera-immagine-utente")
+    public ResponseEntity<String> prendiImmagineUtente(@RequestParam("id") Long id){
+    	
+    	try {
+    		String immagine= utenteService.recuperaImmagineUtente(id);
+    		
+    		return ResponseEntity.ok(immagine);
+    	}
+    	catch(Exception e) {
+    		return ResponseEntity.internalServerError().body("errore recupero immagine");
+    	}
     }
 
     

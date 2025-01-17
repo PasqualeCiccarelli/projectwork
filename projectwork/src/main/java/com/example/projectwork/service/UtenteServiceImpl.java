@@ -28,4 +28,15 @@ public class UtenteServiceImpl implements UtenteService{
         return utenteRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("Utente non trovato"));
     }
+
+	@Override
+	public String recuperaImmagineUtente(Long id) {
+		
+		UtenteEntity utente= utenteRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Utente non trovato"));
+		
+		System.out.println("\n\n\n"+utente.getImmagine()+"\n\n\n\n");
+		
+		return utente.getImmagine();
+	}
 }
