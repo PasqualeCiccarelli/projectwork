@@ -103,8 +103,9 @@ async function loadData() {
         console.error('Errore generale durante il caricamento dei dati:', error);
     }
 
+    visualizzaBottoneElimina();
     clickBottoni();
-    
+    clickBottoneElimina();
 }
 
 document.addEventListener('DOMContentLoaded', loadData);

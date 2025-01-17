@@ -2,6 +2,7 @@ package com.example.projectwork.restCtrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,13 +47,25 @@ public class ProdottoCtrl {
 	        @RequestParam(required = false) Categoria categoria,
 	        @RequestParam(required = false) Stato stato,
 	        @RequestParam(required = false) Brand brand,
-	        @RequestParam(required = false) Double prezzoMinimo,  // Filtro per prezzo minimo
-	        @RequestParam(required = false) Double prezzoMassimo,  // Filtro per prezzo massimo
+	        @RequestParam(required = false) Double prezzoMinimo,  
+	        @RequestParam(required = false) Double prezzoMassimo,  
 	        @RequestParam(defaultValue = "0") int page,
 	        @RequestParam(defaultValue = "12") int size) {
 	    Page<ProdottoDto> prodotti = prodottoService.getProdottiFiltrati(
 	            tipoCategoria, rarita, categoria, stato, brand, prezzoMinimo, prezzoMassimo, page, size);
 	    return ResponseEntity.ok(prodotti);
+	}
+	
+	@DeleteMapping("/elimina-prodotto")
+	public ResponseEntity<Integer> deleteProdottoUtente(@RequestParam("id") Long id) {
+		try {
+			prodottoService.eliminaProdottoUtente(id);
+			
+			return ResponseEntity.ok(1);
+		}
+		catch(Exception e) {
+			return ResponseEntity.internalServerError().body(0);
+		}
 	}
 
 }

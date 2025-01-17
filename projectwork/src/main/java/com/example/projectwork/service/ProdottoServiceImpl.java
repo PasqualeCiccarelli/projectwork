@@ -95,6 +95,16 @@ public class ProdottoServiceImpl implements ProdottoService {
 
         return prodotti.map(ProdottoDto::toDto);
     }
+
+
+	@Override
+	public void eliminaProdottoUtente(Long id) {
+		
+		ProdottoEntity prodotto= prodottoRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Prodotto con ID " + id + " non trovato"));
+		
+		prodottoRepository.delete(prodotto);
+	}
 	
 	
 	

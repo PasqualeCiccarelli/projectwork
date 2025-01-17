@@ -62,15 +62,6 @@ h1 {
 }
 
 /* Stili per il form */
-form {
-
-  background-color: rgba(0, 0, 0, 0.6); /* Sfondo semitrasparente per il form */
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 400px;
-  margin: 50px auto;
-  color: white;
-}
 
 form label {
   font-size: 1em;
@@ -116,4 +107,40 @@ form button:hover {
   text-align: center;
   color: white;
   margin-top: 20px;
+}
+
+.logo{
+  height: 5rem;
+  margin-left: 16px;
+}
+
+label{
+  color: black;
+}
+
+.navbar li,p{
+  color: white;
+}
+
+footer li,p{
+  color: black;
+}
+
+
+
+@media (min-width: 992px) {
+  .search-bar {
+      width: 50%;
+  }
+  ul{
+      margin-right: 5rem;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .search-bar {
+      width: 100%;
+      margin-bottom: 10px;
+  }
 }

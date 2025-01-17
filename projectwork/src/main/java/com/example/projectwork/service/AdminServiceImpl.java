@@ -60,8 +60,7 @@ public class AdminServiceImpl implements AdminService{
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Admin non trovato!"));
 		
 		return admin.getAccessori().stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
-	}
-
+	}	
 }
 
 

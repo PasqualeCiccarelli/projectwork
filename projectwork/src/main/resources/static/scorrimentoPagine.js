@@ -48,7 +48,8 @@ function creazioneEinserimentoProdotti(data){
                 <p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
                 <h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
                 <p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
-                <div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-5 btn-carrello">Ordina</button></div>
+                <div><button type="button" id="${data[i].id}" class="btn btn-primary order-button mb-1 btn-carrello">Ordina</button></div>
+                <div class="d-flex justify-content-center"><button type="button" id="${data[i].id}" class="btn btn-danger order-button mb-5 elimina-prodotto" style="display: none;">Elimina</button></div>
             </div>
             `;
         

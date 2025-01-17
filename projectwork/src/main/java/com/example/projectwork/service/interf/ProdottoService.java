@@ -23,4 +23,6 @@ public interface ProdottoService {
             Double prezzoMassimo,
             int page,
             int size);
+            
+	public void eliminaProdottoUtente(Long id);
 }

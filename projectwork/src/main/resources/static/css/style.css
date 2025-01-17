@@ -3,7 +3,7 @@
 .background-base{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/sfondo-pokemon.png");
+    background-image: url("img/sfondi/sfondo-pokemon.png");
     background-attachment: fixed;
     background-size: cover;
 }
@@ -11,7 +11,7 @@
 #main-header{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/sfondo-blu.jpg");
+    background-image: url("img/sfondi/sfondo-blu.jpg");
     background-attachment: fixed;
     background-size: cover;
     position: relative;
@@ -21,14 +21,14 @@
 .background-pokemon{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/sfondo-pokemon.png"); 
+    background-image: url("img/sfondi/sfondo-pokemon.png"); 
     background-attachment: fixed;
     background-size: cover;
 } 
 .background-yugi{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/sfondo-yugi-mobile.png");
+    background-image: url("img/sfondi/sfondo-yugi-mobile.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-size: cover;
@@ -36,7 +36,7 @@
 .background-magic{
     background-position: center center;
     background-color: #ffff99;
-    background-image: url("../img/sfondi/");
+    background-image: url("img/sfondi/");
     background-size: contain;
     background-repeat: repeat;
     background-size: cover;
@@ -199,10 +199,10 @@ display: flex;
         height: 7rem;
     }
 
-    .logo{
-        height: 10rem;
+    .logo {
+        height: 6rem;
+        margin-left: 16px;
     }
-
     .animazioni{
         width: 40%;
     }
