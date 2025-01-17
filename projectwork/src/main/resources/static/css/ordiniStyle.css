@@ -63,3 +63,7 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.mostra{
+    display: flex !important;
+}

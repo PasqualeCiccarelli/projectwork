@@ -6,5 +6,5 @@ public interface UtenteService {
 	
 	public String aggiornaImmagineProfilo(String email, String nuovaImmagine);
 	public UtenteEntity getUtenteByEmail(String email);
-
+	public String recuperaImmagineUtente(Long id);
 }
