@@ -2,7 +2,7 @@ function getUserDataFromSessionStorage() {
     const userData = sessionStorage.getItem('user');
     if (userData) {
       try {
-        if (typeof userData === 'string') {
+        if (typeof userData === 'string') {          
           return JSON.parse(userData);
         }
         return userData;
