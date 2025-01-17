@@ -10,14 +10,51 @@
 </head>
 
 <body>
-  <div class="alto">
-    <div class="rosso">
-      <div class="containerAlto">
-        <h1>NOME SITO</h1>
-        <h4>Chi siamo?</h4>
+
+  <header id="main-header">
+    <!-- inizio navbar -->
+    <nav class="navbar navbar-expand-lg navina" style="background-color:#304492;">
+      <div class="container-fluid">
+          <!-- Logo -->
+          <a class="navbar-brand" href="#">
+              <img class="logo" src="img/LOGO.png" alt="">
+          </a>
+  
+          <!-- Menu hamburger -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Barra di ricerca -->
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
+                  <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+              </form>
+  
+              <!-- Menu -->
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
+                  <li class="nav-item text-center mx-1">
+                      <i class="fas fa-home fa-2x"></i>
+                      <a class="nav-link active" aria-current="page" href="#"><p>Home</p></a>
+                 </li>
+                  <li class="nav-item text-center mx-1">
+                      <i class="fas fa-scroll fa-2x"></i>
+                      <a class="nav-link active" href="#"><p>Negozio Yu-Gi-Oh</p></a>
+                  </li>
+                  <li class="nav-item text-center mx-1">
+                      <i class="fas fa-hat-wizard fa-2x"></i>
+                      <a class="nav-link active" href="#"><p>Negozio Magic</p></a>
+                  </li>
+                  <li class="nav-item text-center mx-1">
+                      <i class="fa-solid fa-user fa-2x"></i>
+                      <a class="nav-link active" href="#"><p>Profilo</p></a>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-  </div>
+    
+    <!-- fine navbar -->
+</header>
 
   <div class="imgWrapper">
     <!-- Immagine in basso -->
@@ -28,12 +65,62 @@
     <!-- Swiper sopra l'immagine a destra -->
     <div class="swiper-container-wrapper">
       <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-        <swiper-slide>Slide 4</swiper-slide>
-        <swiper-slide>Slide 5</swiper-slide>
-      </swiper-container>
+        <swiper-slide>
+            <div class="card" style="width: 18rem;">
+                <img src="img/example1.jpg" class="card-img-top" alt="Immagine esempio">
+                <div class="card-body">
+                    <h5 class="card-title">Titolo 1</h5>
+                    <p class="card-text">Questa è una piccola descrizione per la carta 1.</p>
+                    <audio controls>
+                        <source src="audio/example1.mp3" type="audio/mpeg">
+                        Il tuo browser non supporta il file audio.
+                    </audio>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide>
+            <div class="card" style="width: 18rem;">
+                <video class="card-img-top" controls>
+                    <source src="video/example2.mp4" type="video/mp4">
+                    Il tuo browser non supporta il video.
+                </video>
+                <div class="card-body">
+                    <h5 class="card-title">Titolo 2</h5>
+                    <p class="card-text">Questa è una piccola descrizione per la carta 2.</p>
+                    <audio controls>
+                        <source src="audio/example2.mp3" type="audio/mpeg">
+                        Il tuo browser non supporta il file audio.
+                    </audio>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide>
+            <div class="card" style="width: 18rem;">
+                <img src="img/example3.jpg" class="card-img-top" alt="Immagine esempio">
+                <div class="card-body">
+                    <h5 class="card-title">Titolo 3</h5>
+                    <p class="card-text">Questa è una piccola descrizione per la carta 3.</p>
+                    <audio controls>
+                        <source src="audio/example3.mp3" type="audio/mpeg">
+                        Il tuo browser non supporta il file audio.
+                    </audio>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide>
+            <div class="card" style="width: 18rem;">
+                <img src="img/example4.jpg" class="card-img-top" alt="Immagine esempio">
+                <div class="card-body">
+                    <h5 class="card-title">Titolo 4</h5>
+                    <p class="card-text">Questa è una piccola descrizione per la carta 4.</p>
+                    <audio controls>
+                        <source src="audio/example4.mp3" type="audio/mpeg">
+                        Il tuo browser non supporta il file audio.
+                    </audio>
+                </div>
+            </div>
+        </swiper-slide>
+    </swiper-container>
     </div>
 
     <!-- Immagine in alto -->
