@@ -199,10 +199,10 @@ display: flex;
         height: 7rem;
     }
 
-    .logo{
-        height: 10rem;
+    .logo {
+        height: 6rem;
+        margin-left: 16px;
     }
-
     .animazioni{
         width: 40%;
     }
