@@ -17,7 +17,7 @@ const videoSource = document.querySelector("#video");
 const videoSource2 = document.querySelector("#video2"); 
 
 btnPokemon.addEventListener("click", () => {
-  offerteImg.src = "img/immagini-font/Offerte-pokemong.png";
+  offerteImg.src = "img/immagini-font/O.png";
   novita.src = "img/immagini-font/Novita.png";
   gadgets.src = "img/immagini-font/gadgets.png";
   videoSource.src = "img/sfondi/pokemon-video.mp4"; 
