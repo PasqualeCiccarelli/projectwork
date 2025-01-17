@@ -8,12 +8,12 @@ function getIdFromSessionStorage() {
 }
 
 function promuoviUtenteAdmin(roleData) {
-    const userData = getUserDataFromSessionStorage();
+    const userData = getUserDataFromSessionStorage();    
 
     if (userData) {
         try {
 
-            userData.ruolo2 = roleData.ruolo2;
+            userData.ruolo2 = roleData;
             sessionStorage.setItem('user', JSON.stringify(userData));
 
             console.log("Ruolo aggiornato con successo:", userData);
@@ -25,7 +25,7 @@ function promuoviUtenteAdmin(roleData) {
     }
 }
 
-function handlePromoteFormSubmit(event) {
+async function handlePromoteFormSubmit(event) {
     event.preventDefault();
 
     const userId = getIdFromSessionStorage();
@@ -44,26 +44,25 @@ function handlePromoteFormSubmit(event) {
 
     const url = `http://localhost:8080/api/promote/${userId}?acceptedPolicies=on`;
 
-    fetch(url, {
+    let response= await fetch(url, {
         method: "POST",
     })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`Errore: ${response.status} ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log("Risposta dal server:", data);
+    
+    console.log(response.status);
+    if(response.status != 200) {
+        throw new Error(`Errore: ${response.status} ${response.statusText}`);
+    }
 
-            promuoviUtenteAdmin(data);
+    let data= await response.text();
+    console.log("Risposta dal server:", data);
 
-            alert("Promozione avvenuta con successo!");
-        })
-        .catch((error) => {
-            console.error("Errore durante la promozione:", error);
-            alert("Si è verificato un errore durante la promozione.");
-        });
+    promuoviUtenteAdmin(data);
+    alert("Promozione avvenuta con successo!");
+        
+    // .catch((error) => {
+    //     console.error("Errore durante la promozione:", error);
+    //     alert("Si è verificato un errore durante la promozione.");
+    // });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
