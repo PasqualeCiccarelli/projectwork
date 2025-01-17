@@ -64,3 +64,7 @@
     height: 100%;
     object-fit: cover;
 }
+
+.show-loghi{
+    display: none !important;
+}
