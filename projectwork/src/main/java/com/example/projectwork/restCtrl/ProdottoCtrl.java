@@ -2,6 +2,7 @@ package com.example.projectwork.restCtrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,19 @@ public class ProdottoCtrl {
 	public ResponseEntity<ProdottoDto> modCategoriaProd(@RequestParam("id") Long id, @RequestParam("categoria") Categoria categoria){
 		ProdottoDto prodotto= prodottoService.modificaCategoriaProdotto(id, categoria);
 		return ResponseEntity.ok(prodotto);
+	}
+	
+	
+	@DeleteMapping("/elimina-prodotto")
+	public ResponseEntity<Integer> deleteProdottoUtente(@RequestParam("id") Long id) {
+		try {
+			prodottoService.eliminaProdottoUtente(id);
+			
+			return ResponseEntity.ok(1);
+		}
+		catch(Exception e) {
+			return ResponseEntity.internalServerError().body(0);
+		}
 	}
 
 }

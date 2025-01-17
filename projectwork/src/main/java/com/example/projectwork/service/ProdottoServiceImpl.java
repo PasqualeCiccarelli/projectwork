@@ -69,6 +69,16 @@ public class ProdottoServiceImpl implements ProdottoService {
 
         prodottoRepository.save(prodotto);
     }
+
+
+	@Override
+	public void eliminaProdottoUtente(Long id) {
+		
+		ProdottoEntity prodotto= prodottoRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Prodotto con ID " + id + " non trovato"));
+		
+		prodottoRepository.delete(prodotto);
+	}
 	
 	
 	
