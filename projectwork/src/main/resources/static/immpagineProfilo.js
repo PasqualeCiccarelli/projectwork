@@ -2,9 +2,10 @@
 const omino= document.querySelector('.omino');
 const immagineProfilo= document.querySelector('.immagine-profilo');
 const InserNomeUtente= document.querySelector('.nome-utente');
-const logOut= document.querySelector('.sign-out');
-
-
+const togliCarrello= document.querySelector('.togli-carrello');
+const classeSignIn= document.querySelector('.classe-sign-in');
+const classeLogin= document.querySelector('.classe-login');
+const logoProfilo= document.querySelector('.logo-profilo');
 
 
 function getUserDataFromSessionStorage() {
@@ -28,31 +29,45 @@ function getUserDataFromSessionStorage() {
 
 
 function inserisciLogoeNomeUtente(){
-    let nomeUtente= getUserDataFromSessionStorage().nome;
-    let immagine= recuparaImmagineUtente(getUserDataFromSessionStorage().id)
-        .then((immagine) => {
-            console.log(immagine);
-            
-            if(nomeUtente != ""){
-                let nomeInMaiuscolo= nomeUtente.toUpperCase();
-                InserNomeUtente.textContent= nomeInMaiuscolo;
-            }
-        
-            if(immagine != ""){        
-                let img=
-                    `
-                    <img src="img/profilo/${immagine}" alt="">
-                    `;
+    let controlloSessione= sessionStorage.getItem("user");
+    console.log(controlloSessione);
+    
+
+    //utente loggato
+    if(controlloSessione != null){
+        let nomeUtente= getUserDataFromSessionStorage().nome;
+        let immagine= recuparaImmagineUtente(getUserDataFromSessionStorage().id)
+            .then((immagine) => {
+                console.log(immagine);
                 
-                immagineProfilo.innerHTML= img;
-            }
-            else{
-                omino.style.display= "in line";
-            }
-        })
-        .catch((errore) => {
-            console.log(errore);
-        })
+                if(nomeUtente != ""){
+                    let nomeInMaiuscolo= nomeUtente.toUpperCase();
+                    InserNomeUtente.textContent= nomeInMaiuscolo;
+                }
+            
+                if(immagine != ""){      
+                    let img=
+                        `
+                        <img src="img/profilo/${immagine}" alt="">
+                        `;
+                    
+                    immagineProfilo.innerHTML= img;
+                }
+                else{
+                    omino.style.display= "in line";
+                }
+            })
+            .catch((errore) => {
+                console.log(errore);
+            })
+    }
+    //utente non loggato
+    else{
+        logoProfilo.classList.toggle('show-loghi');
+        togliCarrello.classList.toggle("show-loghi");
+        classeSignIn.classList.toggle("show-loghi");
+        classeLogin.classList.toggle("show-loghi");
+    }
 }
 
 inserisciLogoeNomeUtente();
@@ -72,14 +87,3 @@ async function recuparaImmagineUtente(id){
     let data= await response.text();   
     return data;
 }
-
-
-
-function signOut(){
-    logOut.addEventListener('click', () => {
-        sessionStorage.clear();
-        location.reload();
-    });
-}
-
-signOut();
