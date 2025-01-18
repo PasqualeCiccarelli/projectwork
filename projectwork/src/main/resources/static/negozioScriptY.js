@@ -122,15 +122,40 @@ function renderProdotti(prodotti) {
     }
 }
 
-// Funzione per renderizzare la paginazione
 function renderPagination(totalPages, currentPage) {
-    const pagination = document.getElementById("pagination");
-    pagination.innerHTML = Array.from({ length: totalPages })
-        .map(
-            (_, i) => `
-        <button ${i === currentPage ? "disabled" : ""} onclick="fetchProdotti({}, ${i})">
-            ${i + 1}
-        </button>`
-        )
-        .join("");
+    const pagination = document.getElementById("pagination-script");
+    pagination.innerHTML = `
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item ${currentPage === 0 ? "disabled" : ""}">
+                    <a class="page-link" href="#" onclick="handlePageClick(event, ${currentPage - 1})">Previous</a>
+                </li>
+                ${Array.from({ length: totalPages })
+                    .map(
+                        (_, i) => `
+                        <li class="page-item ${i === currentPage ? "active" : ""}">
+                            <a class="page-link" href="#" onclick="handlePageClick(event, ${i})">${i + 1}</a>
+                        </li>`
+                    )
+                    .join("")}
+                <li class="page-item ${currentPage === totalPages - 1 ? "disabled" : ""}">
+                    <a class="page-link" href="#" onclick="handlePageClick(event, ${currentPage + 1})">Next</a>
+                </li>
+            </ul>
+        </nav>`;
+}
+
+// Funzione per gestire il click sui pulsanti di paginazione
+function handlePageClick(event, page) {
+    // Blocca il comportamento predefinito del link
+    event.preventDefault();
+
+    // Esegui la logica per caricare i prodotti
+    fetchProdotti({}, page);
+
+    // Scroll alla sezione con id "store"
+    const storeSection = document.getElementById("store");
+    if (storeSection) {
+        storeSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 }

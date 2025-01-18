@@ -27,7 +27,7 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
 <nav class="navbar navbar-expand-lg navina" style="background-color:#304492;">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img class="logo" src="img/LOGO.png" alt="">
         </a>
 
@@ -213,13 +213,13 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
                                     <label for="prezzoMinimo">Prezzo Minimo:</label>
                                     <input type="range" id="prezzoMinimo" min="1" max="500000" step="1" value="1">
                                     <span id="prezzoMinimoValue">€0.01</span>
-                                    <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
+                                    <button class="btn btn-light" id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
                                 </div>
                                 <div>
                                     <label for="prezzoMassimo">Prezzo Massimo:</label>
                                     <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
                                     <span id="prezzoMassimoValue">€5000</span>
-                                    <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
+                                    <button class="btn btn-light" id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
                                 </div>
                             </div>
                         </div>
@@ -232,8 +232,22 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <div id="pagination" class="pagination"></div>
+                    <div id="pagination-script" class="col-12 d-flex justify-content-center">
+                        <nav aria-label="Page navigation example"></nav>
+                            <ul class="pagination">
+                              <li class="page-item disabled">
+                                <a class="page-link">Previous</a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="#">2</a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                              </li>
+                            </ul>
+                          </nav>
                     </div>
                 </div>
             </div>
