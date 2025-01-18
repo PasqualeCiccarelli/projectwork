@@ -23,6 +23,7 @@ async function fetchProductData() {
 
         console.log(prodotto);
         console.log(prodotto);
+        console.log(prodotto.brand.toLowerCase());
         
         prodotto.forEach((prodotto) => {
             const productDiv = document.createElement("div");

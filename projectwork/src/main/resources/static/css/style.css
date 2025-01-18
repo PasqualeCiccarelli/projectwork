@@ -185,7 +185,6 @@ color: #e72929;
   }
 /* ----------------------------font pokemon---------------------------------------------- */
 
-
 .pokemon-font{
 width: 30%;
 display: flex;
@@ -239,6 +238,9 @@ display: flex;
         height: 10rem;
     }
 
+    .p-footer{
+    font-size: 1rem;
+    }
     
 }
 
