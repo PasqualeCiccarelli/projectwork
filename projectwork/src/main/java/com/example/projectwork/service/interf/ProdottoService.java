@@ -1,5 +1,7 @@
 package com.example.projectwork.service.interf;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.example.projectwork.dto.ProdottoDto;
@@ -25,4 +27,5 @@ public interface ProdottoService {
             int size);
             
 	public void eliminaProdottoUtente(Long id);
+	public List<ProdottoDto> searchProdotti(String query);
 }

@@ -3,11 +3,9 @@ const omino= document.querySelector('.omino');
 const immagineProfilo= document.querySelector('.immagine-profilo');
 const InserNomeUtente= document.querySelector('.nome-utente');
 const togliCarrello= document.querySelector('.togli-carrello');
-const togliSignOut= document.querySelector('.togli-sign-out');
 const classeSignIn= document.querySelector('.classe-sign-in');
 const classeLogin= document.querySelector('.classe-login');
 const logoProfilo= document.querySelector('.logo-profilo');
-const pAccount= document.querySelector('.p-account');
 
 
 function getUserDataFromSessionStorage() {
@@ -32,6 +30,8 @@ function getUserDataFromSessionStorage() {
 
 function inserisciLogoeNomeUtente(){
     let controlloSessione= sessionStorage.getItem("user");
+    console.log(controlloSessione);
+    
 
     //utente loggato
     if(controlloSessione != null){
@@ -45,7 +45,7 @@ function inserisciLogoeNomeUtente(){
                     InserNomeUtente.textContent= nomeInMaiuscolo;
                 }
             
-                if(immagine != ""){        
+                if(immagine != ""){      
                     let img=
                         `
                         <img src="img/profilo/${immagine}" alt="">
@@ -63,12 +63,17 @@ function inserisciLogoeNomeUtente(){
     }
     //utente non loggato
     else{
-        logoProfilo.classList.toggle("show-loghi");
-        pAccount.classList.toggle("show-loghi");
-        togliSignOut.classList.toggle("show-loghi");
-        togliCarrello.classList.toggle("show-loghi");
-        classeSignIn.classList.toggle("show-loghi");
-        classeLogin.classList.toggle("show-loghi");
+        if(logoProfilo != null)
+            logoProfilo.classList.toggle('show-loghi');
+        
+        if(togliCarrello != null)
+            togliCarrello.classList.toggle("show-loghi");
+        
+        if(classeSignIn != null)
+            classeSignIn.classList.toggle("show-loghi");
+        
+        if(classeLogin != null)
+            classeLogin.classList.toggle("show-loghi");
     }
 }
 
@@ -89,14 +94,3 @@ async function recuparaImmagineUtente(id){
     let data= await response.text();   
     return data;
 }
-
-
-
-function signOut(){
-    logOut.addEventListener('click', () => {
-        sessionStorage.clear();
-        location.reload();
-    });
-}
-
-signOut();

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/chiSiamoStyle.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+  <style>
+    .card audio {
+      width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="alto">
+    <div class="rosso">
+      <div class="container text-center py-4">
+        <h1 onclick="playAudio()">É L'ORA DELLO SBUSTO</h1>
+        <audio id="headerAudio" src="img/mp3/LOGO.mp3"></audio>
+        <h4>Chi siamo?</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="imgWrapper">
+    <!-- Immagine in basso -->
+    <div class="imgBasso">
+      <img src="img/wallpaper.jpg" class="img-fluid w-100" alt="Descrizione immagine" />
+    </div>
+
+    <!-- Swiper sopra l'immagine a destra -->
+    <div class="swiper-container-wrapper mt-4">
+      <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/video1.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/video2.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/video3.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/Video4.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/video5.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/Video6.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+        <swiper-slide>
+          <video controls class="w-100 h-100" style="object-fit: cover;">
+            <source src="img/video/Video7.mp4" type="video/mp4">
+            Il tuo browser non supporta il video.
+          </video>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <!-- Immagine in alto -->
+    <div class="imgAlto mt-4">
+      <img src="img/sotto.png" class="img-fluid w-100" alt="Descrizione immagine" />
+    </div>
+  </div>
+
+  <!-- Sezione per le carte (8 carte in due righe da 4) -->
+  <div class="container py-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Salvatore.jpg" class="card-img-top" alt="Salvatore">
+          <div class="card-body">
+            <h5 class="card-title">Salvatore ViScordi</h5>
+            <p class="card-text">Segno le cose da fare e le scordo</p>
+              <audio controls>
+                <source src="img/mp3/Salvatore.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">BrO gay</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Giuseppe.jpeg" class="card-img-top" alt="Giuseppe">
+          <div class="card-body">
+            <h5 class="card-title">Giuseppe MaNonRispondo</h5>
+            <p class="card-text">Il miglior commit è quello che non faccio</p>
+              <audio controls>
+                <source src="img/mp3/giuseppe.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">BHO - Anche se gli dico con precisione cosa deve fare fa il contrario</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Giovanni.webp" class="card-img-top" alt="Giovanni">
+          <div class="card-body">
+            <h5 class="card-title">Giovanni ACOMP</h5>
+            <p class="card-text">Distrugge le matite con la sua astoro potenza</p>
+              <audio controls>
+                <source src="img/mp3/Giovanni.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">Comp - Palestrato nerd</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Massimo.webp" class="card-img-top" alt="Massimo">
+          <div class="card-body">
+            <h5 class="card-title">Massimo Violento</h5>
+            <p class="card-text">Ha la fidanzata che vuole cantare in pace e un amico programmatore</p>
+              <audio controls>
+                <source src="img/mp3/Massimo.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">D&D - Creerà la migliore campagna</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Armando.jpg" class="card-img-top" alt="Massimo">
+          <div class="card-body">
+            <h5 class="card-title">Armadio FaccioIlMimo</h5>
+            <p class="card-text">Non sa usare git e lavora sul main</p>
+              <audio controls>
+                <source src="img/mp3/Armando.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">Deh -  Peffó</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/denis.jpg" class="card-img-top" alt="Massimo">
+          <div class="card-body">
+            <h5 class="card-title">Denis il Santo</h5>
+            <p class="card-text">Proprio come i santi non si vede e non si sente</p>
+              <audio controls>
+                <source src="img/mp3/denis.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">ha una foto con paola - Massimo dice che ha una bella voce</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/pasqualeProva.jpg" class="card-img-top" alt="Massimo">
+          <div class="card-body">
+            <h5 class="card-title">PerLaScala</h5>
+            <p class="card-text">UE ya dammi l'orologio</p>
+              <audio controls>
+                <source src="img/mp3/Pasquale.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">Astro puzzo</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <img src="img/chiSiamoimg/Chat.png" class="card-img-top" alt="Massimo">
+          <div class="card-body">
+            <h5 class="card-title">Chat Gpt</h5>
+            <p class="card-text">Il Sommo</p>
+              <audio controls>
+                <source src="img/mp3/chat.mp3" type="audio/mp3">
+                Il tuo browser non supporta il file audio.
+              </audio>
+          </div>
+          <div class="card-footer text-muted">Grazie - di tutto</div>
+        </div>
+      </div>
+
+
+
+     
+    </div>
+  </div>
+
+  
+
+  <script>
+    function playAudio() {
+      const audio = document.getElementById('headerAudio');
+      audio.play();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
