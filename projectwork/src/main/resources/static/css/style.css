@@ -106,14 +106,18 @@ display: flex;
     text-align: center;
 }
 
-li{
-    color: rgba(255, 255, 255, 0.822);
+li,i{
+    color: rgba(255, 255, 255, 1);
 }
 
 li a strong{
     color: rgba(255, 255, 255, 0.89);
 }
 
+p{
+    color: white;
+    font-weight: 500;
+}
 
 /* --------------------------- icone switch stile --------------------------- */
 
@@ -172,12 +176,12 @@ color: #e72929;
     margin-bottom: 40px;
 }
 .accordion-button {
-    color: #d4dbe1;
-    background-color: #2F4858;
+    color: #000000;
+    background-color: white;
   }
   .accordion-item {
     color: white;
-    background-color: #2F4858;
+    background-color: #7aaecf;
   }
 /* ----------------------------font pokemon---------------------------------------------- */
 
