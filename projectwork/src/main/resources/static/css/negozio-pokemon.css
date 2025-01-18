@@ -202,7 +202,5 @@ a, h6,i,p{
   transition: transform 0.3s ease;
   color: black;
   background-color: rgb(0, 0, 0, 0.2);
-  max-width: 280px;
-  max-height: 650px;
 }
 
