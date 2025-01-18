@@ -43,10 +43,24 @@
 
             <!-- Barra di ricerca -->
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                </form>
-
+                <div class="search-form mt-5 mb-3">
+                    <div class="form-floating">
+                        <!-- Barra di ricerca -->
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
+                        <label for="floatingInput">Cerca nel sito...</label>
+                    </div>
+                </div>
+                <div id="overlay"></div>    
+                <div id="searchPopup">
+                    <!-- Header della popup -->
+                    <div id="popupHeader">
+                        <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
+                        <button id="closePopup">X</button>
+                    </div>
+                    
+                    <!-- Contenitore per i risultati -->
+                    <div id="popupResults"></div>
+                </div>
                 <!-- Menu -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
                     <li class="nav-item text-center mx-1">
