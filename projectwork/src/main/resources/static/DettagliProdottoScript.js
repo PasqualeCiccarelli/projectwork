@@ -27,14 +27,14 @@ async function fetchProductData() {
         
 
         dettagliCartaDiv.innerHTML = `
-        <div class="prodotto-container">
-            <div class="immagine-container">
-                <img src="img/pokemon/${prodotto.immagine}" 
+        <div class="prodotto-container row">
+            <div class="immagine-container col-12 col-md-8">
+                <img src="img/magic/${prodotto.immagine}" 
                      alt="${prodotto.nome}" 
                      class="${isCard(prodotto) ? 'card-effect' : 'zoom-effect'}">
             </div>
 
-            <div class="info-container">
+            <div class="info-container col-12 col-md-4">
                 <h1 style="margin: 0 0 20px 0; color: #333;">${prodotto.nome}</h1>
                 
                 <p><strong>Categoria:</strong> ${prodotto.categoria}</p>
