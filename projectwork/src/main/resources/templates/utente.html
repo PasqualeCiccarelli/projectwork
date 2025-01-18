@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/ordiniStyle.css">
     <link rel="stylesheet" href="css/immagineStyle.css">
     <link rel="stylesheet" href="css/negozio-pokemon.css">
+    <link rel="stylesheet" href="css/SearchBar.css">
 </head>
 
 <body style="background-color: white;">
@@ -28,10 +29,30 @@
             </button>
 
             <!-- Barra di ricerca -->
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                </form>
+            <div class="col-md-8">
+              <div class="search-form mt-5 mb-3">
+                  <div class="form-floating">
+                      <!-- Barra di ricerca -->
+                      <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
+                      <label for="floatingInput">Cerca nel sito...</label>
+                  </div>
+              </div>
+      
+              <!-- Overlay per oscurare il sito -->
+              <div id="overlay"></div>
+    
+              <!-- Popup per i risultati -->
+              <div id="searchPopup">
+                  <!-- Header della popup -->
+                  <div id="popupHeader">
+                      <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
+                      <button id="closePopup">X</button>
+                  </div>
+                  
+                  <!-- Contenitore per i risultati -->
+                  <div id="popupResults"></div>
+              </div>
+          </div>
 
                 <!-- Menu -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
@@ -342,9 +363,9 @@
     <script src="immagineScript.js"></script>
     <script src="ordiniScripr.js"></script>
     <script src="scriptDiventaAdmin.js"></script>
-
     <script src="controlloUtenteLoggato.js"></script>
     <script src="PromozioneScript.js"></script>
+    <script src="scriptSearchBar.js"></script>
 </body>
 
 </html>

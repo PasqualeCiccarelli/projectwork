@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="css/negozio.css">
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/logoUtente.css">
+    <link rel="stylesheet" href="css/negozio-yugi.css">
+    <link rel="stylesheet" href="css/SearchBar.css">
 </head>
 
 <body>
@@ -27,74 +29,89 @@
 <!-- inizio navbar -->
 <nav class="navbar navbar-expand-lg navina" style="background-color: rgba(22, 24, 31, 1);">
     <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <img class="logo" src=" img/LOGO.png" alt="">
-        </a>
+      <!-- Logo -->
+      <a class="navbar-brand" href="/">
+        <img class="logo" src="img/LOGO.png" alt="">
+      </a>
+  
+      <!-- Menu hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color: white;"></span>
+      </button>
+  
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-        <!-- Menu hamburger -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Barra di ricerca -->
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-            </form>
-
-            <!-- Menu -->
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-home fa-2x"></i>
-                    <a class="nav-link active" aria-current="page" href="/"><p>Home</p></a>
-               </li>
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-dragon mb-2 fa-2x"></i>
-                    <a class="nav-link active" href="/negozio-pokemon"><p>Negozio Pokémon</p></a>
-                </li>
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-scroll fa-2x"></i>
-                    <a class="nav-link active" href="/negozio-magic"><p>Negozio Magic</p></a>
-                </li>
-                <!-- <li class="nav-item text-center mx-1">
-                    <i class="fa-solid fa-user fa-2x"></i>
-                    <a class="nav-link active" href="#"><p>Profilo</p></a>
-                </li> -->
-
-                <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-                    <div>
-                      <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
-                      
-                      <a href="/utente">
-                        <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
-                          <!-- Immagine di default se non c'è nessuna immagine associata -->
-                          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
-                        </div>
-                      </a>
-                      
-                    </div>
-                    <p style="color: #a3a3a3; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
-                </li>
+        <div class="col-md-8 col-lg-9">
+            <div class="search-form mt-5 mb-3">
+                <div class="form-floating">
+                    <!-- Barra di ricerca -->
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
+                    <label for="floatingInput">Cerca nel sito...</label>
+                </div>
+            </div>
     
-                <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
-                    <i class="fas fa-sign-in-alt fa-2x"></i>
-                    <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
-                </li>
+            <!-- Overlay per oscurare il sito -->
+            <div id="overlay"></div>
     
-                <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
-                    <i class="fas fa-user-plus fa-2x"></i>
-                    <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
-                </li>
-
-            </ul>
+            <!-- Popup per i risultati -->
+            <div id="searchPopup">
+                <!-- Header della popup -->
+                <div id="popupHeader">
+                    <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
+                    <button id="closePopup">X</button>
+                </div>
+                
+                <!-- Contenitore per i risultati -->
+                <div id="popupResults"></div>
+            </div>
         </div>
+        
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/">
+              <i class="fas fa-home fa-2x" style="color: white;"></i>
+              <span class="mt-1 text-white">Home</span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-pokemon">
+              <i class="fas fa-dragon fa-2x" style="color: white;"></i>
+              <span class="mt-1 text-white">Negozio Pokémon</span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-magic">
+              <i class="fas fa-scroll fa-2x" style="color: white;"></i>
+              <span class="mt-1 text-white">Negozio Magic</span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/utente">
+              <div class="profile-image immagine-profilo" style="width: 32px; height: 32px;">
+                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+              </div>
+              <span class="mt-1 text-white">Account</span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/login">
+              <i class="fas fa-sign-in-alt fa-2x" style="color: white;"></i>
+              <span class="mt-1 text-white">Login</span>
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link d-flex flex-column align-items-center" href="/registrati">
+              <i class="fas fa-user-plus fa-2x" style="color: white;"></i>
+              <span class="mt-1 text-white">Sign-in</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
-
-
+  </nav>
+  
 <!-- fine navbar -->
-
 
     </header>
 
@@ -238,8 +255,22 @@
                 </div>
             </div>
 
-            <div class="col-12">
-                <div id="pagination" class="pagination"></div>
+            <div id="pagination-script" class="col-12 d-flex justify-content-center mt-5">
+                <nav aria-label="Page navigation example"></nav>
+                    <ul class="pagination">
+                      <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
             </div>
         </div>
     </div>
@@ -397,11 +428,11 @@
     <!-- <script src="scriptIserisciItem"></script> -->
     <!-- <script src="/main.js" type="module"></script> -->
     <!-- <script src="negozioMagicScript.js" type="module"></script> -->
-
     <script src="negozioYuGiHoScript.js"></script>
     <script src="immpagineProfilo.js"></script>
     <script src="scriptIserisciItem2.js"></script>
     <script src="negozioScriptY.js"></script>
+    <script src="scriptSearchBar.js"></script>
 
 </body>
 <!-- JS DI BOOTSTRAP -->

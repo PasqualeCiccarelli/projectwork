@@ -102,35 +102,66 @@ function renderProdotti(prodotti) {
     } else {
         noProductsMessage.style.display = "none"; // Nascondi il messaggio di "Nessun articolo trovato"
         productList.innerHTML = prodotti
-            .map(
-                (prodotto) => `
-            <div class="col-lg-4 col-md-6">
-                <div class="product">
-                    <a href="/DettagiProdotto.html?id=${prodotto.id}">
-                        <img src="img/pokemon/${prodotto.immagine}" alt="${prodotto.nome}">
-                    </a>
-                    <h3 class="h5">${prodotto.nome}</h3>
-                    <p>${prodotto.descrizione}</p>
-                    <p class="price">Prezzo: €${(prodotto.prezzo / 100).toFixed(2)}</p> <!-- Mostra il prezzo in euro -->
-                    <div>
-                        <button type="button" id="${prodotto.id}" class="btn btn-primary order-button mb-3 btn-carrello">Ordina</button>
-                    </div>
-                </div>
-            </div>`
-            )
+            .map((prodotto) => {
+                // Verifica se il tipoCategoria è "BUSTINA"
+                const imgStyle = prodotto.tipoCategoria === "BUSTINA" ? 'style="width: 76%;"' : "";
+
+                return `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product">
+                            <a href="/DettagiProdotto.html?id=${prodotto.id}">
+                                <img src="img/pokemon/${prodotto.immagine}" alt="${prodotto.nome}" ${imgStyle}>
+                            </a>
+                            <h3 class="h5">${prodotto.nome}</h3>
+                            <p>${prodotto.descrizione}</p>
+                            <p class="price">Prezzo: €${(prodotto.prezzo / 100).toFixed(2)}</p> <!-- Mostra il prezzo in euro -->
+                            <div>
+                                <button type="button" id="${prodotto.id}" class="btn btn-primary order-button mb-3 btn-carrello">Ordina</button>
+                            </div>
+                        </div>
+                    </div>`;
+            })
             .join("");
     }
 }
 
 // Funzione per renderizzare la paginazione
 function renderPagination(totalPages, currentPage) {
-    const pagination = document.getElementById("pagination");
-    pagination.innerHTML = Array.from({ length: totalPages })
-        .map(
-            (_, i) => `
-        <button ${i === currentPage ? "disabled" : ""} onclick="fetchProdotti({}, ${i})">
-            ${i + 1}
-        </button>`
-        )
-        .join("");
+    const pagination = document.getElementById("pagination-script");
+    pagination.innerHTML = `
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item ${currentPage === 0 ? "disabled" : ""}">
+                    <a class="page-link" href="#" onclick="handlePageClick(event, ${currentPage - 1})">Previous</a>
+                </li>
+                ${Array.from({ length: totalPages })
+                    .map(
+                        (_, i) => `
+                        <li class="page-item ${i === currentPage ? "active" : ""}">
+                            <a class="page-link" href="#" onclick="handlePageClick(event, ${i})">${i + 1}</a>
+                        </li>`
+                    )
+                    .join("")}
+                <li class="page-item ${currentPage === totalPages - 1 ? "disabled" : ""}">
+                    <a class="page-link" href="#" onclick="handlePageClick(event, ${currentPage + 1})">Next</a>
+                </li>
+            </ul>
+        </nav>`;
 }
+
+// Funzione per gestire il click sui pulsanti di paginazione
+function handlePageClick(event, page) {
+    // Blocca il comportamento predefinito del link
+    event.preventDefault();
+
+    // Esegui la logica per caricare i prodotti
+    fetchProdotti({}, page);
+
+    // Scroll alla sezione con id "store"
+    const storeSection = document.getElementById("store");
+    if (storeSection) {
+        storeSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+}
+
+
