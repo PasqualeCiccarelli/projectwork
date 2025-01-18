@@ -1,5 +1,7 @@
 package com.example.projectwork.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
@@ -33,5 +35,8 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
          @Param("brand") Brand brand,
          @Param("prezzoMinimo") Double prezzoMinimo,
          @Param("prezzoMassimo") Double prezzoMassimo,
-         Pageable pageable);	
+         Pageable pageable);
+	 
+	 @Query("SELECT p FROM ProdottoEntity p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :query, '%'))")
+	    List<ProdottoEntity> findByNomeContainingIgnoreCase(@Param("query") String query);
 }
