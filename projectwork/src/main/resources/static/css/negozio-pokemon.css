@@ -183,3 +183,8 @@ a, h6,i,p{
     padding: 0;
 }
 
+.card{
+  background: none;
+  background-color: rgb(0, 0, 0,0.1);
+}
+

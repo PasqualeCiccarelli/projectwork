@@ -23,7 +23,6 @@ async function getCardNovita2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
@@ -63,8 +62,7 @@ async function getBoxNovita2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -104,8 +102,7 @@ async function getBustineNovita2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -157,8 +154,7 @@ async function getCardSpeciale2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -197,8 +193,7 @@ async function getBoxSpeciale2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -238,8 +233,7 @@ async function getBustineSpeciale2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -287,8 +281,7 @@ async function getAccessoriActionFigure2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -327,8 +320,7 @@ async function getAccessoriGadget2(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/Yu-Gi-Oh/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
