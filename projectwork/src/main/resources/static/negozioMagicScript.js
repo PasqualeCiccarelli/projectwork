@@ -1,9 +1,5 @@
 async function loadData() {
 
-    cont_card= 0;
-    numeroSlide= '';
-    selNumeroSlide= '';
-
     try {
         const baseUrl = 'http://localhost:8080/api';
 
