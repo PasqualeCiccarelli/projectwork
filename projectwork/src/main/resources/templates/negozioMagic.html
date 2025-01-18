@@ -11,13 +11,13 @@
     <!-- CSS DI SWIPER -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- <link rel="stylesheet" href="css/stylePagAdmin.css">   -->
     <link rel="stylesheet" href="css/negozio.css">
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/logoUtente.css">
     <link rel="stylesheet" href="css/magico.css">
+    <link rel="stylesheet" href="css/SearchBar.css">
 </head>
 
 <body>
@@ -43,10 +43,30 @@
                 </button>
 
                 <!-- Barra di ricerca -->
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                    </form>
+                <div class="col-md-8">
+                    <div class="search-form mt-5 mb-3">
+                        <div class="form-floating">
+                            <!-- Barra di ricerca -->
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
+                            <label for="floatingInput">Cerca nel sito...</label>
+                        </div>
+                    </div>
+            
+                    <!-- Overlay per oscurare il sito -->
+                    <div id="overlay"></div>
+    
+            <!-- Popup per i risultati -->
+            <div id="searchPopup">
+                <!-- Header della popup -->
+                <div id="popupHeader">
+                    <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
+                    <button id="closePopup">X</button>
+                </div>
+                
+                <!-- Contenitore per i risultati -->
+                <div id="popupResults"></div>
+            </div>
+        </div>
 
                     <!-- Menu -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
@@ -245,8 +265,22 @@
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <div id="pagination" class="pagination"></div>
+                <div id="pagination-script" class="col-12 d-flex justify-content-center">
+                    <nav aria-label="Page navigation example"></nav>
+                        <ul class="pagination">
+                          <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>
@@ -401,7 +435,7 @@
     <!-- <script src="scriptIserisciItem"></script> -->
     <!-- <script src="/main.js" type="module"></script> -->
     <!-- <script src="negozioMagicScript.js" type="module"></script> -->
-
+    <script src="scriptSearchBar.js"></script>
     <script src="scriptIserisciItem.js"></script>
     <script src="scorrimentoPagine.js"></script>
     <script src="negozioMagicScript.js"></script>
