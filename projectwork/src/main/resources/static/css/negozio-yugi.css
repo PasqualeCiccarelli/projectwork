@@ -348,3 +348,27 @@ p{
     bottom: 0;
     left: 0;
   }
+
+  .product {
+    background-color: rgba(0, 0, 0, 0.274);
+    min-height: 508px;
+  }
+
+  .card-body {
+    border: none;
+    color: #e0e0e0;
+    background-color: #b22f5a;
+    box-shadow: 5px 10px #0000003a;
+  }
+
+  #apply-prezzo-minimo, #apply-prezzo-massimo {
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    background-color: #1e9072;
+  }
+
+  .pagination {
+    justify-content: center;
+
+  }
