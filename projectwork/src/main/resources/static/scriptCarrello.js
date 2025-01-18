@@ -72,11 +72,27 @@ async function loadCart() {
       }
 
       totalPrice += prodotto.prezzoEffettivo * item.quantita;
+
+      
+        let imagePath = prodotto.immagine;
+        switch (prodotto.brand) {
+            case "POKEMON":
+                imagePath = `img/pokemon/${prodotto.immagine}`;
+                break;
+            case "YUGIHO":
+                imagePath = `img/Yu-Gi-Oh/${prodotto.immagine}`;
+                break;
+            case "MAGIC":
+                imagePath = `img/magic/${prodotto.immagine}`;
+                break;
+            default:
+                imagePath = `img/placeholder.jpg`;
+        }
       
 
           return `
           <div class="cart-item" id="product-${prodotto.id}">
-              <img src="img/${prodotto.immagine}" alt="${prodotto.nome}" class="product-image" />
+              <img src="${imagePath}" alt="${prodotto.nome}" class="product-image" />
               <h3>${prodotto.nome}</h3>
               <p>Categoria: ${prodotto.categoria}</p>
               ${prevenditaInfo}
