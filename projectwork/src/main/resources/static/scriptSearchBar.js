@@ -65,7 +65,7 @@ function handleProdottiResponse(prodotti) {
 
     prodotti.forEach((prodotto) => {
         const productDiv = document.createElement("div");
-        productDiv.className = "product";
+        productDiv.className = "product-2";
 
         // Determina il percorso dell'immagine in base al brand
         let imagePath = prodotto.immagine; // Percorso di default
