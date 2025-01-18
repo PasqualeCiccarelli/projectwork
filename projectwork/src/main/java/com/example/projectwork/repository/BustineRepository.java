@@ -1,11 +1,13 @@
 package com.example.projectwork.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-
+import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BustinaEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -22,5 +24,7 @@ public interface BustineRepository extends JpaRepository<BustinaEntity, Long>{
 	List<BustinaEntity> findByNomeContainingIgnoreCase(String nome);
 	List<BustinaEntity> findByPrezzoBetween(double minPrezzo, double maxPrezzo);
 	List<BustinaEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
+	Page<BustinaEntity> findByAdmin(AdminEntity admin, Pageable pageable);
+	Page<BustinaEntity> findByAdmin_Email(String email, Pageable pageable);
 
 }

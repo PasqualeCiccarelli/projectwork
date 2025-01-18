@@ -29,15 +29,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf
-                .ignoringRequestMatchers("/api/**"))  // Ignora CSRF per le API REST
+            .csrf(csrf -> csrf.disable())  // Disabilita il controllo CSRF
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/status").permitAll()  // Permette a tutti l'accesso all'endpoint di stato
-                .requestMatchers("/admin/**").hasRole("ADMIN")  // Permette solo agli utenti con ruolo ADMIN di accedere a /admin/**
-                .requestMatchers("/user/**").hasRole("USER")  // Permette solo agli utenti con ruolo USER di accedere a /user/**
-                .anyRequest().permitAll())  // Permette l'accesso a tutte le altre richieste
+                .anyRequest().permitAll()  // Permette l'accesso a tutte le richieste
+            )
             .sessionManagement(session -> 
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // Disabilita la gestione delle sessioni (stateless)
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // Mantieni la gestione stateless delle sessioni (opzionale)
 
         return http.build();
     }

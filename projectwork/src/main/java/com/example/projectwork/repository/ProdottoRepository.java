@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -39,4 +40,6 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 	 
 	 @Query("SELECT p FROM ProdottoEntity p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :query, '%'))")
 	    List<ProdottoEntity> findByNomeContainingIgnoreCase(@Param("query") String query);
+	 
+	 //Page<ProdottoEntity> findByAdmin(AdminEntity admin, Pageable pageable);
 }

@@ -23,13 +23,6 @@ const frecciaDestra= document.querySelector('.bi-caret-right');
 console.log(numP.children.length);
 let dim= localStorage.setItem('dim', numP.children.length);
 
-
-
-
-
-
-
-
 let cont_card= 0;
 let numeroSlide= '';
 let selNumeroSlide= '';

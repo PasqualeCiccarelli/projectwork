@@ -1,212 +1,202 @@
+let oggettoDatiAdmin; // Dichiarazione globale
 
-const adminLoggato= document.querySelector('.admin-loggato-nome');
-const adminLoggatoEmail= document.querySelector('.admin-loggato-email');
-// const cardsAdmin= document.querySelector('.cards-admin');
-// const bustineAdmin= document.querySelector('.bustine-admin');
-// const boxAdmin= document.querySelector('.box-admin');
-// const accessoriAdmin= document.querySelector('.accessori-admin');
-
-let datiAdmin= sessionStorage.getItem("user");
-let oggettoDatiAdmin= JSON.parse(datiAdmin);
-console.log(oggettoDatiAdmin);
-
-
-
-function inserDatiAdmin(){
-
-    if(oggettoDatiAdmin != null){        
-        adminLoggato.textContent= oggettoDatiAdmin.nome;
-        adminLoggatoEmail.textContent= oggettoDatiAdmin.email;
-    }
-    else{
-        adminLoggato.textContent= "Login";
-    }
-}
-
-
-
-// async function inserCards(){
-
-//     let email= oggettoDatiAdmin.email;
-//     let response= await fetch(`/api/admin/${email}/cards`);
-//     let data= await response.json();
-
-//     console.log(data);
-
-// }
-
-
-
-inserDatiAdmin();
-//inserCards();
-
-
-
-
-
-
-async function loadData() {
-    try {
-
-        const baseUrl = 'http://localhost:8080/api';
-        let email= oggettoDatiAdmin.email;
-
-        try {
-            const cardResponse = await fetch(`${baseUrl}/admin/${email}/cards`);
-            if (!cardResponse.ok) {
-                throw new Error(`Errore nel recupero delle carte: ${cardResponse.statusText}`);
-            }
-            const cardData = await cardResponse.json();
-            console.log('Card Data:', cardData);
-            creazioneEinserimentoProdotti(cardData);
-        } catch (error) {
-            console.error('Errore carte:', error);
+document.addEventListener('DOMContentLoaded', function () {
+    const datiAdmin = sessionStorage.getItem("user");
+    if (datiAdmin) {
+        oggettoDatiAdmin = JSON.parse(datiAdmin);
+        if (oggettoDatiAdmin?.email) {
+            caricaProdotti(0);
         }
-
-        try {
-            const bustineResponse = await fetch(`${baseUrl}/admin/${email}/bustine`);
-            if (!bustineResponse.ok) {
-                throw new Error(`Errore nel recupero delle bustine: ${bustineResponse.statusText}`);
-            }
-            const bustineData = await bustineResponse.json();
-            console.log('Bustine Data:', bustineData);
-            creazioneEinserimentoProdotti(bustineData);
-        } catch (error) {
-            console.error('Errore bustine:', error);
-        }
-
-        try {
-            const boxResponse = await fetch(`${baseUrl}/admin/${email}/box`);
-            if (!boxResponse.ok) {
-                throw new Error(`Errore nel recupero dei box: ${boxResponse.statusText}`);
-            }
-            const boxData = await boxResponse.json();
-            console.log('Box Data:', boxData);
-            creazioneEinserimentoProdotti(boxData);
-        } catch (error) {
-            console.error('Errore box:', error);
-        }
-
-        try {
-            const accessoriResponse = await fetch(`${baseUrl}/admin/${email}/accessori`);
-            if (!accessoriResponse.ok) {
-                throw new Error(`Errore nel recupero degli accessori: ${accessoriResponse.statusText}`);
-            }
-            const accessoriData = await accessoriResponse.json();
-            console.log('Accessori Data:', accessoriData);
-            creazioneEinserimentoProdotti(accessoriData);
-        } catch (error) {
-            console.error('Errore accessori:', error);
-        }
-
-    } catch (error) {
-        console.error('Errore generale durante il caricamento dei dati:', error);
     }
 
-    visualizzaBottoneElimina();
-    clickBottoni();
-    clickBottoneElimina();
-}
+    // Event delegation per i pulsanti "special-button" e "elimina-prodotto"
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('special-button')) {
+            const prodottoId = e.target.id.replace('product-', '');
+            modificaCategoriaProdotto(prodottoId);
+        } else if (e.target.classList.contains('elimina-prodotto')) {
+            const prodottoId = e.target.id.replace('delete-button-', '');
+            eliminaProdotto(prodottoId);
+        }
+    });
+});
 
-document.addEventListener('DOMContentLoaded', loadData);
+function caricaProdotti(pagina) {
+    if (!oggettoDatiAdmin?.email) {
+        console.error('Dati admin non disponibili');
+        return;
+    }
 
-
-
-
-
-
-
-//click sul bottone del prodotto per modificare la categoria
-function clickBottoni(){
-    const bottoni= document.querySelectorAll('.btn-carrello');
-    
-    for(let i=0; i<bottoni.length; i++){
-        bottoni[i].addEventListener('click', e => {
-            console.log(bottoni[i]);
-            
-            let figlio= e.target.parentElement.parentElement.children[2];
-            let inserSelect= document.querySelectorAll('.inser-select');
-
-            let categoria1= '';
-            let categoria2= '';
-            if(figlio.textContent == 'DEFAULT'){
-                categoria1= 'SPECIALE'
+    fetch(`/api/admin/${oggettoDatiAdmin.email}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella risposta del server');
             }
-            else if(figlio.textContent == 'SPECIALE'){
-                categoria1= 'DEFAULT'
+            return response.json();
+        })
+        .then(adminData => {
+            const tuttiProdotti = [
+                ...adminData.carte,
+                ...adminData.bustine,
+                ...adminData.box,
+                ...(adminData.accessori || [])
+            ];
+
+            const prodottiPerPagina = 12;
+            const inizio = pagina * prodottiPerPagina;
+            const fine = inizio + prodottiPerPagina;
+            const prodottiPagina = tuttiProdotti.slice(inizio, fine);
+            const totalePagine = Math.ceil(tuttiProdotti.length / prodottiPerPagina);
+
+            const container = document.querySelector('.prodotti-container');
+            if (!container) {
+                console.error('Container prodotti non trovato');
+                return;
             }
-            else if(figlio.textContent == 'NOVITA'){
-                categoria1= 'SPECIALE';
-                categoria2= 'DEFAULT';
-            }
-            
-            let select=
-                `
-                <select id="categoria" class="attivo" onchange="scelta()">
-                    <option value=${figlio.textContent}>${figlio.textContent}</option>
-                    <option value=${categoria1}>${categoria1}</option>
-                    <option value=${categoria2}>${categoria2}</option>
-                </select>
+
+            container.innerHTML = ''; // Pulisce i prodotti già caricati
+
+            prodottiPagina.forEach(prodotto => {
+                let imagePath = prodotto.immagine;
+                switch (prodotto.brand) {
+                    case "POKEMON":
+                        imagePath = `img/pokemon/${prodotto.immagine}`;
+                        break;
+                    case "YUGIHO":
+                        imagePath = `img/Yu-Gi-Oh/${prodotto.immagine}`;
+                        break;
+                    case "MAGIC":
+                        imagePath = `img/magic/${prodotto.immagine}`;
+                        break;
+                    default:
+                        imagePath = `img/placeholder.jpg`;
+                }
+
+                container.innerHTML += `
+                <div class="product-card col-3 text-center">
+                    <div>
+                        <a href="/DettagiProdotto.html?id=${prodotto.id}">
+                            <img src="${imagePath}" style="max-width: 100%;" alt="${prodotto.nome}" onerror="this.src='img/placeholder.jpg'"> 
+                        </a>
+                    </div>
+                    <div class="inser-select"></div>
+                    <p class="product-category" id="categoria-${prodotto.id}" style="margin-bottom: 0.3rem;">${prodotto.categoria}</p>
+                    <h3 class="product-name" style="margin-bottom: 0.3rem;">${prodotto.nome}</h3>
+                    <p class="product-price" style="margin-bottom: 0.3rem;">€${prodotto.prezzo.toFixed(2)}</p>
+                    <div>
+                        <button type="button" id="product-${prodotto.id}" class="btn btn-primary special-button mb-1">
+                            ${prodotto.categoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta'}
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" id="delete-button-${prodotto.id}" class="btn btn-danger order-button mb-5 elimina-prodotto">
+                            Elimina
+                        </button>
+                    </div>
+                </div>
                 `;
-            
-            let categoriaScelta= '';
-            for(let j=0; j<inserSelect.length; j++){
-                if(i == j){
-                    inserSelect[j].innerHTML= select;
-                    figlio.style.display= 'none';
+            });
+
+            // Paginazione
+            const paginationContainer = document.querySelector('.pagination');
+            if (paginationContainer) {
+                paginationContainer.innerHTML = '';
+                for (let i = 0; i < totalePagine; i++) {
+                    const button = document.createElement('button');
+                    button.className = `btn ${i === pagina ? 'btn-primary' : 'btn-outline-primary'} mx-1`;
+                    button.textContent = i + 1;
+                    button.onclick = () => caricaProdotti(i);
+                    paginationContainer.appendChild(button);
                 }
             }
-            console.log(categoriaScelta);
+        })
+        .catch(error => {
+            console.error('Errore nel caricamento dei prodotti:', error);
+            const container = document.querySelector('.prodotti-container');
+            if (container) {
+                container.innerHTML = '<p class="text-center text-danger">Si è verificato un errore nel caricamento dei prodotti.</p>';
+            }
         });
-    };
-};
-
-
-
-
-//function chiamata dal tag select creato sopra
-function scelta(){
-    let x= document.querySelector('.attivo');
-    let applicaModifiche= document.querySelector('.applica-modifiche');
-    
-    //seleziono la categoria scelta dall'utente
-    //nascondo il tag select e rimostro il tag che contiene la categoria
-    let fratello= x.parentNode.nextElementSibling;
-    console.log(fratello);
-    fratello.textContent= x.value;
-    x.style.display= "none";
-    fratello.style.display= "block";
-
-    //mostro il bottone per applicare le modifiche
-    let bottone= fratello.nextElementSibling.nextElementSibling.nextElementSibling.firstChild;
-    applicaModifiche.style.display= "block";
-
-    x.className= "disattivo";
-    
-    //chiamata fetch per aggiornare il db
-    console.log(fratello, bottone.id);
-    applicaModifiche.addEventListener('click', () =>{
-        chiamataFetch(x.value, bottone);
-        location.reload();
-    });
 }
 
-
-//aggiorna la categoria scelta anche nel db
-async function chiamataFetch(categoria, bottone){
-    try{
-        let response= await fetch(`/api/prodotto/modifica-categoria?id=${bottone.id}&categoria=${categoria}`, {
-            method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            });
-    
-            let data= await response.json();
-            console.log(data);
-            //window.alert('Ricarica pagina per applicare la modifica');
-        }
-    catch(e){
-        console.log(e);
+function modificaCategoriaProdotto(prodottoId) {
+    const categoriaElement = document.querySelector(`#categoria-${prodottoId}`);
+    if (!categoriaElement) {
+        console.error(`Elemento categoria per il prodotto con ID ${prodottoId} non trovato`);
+        return;
     }
+
+    const categoria = categoriaElement.textContent.trim();
+    const nuovaCategoria = categoria === 'SPECIALE' ? 'DEFAULT' : 'SPECIALE';
+    const url = `/api/admin/prodotti/${prodottoId}/categoria?categoria=${nuovaCategoria}`;
+
+    console.log('Invio richiesta PUT a:', url);
+
+    fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Errore nella risposta del server: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(() => {
+            categoriaElement.textContent = nuovaCategoria;
+            const button = document.querySelector(`#product-${prodottoId}`);
+            if (button) {
+                button.textContent = nuovaCategoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta';
+            }
+        })
+        .catch(error => {
+            console.error('Errore durante la modifica della categoria:', error);
+            alert('Si è verificato un errore durante la modifica della categoria.');
+        });
+}
+
+function eliminaProdotto(prodottoId) {
+    console.log(`Eliminazione prodotto con ID: ${prodottoId}`);
+    // Aggiungi qui la logica per eliminare il prodotto
+}
+
+function eliminaProdotto(productId) {
+    if (!oggettoDatiAdmin || !oggettoDatiAdmin.email) {
+        console.error('Dati admin non disponibili');
+        return;
+    }
+
+    if (!confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+        return;
+    }
+
+    fetch(`/api/admin/prodotti/${productId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Errore nella eliminazione del prodotto');
+        }
+        return response.text();
+    })
+    .then(() => {
+        const productCard = document.getElementById(productId).closest('.product-card');
+        if (productCard) {
+            productCard.remove();
+        }
+
+        alert('Prodotto eliminato con successo');
+
+        const paginaCorrente = document.querySelector('.btn-primary').textContent - 1;
+        caricaProdotti(paginaCorrente);
+    })
+    .catch(error => {
+        console.error('Errore durante l\'eliminazione:', error);
+        alert('Si è verificato un errore durante l\'eliminazione del prodotto');
+    });
 }

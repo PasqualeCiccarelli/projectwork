@@ -1,10 +1,12 @@
 package com.example.projectwork.repository;
 
 import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -21,5 +23,7 @@ public interface CardRepository extends JpaRepository<CardEntity, Long>{
     List<CardEntity> findByPrezzoScontatoGreaterThan(double prezzoScontato);
 	List<CardEntity> findByNomeContainingIgnoreCase(String nome);
 	List<CardEntity> findByPrezzoBetween(double minPrezzo, double maxPrezzo);
+	Page<CardEntity> findByAdmin(AdminEntity admin, Pageable pageable);
+	Page<CardEntity> findByAdmin_Email(String email, Pageable pageable);
 
 }

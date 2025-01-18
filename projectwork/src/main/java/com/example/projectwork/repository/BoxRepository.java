@@ -1,10 +1,12 @@
 package com.example.projectwork.repository;
 
 import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BoxEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -22,5 +24,7 @@ public interface BoxRepository extends JpaRepository<BoxEntity, Long>{
 	List<BoxEntity> findByNomeContainingIgnoreCase (String nome);
 	List<BoxEntity> findByPrezzoBetween(double minPrezzo, double maxPrezzo);
 	List<BoxEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
+	Page<BoxEntity> findByAdmin(AdminEntity admin, Pageable pageable);
+	Page<BoxEntity> findByAdmin_Email(String email, Pageable pageable);
 
 }
