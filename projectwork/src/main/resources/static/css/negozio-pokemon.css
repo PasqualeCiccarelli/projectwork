@@ -183,3 +183,24 @@ a, h6,i,p{
     padding: 0;
 }
 
+.card{
+  background: none;
+  background-color: rgb(0, 0, 0,0.1);
+}
+
+#apply-prezzo-minimo, #apply-prezzo-massimo {
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  background-color: #66c8f2;
+}
+
+.product{
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  color: black;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+

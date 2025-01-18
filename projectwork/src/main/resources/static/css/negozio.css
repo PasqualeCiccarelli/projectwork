@@ -23,10 +23,7 @@ h1 {
     overflow-y: auto;
 }
 
-
-
 .product { /* Riduce le dimensioni dei prodotti */
-    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
@@ -87,24 +84,6 @@ input[type="range"] {
 #prezzoMinimoValue, #prezzoMassimoValue {
     display: inline-block;
     margin-left: 10px;
-}
-
-/* Paginazione */
-#pagination {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-}
-
-#pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
 }
 
 /* Stili per i filtri */

@@ -1,119 +1,159 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  /* margin: 10px; */
 }
 
 .dettagli-carta {
-    margin: 0 auto;
-    max-width: 800px;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .prodotto-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
 }
 .immagine-container {
-    flex: 1;
+  flex: 1;
 }
 .info-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .prezzo-container {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
 }
 .btn-carrello {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 .btn-carrello:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 .prodotto-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1400px;
-    margin: 20px auto;
-    padding: 20px;
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
 .immagine-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-width: 600px;
-    perspective: 1000px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  perspective: 1000px;
 }
 
 .immagine-container img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .zoom-effect {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .zoom-effect:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .card-effect {
-    transition: transform 0.2s ease;
-    transform-style: preserve-3d;
-    will-change: transform;
+  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .info-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .prezzo-container {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
 }
 
 .btn-carrello {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
 .btn-carrello:hover {
-    background-color: #218838;
+  background-color: #218838;
+}
+/* max logo-footere-navbar */
+.navina {
+  background-color: rgb(5 17 30) !important;
+  padding: 0.5rem 0 0 0;
+}
+.logo {
+  height: 5rem;
+  margin-left: 16px;
+}
+.piedino {
+  background-color: rgb(5 17 30) !important;
+}
+.navbar-brand {
+  color: rgb(238 14 14);
+}
+.accordion-button {
+  color: #d4dbe1;
+  background-color: rgb(5 17 30);
+}
+.accordion-item {
+  color: white;
+  background-color: rgb(4, 17, 31);
+}
+.navbar-nav {
+  --bs-nav-link-color: rgb(251 0 0);
+
+  --bs-nav-link-disabled-color: red;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: rgb(241 8 8);
+}
+
+
+@media screen and (min-width:1024px){
+
+  .prodotto-container{
+    display: flex;
+  }
+  
 }

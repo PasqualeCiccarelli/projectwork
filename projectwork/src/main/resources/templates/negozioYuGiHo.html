@@ -20,257 +20,279 @@
     <link rel="stylesheet" href="css/negozio.css">
     <link rel="stylesheet" href="css/btn.css">
     <link rel="stylesheet" href="css/logoUtente.css">
+    <link rel="stylesheet" href="css/negozio-yugi.css">
+    <link rel="stylesheet" href="css/SearchBar.css">
 </head>
 
 <body>
-   
-<!-- inizio navbar -->
-<nav class="navbar navbar-expand-lg navina" style="background-color: rgba(22, 24, 31, 1);">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="#">
-            <img class="logo" src=" img/LOGO.png" alt="">
-        </a>
 
-        <!-- Menu hamburger -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- inizio navbar -->
+    <nav class="navbar navbar-expand-lg navina" style="background-color: rgba(22, 24, 31, 1);">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <img class="logo" src="img/LOGO.png" alt="">
+            </a>
 
-        <!-- Barra di ricerca -->
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <form class="d-flex mx-auto order-2 order-lg-1 search-bar" role="search">
-                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-            </form>
+            <!-- Menu hamburger -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: white;"></span>
+            </button>
 
             <!-- Menu -->
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-home fa-2x"></i>
-                    <a class="nav-link active" aria-current="page" href="#"><p>Home</p></a>
-               </li>
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-dragon mb-2 fa-2x"></i>
-                    <a class="nav-link active" href="#"><p>Negozio Pokémon</p></a>
-                </li>
-                <li class="nav-item text-center mx-1">
-                    <i class="fas fa-scroll fa-2x"></i>
-                    <a class="nav-link active" href="#"><p>Negozio Magic</p></a>
-                </li>
-                <!-- <li class="nav-item text-center mx-1">
-                    <i class="fa-solid fa-user fa-2x"></i>
-                    <a class="nav-link active" href="#"><p>Profilo</p></a>
-                </li> -->
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-                <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-                    <div>
-                      <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
-                      
-                      <a href="/utente">
-                        <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
-                          <!-- Immagine di default se non c'è nessuna immagine associata -->
-                          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link d-flex flex-column align-items-center" href="/">
+                                        <i class="fas fa-home fa-2x" style="color: white;"></i>
+                                        <span class="mt-1 text-white">Home</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link d-flex flex-column align-items-center" href="/negozio-pokemon">
+                                        <i class="fas fa-dragon fa-2x" style="color: white;"></i>
+                                        <span class="mt-1 text-white">Negozio Pokémon</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link d-flex flex-column align-items-center" href="/negozio-magic">
+                                        <i class="fas fa-hat-wizard fa-2x" style="color: white;"></i>
+                                        <span class="mt-1 text-white">Negozio Magic</span>
+                                    </a>
+                                </li>
+                                                                
+                                <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo" style="padding: 8px;">
+                                    <div>
+                                      <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
+                                      
+                                      <a href="/utente">
+                                        <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
+                                          <!-- Immagine di default se non c'è nessuna immagine associata -->
+                                          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+                                        </div>
+                                      </a>
+                                      
+                                    </div>
+                                    <p style="color: #a3a3a3; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
+                                </li>
+
+                                <li class="nav-item d-flex flex-column justify-content-center align-items-center togli-carrello">
+                                    <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff;"></i>
+                                    <a href="/carrello"></a><p style="color: #ffffff; padding: 6px;">CARRELLO</p></a>
+                                </li>
+                    
+                                <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+                                    <i class="fas fa-sign-in-alt fa-2x"></i>
+                                    <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
+                                </li>
+                    
+                                <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+                                    <i class="fas fa-user-plus fa-2x"></i>
+                                    <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
+                                </li>
+
+                            </ul>
                         </div>
-                      </a>
-                      
-                    </div>
-                    <p style="color: #a3a3a3; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
-                </li>
-    
-                <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
-                    <i class="fas fa-sign-in-alt fa-2x"></i>
-                    <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
-                </li>
-    
-                <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
-                    <i class="fas fa-user-plus fa-2x"></i>
-                    <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
-                </li>
+                    
+    </nav>
 
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-<!-- fine navbar -->
-
+    <!-- fine navbar -->
 
     </header>
 
-        <!-- inizio sezione hero con immagini singole pubblicitarie -->
-        <div class="container2">
+    <!-- inizio sezione hero con immagini singole pubblicitarie -->
+    <div class="container2">
 
-            <div id="hero-slider" class="swiper">
-                <div class="swiper-wrapper">
-                    <!-- prima slide -->
-                    <div class="swiper-slide slide-parent">
-                        <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
-                        <img src=" img/negozio-yugi/yugi-slide1.png" class="img-fluid slide-relative" alt="">
-                    </div>
-                    <!-- seconda slide -->
-                    <div class="swiper-slide slide-parent">
-                        <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
-                        <img src=" img/negozio-yugi/yugi-slide2.png" class="img-fluid slide-relative" alt="">
-                    </div>
-                    <!-- terza slide -->
-                    <div class="swiper-slide slide-parent">
-                        <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
-                        <img src=" img/negozio-yugi/yugi-slide3.png" class="img-fluid slide-relative" alt="">
-                    </div>
+        <div id="hero-slider" class="swiper">
+            <div class="swiper-wrapper">
+                <!-- prima slide -->
+                <div class="swiper-slide slide-parent">
+                    <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                    <img src=" img/negozio-yugi/yugi-slide1.png" class="img-fluid slide-relative" alt="">
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </div>
-        <!-- fine sezione hero con slide singole -->
-
-        <!-- START sezione trailer -->
-        <section id="info" class="mt-5">
-            <div class="container  mb-3 mt-2">
-                <div class="section-title mt-2">
-                   
+                <!-- seconda slide -->
+                <div class="swiper-slide slide-parent">
+                    <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                    <img src=" img/negozio-yugi/yugi-slide2.png" class="img-fluid slide-relative" alt="">
                 </div>
-                <div>
-                    <div class="info-box row ">
-                        <div class="info-image col-12 col-md-8">
-                            <video width="100%" height="100%" muted autoplay loop controls>
-                                <source src=" video-negozio-magic/trailer-yugi.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="info-text col-12 col-md-4 ">
-                            <h2 class=>YU-GI-OH! WCL CELEBRA L’OTTAVO ANNIVERSARIO<br></h2>
-                            <p class="h4">Konami Digital Entertainment, B.V. (KONAMI) si prepara a celebrare l’8° anniversario di Yu‑Gi‑Oh! DUEL LINKS. KONAMI commemorerà il nuovo importante traguardo a partire dal 12 gennaio 2025 con la Campagna Celebrativa Yu‑Gi‑Oh!<br></p>
-                        </div>
-                    </div>
+                <!-- terza slide -->
+                <div class="swiper-slide slide-parent">
+                    <!-- <img src=" img/icone-tgc/yugioh-logo.png" class="img-fluid slide-absolute" alt=""> -->
+                    <img src=" img/negozio-yugi/yugi-slide3.png" class="img-fluid slide-relative" alt="">
                 </div>
             </div>
-        </section>
-        <!-- END sezione trailer BOX -->
-   
-
-
-<!-- Inizio contenitore con gli articoli -->
-
-
-<section id="store" class="my-5">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-12">
-                <h1>Negozio - Brand </h1>
-
-            </div>
-
-            <div class="col-lg-3" >
-                <div class="card filtri">
-                    <div class="card-body">
-                        <div class="filter" id="categoria-filter">
-                           <label for="categoria">Categoria</label> 
-                           <select name="categoria" class="form-select">
-                                <option selected>Scegli Categoria</option>
-                                <option value="PREVENDITA">Prevendita</option>
-                                <option value="NOVITA">Novità</option>
-                                <option value="DEFAULT">Default</option>
-                                <option value="SPECIALE">Speciale</option>
-                              </select>
-                        </div>
-                        
-                        <div class="filter" id="rarita-filter">
-                            <label for="rarita">Rarita</label> 
-                           <select name="rarita" class="form-select">
-                                <option selected>Scegli Raritá</option>
-                                <option value="COMUNE">Comune</option>
-                                <option value="NON_COMUNE">Non Comune</option>
-                                <option value="RARA">Rara</option>
-                                <option value="ULTRA_RARA">Ultra Rara</option>
-                                <option value="LEGGENDARIA">Leggendaria</option>
-                              </select>
-                        </div>
-
-                        <div class="filter" id="tipo-filter">
-                            <label for="tipo">Tipo</label> 
-                           <select name="tipo" class="form-select">
-                                <option selected>Scegli Tipo</option>
-                                <option value="DEFAULT">Noramle</option>
-                                <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
-                                <option value="ACTION_FIGURE">Action Figure</option>
-                                <option value="GADGET">Gadget</option>
-                                <option value="RACCOGLITORI">Raccoglitori</option>
-                                <option value="SLEEVE">Sleeve</option>
-                              </select>
-                        </div>
-                        <!-- Filtro Tipo Categoria -->
-                        <div class="filter" id="tipoCategoria-filter">
-                            <label for="tipoCategoria">Categoria</label> 
-                           <select name="tipoCategoria" class="form-select">
-                                <option selected>Scegli Categoria</option>
-                                <option value="CARD">Card</option>
-                                <option value="BUSTINA">Bustine</option>
-                                <option value="BOX">Box</option>
-                                <option value="ACCESSORIO">Accessori</option>
-                              </select>
-                        </div>
-                        
-                        <div>
-                            <label for="prezzoMinimo">Prezzo Minimo:</label>
-                            <input type="range" id="prezzoMinimo" min="1" max="500000" step="1" value="1">
-                            <span id="prezzoMinimoValue">€0.01</span>
-                            <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
-                        </div>
-                        <div>
-                            <label for="prezzoMassimo">Prezzo Massimo:</label>
-                            <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
-                            <span id="prezzoMassimoValue">€5000</span>
-                            <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-9">
-                <div id="product-list" class="row row-gap-4"></div>
-                <div id="no-products-message" style="display: none; text-align: center; margin-top: 20px; font-size: 18px; color: #6c757d;">
-                    Nessun articolo trovato
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div id="pagination" class="pagination"></div>
-            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </div>
-</section>
+    <!-- fine sezione hero con slide singole -->
 
- 
-<!-- Footer -->
-  <!-- Footer -->
+    <!-- START sezione trailer -->
+    <section id="info" class="mt-5">
+        <div class="container  mb-3 mt-2">
+            <div class="section-title mt-2">
+
+            </div>
+            <div>
+                <div class="info-box row ">
+                    <div class="info-image col-12 col-md-8">
+                        <video width="100%" height="100%" muted autoplay loop controls>
+                            <source src=" video-negozio-magic/trailer-yugi.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="info-text col-12 col-md-4 ">
+                        <h2 class=>YU-GI-OH! WCL CELEBRA L’OTTAVO ANNIVERSARIO<br></h2>
+                        <p class="h4">Konami Digital Entertainment, B.V. (KONAMI) si prepara a celebrare l’8°
+                            anniversario di Yu‑Gi‑Oh! DUEL LINKS. KONAMI commemorerà il nuovo importante traguardo a
+                            partire dal 12 gennaio 2025 con la Campagna Celebrativa Yu‑Gi‑Oh!<br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END sezione trailer BOX -->
+
+
+
+    <!-- Inizio contenitore con gli articoli -->
+
+
+    <section id="store" class="my-5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    <h1>Negozio - Brand </h1>
+
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card filtri">
+                        <div class="card-body">
+                            <div class="filter" id="categoria-filter">
+                                <label for="categoria">Categoria</label>
+                                <select name="categoria" class="form-select">
+                                    <option selected>Scegli Categoria</option>
+                                    <option value="PREVENDITA">Prevendita</option>
+                                    <option value="NOVITA">Novità</option>
+                                    <option value="DEFAULT">Default</option>
+                                    <option value="SPECIALE">Speciale</option>
+                                </select>
+                            </div>
+
+                            <div class="filter" id="rarita-filter">
+                                <label for="rarita">Rarita</label>
+                                <select name="rarita" class="form-select">
+                                    <option selected>Scegli Raritá</option>
+                                    <option value="COMUNE">Comune</option>
+                                    <option value="NON_COMUNE">Non Comune</option>
+                                    <option value="RARA">Rara</option>
+                                    <option value="ULTRA_RARA">Ultra Rara</option>
+                                    <option value="LEGGENDARIA">Leggendaria</option>
+                                </select>
+                            </div>
+
+                            <div class="filter" id="tipo-filter">
+                                <label for="tipo">Tipo</label>
+                                <select name="tipo" class="form-select">
+                                    <option selected>Scegli Tipo</option>
+                                    <option value="DEFAULT">Noramle</option>
+                                    <option value="EDIZIONE_LIMITATA">Edizione Limitata</option>
+                                    <option value="ACTION_FIGURE">Action Figure</option>
+                                    <option value="GADGET">Gadget</option>
+                                    <option value="RACCOGLITORI">Raccoglitori</option>
+                                    <option value="SLEEVE">Sleeve</option>
+                                </select>
+                            </div>
+                            <!-- Filtro Tipo Categoria -->
+                            <div class="filter" id="tipoCategoria-filter">
+                                <label for="tipoCategoria">Categoria</label>
+                                <select name="tipoCategoria" class="form-select">
+                                    <option selected>Scegli Categoria</option>
+                                    <option value="CARD">Card</option>
+                                    <option value="BUSTINA">Bustine</option>
+                                    <option value="BOX">Box</option>
+                                    <option value="ACCESSORIO">Accessori</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="prezzoMinimo">Prezzo Minimo:</label>
+                                <input type="range" id="prezzoMinimo" min="1" max="500000" step="1" value="1">
+                                <span id="prezzoMinimoValue">€0.01</span>
+                                <button id="apply-prezzo-minimo">Applica Prezzo Minimo</button>
+                            </div>
+                            <div>
+                                <label for="prezzoMassimo">Prezzo Massimo:</label>
+                                <input type="range" id="prezzoMassimo" min="1" max="5000" step="1" value="5000">
+                                <span id="prezzoMassimoValue">€5000</span>
+                                <button id="apply-prezzo-massimo">Applica Prezzo Massimo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div id="product-list" class="row row-gap-4"></div>
+                    <div id="no-products-message"
+                        style="display: none; text-align: center; margin-top: 20px; font-size: 18px; color: #6c757d;">
+                        Nessun articolo trovato
+                    </div>
+                </div>
+
+                <div id="pagination-script" class="col-12 d-flex justify-content-center mt-5">
+                    <nav aria-label="Page navigation example"></nav>
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
     <!-- Footer -->
     <footer class="text-center text-lg-start text-muted">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block">
-            
+
             </div>
             <!-- Left -->
 
             <!-- Right -->
             <div>
                 <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f" style="color: white;"></i>
                 </a>
                 <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-twitter" style="color: white;"></i>
                 </a>
                 <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                    <i class="fab fa-google"></i>
+                    <i class="fab fa-google" style="color: white;"></i>
                 </a>
                 <a href="" class="me-4 text-reset" style="text-decoration: none;">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram" style="color: white;"></i>
                 </a>
             </div>
             <!-- Right -->
@@ -283,9 +305,9 @@
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
-                   <div class="mx-auto mb-3" style="font-size:24px;">
+                    <div class="mx-auto mb-3" style="font-size:24px;">
                         <!-- Content -->
- 
+
                         <p>
                             Hai domande? Visita la nostra FAQ o contattaci per ricevere assistenza. Il tuo punto di
                             riferimento per
@@ -307,13 +329,13 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>
-                                        <a href="#!" class="text-reset">Carte singole</a>
+                                        <a href="#!" class="text-reset">Negozio Pokémon</a>
                                     </p>
                                     <p>
-                                        <a href="#!" class="text-reset">Box</a>
+                                        <a href="#!" class="text-reset">Negozio Yu-Gi-Oh!</a>
                                     </p>
                                     <p>
-                                        <a href="#!" class="text-reset">Accessori</a>
+                                        <a href="#!" class="text-reset">Negozio Magic</a>
                                     </p>
                                     <p>
                                         <a href="#!" class="text-reset">Merchandising</a>
@@ -349,13 +371,12 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <p>CONTATTI</p>
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
                                     <p>
@@ -383,7 +404,7 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-  <!-- Footer -->
+    <!-- Footer -->
 
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -397,12 +418,11 @@
     <!-- <script src="scriptIserisciItem"></script> -->
     <!-- <script src="/main.js" type="module"></script> -->
     <!-- <script src="negozioMagicScript.js" type="module"></script> -->
-
-    <script src="scorrimentoPagine.js"></script>
     <script src="negozioYuGiHoScript.js"></script>
     <script src="immpagineProfilo.js"></script>
     <script src="scriptIserisciItem2.js"></script>
     <script src="negozioScriptY.js"></script>
+    <!-- <script src="scriptSearchBar.js"></script> -->
 
 </body>
 <!-- JS DI BOOTSTRAP -->
