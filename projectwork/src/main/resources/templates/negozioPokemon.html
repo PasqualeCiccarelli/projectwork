@@ -26,34 +26,93 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
     <nav class="navbar navbar-expand-lg navina" style="background-color: rgba(22, 24, 31, 1);">
         <div class="container-fluid">
 
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
-          <li class="nav-item mx-2">
-            <a class="nav-link d-flex flex-column align-items-center" href="/">
-              <i class="fas fa-home fa-2x" style="color: white;"></i>
-              <span class="mt-1 text-white">Home</span>
-            </a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-pokemon">
-              <i class="fas fa-dragon fa-2x" style="color: white;"></i>
-              <span class="mt-1 text-white">Negozio Pokémon</span>
-            </a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-magic">
-              <i class="fas fa-scroll fa-2x" style="color: white;"></i>
-              <span class="mt-1 text-white">Negozio Magic</span>
-            </a>
-          </li>
-          
-          <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-            <div>
-              <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
-              
-              <a href="/utente">
-                <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
-                  <!-- Immagine di default se non c'è nessuna immagine associata -->
-                  <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+                <!-- Logo -->
+                <div class="col-md-2 mt-4">
+                    <a class="navbar-brand d-flex justify-content-center align-items-center" href="/">
+                        <img src="img/LOGO.png" class="logo">
+                    </a>
+                </div>
+
+                <!-- Menu hamburger -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Barra di ricerca -->
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/">
+                                <i class="fas fa-home fa-2x" style="color: white;"></i>
+                                <span class="mt-1 text-white">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-pokemon">
+                                <i class="fas fa-dragon fa-2x" style="color: white;"></i>
+                                <span class="mt-1 text-white">Negozio Pokémon</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/negozio-magic">
+                                <i class="fas fa-scroll fa-2x" style="color: white;"></i>
+                                <span class="mt-1 text-white">Negozio Magic</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/utente">
+                                <div class="profile-image immagine-profilo" style="width: 32px; height: 32px;">
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
+                                        id="profile-img">
+                                </div>
+                                <span class="mt-1 text-white">Account</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/login">
+                                <i class="fas fa-sign-in-alt fa-2x" style="color: white;"></i>
+                                <span class="mt-1 text-white">Login</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex flex-column align-items-center" href="/registrati">
+                                <i class="fas fa-user-plus fa-2x" style="color: white;"></i>
+                                <span class="mt-1 text-white">Sign-in</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+        
+
+        </div>
+        </div>
+    </nav>
+
+    <!-- fine navbar -->
+
+    <!-- inizio sezione hero con immagini singole pubblicitarie -->
+    <div class="container2">
+
+        <div id="hero-slider" class="swiper">
+            <div class="swiper-wrapper">
+                <!-- prima slide -->
+                <div class="swiper-slide slide-parent">
+                    <img src="" class="img-fluid slide-absolute" alt="">
+                    <img src="img/sfondi/banner-evo.png" class="img-fluid slide-relative" alt="">
+                </div>
+                <!-- seconda slide -->
+                <div class="swiper-slide slide-parent ">
+                    <img src="img/sfondi/scintille.png" class="img-fluid slide-absolute2" alt="">
+                    <img src="img/sfondi/folgoranti.jpg" class="img-fluid slide-relative" alt="">
+                </div>
+                <!-- terza slide -->
+                <div class="swiper-slide slide-parent">
+                    <img src=" img/sfondi/pokemon-scarlet-logo.png" class="img-fluid  slide-absolute3 scarlet" alt="">
+                    <img src=" img/sfondi/pokemon-violet-logo.png" class="img-fluid  slide-absolute4 violet" alt="">
+                    <img src=" img/sfondi/scarlatto-violetto.jpg " class="img-fluid slide-relative" alt="">
                 </div>
               </a>
               
@@ -368,10 +427,10 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
     <script src="negozioPokeScript.js"></script>
     <script src="immpagineProfilo.js"></script>
     <script src="scriptIserisciItem2.js"></script>
-    <!-- <script src="negozioScriptP.js"></script> -->
-    <script src="scriptSearchBar.js"></script>
+    <!-- <script src="scriptSearchBar.js"></script> -->
+    <script src="negozioScriptP.js"></script>
 
-</body>
+z</body>
 <!-- JS DI BOOTSTRAP -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
