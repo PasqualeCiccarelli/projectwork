@@ -62,7 +62,6 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width:100%;
   perspective: 1000px;
 }
 
@@ -148,4 +147,13 @@ button:hover {
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   color: rgb(241 8 8);
+}
+
+
+@media screen and (min-width:1024px){
+
+  .prodotto-container{
+    display: flex;
+  }
+  
 }

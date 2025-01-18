@@ -43,17 +43,34 @@ async function fetchProductData() {
             default:
                 console.warn(`Brand non riconosciuto: ${prodottoDettagli.brand}`);
         }
+        console.log(prodotto);
+        
+        let classe;
+
+        if (window.innerWidth >= 1024) {
+            classe = "d-flex";
+        } else {
+            classe = "d-flex flex-column";
+        }
+
+        // Aggiungi un listener per il resize della finestra
+        window.addEventListener('resize', () => {
+            const newClasse = window.innerWidth >= 1024 ? "d-flex" : "row";
+            if (newClasse !== classe) {
+            location.reload();
+            }
+        });
 
         // Aggiorna il contenuto HTML
         dettagliCartaDiv.innerHTML = `
-            <div class="prodotto-container row">
+            <div class="prodotto-container ${classe}">
                 <div class="immagine-container col-12 col-md-8">
                     <img src="${imagePath}" 
                          alt="${prodottoDettagli.nome}" 
                          class="${isCard(prodottoDettagli) ? 'card-effect' : 'zoom-effect'}">
                 </div>
 
-                <div class="info-container col-12 col-md-4">
+                <div class="info-container col-12 col-md-6">
                     <h1>${prodottoDettagli.nome}</h1>
                     <p><strong>Categoria:</strong> ${prodottoDettagli.categoria}</p>
                     <p><strong>Descrizione:</strong> ${prodottoDettagli.descrizione || 'Nessuna descrizione disponibile'}</p>
@@ -104,6 +121,7 @@ async function fetchProductData() {
 }
 
 console.log(typeof prodotto);
+
 
 
 
