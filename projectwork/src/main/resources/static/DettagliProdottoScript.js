@@ -23,13 +23,14 @@ async function fetchProductData() {
 
         console.log(prodotto );
         console.log(prodotto);
+        console.log(prodotto.brand.toLowerCase());
         
         
 
         dettagliCartaDiv.innerHTML = `
         <div class="prodotto-container row">
             <div class="immagine-container col-12 col-md-8">
-                <img src="img/magic/${prodotto.immagine}" 
+                <img src="img/${prodotto.brand.toLowerCase()}/${prodotto.immagine}" 
                      alt="${prodotto.nome}" 
                      class="${isCard(prodotto) ? 'card-effect' : 'zoom-effect'}">
             </div>
