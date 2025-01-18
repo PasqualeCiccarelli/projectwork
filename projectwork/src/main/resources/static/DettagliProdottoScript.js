@@ -1,6 +1,5 @@
 async function fetchProductData() {
     try {
-
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
 
@@ -9,102 +8,89 @@ async function fetchProductData() {
         }
 
         const response = await fetch(`/api/prodotto/dettagli-prodotto?id=${id}`);
-        
+
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Errore HTTP: status ${response.status}`);
         }
 
         const prodotto = await response.json();
-        
+
+        if (!prodotto || prodotto.length === 0) {
+            throw new Error('Nessun prodotto trovato');
+        }
+
+        // Elemento della pagina dove mostrare i dettagli
         const dettagliCartaDiv = document.querySelector('.dettagli-carta');
         if (!dettagliCartaDiv) {
             throw new Error('Elemento .dettagli-carta non trovato nella pagina');
         }
 
-        console.log(prodotto);
-        console.log(prodotto);
-        console.log(prodotto.brand.toLowerCase());
-        
-        prodotto.forEach((prodotto) => {
-            const productDiv = document.createElement("div");
-            productDiv.className = "product";
-    
-            // Determina il percorso dell'immagine in base al brand
-            let imagePath = prodotto.immagine; // Percorso di default
-            switch (prodotto.brand) {
-                case "POKEMON":
-                    imagePath = `img/pokemon/${prodotto.immagine}`;
-                    break;
-                case "YUGIHO":
-                    imagePath = `img/Yu-Gi-Oh/${prodotto.immagine}`;
-                    break;
-                case "MAGIC":
-                    imagePath = `img/magic/${prodotto.immagine}`;
-                    break;
-                default:
-                    console.warn(`Brand non riconosciuto: ${prodotto.brand}`);
-            }
-        });
-        
+        // Se prodotto è un array, usa il primo elemento (o iteralo se necessario)
+        const prodottoDettagli = Array.isArray(prodotto) ? prodotto[0] : prodotto;
 
+        // Determina il percorso immagine
+        let imagePath = prodottoDettagli.immagine;
+        switch (prodottoDettagli.brand.toUpperCase()) {
+            case "POKEMON":
+                imagePath = `img/pokemon/${prodottoDettagli.immagine}`;
+                break;
+            case "YUGIHO":
+                imagePath = `img/Yu-Gi-Oh/${prodottoDettagli.immagine}`;
+                break;
+            case "MAGIC":
+                imagePath = `img/magic/${prodottoDettagli.immagine}`;
+                break;
+            default:
+                console.warn(`Brand non riconosciuto: ${prodottoDettagli.brand}`);
+        }
+
+        // Aggiorna il contenuto HTML
         dettagliCartaDiv.innerHTML = `
-        <div class="prodotto-container row">
-            <div class="immagine-container col-12 col-md-8">
-                <img src="${imagePath}"; 
-                     alt="${prodotto.nome}" 
-                     class="${isCard(prodotto) ? 'card-effect' : 'zoom-effect'}">
-            </div>
+            <div class="prodotto-container row">
+                <div class="immagine-container col-12 col-md-8">
+                    <img src="${imagePath}" 
+                         alt="${prodottoDettagli.nome}" 
+                         class="${isCard(prodottoDettagli) ? 'card-effect' : 'zoom-effect'}">
+                </div>
 
-            <div class="info-container col-12 col-md-4">
-                <h1 style="margin: 0 0 20px 0; color: #333;">${prodotto.nome}</h1>
-                
-                <p><strong>Categoria:</strong> ${prodotto.categoria}</p>
-                <p><strong>Descrizione:</strong> ${prodotto.descrizione || 'Nessuna descrizione disponibile'}</p>
-                <p><strong>Tipo:</strong> ${prodotto.tipo}</p>
-                <p><strong>Brand:</strong> ${prodotto.brand}</p>
-                <p><strong>Dettagli Specifici:</strong> ${prodotto.specificDetails || 'Non disponibile'}</p>
+                <div class="info-container col-12 col-md-4">
+                    <h1>${prodottoDettagli.nome}</h1>
+                    <p><strong>Categoria:</strong> ${prodottoDettagli.categoria}</p>
+                    <p><strong>Descrizione:</strong> ${prodottoDettagli.descrizione || 'Nessuna descrizione disponibile'}</p>
+                    <p><strong>Tipo:</strong> ${prodottoDettagli.tipo}</p>
+                    <p><strong>Brand:</strong> ${prodottoDettagli.brand}</p>
+                    <p><strong>Dettagli Specifici:</strong> ${prodottoDettagli.specificDetails || 'Non disponibile'}</p>
 
-                <div class="prezzo-container">
-                    ${prodotto.categoria === 'SPECIALE' ? `
-                        <p style="text-decoration: line-through; color: #666;">
-                            Prezzo originale: €${prodotto.prezzo.toFixed(2)}
-                        </p>
-                        <p style="color: #e53935; font-size: 1.3em; margin: 10px 0;">
-                            <strong>Prezzo scontato: €${prodotto.prezzoScontato.toFixed(2)}</strong>
-                        </p>
-                    ` : `
-                        <p style="font-size: 1.3em; margin: 10px 0;">
-                            <strong>Prezzo: €${prodotto.prezzo.toFixed(2)}</strong>
-                        </p>
-                    `}
-                    
-                    ${prodotto.disponibilita ? `
-                        <p style="color: #28a745; margin: 10px 0;">
-                            Disponibile (${prodotto.rimanenza} pezzi rimanenti)
-                        </p>
-                        <button class="btn-carrello" onclick="aggiungiAlCarrello(${prodotto.id})">
-                            Aggiungi al carrello
-                        </button>
-                    ` : `
-                        <p style="color: #dc3545; margin: 10px 0;">Non disponibile</p>
-                        <button class="btn-carrello" disabled style="background-color: #6c757d; cursor: not-allowed;">
-                            Non disponibile
-                        </button>
-                    `}
+                    <div class="prezzo-container">
+                        ${prodottoDettagli.categoria === 'SPECIALE' ? `
+                            <p style="text-decoration: line-through;">Prezzo originale: €${prodottoDettagli.prezzo.toFixed(2)}</p>
+                            <p style="color: #e53935;">Prezzo scontato: €${prodottoDettagli.prezzoScontato.toFixed(2)}</p>
+                        ` : `
+                            <p>Prezzo: €${prodottoDettagli.prezzo.toFixed(2)}</p>
+                        `}
+
+                        ${prodottoDettagli.disponibilita ? `
+                            <p style="color: #28a745;">Disponibile (${prodottoDettagli.rimanenza} pezzi rimanenti)</p>
+                            <button class="btn-carrello" onclick="aggiungiAlCarrello(${prodottoDettagli.id})">Aggiungi al carrello</button>
+                        ` : `
+                            <p style="color: #dc3545;">Non disponibile</p>
+                            <button class="btn-carrello" disabled>Non disponibile</button>
+                        `}
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
+        `;
 
-    if (isCard(prodotto)) {
-        const cardImage = document.querySelector('.card-effect');
-        if (cardImage) {
-            addTiltEffect(cardImage);
+        // Aggiungi effetto tilt se è una card
+        if (isCard(prodottoDettagli)) {
+            const cardImage = document.querySelector('.card-effect');
+            if (cardImage) {
+                addTiltEffect(cardImage);
+            }
         }
-    }
 
     } catch (error) {
-        console.error('Errore:', error);
+        console.error('Errore:', error.message);
         const dettagliCartaDiv = document.querySelector('.dettagli-carta');
         if (dettagliCartaDiv) {
             dettagliCartaDiv.innerHTML = `
