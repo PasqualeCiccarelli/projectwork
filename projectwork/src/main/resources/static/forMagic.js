@@ -22,7 +22,6 @@ async function getCardNovita3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
@@ -62,8 +61,7 @@ async function getBoxNovita3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -102,8 +100,7 @@ async function getBustineNovita3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -150,7 +147,6 @@ async function getCardSpeciale3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
@@ -190,8 +186,7 @@ async function getBoxSpeciale3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -230,8 +225,7 @@ async function getBustineSpeciale3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
-					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/${data[i].immagine}></a>
+					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
 					<p class="product-price" style="margin-bottom: 0.3rem;">${data[i].prezzo}</p>
@@ -280,7 +274,6 @@ async function getAccessoriActionFigure3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
@@ -320,7 +313,6 @@ async function getAccessoriGadget3(){
 			`
 			<div class="swiper-slide">
 				<div class="product-card">
-					<!-- <img src=img/${data[i].immagine}> -->
 					<a href="/DettagiProdotto.html?id=${data[i].id}"><img src=img/magic/${data[i].immagine}></a>
 					<p class="product-category" style="margin-bottom: 0.3rem;">${data[i].categoria}</p>
 					<h3 class="product-name" style="margin-bottom: 0.3rem;">${data[i].nome}</h3>
