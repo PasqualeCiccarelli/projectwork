@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="css/btn.css">
   <link rel="stylesheet" href="css/logoUtente.css">
+  <link rel="stylesheet" href="css/SearchBar.css">
 </head>
 
 <body >
@@ -50,14 +51,40 @@
           </div>
 
           <!-- Search form -->
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
             <div class="search-form mt-5 mb-3">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="" style="background-color: #efefef; border: rgb(0, 0, 0);">
                 <label for="floatingInput">Cerca nel sito...</label>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <div class="col-md-8">
+            <div class="search-form mt-5 mb-3">
+                <div class="form-floating">
+                    <!-- Barra di ricerca -->
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
+                    <label for="floatingInput">Cerca nel sito...</label>
+                </div>
+            </div>
+    
+            <!-- Overlay per oscurare il sito -->
+            <div id="overlay"></div>
+    
+            <!-- Popup per i risultati -->
+            <div id="searchPopup">
+                <!-- Header della popup -->
+                <div id="popupHeader">
+                    <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
+                    <button id="closePopup">X</button>
+                </div>
+    
+                <!-- Contenitore per i risultati -->
+                <div id="popupResults"></div>
+            </div>
+        </div>
+
           <!-- Navbar items -->
           <div class="col-md-2 d-flex justify-content-center">
             <ul class="navbar-nav first-navbar d-flex flex-row">
@@ -153,10 +180,10 @@
         </div>
       </nav>
     </header>
-    <!-- fine navbar -->
+    <!-- fine navbar z-index: 1-->
 
 
-  <main style="position: relative; z-index: 1">
+  <main style="position: relative; ">
     <video autoplay muted loop id="navbar-video2" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
       <source id="video2" src=" img/sfondi/pikac.mp4" type="video/mp4">
       </video>
@@ -377,6 +404,7 @@
   <script src="forMagic.js"></script>
   <script src="immpagineProfilo.js"></script>
   <script src="scriptIserisciItem.js"></script>
+  <script src="scriptSearchBar.js"></script>
 </video>
  
 

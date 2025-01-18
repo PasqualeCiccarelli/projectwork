@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
@@ -105,6 +106,13 @@ public class ProdottoServiceImpl implements ProdottoService {
 		
 		prodottoRepository.delete(prodotto);
 	}
+	
+	public List<ProdottoDto> searchProdotti(String query) {
+        List<ProdottoEntity> prodotti = prodottoRepository.findByNomeContainingIgnoreCase(query);
+        return prodotti.stream()
+                .map(ProdottoDto::toDto)
+                .collect(Collectors.toList());
+    }
 	
 	
 	

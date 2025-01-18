@@ -30,6 +30,10 @@ import jakarta.persistence.MappedSuperclass;
     @JsonSubTypes.Type(value = BustinaEntity.class, name = "bustina"),
     @JsonSubTypes.Type(value = AccessorioEntity.class, name = "accessorio")
 })
+@Table(
+	    name = "prodotto_entity",
+	    indexes = @Index(name = "idx_nome", columnList = "nome")
+	)
 public abstract class ProdottoEntity {
 
     @Id

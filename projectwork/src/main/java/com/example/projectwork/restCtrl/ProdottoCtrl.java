@@ -1,5 +1,7 @@
 package com.example.projectwork.restCtrl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -67,5 +69,11 @@ public class ProdottoCtrl {
 			return ResponseEntity.internalServerError().body(0);
 		}
 	}
+	
+	@GetMapping("/search")
+    public ResponseEntity<List<ProdottoDto>> searchProdotti(@RequestParam("query") String query) {
+        List<ProdottoDto> risultati = prodottoService.searchProdotti(query);
+        return ResponseEntity.ok(risultati);
+    }
 
 }
