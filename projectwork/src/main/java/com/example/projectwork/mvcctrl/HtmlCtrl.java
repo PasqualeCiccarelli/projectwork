@@ -85,4 +85,9 @@ public class HtmlCtrl {
 		return "negozio";
 	}
 	
+	@GetMapping("/chiSiamo")
+	public String paginaChiSiamo(){
+		return "chiSiamo";
+	}
+
 }

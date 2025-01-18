@@ -22,9 +22,8 @@ const configurazioneSwiper= {
         slidesPerView: 3, // Aumenta il numero di immagini visibili su tablet
         spaceBetween: 20,
     },
-    // Quando la larghezza della finestra è >= 1024px
         1024: {
-        slidesPerView: 6, // Aumenta il numero di immagini visibili su desktop
+        slidesPerView: 6,
         spaceBetween: 30,
         }
     },
@@ -42,18 +41,8 @@ function initializeSwiper3() {
     return new Swiper(`.mySwiper3`, configurazioneSwiper);
 }
 
-// initializeSwiper();
-// initializeSwiper2();
 
 console.log("ciao");
-
-
-
-
-
-
-
-
 
 const gadget= document.querySelector('.gadget');
 const swiperNovita= document.querySelector('.swiper-novita');
@@ -61,9 +50,6 @@ const swiperNovita= document.querySelector('.swiper-novita');
 const swiperSpeciale= document.querySelector('.swiper-speciale');
 let brandSelezionato= '';
 
-
-//NOVITA
-//chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Novità
 async function getCardNovita(){
 
 	swiperNovita.innerHTML= '';
@@ -96,14 +82,9 @@ async function getCardNovita(){
 		swiperNovita.innerHTML += card;
 	}
 
-	//reinizializzo gli swiper per farli ripartire dalla prima slide
 	initializeSwiper2();
 }
 
-
-
-
-//chiamata fetch per recuperare le box con categoria novità da inserire nello swiper Novità
 async function getBoxNovita(){
 
 	swiperNovita.innerHTML= '';
@@ -136,14 +117,9 @@ async function getBoxNovita(){
 		swiperNovita.innerHTML += card;
 	}
 
-	//reinizializzo gli swiper per farli ripartire dalla prima slide
 	initializeSwiper2();
 }
 
-
-
-
-//chiamata fetch per recuperare le bustine con categoria novità da inserire nello swiper Novità
 async function getBustineNovita(){
 
 	swiperNovita.innerHTML= '';
@@ -176,26 +152,9 @@ async function getBustineNovita(){
 		swiperNovita.innerHTML += card;
 	}
 
-	//reinizializzo gli swiper per farli ripartire dalla prima slide
 	initializeSwiper2();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*******************************************************************************************************************************************************************/
-
-//SPECIALE
-//chiamata fetch per recuperare le card con categoria novità da inserire nello swiper Speciale
 async function getCardSpeciale(){
 	
 	swiperSpeciale.innerHTML= '';
@@ -228,14 +187,9 @@ async function getCardSpeciale(){
 		swiperSpeciale.innerHTML += card;
 	}
 
-	//reinizializzo gli swiper per farli ripartire dalla prima slide
 	initializeSwiper();
 }
 
-
-
-
-//chiamata fetch per recuperare le box con categoria novità da inserire nello swiper Speciale
 async function getBoxSpeciale(){
 	
 	swiperSpeciale.innerHTML= '';
