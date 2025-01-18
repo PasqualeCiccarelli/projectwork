@@ -21,15 +21,35 @@ async function fetchProductData() {
             throw new Error('Elemento .dettagli-carta non trovato nella pagina');
         }
 
-        console.log(prodotto );
+        console.log(prodotto);
         console.log(prodotto);
         
+        prodotto.forEach((prodotto) => {
+            const productDiv = document.createElement("div");
+            productDiv.className = "product";
+    
+            // Determina il percorso dell'immagine in base al brand
+            let imagePath = prodotto.immagine; // Percorso di default
+            switch (prodotto.brand) {
+                case "POKEMON":
+                    imagePath = `img/pokemon/${prodotto.immagine}`;
+                    break;
+                case "YUGIHO":
+                    imagePath = `img/Yu-Gi-Oh/${prodotto.immagine}`;
+                    break;
+                case "MAGIC":
+                    imagePath = `img/magic/${prodotto.immagine}`;
+                    break;
+                default:
+                    console.warn(`Brand non riconosciuto: ${prodotto.brand}`);
+            }
+        });
         
 
         dettagliCartaDiv.innerHTML = `
         <div class="prodotto-container row">
             <div class="immagine-container col-12 col-md-8">
-                <img src="img/magic/${prodotto.immagine}" 
+                <img src="${imagePath}"; 
                      alt="${prodotto.nome}" 
                      class="${isCard(prodotto) ? 'card-effect' : 'zoom-effect'}">
             </div>
