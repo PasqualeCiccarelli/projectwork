@@ -64,37 +64,36 @@ async function fetchProductData() {
         // Aggiorna il contenuto HTML
         dettagliCartaDiv.innerHTML = `
             <div class="prodotto-container ${classe}">
-                <div class="immagine-container col-12 col-md-8">
-                    <img src="${imagePath}" 
-                         alt="${prodottoDettagli.nome}" 
-                         class="${isCard(prodottoDettagli) ? 'card-effect' : 'zoom-effect'}">
+            <div class="immagine-container col-12 col-md-8">
+                <img src="${imagePath}" 
+                 alt="${prodottoDettagli.nome}" 
+                 class="${isCard(prodottoDettagli) ? 'card-effect' : 'zoom-effect'}">
+            </div>
+
+            <div class="info-container col-12 col-md-6">
+                <h1><strong>${prodottoDettagli.nome}</strong></h1>
+                <p><strong>Categoria:</strong> ${prodottoDettagli.categoria}</p>
+                <p><strong>Descrizione:</strong> ${prodottoDettagli.descrizione || 'Nessuna descrizione disponibile'}</p>
+                <p><strong>Tipo:</strong> ${prodottoDettagli.tipo}</p>
+                <p><strong>Brand:</strong> ${prodottoDettagli.brand}</p>
+                <p><strong>Dettagli Specifici:</strong> ${prodottoDettagli.specificDetails || 'Non disponibile'}</p>
+
+                <div class="prezzo-container">
+                ${prodottoDettagli.categoria === 'SPECIALE' ? `
+                    <p style="text-decoration: line-through;">Prezzo originale: €${prodottoDettagli.prezzo.toFixed(2)}</p>
+                    <p style="color: #e53935;">Prezzo scontato: €${prodottoDettagli.prezzoScontato.toFixed(2)}</p>
+                ` : `
+                    <p>Prezzo: €${prodottoDettagli.prezzo.toFixed(2)}</p>
+                `}
+
+                ${prodottoDettagli.disponibilita ? `
+                    <p style="color: #28a745;">Disponibile (${prodottoDettagli.rimanenza} pezzi rimanenti)</p>
+                ` : `
+                    <p style="color: #dc3545;">Fine prevendita: ${prodottoDettagli.dataInizio}</p>
+                `}
+                <div><button type="button" id="${prodottoDettagli.id}" class="btn-carrello">Aggiungi al carrello</button></div>
                 </div>
-
-                <div class="info-container col-12 col-md-6">
-                    <h1><strong>${prodottoDettagli.nome}</strong></h1>
-                    <p><strong>Categoria:</strong> ${prodottoDettagli.categoria}</p>
-                    <p><strong>Descrizione:</strong> ${prodottoDettagli.descrizione || 'Nessuna descrizione disponibile'}</p>
-                    <p><strong>Tipo:</strong> ${prodottoDettagli.tipo}</p>
-                    <p><strong>Brand:</strong> ${prodottoDettagli.brand}</p>
-                    <p><strong>Dettagli Specifici:</strong> ${prodottoDettagli.specificDetails || 'Non disponibile'}</p>
-
-                    <div class="prezzo-container">
-                        ${prodottoDettagli.categoria === 'SPECIALE' ? `
-                            <p style="text-decoration: line-through;">Prezzo originale: €${prodottoDettagli.prezzo.toFixed(2)}</p>
-                            <p style="color: #e53935;">Prezzo scontato: €${prodottoDettagli.prezzoScontato.toFixed(2)}</p>
-                        ` : `
-                            <p>Prezzo: €${prodottoDettagli.prezzo.toFixed(2)}</p>
-                        `}
-
-                        ${prodottoDettagli.disponibilita ? `
-                            <p style="color: #28a745;">Disponibile (${prodottoDettagli.rimanenza} pezzi rimanenti)</p>
-                            <div><button type="button" id="${prodottoDettagli.id}" class="btn-carrello">Aggiungi al carrello</button></div>
-                        ` : `
-                            <p style="color: #dc3545;">Non disponibile</p>
-                            <button class="btn-carrello" disabled>Non disponibile</button>
-                        `}
-                    </div>
-                </div>
+            </div>
             </div>
         `;
 
