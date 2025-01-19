@@ -11,8 +11,14 @@ document.addEventListener("click", event => {
             return;
         }
 
-        // Se il form per l'aggiunta al carrello non esiste già, lo creiamo
-        if (!parentDiv.querySelector(".form-carrello")) {
+        // Trova il form esistente (se presente) nel div genitore
+        const existingForm = parentDiv.querySelector(".form-carrello");
+
+        // Se il form esiste, rimuovilo (toggle)
+        if (existingForm) {
+            existingForm.remove();
+        } else {
+            // Se il form non esiste, crealo e aggiungilo
             const form = document.createElement("div");
             form.className = "form-carrello";
             form.innerHTML = `
