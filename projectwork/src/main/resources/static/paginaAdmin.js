@@ -87,15 +87,13 @@ function caricaProdotti(pagina) {
                 // Sticker Offerta Speciale
                 const sticker = (prodotto.categoria === 'PREVENDITA' || prodotto.categoria === 'SPECIALE') ? `
                     <div class="sticker" style="
-                        position: absolute;
-                        top: 10px;
-                        left: 10px;
                         background: red;
                         color: yellow;
                         font-weight: bold;
                         padding: 5px 10px;
                         border-radius: 5px;
                         z-index: 10;
+                        margin-bottom: 5px;
                     ">
                         Offerta Speciale
                     </div>
@@ -103,7 +101,7 @@ function caricaProdotti(pagina) {
 
                 container.innerHTML += `
                 <div class="product-card text-center" style="position: relative;">
-                    ${sticker}
+                ${sticker}
                     <div>
                         <a href="/DettagiProdotto.html?id=${prodotto.id}">
                             <img src="${imagePath}" style="max-width: 100%; " alt="${prodotto.nome}" onerror="this.src='img/placeholder.jpg'"> 

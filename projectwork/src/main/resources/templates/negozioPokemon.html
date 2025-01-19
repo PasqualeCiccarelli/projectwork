@@ -23,73 +23,83 @@
 background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 62%, rgba(63,150,193,1) 80%);">
     <!-- inizio navbar -->
     <!-- inizio navbar -->
-    <nav class="navbar navbar-expand-lg navina" style="background-color:#2c4cb1;">
+    <nav class="navbar navbar-expand-lg navina" style="background-color: rgb(15, 103, 197);">
         <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/">
+                <img class="logo" src=" img/LOGO.png" alt="">
+            </a>
 
-                <!-- Logo -->
-                <div class="col-md-2">
-                    <a class="navbar-brand d-flex justify-content-center align-items-center" href="/">
-                        <img src="img/LOGO.png" class="logo">
+            <!-- Menu hamburger -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Barra di ricerca -->
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <!-- Menu -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
+                    <li class="nav-item text-center mx-1">
+                        <i class="fas fa-home fa-2x" style="color: white;"></i>
+                        <a class="nav-link active" aria-current="page" href="/">
+                            <p style="margin-bottom: 0;">Home</p>
+                        </a>
+                    </li>
+                    <li class="nav-item text-center mx-1">
+                        <i class="fas fa-hat-wizard mb-2 fa-2x" style="color: white;"></i>
+                        <a class="nav-link active" href="/negozio-magic" style="padding: 3px;">
+                            <p style="margin-bottom: 0;">Negozio Magic</p>
+                        </a>
+                    </li>
+                    <li class="nav-item text-center mx-1">
+                        <i class="fas fa-scroll fa-2x" style="color: white;"></i>
+                        <a class="nav-link active" href="/negozio-yugiho">
+                            <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item text-center mx-1">
+                    <i class="fa-solid fa-user fa-2x" style="color: antiquewhite;"></i>
+                    <a class="nav-link active" href="#">
+                        <p style="margin-bottom: 0;">Profilo</p>
                     </a>
-                </div>
+                </li> -->
 
-                <!-- Menu hamburger -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
+                        <div>
+                            <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
 
-                <!-- Barra di ricerca -->
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
-                        <li class="nav-item mx-2 my-2 mt-2"></li>
-                            <a class="nav-link d-flex flex-column align-items-center" href="/">
-                                <i class="fas fa-home fa-2x mt-2" style="color: white;"></i>
-                                <span class="mt-1 text-white">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mx-2 my-2"></li>
-                            <a class="nav-link d-flex flex-column align-items-center mt-2" href="/negozio-yugiho">
-                                <i class="fas fa-scroll fa-2x" style="color: white;"></i>
-                                <span class="mt-1 text-white">Negozio Yu-Gi-Oh</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mx-2 my-2"></li>
-                            <a class="nav-link d-flex flex-column align-items-center mt-2" href="/negozio-magic">
-                                <i class="fas fa-hat-wizard fa-2x"></i>
-                                <span class="mt-1 text-white">Negozio Magic</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mx-2 my-2 d-flex flex-column justify-content-center align-items-center logo-profilo" style="padding: 8px;">
-                            <div>
-                              <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
-                              <a href="/utente">
-                                <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
-                                  <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+                            <a href="/utente">
+                                <div class="profile-image immagine-profilo" id="profile-image"
+                                    style="width: 32px !important; height: 32px !important;">
+                                    <!-- Immagine di default se non c'è nessuna immagine associata -->
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
+                                        id="profile-img">
                                 </div>
-                              </a>
-                            </div>
-                            <p style="color: #a3a3a3; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
-                        </li>
-                        <li class="nav-item mx-2 my-2 d-flex flex-column justify-content-center align-items-center togli-carrello">
-                            <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff;"></i>
-                            <a href="/carrello"></a><p style="color: #ffffff; padding: 6px;">CARRELLO</p></a>
-                        </li>
-                        <li class="nav-item mx-2 my-2 bordo text-center classe-login show-loghi mt-3">
-                            <i class="fas fa-sign-in-alt fa-2x"></i>
-                            <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item mx-2 my-2 bordo text-center classe-sign-in show-loghi mt-3">
-                            <i class="fas fa-user-plus fa-2x"></i>
-                            <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
-                        </li>
-                    </ul>
+                            </a>
 
-                </div>
-        
+                        </div>
+                        <p style="color: #ffffff; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
+                    </li>
 
-        </div>
+                    <li class="nav-item d-flex flex-column justify-content-center align-items-center togli-carrello">
+                        <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff;"></i>
+                        <a href="/carrello"></a><p style="color: #ffffff; padding: 6px;">CARRELLO</p></a>
+                    </li>
+
+                    <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+                        <i class="fas fa-sign-in-alt fa-2x"></i>
+                        <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
+                    </li>
+
+                    <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+                        <i class="fas fa-user-plus fa-2x"></i>
+                        <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
+                    </li>
+
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -393,7 +403,7 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
 
         <!-- Copyright -->
         <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0);">
-            © 2021 Copyright:
+            © 2025 Copyright:
             <a class="text-reset fw-bold" href="https://www.youtube.com/shorts/pSq2Jgl430s">jaita131</a>
         </div>
         <!-- Copyright -->
