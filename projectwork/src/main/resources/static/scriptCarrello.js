@@ -88,21 +88,28 @@ async function loadCart() {
             default:
                 imagePath = `img/placeholder.jpg`;
         }
-      
+
+        let styleBustina="height: 100%; width: auto;";
+
+        if(prodotto.tipoCategoria==="BUSTINA"){
+            styleBustina="height: 500px; width: 270px;"
+        }
 
           return `
-          <div class="cart-item" id="product-${prodotto.id}">
-              <img src="${imagePath}" alt="${prodotto.nome}" class="product-image" />
-              <h3>${prodotto.nome}</h3>
-              <p>Categoria: ${prodotto.categoria}</p>
-              ${prevenditaInfo}
-              <p>Rimanenza: ${prodotto.rimanenza}</p>
-              <p>Dettagli specifici: ${prodotto.specificDetails}</p>
-              <p>Quantità: ${item.quantita}</p>
-              ${priceHtml}
-              <button onclick="showRemoveModal(${item.dettaglioId}, ${item.quantita})" class="remove-button">
-                  Rimuovi dal carrello
-              </button>
+          <div class="cart-item d-flex" id="product-${prodotto.id}" style="position:relative;">
+              <img src="${imagePath}" alt="${prodotto.nome}" style="${styleBustina}" class="product-image" />
+              <div class="puzzettone">
+                  <h3>${prodotto.nome}</h3>
+                  <p>Categoria: ${prodotto.categoria}</p>
+                  ${prevenditaInfo}
+                  <p>Rimanenza: ${prodotto.rimanenza}</p>
+                  <p>Dettagli specifici: ${prodotto.specificDetails}</p>
+                  <p>Quantità: ${item.quantita}</p>
+                  ${priceHtml}
+                  <button onclick="showRemoveModal(${item.dettaglioId}, ${item.quantita})" class="remove-button">
+                      Rimuovi dal carrello
+                  </button>
+              </div>
           </div>
           `;
       }).join('');

@@ -4,8 +4,9 @@
     height: 100%;
     background-color: #00000042;
     padding-top: 2rem;
+    border-radius: 8px;
   }
-
+  
   .swiper-slide {
     /* z-index: -1; */
     text-align: center;
@@ -22,3 +23,34 @@
     object-fit: cover;
   }
 
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 450px; /* Altezza totale coerente */
+    width: 220px; /* Larghezza totale coerente */
+    box-sizing: border-box; /* Padding e bordo inclusi nelle dimensioni */
+    padding: 10px; /* Spazio interno */
+}
+
+.product-card img {
+    width: 200px;
+    height: 230px; /* Altezza fissa per uniformare */
+    max-width: 100%; /* Impedisce che l'immagine esca dal contenitore */
+    object-fit: contain; /* Mantiene le proporzioni */
+}
+
+.product-category, .product-name, .product-price {
+    margin-bottom: 0.3rem;
+    text-overflow: ellipsis; /* Mostra "..." per il testo troppo lungo */
+    white-space: nowrap; /* Mantiene il testo su una sola riga */
+}
+
+.order-button {
+    margin-top: auto; /* Spinge il bottone verso il fondo */
+    width: 100%; /* Bottone a larghezza piena */
+    height: 40px; /* Altezza coerente per i bottoni */
+    font-size: 14px; /* Dimensione del testo coerente */
+}
