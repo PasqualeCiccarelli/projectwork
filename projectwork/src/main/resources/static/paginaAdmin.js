@@ -106,11 +106,11 @@ function caricaProdotti(pagina) {
                     ${sticker}
                     <div>
                         <a href="/DettagiProdotto.html?id=${prodotto.id}">
-                            <img src="${imagePath}" style="max-width: 100%;" alt="${prodotto.nome}" onerror="this.src='img/placeholder.jpg'"> 
+                            <img src="${imagePath}" style="max-width: 100%; " alt="${prodotto.nome}" onerror="this.src='img/placeholder.jpg'"> 
                         </a>
                     </div>
                     <div class="inser-select"></div>
-                    <p class="product-category" id="categoria-${prodotto.id}" style="margin-bottom: 0.3rem;">${prodotto.categoria}</p>
+                    <p class="product-category" id="categoria-${prodotto.id}" style="margin-bottom: 0.3rem; display: none;">${prodotto.categoria}</p>
                     <h3 class="product-name" style="margin-bottom: 0.3rem;">${prodotto.nome}</h3>
                     ${mostraPrezzo}
                     <div>
