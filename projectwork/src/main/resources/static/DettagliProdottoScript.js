@@ -88,7 +88,7 @@ async function fetchProductData() {
 
                         ${prodottoDettagli.disponibilita ? `
                             <p style="color: #28a745;">Disponibile (${prodottoDettagli.rimanenza} pezzi rimanenti)</p>
-                            <button class="btn-carrello" onclick="aggiungiAlCarrello(${prodottoDettagli.id})">Aggiungi al carrello</button>
+                            <div><button type="button" id="${prodottoDettagli.id}" class="btn-carrello">Aggiungi al carrello</button></div>
                         ` : `
                             <p style="color: #dc3545;">Non disponibile</p>
                             <button class="btn-carrello" disabled>Non disponibile</button>
