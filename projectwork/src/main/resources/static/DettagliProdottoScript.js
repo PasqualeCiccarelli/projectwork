@@ -71,7 +71,7 @@ async function fetchProductData() {
                 </div>
 
                 <div class="info-container col-12 col-md-6">
-                    <h1>${prodottoDettagli.nome}</h1>
+                    <h1><strong>${prodottoDettagli.nome}</strong></h1>
                     <p><strong>Categoria:</strong> ${prodottoDettagli.categoria}</p>
                     <p><strong>Descrizione:</strong> ${prodottoDettagli.descrizione || 'Nessuna descrizione disponibile'}</p>
                     <p><strong>Tipo:</strong> ${prodottoDettagli.tipo}</p>
