@@ -111,7 +111,7 @@ function renderProdotti(prodotti) {
                     </a>
                     <h3 class="h5">${prodotto.nome}</h3>
                     <p>${prodotto.descrizione}</p>
-                    <p class="price">Prezzo: €${(prodotto.prezzo / 100).toFixed(2)}</p> <!-- Mostra il prezzo in euro -->
+                    <p class="price">Prezzo: €${(prodotto.prezzo).toFixed(2)}</p> <!-- Mostra il prezzo in euro -->
                     <div>
                         <button type="button" id="${prodotto.id}" class="btn btn-primary order-button mb-3 btn-carrello">Ordina</button>
                     </div>

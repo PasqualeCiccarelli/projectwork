@@ -19,7 +19,7 @@ function checkAdminStatus() {
   
     if (!userData) {
       console.log("Utente non autenticato o dati non trovati nel sessionStorage");
-      window.location.href = '/login';
+      window.location.href = '/errore';
       return;
     }
   

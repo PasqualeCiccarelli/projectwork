@@ -85,11 +85,11 @@ function handleProdottiResponse(prodotti) {
 
         // Costruzione del contenuto del prodotto
         productDiv.innerHTML = `
-            <img src="${imagePath}" alt="${prodotto.nome}">
+            <a class="d-flex justify-content-center" href="/DettagiProdotto.html?id=${prodotto.id}"><img src="${imagePath}" alt="${prodotto.nome}"></a>
             <h3>${prodotto.nome}</h3>
             <p>Categoria: ${prodotto.categoria}</p>
             <p class="price">Prezzo: €${prodotto.prezzoEffettivo.toFixed(2)}</p>
-            <button>Ordina</button>
+            
         `;
 
         resultsContainer.appendChild(productDiv);
