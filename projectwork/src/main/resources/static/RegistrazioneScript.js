@@ -24,7 +24,7 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
         accettaPolitiche: accettaPolitiche
     };
 
-    fetch("/api/register", {
+    fetch("http://localhost:8080/api/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

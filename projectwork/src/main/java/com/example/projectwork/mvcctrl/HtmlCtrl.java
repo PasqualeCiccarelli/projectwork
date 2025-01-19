@@ -90,4 +90,13 @@ public class HtmlCtrl {
 		return "chiSiamo";
 	}
 
+	@GetMapping("/politiche")
+	public String paginaPolitiche(){
+		return "politiche-aziendali";
+	}
+	
+	@GetMapping("/errore")
+	public String paginaErrore(){
+		return "errore";
+	}
 }

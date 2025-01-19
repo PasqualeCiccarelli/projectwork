@@ -40,6 +40,24 @@ function loadOrdiniConsegnati(email) {
                 return;
             }
 
+            let imagePath = dettaglio.prodottoDto.immagine;
+            switch ( dettaglio.prodottoDto.brand) {
+                case "POKEMON":
+                    imagePath = `img/pokemon/${dettaglio.prodottoDto.immagine}`;
+                    break;
+                case "YUGIHO":
+                    imagePath = `img/Yu-Gi-Oh/${dettaglio.prodottoDto.immagine}`;
+                    break;
+                case "MAGIC":
+                    imagePath = `img/magic/${dettaglio.prodottoDto.immagine}`;
+                    break;
+                default:
+                    imagePath = `img/placeholder.jpg`;
+                }
+
+            console.log(dettaglio.prodottoDto.brand);
+            
+
             data.forEach(ordine => {
                 const orderCard = document.createElement('div');
                 orderCard.classList.add('card', 'order-card');

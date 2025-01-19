@@ -61,59 +61,52 @@
             </div>
         </div>
           <!-- Menu -->
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
             <li class="nav-item text-center mx-1">
-              <i class="fas fa-home fa-2x" style="color: antiquewhite;"></i>
               <a class="nav-link active" aria-current="page" href="/">
-                <p style="margin-bottom: 0;">Home</p>
+              <i class="fas fa-home fa-2x" style="color: antiquewhite;"></i>
+              <p style="margin-bottom: 0;">Home</p>
               </a>
             </li>
             <li class="nav-item text-center mx-1">
-              <i class="fas fa-dragon mb-2 fa-2x" style="color: antiquewhite;"></i>
               <a class="nav-link active" href="/negozio-pokemon">
-                <p style="margin-bottom: 0;">Negozio Pokémon</p>
+              <i class="fas fa-dragon mb-2 fa-2x" style="color: antiquewhite;"></i>
+              <p style="margin-bottom: 0;">Negozio Pokémon</p>
               </a>
             </li>
             <li class="nav-item text-center mx-1">
-              <i class="fas fa-scroll fa-2x" style="color: antiquewhite;"></i>
               <a class="nav-link active" href="/negozio-yugiho">
-                <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
+              <i class="fas fa-scroll fa-2x" style="color: antiquewhite;"></i>
+              <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
               </a>
             </li>
-
-            <!-- <li class="nav-item text-center mx-1">
-              <i class="fa-solid fa-user fa-2x" style="color: antiquewhite;"></i>
-              <a class="nav-link active" href="/utente">
-                <p style="margin-bottom: 0;">Profilo</p>
-              </a>
-            </li> -->
 
             <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
+              <a href="/utente">
               <div>
-                <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
-                
-                <a href="/utente">
-                  <div class="profile-image immagine-profilo" id="profile-image" style="width: 32px !important; height: 32px !important;">
-                    <!-- Immagine di default se non c'è nessuna immagine associata -->
-                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
-                  </div>
-                </a>
-                
+                <i class="fa-solid fa-user fa-3x omino active" style="color:white; display: none;"></i>
+                <div class="profile-image immagine-profilo" id="profile-image" style="width: 48px !important; height: 48px !important;">
+                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
+                </div>
               </div>
-              <p style="color: #a3a3a3; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
-          </li>
+              <p style="color: #a3a3a3;" class="nome-utente">ACCOUNT</p>
+              </a>
+            </li>
 
-          <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+            <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+              <a class="nav-link active" href="/login">
               <i class="fas fa-sign-in-alt fa-2x"></i>
-              <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
-          </li>
+              Login
+              </a>
+            </li>
 
-          <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+            <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+              <a class="nav-link active" href="/registrati">
               <i class="fas fa-user-plus fa-2x"></i>
-              <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
-          </li>
-
-          </ul>
+              Sign-in
+              </a>
+            </li>
+            </ul>
         </div>
       </div>
     </nav>
@@ -135,7 +128,7 @@
               <div class="d-flex align-items-center">
                 <div class="container-testo">
                   <h5 class="card-title">Crea la tua carta</h5>
-                  <a href="/crezione-card" class="btn btn-primary mt-3">Vai alla pagina</a>
+                  <a href="/creazione-card" class="btn btn-primary mt-3">Vai alla pagina</a>
                 </div>
                 <div class="card-wrapper">
                   <img class="card-yugi" src="img/front.jpeg" alt="" />
@@ -335,6 +328,7 @@
     <!-- Copyright -->
   </footer>
   <!-- Swiper JS -->
+  <script src="controlloAdminLoggato.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <button type="button" class="btn btn-primary applica-modifiche" style="display: none;">APPLICA MODIFICHE</button>

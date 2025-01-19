@@ -17,4 +17,5 @@ svg {
 	background: #c9c9c900;
 	cursor: pointer;
 	filter: sepia(20%);
+	pointer-events: none;
 }
