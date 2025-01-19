@@ -92,19 +92,6 @@ public class AdminCtrl {
 		return ResponseEntity.ok(lista);
 	}
 	
-//	@GetMapping("/prodotti-in-vendita")
-//    public ResponseEntity<Page<ProdottoDto>> getProdottiInVendita(
-//            @RequestParam String email,
-//            @RequestParam int page,
-//            @RequestParam int size) {
-//        try {
-//
-//            Page<ProdottoDto> prodotti = adminService.getProdottiByAdmin(email, page, size);
-//            return ResponseEntity.ok(prodotti);
-//        } catch (RuntimeException ex) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//        }
-//    }
 	@GetMapping("/prodotti")
     public ResponseEntity<Page<ProdottoEntity>> getProdottiAdmin(
             @RequestParam String email,

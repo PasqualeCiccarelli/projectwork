@@ -1,0 +1,47 @@
+.bottoni {
+    position: sticky !important;
+    top: 1.5rem;
+    height: auto;
+    z-index: 100;
+  }
+  
+  /* Aggiustamenti per il layout dei bottoni */
+  .bottoni .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .bottoni .container-testo {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Stili per i prodotti */
+  .prodotti-container {
+    margin: 0;
+  }
+  
+  .product-card img{
+   width: 100%; 
+  }
+  
+  /* Media query per responsività */
+  @media (max-width: 992px) {
+    .bottoni {
+      position: relative !important;
+      top: 0;
+      margin-bottom: 2rem;
+    }
+  }
+.margine{
+    max-width: 300px;
+    margin-left: 5rem;
+}
+  

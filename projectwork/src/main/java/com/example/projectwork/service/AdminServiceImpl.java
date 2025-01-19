@@ -108,27 +108,6 @@ public class AdminServiceImpl implements AdminService{
 		return admin.getAccessori().stream().map(AccessoriDto::fromEntity).collect(Collectors.toList());
 	}
 	
-//	public Page<ProdottoDto> getProdottiByAdmin(String adminEmail, int page, int size) {
-//	    AdminEntity admin = adminRepository.findByEmail(adminEmail)
-//	            .orElseThrow(() -> new RuntimeException("Admin not found"));
-//
-//	    Pageable pageable = PageRequest.of(page, size, Sort.by("nome").ascending());
-//
-//	    Page<CardEntity> cards = cardRepository.findByAdmin(admin, pageable);
-//	    Page<BoxEntity> boxes = boxRepository.findByAdmin(admin, pageable);
-//	    Page<BustinaEntity> bustine = bustinaRepository.findByAdmin(admin, pageable);
-//	    Page<AccessorioEntity> accessori = accessoriRepository.findByAdmin(admin, pageable);
-//
-//	    List<ProdottoDto> allProdottiDto = new ArrayList<>();
-//	    cards.getContent().forEach(card -> allProdottiDto.add(ProdottoDto.toDto(card)));
-//	    boxes.getContent().forEach(box -> allProdottiDto.add(ProdottoDto.toDto(box)));
-//	    bustine.getContent().forEach(bustina -> allProdottiDto.add(ProdottoDto.toDto(bustina)));
-//	    accessori.getContent().forEach(accessorio -> allProdottiDto.add(ProdottoDto.toDto(accessorio)));
-//
-//	    return new PageImpl<>(allProdottiDto, pageable, 
-//	            cards.getTotalElements() + boxes.getTotalElements() + bustine.getTotalElements() + accessori.getTotalElements());
-//	}
-	
 	 public Page<ProdottoEntity> getProdottiByAdmin(String email, int page, int size) {
 	        Pageable pageable = PageRequest.of(page, size);
 	        

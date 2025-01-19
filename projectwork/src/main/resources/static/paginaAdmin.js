@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Event delegation per i pulsanti "special-button" e "elimina-prodotto"
     document.addEventListener('click', function (e) {
         if (e.target.classList.contains('special-button')) {
             const prodottoId = e.target.id.replace('product-', '');
@@ -54,7 +53,7 @@ function caricaProdotti(pagina) {
                 return;
             }
 
-            container.innerHTML = ''; // Pulisce i prodotti già caricati
+            container.innerHTML = '';
 
             prodottiPagina.forEach(prodotto => {
                 let imagePath = prodotto.immagine;
@@ -71,9 +70,40 @@ function caricaProdotti(pagina) {
                     default:
                         imagePath = `img/placeholder.jpg`;
                 }
+                console.log(prodotto);
+                
+
+                const prezzoOriginale = prodotto.prezzo.toFixed(2);
+                const prezzoScontato = prodotto.prezzoScontato.toFixed(2);
+                const mostraPrezzo = (prodotto.categoria === 'PREVENDITA' || prodotto.categoria === 'SPECIALE') ? `
+                    <p class="product-price" style="margin-bottom: 0.3rem;">
+                        <span style="text-decoration: line-through; color: red;">€${prezzoOriginale}</span>
+                        <span style="font-weight: bold; color: green;">€${prezzoScontato}</span>
+                    </p>
+                ` : `
+                    <p class="product-price" style="margin-bottom: 0.3rem;">€${prezzoOriginale}</p>
+                `;
+
+                // Sticker Offerta Speciale
+                const sticker = (prodotto.categoria === 'PREVENDITA' || prodotto.categoria === 'SPECIALE') ? `
+                    <div class="sticker" style="
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        background: red;
+                        color: yellow;
+                        font-weight: bold;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        z-index: 10;
+                    ">
+                        Offerta Speciale
+                    </div>
+                ` : '';
 
                 container.innerHTML += `
-                <div class="product-card col-3 text-center">
+                <div class="product-card text-center" style="position: relative;">
+                    ${sticker}
                     <div>
                         <a href="/DettagiProdotto.html?id=${prodotto.id}">
                             <img src="${imagePath}" style="max-width: 100%;" alt="${prodotto.nome}" onerror="this.src='img/placeholder.jpg'"> 
@@ -82,7 +112,7 @@ function caricaProdotti(pagina) {
                     <div class="inser-select"></div>
                     <p class="product-category" id="categoria-${prodotto.id}" style="margin-bottom: 0.3rem;">${prodotto.categoria}</p>
                     <h3 class="product-name" style="margin-bottom: 0.3rem;">${prodotto.nome}</h3>
-                    <p class="product-price" style="margin-bottom: 0.3rem;">€${prodotto.prezzo.toFixed(2)}</p>
+                    ${mostraPrezzo}
                     <div>
                         <button type="button" id="product-${prodotto.id}" class="btn btn-primary special-button mb-1">
                             ${prodotto.categoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta'}
@@ -149,6 +179,7 @@ function modificaCategoriaProdotto(prodottoId) {
             const button = document.querySelector(`#product-${prodottoId}`);
             if (button) {
                 button.textContent = nuovaCategoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta';
+                location.reload();
             }
         })
         .catch(error => {
@@ -159,7 +190,7 @@ function modificaCategoriaProdotto(prodottoId) {
 
 function eliminaProdotto(prodottoId) {
     console.log(`Eliminazione prodotto con ID: ${prodottoId}`);
-    // Aggiungi qui la logica per eliminare il prodotto
+
 }
 
 function eliminaProdotto(productId) {
@@ -172,31 +203,33 @@ function eliminaProdotto(productId) {
         return;
     }
 
-    fetch(`/api/admin/prodotti/${productId}`, {
+    fetch(`/api/prodotto/elimina-prodotto?id=${productId}`, { 
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include',
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Errore nella eliminazione del prodotto');
-        }
-        return response.text();
-    })
-    .then(() => {
-        const productCard = document.getElementById(productId).closest('.product-card');
-        if (productCard) {
-            productCard.remove();
-        }
-
-        alert('Prodotto eliminato con successo');
-
-        const paginaCorrente = document.querySelector('.btn-primary').textContent - 1;
-        caricaProdotti(paginaCorrente);
-    })
-    .catch(error => {
-        console.error('Errore durante l\'eliminazione:', error);
-        alert('Si è verificato un errore durante l\'eliminazione del prodotto');
-    });
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(errorText => {
+                    throw new Error(`Errore ${response.status}: ${errorText}`);
+                });
+            }
+            return response.json();
+        })
+        .then(() => {
+            const productCard = document.querySelector(`#delete-button-${productId}`).closest('.product-card');
+            if (productCard) {
+                productCard.remove();
+            }
+            alert('Prodotto eliminato con successo');
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Errore durante l\'eliminazione:', error.message);
+            alert('Si è verificato un errore durante l\'eliminazione del prodotto. Riprova.');
+        });
 }
+
+
