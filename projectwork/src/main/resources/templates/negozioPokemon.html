@@ -41,20 +41,20 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
                 <!-- Menu -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
                     <li class="nav-item text-center mx-1">
-                        <i class="fas fa-home fa-2x" style="color: white;"></i>
                         <a class="nav-link active" aria-current="page" href="/">
+                            <i class="fas fa-home fa-2x" style="color: white;"></i>
                             <p style="margin-bottom: 0;">Home</p>
                         </a>
                     </li>
                     <li class="nav-item text-center mx-1">
-                        <i class="fas fa-hat-wizard mb-2 fa-2x" style="color: white;"></i>
                         <a class="nav-link active" href="/negozio-magic" style="padding: 3px;">
+                            <i class="fas fa-hat-wizard mb-2 fa-2x" style="color: white;"></i>
                             <p style="margin-bottom: 0;">Negozio Magic</p>
                         </a>
                     </li>
                     <li class="nav-item text-center mx-1">
-                        <i class="fas fa-scroll fa-2x" style="color: white;"></i>
                         <a class="nav-link active" href="/negozio-yugiho">
+                            <i class="fas fa-scroll fa-2x" style="color: white;"></i>
                             <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
                         </a>
                     </li>
@@ -65,38 +65,45 @@ background: linear-gradient(180deg, rgba(255,243,59,1) 26%, rgba(255,229,243,1) 
                         <p style="margin-bottom: 0;">Profilo</p>
                     </a>
                 </li> -->
+                <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
+                    <div>
+                        <i class="fa-solid fa-user fa-3x omino active" style="color:white; display: none;"></i>
 
-                    <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-                        <div>
-                            <i class="fa-solid fa-user fa-3x omino active" style="color:#a3a3a3; display: none;"></i>
+                        <a href="/utente">
+                            <div class="profile-image immagine-profilo" id="profile-image"
+                                style="width: 48px !important; height: 48px !important;">
+                                <!-- Immagine di default se non c'è nessuna immagine associata -->
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
+                                    id="profile-img">
+                            </div>
+                        </a>
 
-                            <a href="/utente">
-                                <div class="profile-image immagine-profilo" id="profile-image"
-                                    style="width: 32px !important; height: 32px !important;">
-                                    <!-- Immagine di default se non c'è nessuna immagine associata -->
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
-                                        id="profile-img">
-                                </div>
-                            </a>
+                    </div>
+                    <p style="color: #ffffff;  "class="nome-utente">ACCOUNT</p>
+                </li>
 
-                        </div>
-                        <p style="color: #ffffff; padding: 8px;"><strong class="nome-utente">ACCOUNT</strong></p>
-                    </li>
 
-                    <li class="nav-item d-flex flex-column justify-content-center align-items-center togli-carrello">
-                        <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff;"></i>
-                        <a href="/carrello"><p style="color: #ffffff; padding: 6px;">CARRELLO</p></a>
-                    </li>
-
-                    <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+                <li class="nav-item mx-1 bordo text-center mb-3 togli-carrello">
+                    <a class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none;" href="/carrello">
+                        <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff; text-decoration: none;"></i>
+                        <p style="margin: 6px 0 0; color: #ffffff;" class="mb-2" >CARRELLO</p>
+                    </a>
+                </li>
+                <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+                    <a class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none;" href="/login">
                         <i class="fas fa-sign-in-alt fa-2x"></i>
-                        <a class="nav-link active" style="padding: 6px;" href="/login">Login</a>
-                    </li>
-
-                    <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+                        <span style="margin: 6px 0 0;">Login</span>
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+                    <a class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none;" href="/registrati">
                         <i class="fas fa-user-plus fa-2x"></i>
-                        <a class="nav-link active" style="padding: 6px;" href="/registrati">Sign-in</a>
-                    </li>
+                        <span style="margin: 6px 0 0;">Sign-in</span>
+                    </a>
+                </li>
+                
 
                 </ul>
             </div>
