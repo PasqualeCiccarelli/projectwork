@@ -1,9 +1,8 @@
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-carrello")) {
-        // Recupera l'ID del prodotto dal bottone
+        
         const prodottoId = event.target.id;
 
-        // Trova il div del prodotto in cui il bottone è stato cliccato (il suo genitore)
         const parentDiv = event.target.closest(".prodotto-container");
 
         if (!parentDiv) {
@@ -11,14 +10,12 @@ document.addEventListener("click", (event) => {
             return;
         }
 
-        // Trova il form esistente (se presente) nel div genitore
         const existingForm = parentDiv.querySelector(".form-carrello");
 
-        // Se il form esiste, rimuovilo (toggle)
         if (existingForm) {
             existingForm.remove();
         } else {
-            // Se il form non esiste, crealo e aggiungilo
+            
             const form = document.createElement("div");
             form.className = "form-carrello";
             form.innerHTML = `
@@ -30,13 +27,11 @@ document.addEventListener("click", (event) => {
                     max="10" 
                     value="1"
                 />
-                <button class="btn-aggiungi">Aggiungi al carrello</button>
+                <button class="btn-aggiungi">Conferma qualcosa</button>
             `;
 
-            // Aggiungiamo il form nel div prodotto
             parentDiv.querySelector(".info-container").appendChild(form);
 
-            // Aggiungi l'evento per il pulsante di aggiunta al carrello
             form.querySelector(".btn-aggiungi").addEventListener("click", () => {
                 const quantita = form.querySelector(`#quantita-${prodottoId}`).value;
                 if (quantita < 1) {
@@ -44,11 +39,9 @@ document.addEventListener("click", (event) => {
                     return;
                 }
 
-                // Aggiungi il prodotto al carrello
                 aggiungiProdottoAlCarrello(prodottoId, quantita);
 
-                // Rimuovi il form dopo che il prodotto è stato aggiunto al carrello
-                form.remove();
+        //  form.remove();
             });
         }
     }
@@ -56,8 +49,6 @@ document.addEventListener("click", (event) => {
 
 async function aggiungiProdottoAlCarrello(prodottoId, quantita) {
     const userData = getUserDataFromSessionStorage();
-    console.log(userData);
-    
 
     if (!userData || !userData.email) {
         console.error("Dati utente mancanti. Impossibile aggiungere il prodotto al carrello.");
@@ -96,13 +87,13 @@ async function aggiungiProdottoAlCarrello(prodottoId, quantita) {
     }
 }
 
-function getUserDataFromSessionStorage() {
-    // Recupera i dati utente dal sessionStorage
-    try {
-        const userData = sessionStorage.getItem("userData");
-        return JSON.parse(userData);
-    } catch (error) {
-        console.error("Errore nel recupero dei dati utente dal sessionStorage:", error);
-        return null;
-    }
-}
+// function getUserDataFromSessionStorage() {
+//     // Recupera i dati utente dal sessionStorage
+//     try {
+//         const userData = sessionStorage.getItem("userData");
+//         return JSON.parse(userData);
+//     } catch (error) {
+//         console.error("Errore nel recupero dei dati utente dal sessionStorage:", error);
+//         return null;
+//     }
+// }
