@@ -205,3 +205,10 @@ a, h6,i,p{
 .navina {
   padding: 0.5rem 0 0 0;
 }
+#collapseOne p,  #collapseThree p{
+  color: black !important;
+}
+
+#collapseTwo a{
+  color: black !important;
+}
