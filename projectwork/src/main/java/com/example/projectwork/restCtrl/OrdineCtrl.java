@@ -22,7 +22,6 @@ import com.example.projectwork.dto.EliminaOrdineRequest;
 import com.example.projectwork.dto.OrdineDto;
 import com.example.projectwork.dto.RimuoviProdottoRequest;
 import com.example.projectwork.eccezioni.ErrorResponse;
-import com.example.projectwork.eccezioni.ResourceNotFoundException;
 import com.example.projectwork.eccezioni.UnauthorizedException;
 import com.example.projectwork.service.interf.OrdineService;
 

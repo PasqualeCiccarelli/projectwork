@@ -1,0 +1,22 @@
+.sticker {
+    position: absolute;
+    top: 5px; /* Regola la posizione verticale */
+    left: 5px; /* Regola la posizione orizzontale */
+    background: red;
+    color: yellow;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px 20px 50px 50px; /* Forma ovale */
+    transform: rotate(-15deg); /* Inclinazione diagonale */
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animazione periodica */
+.animate__animated.animate__heartBeat {
+    animation-delay: 0s; /* Ritardo iniziale */
+    animation-duration: 1s; /* Durata dell'animazione */
+    animation-iteration-count: infinite; /* Ripetizione infinita */
+    animation-timing-function: ease-in-out; /* Transizione morbida */
+}

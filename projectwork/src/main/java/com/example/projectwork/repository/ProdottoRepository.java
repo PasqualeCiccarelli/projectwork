@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.PageRequest;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;

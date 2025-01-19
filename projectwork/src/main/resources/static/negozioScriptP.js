@@ -106,15 +106,37 @@ function renderProdotti(prodotti) {
                 // Verifica se il tipoCategoria è "BUSTINA"
                 const imgStyle = prodotto.tipoCategoria === "BUSTINA" ? 'style="width: 76%;"' : "";
 
+                // Calcolo dei prezzi
+                const prezzoOriginale = prodotto.prezzo.toFixed(2);
+                const prezzoScontato = prodotto.prezzoScontato ? prodotto.prezzoScontato.toFixed(2) : null;
+
+                // Logica per mostrare il prezzo
+                const mostraPrezzo = (prodotto.categoria === 'PREVENDITA' || prodotto.categoria === 'SPECIALE') && prezzoScontato ? `
+                    <p class="product-price" style="margin-bottom: 0.3rem;">
+                        <span style="text-decoration: line-through; color: red;">€${prezzoOriginale}</span>
+                        <span style="font-weight: bold; color: green;">€${prezzoScontato}</span>
+                    </p>
+                ` : `
+                    <p class="product-price" style="margin-bottom: 0.3rem;">€${prezzoOriginale}</p>
+                `;
+
+                // Sticker Offerta Speciale
+                const sticker = (prodotto.categoria === 'PREVENDITA' || prodotto.categoria === 'SPECIALE') ? `
+                    <div class="sticker animate__animated animate__heartBeat">
+                        Offerta Speciale
+                    </div>
+                ` : '';
+
                 return `
                     <div class="col-lg-4 col-md-6">
-                        <div class="product">
+                        <div class="product" style="position: relative;">
+                            ${sticker} <!-- Sticker solo per categorie PREVENDITA o SPECIALE -->
                             <a href="/DettagiProdotto.html?id=${prodotto.id}">
                                 <img src="img/pokemon/${prodotto.immagine}" alt="${prodotto.nome}" ${imgStyle}>
                             </a>
                             <h3 class="h5">${prodotto.nome}</h3>
                             <p>${prodotto.descrizione}</p>
-                            <p class="price">Prezzo: €${(prodotto.prezzo).toFixed(2)}</p> <!-- Mostra il prezzo in euro -->
+                            ${mostraPrezzo} <!-- Inclusione del prezzo -->
                             <div>
                                 <button type="button" id="${prodotto.id}" class="btn btn-primary order-button mb-3 btn-carrello">Ordina</button>
                             </div>

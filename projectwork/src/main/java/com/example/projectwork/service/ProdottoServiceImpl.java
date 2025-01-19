@@ -4,7 +4,6 @@ package com.example.projectwork.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.time.Duration;
 import java.time.LocalDate;

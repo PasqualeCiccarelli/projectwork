@@ -1,9 +1,7 @@
 package com.example.projectwork.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -11,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -21,16 +18,9 @@ import com.example.projectwork.dto.AccessoriDto;
 import com.example.projectwork.dto.AdminDto;
 import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BustinaDto;
-import com.example.projectwork.dto.BustinaRequest;
 import com.example.projectwork.dto.CardDto;
-import com.example.projectwork.dto.ProdottoDto;
-import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.AdminEntity;
-import com.example.projectwork.entity.BoxEntity;
-import com.example.projectwork.entity.BustinaEntity;
-import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.ProdottoEntity;
-import com.example.projectwork.entity.UtenteEntity;
 import com.example.projectwork.repository.AccessoriRepository;
 import com.example.projectwork.repository.AdminRepository;
 import com.example.projectwork.repository.BoxRepository;

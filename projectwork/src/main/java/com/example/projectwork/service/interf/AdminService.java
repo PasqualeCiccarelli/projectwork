@@ -1,7 +1,6 @@
 package com.example.projectwork.service.interf;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.domain.Page;
 
@@ -10,8 +9,6 @@ import com.example.projectwork.dto.AdminDto;
 import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BustinaDto;
 import com.example.projectwork.dto.CardDto;
-import com.example.projectwork.dto.ProdottoDto;
-import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 
 

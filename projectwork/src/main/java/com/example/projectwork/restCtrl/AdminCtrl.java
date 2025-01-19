@@ -1,17 +1,9 @@
 package com.example.projectwork.restCtrl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,11 +17,8 @@ import com.example.projectwork.dto.BoxDto;
 import com.example.projectwork.dto.BustinaDto;
 import com.example.projectwork.dto.CardDto;
 import com.example.projectwork.dto.ProdottoDto;
-import com.example.projectwork.dto.UtenteDto;
-import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Categoria;
-import com.example.projectwork.repository.ProdottoRepository;
 import com.example.projectwork.service.interf.AdminService;
 import com.example.projectwork.service.interf.ProdottoService;
 
