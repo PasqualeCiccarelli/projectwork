@@ -28,12 +28,12 @@ button:hover {
   flex-direction: column;
   gap: 15px;
 }
-.prezzo-container {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
+
+.prezzo-container{
+  font-weight: bold;
+  font-size: 30px;
 }
+
 .btn-carrello {
   background-color: #28a745;
   color: white;
@@ -92,13 +92,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.prezzo-container {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
 }
 
 .btn-carrello {
