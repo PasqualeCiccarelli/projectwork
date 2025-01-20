@@ -186,7 +186,7 @@ color: #e72929;
 /* ----------------------------font pokemon---------------------------------------------- */
 
 .pokemon-font{
-width: 30%;
+width: 20%;
 display: flex;
 
 }
@@ -230,6 +230,7 @@ display: flex;
     #yugi-img, #magic-img{
         padding: 10px; 
     }
+
 }
 
 @media screen and (max-width: 768px) {
