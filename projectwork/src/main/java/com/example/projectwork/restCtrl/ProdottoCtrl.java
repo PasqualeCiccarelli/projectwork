@@ -91,9 +91,9 @@ public class ProdottoCtrl {
 	@GetMapping("/top-venduti")
 	@Operation(
 	    summary = "Recupera i 20 prodotti più venduti filtrati per brand",
-	    description = "Restituisce una lista dei 20 prodotti più venduti, composta dai top 5 di ogni categoria (carte, bustine, box, accessori) per un brand specifico"
+	    description = "Restituisce una lista dei 20 prodotti più venduti per un brand specifico"
 	)
-	public ResponseEntity<List<ProdottoDto>> getTopSellingProducts(@RequestParam String brand) {
+	public ResponseEntity<List<ProdottoDto>> getTopSellingProducts(@RequestParam Brand brand) {
 	    List<ProdottoDto> topProducts = prodottoService.findTop20SellingProductsByBrand(brand);
 	    return ResponseEntity.ok(topProducts);
 	}
