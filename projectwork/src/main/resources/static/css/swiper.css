@@ -63,3 +63,10 @@ h3{
   white-space: normal; /* Permette al testo di andare a capo */
   word-wrap: break-word; /* Suddivide il testo in più righe se necessario */
 }
+
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}

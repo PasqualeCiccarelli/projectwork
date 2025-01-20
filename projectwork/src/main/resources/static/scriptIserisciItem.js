@@ -120,7 +120,7 @@ function aggiornaStickerVisuale() {
 
     if (cartCount && parseInt(cartCount) > 0) {
         // Mostra lo sticker con il numero di prodotti
-        cartSticker.style.display = "flex";
+        cartSticker.style.display = "block";
         cartSticker.textContent = cartCount;
 
         // Aggiungi animazione heartbeat per far pulsare lo sticker ogni pochi secondi

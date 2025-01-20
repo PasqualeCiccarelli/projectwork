@@ -95,3 +95,36 @@ button:hover {
     top: 1.5rem;
     
 }
+
+.col-lg-3{
+    margin-bottom: 3rem;
+
+}
+
+/* Stili specifici per mobile */
+@media screen and (max-width: 425px) {
+    .icona-numero {
+        display: none;
+        position: absolute;
+        top: 420px !important; /* Posiziona leggermente sopra il bordo superiore */
+        right: 160px !important; /* All'interno del lato destro del div genitore */
+        background: red;
+        color: white;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 10px;
+        line-height: 15px;
+        z-index: 10;
+    }
+
+    .swiper{
+        min-height: 150px;
+    }
+
+    .swiper img{
+        min-height: 150px;
+    }
+}
+

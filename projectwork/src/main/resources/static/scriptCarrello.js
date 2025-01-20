@@ -89,10 +89,43 @@ async function loadCart() {
                 imagePath = `img/placeholder.jpg`;
         }
 
-        let styleBustina="height: 100%; width: auto;";
+        let styleBustina = "height: 100%; width: auto;";
 
-        if(prodotto.tipoCategoria==="BUSTINA"){
-            styleBustina="height: 500px; width: 270px;"
+        if (prodotto.tipoCategoria === "BUSTINA") {
+            styleBustina = "height: 500px; width: 270px;";
+        }
+
+        if (prodotto.tipoCategoria === "BOX") {
+            styleBustina = "height: 500px; width: 400px;";
+        }
+
+        if (prodotto.tipoCategoria === "ACCESSORIO") {
+            styleBustina = "height: 700px; width: 550px;";
+        }
+
+        if (prodotto.brand === "YUGIHO" || prodotto.brand === "MAGIC" && prodotto.tipoCategoria === "BUSTINA") {
+            styleBustina = "height: 500px; width: 350px;";
+        }
+
+        // Media query for mobile
+        const mediaQueryMobile = window.matchMedia("(max-width: 468px)");
+
+        if (mediaQueryMobile.matches) {
+            if (prodotto.tipoCategoria === "BUSTINA") {
+            styleBustina = "height: 250px; width: 135px;";
+            }
+
+            if (prodotto.tipoCategoria === "BOX") {
+            styleBustina = "height: 250px; width: 200px;";
+            }
+
+            if (prodotto.tipoCategoria === "ACCESSORIO") {
+            styleBustina = "height: 350px; width: 275px;";
+            }
+
+            if (prodotto.brand === "YUGIHO" || prodotto.brand === "MAGIC" && prodotto.tipoCategoria === "BUSTINA") {
+            styleBustina = "height: 250px; width: 175px;";
+            }
         }
 
           return `

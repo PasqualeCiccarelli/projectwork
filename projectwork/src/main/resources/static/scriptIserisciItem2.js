@@ -117,7 +117,7 @@ function aggiornaStickerVisuale() {
 
     if (cartCount && parseInt(cartCount) > 0) {
         // Mostra lo sticker con il numero di prodotti
-        cartSticker.style.display = "flex";
+        cartSticker.style.display = "block";
         cartSticker.textContent = cartCount;
     } else {
         // Nasconde lo sticker se non ci sono prodotti nel carrello

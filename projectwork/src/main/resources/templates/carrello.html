@@ -87,86 +87,87 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navina" style="background-color:#f5db13;">
+    <nav class="navbar navbar-expand-lg navina" style="background-color: rgb(255, 187, 0);">
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="/">
                 <img class="logo" src=" img/LOGO.png" alt="">
             </a>
-    
+
             <!-- Menu hamburger -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Barra di ricerca -->
-            <div class="col-md-8">
-                <div class="search-form mt-5 mb-3">
-                    <div class="form-floating">
-                        <!-- Barra di ricerca -->
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Cerca nel sito...">
-                        <label for="floatingInput">Cerca nel sito...</label>
-                    </div>
-                </div>
-        
-                <!-- Overlay per oscurare il sito -->
-                <div id="overlay"></div>
-    
-                <!-- Popup per i risultati -->
-                <div id="searchPopup">
-                    <!-- Header della popup -->
-                    <div id="popupHeader">
-                        <input type="text" id="popupSearchBar" placeholder="Cerca prodotti...">
-                        <button id="closePopup">X</button>
-                    </div>
-                    
-                    <!-- Contenitore per i risultati -->
-                    <div id="popupResults"></div>
-                </div>
-            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <!-- Menu -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3" style="color: white !important;">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
                     <li class="nav-item text-center mx-1">
                         <a class="nav-link active" aria-current="page" href="/">
-                            <i class="fas fa-home fa-2x"></i>
-                            <p>Home</p>
+                            <i class="fas fa-home fa-2x" style="color: white;"></i>
+                            <p style="margin-bottom: 0;">Home</p>
                         </a>
                     </li>
+                    <li class="nav-item text-center mx-1">
+                        <a class="nav-link active" href="/negozio-magic" style="padding: 3px;">
+                            <i class="fas fa-hat-wizard mb-2 fa-2x" style="color: white;"></i>
+                            <p style="margin-bottom: 0;">Negozio Magic</p>
+                        </a>
+                    </li>
+                    
                     <li class="nav-item text-center mx-1">
                         <a class="nav-link active" href="/negozio-yugiho">
-                            <i class="fas fa-scroll fa-2x"></i>
-                            <p>Negozio Yu-Gi-Oh</p>
+                            <i class="fas fa-scroll fa-2x" style="color: white;"></i>
+                            <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
                         </a>
                     </li>
                     <li class="nav-item text-center mx-1">
-                        <a class="nav-link active" href="/negozio-magic">
-                            <i class="fas fa-hat-wizard fa-2x"></i>
-                            <p>Negozio Magic</p>
+                        <a class="nav-link active" href="/negozio-pokemon">
+                            <i class="fas fa-dragon mb-2 fa-2x" style="color: white;"></i>
+                            <p style="margin-bottom: 0;">Negozio Pokemon</p>
                         </a>
                     </li>
-                    <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-                        <div>
-                            <a href="/utente">
-                                <i class="fa-solid fa-user fa-3x omino active" style="color:white; display: none;"></i>
-                                <div class="profile-image immagine-profilo" id="profile-image" style="width: 48px !important; height: 48px !important;">
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo" id="profile-img">
-                                </div>
-                            </a>
-                        </div>
-                        <p style="color: #a3a3a3;" class="nome-utente">ACCOUNT</p>
-                    </li>
-                    <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
-                        <a class="nav-link active" href="/login">
-                            <i class="fas fa-sign-in-alt fa-2x"></i>
-                            Login
+                    <!-- <li class="nav-item text-center mx-1">
+                    <i class="fa-solid fa-user fa-2x" style="color: antiquewhite;"></i>
+                    <a class="nav-link active" href="#">
+                        <p style="margin-bottom: 0;">Profilo</p>
+                    </a>
+                </li> -->
+                <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
+                    <div>
+                        <i class="fa-solid fa-user fa-3x omino active" style="color:white; display: none;"></i>
+
+                        <a href="/utente">
+                            <div class="profile-image immagine-profilo" id="profile-image"
+                                style="width: 48px !important; height: 48px !important;">
+                                <!-- Immagine di default se non c'è nessuna immagine associata -->
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
+                                    id="profile-img">
+                            </div>
                         </a>
-                    </li>
-                    <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
-                        <a class="nav-link active" href="/registrati">
-                            <i class="fas fa-user-plus fa-2x"></i>
-                            Sign-in
-                        </a>
-                    </li>
+
+                    </div>
+                    <p style="color: #ffffff;  "class="nome-utente">ACCOUNT</p>
+                </li>
+
+                <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
+                    <a class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none;" href="/login">
+                        <i class="fas fa-sign-in-alt fa-2x"></i>
+                        <span style="margin: 6px 0 0;">Login</span>
+                    </a>
+                </li>
+                
+                
+                <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
+                    <a class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none;" href="/registrati">
+                        <i class="fas fa-user-plus fa-2x"></i>
+                        <span style="margin: 6px 0 0;">Sign-in</span>
+                    </a>
+                </li>
+                
+
                 </ul>
             </div>
         </div>
