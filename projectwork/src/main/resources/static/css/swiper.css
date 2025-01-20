@@ -28,11 +28,14 @@
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    height: 550px; /* Altezza totale coerente */
+    height: 470px !important; /* Altezza totale coerente */
     width: 220px; /* Larghezza totale coerente */
     box-sizing: border-box; /* Padding e bordo inclusi nelle dimensioni */
+    text-wrap: auto;
     padding: 10px; /* Spazio interno */
 }
+
+
 
 .product-card img {
     width: 250px;
@@ -45,6 +48,7 @@
     margin-bottom: 0.3rem;
     text-overflow: ellipsis; /* Mostra "..." per il testo troppo lungo */
     white-space: nowrap; /* Mantiene il testo su una sola riga */
+    text-wrap: auto;
 }
 
 .order-button {
