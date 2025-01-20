@@ -106,7 +106,7 @@ button:hover {
     .icona-numero {
         display: none;
         position: absolute;
-        top: 420px !important; /* Posiziona leggermente sopra il bordo superiore */
+        top: 380px !important; /* Posiziona leggermente sopra il bordo superiore */
         right: 160px !important; /* All'interno del lato destro del div genitore */
         background: red;
         color: white;
