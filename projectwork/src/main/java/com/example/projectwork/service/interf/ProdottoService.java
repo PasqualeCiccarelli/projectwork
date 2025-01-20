@@ -31,5 +31,5 @@ public interface ProdottoService {
 	public List<ProdottoDto> searchProdotti(String query);
 	public List<ProdottoDto> getProdottiByBrandAndCategoria(Brand brand, Categoria categoria);
 	public List<ProdottoDto> getProdottiByBrandTipoCategoriaAndTipi(Brand brand, TipoCategoria tipoCategoria, List<Tipo> tipi);
-	 public List<ProdottoDto> findTop20SellingProductsByBrand(String brand);
+	public List<ProdottoDto> findTop20SellingProductsByBrand(Brand brand);
 }

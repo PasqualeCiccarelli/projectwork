@@ -1,5 +1,5 @@
 // Funzione per creare una card di prodotto con dimensioni uniformi
-function createProductCard(prodotto) {
+function createProductCard3(prodotto) {
     const prezzoOriginale = prodotto.prezzo.toFixed(2);
     const prezzoScontato = prodotto.prezzoScontato && prodotto.prezzoScontato > 0 ? prodotto.prezzoScontato.toFixed(2) : null;
 
@@ -43,51 +43,51 @@ function createProductCard(prodotto) {
 }
 
 // Inizializzazione degli Swiper
-const swiperConfig = {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    loop: true, // Abilita il loop infinito
-    loopFillGroupWithBlank: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-    },
-    // autoplay: {
-    //     delay: 3000,  // Autoplay opzionale, ogni 3 secondi
-    //     disableOnInteraction: false
-    // },
-    breakpoints: {
-        // quando la viewport è >= 480px
-        480: {
-            slidesPerView: 2,
-            spaceBetween: 20
-        },
-        // quando la viewport è >= 768px
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 30
-        },
-        // quando la viewport è >= 1024px
-        1024: {
-            slidesPerView: 4,
-            spaceBetween: 30
-        },
-        // quando la viewport è >= 1200px
-        1200: {
-            slidesPerView: 5,
-            spaceBetween: 30
-        }
-    }
-};
+// const swiperConfig = {
+//     slidesPerView: 2,
+//     spaceBetween: 20,
+//     loop: true, // Abilita il loop infinito
+//     loopFillGroupWithBlank: true,
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+//     pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true
+//     },
+//     // autoplay: {
+//     //     delay: 3000,  // Autoplay opzionale, ogni 3 secondi
+//     //     disableOnInteraction: false
+//     // },
+//     breakpoints: {
+//         // quando la viewport è >= 480px
+//         480: {
+//             slidesPerView: 2,
+//             spaceBetween: 20
+//         },
+//         // quando la viewport è >= 768px
+//         768: {
+//             slidesPerView: 3,
+//             spaceBetween: 30
+//         },
+//         // quando la viewport è >= 1024px
+//         1024: {
+//             slidesPerView: 4,
+//             spaceBetween: 30
+//         },
+//         // quando la viewport è >= 1200px
+//         1200: {
+//             slidesPerView: 5,
+//             spaceBetween: 30
+//         }
+//     }
+// };
 
-const swiper1 = new Swiper('.mySwiper', swiperConfig);
-const swiper2 = new Swiper('.mySwiper2', swiperConfig);
-const swiper3 = new Swiper('.mySwiper3', swiperConfig);
-const swiper4 = new Swiper('.mySwiper4', swiperConfig);
+// const swiper1 = new Swiper('.mySwiper', swiperConfig);
+// const swiper2 = new Swiper('.mySwiper2', swiperConfig);
+// const swiper3 = new Swiper('.mySwiper3', swiperConfig);
+//const swiper4 = new Swiper('.mySwiper4', swiperConfig);
 
 // Funzioni per popolare i caroselli
 async function loadMagicNovita() {
@@ -95,8 +95,9 @@ async function loadMagicNovita() {
         const response = await fetch('/api/prodotto/brand-categoria?brand=MAGIC&categoria=NOVITA');
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper2 .swiper-wrapper');
-        swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper1.update();
+        swiperWrapper.innerHTML = products.map(createProductCard3).join('');
+        //swiper1.update();
+        initializeSwiper2();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Novità:', error);
     }
@@ -107,8 +108,9 @@ async function loadMagicSpeciali() {
         const response = await fetch('/api/prodotto/brand-categoria?brand=MAGIC&categoria=SPECIALE');
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
-        swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper2.update();
+        swiperWrapper.innerHTML = products.map(createProductCard3).join('');
+        //swiper2.update();
+        initializeSwiper();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Speciali:', error);
     }
@@ -122,8 +124,9 @@ async function loadTopSellingMagic() {
         }
         const pokemonProducts = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
-        swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
-        swiper4.update();
+        swiperWrapper.innerHTML = pokemonProducts.map(createProductCard3).join('');
+        //swiper4.update();
+        initializeSwiper4();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti più venduti:', error);
     }
@@ -134,8 +137,9 @@ async function loadMagicAccessori() {
         const response = await fetch('/api/prodotto/brand-tipoCategoria-tipi?brand=MAGIC&tipoCategoria=ACCESSORIO&tipi=ACTION_FIGURE,GADGET');
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper3 .swiper-wrapper');
-        swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper4.update();
+        swiperWrapper.innerHTML = products.map(createProductCard3).join('');
+        //swiper4.update();
+        initializeSwiper3();
     } catch (error) {
         console.error('Errore nel caricamento degli accessori:', error);
     }
