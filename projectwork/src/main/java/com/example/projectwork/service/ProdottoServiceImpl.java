@@ -128,7 +128,7 @@ public class ProdottoServiceImpl implements ProdottoService {
 	        return prodotti.stream().map(ProdottoDto::toDto).collect(Collectors.toList());
 	    }
 	 
-	 public List<ProdottoDto> findTop20SellingProductsByBrand(String brand) {
+	 public List<ProdottoDto> findTop20SellingProductsByBrand(Brand brand) {
 		    List<CardEntity> topCards = prodottoRepository.findTop5SellingCardsByBrand(brand);
 		    List<BustinaEntity> topBustine = prodottoRepository.findTop5SellingBustineByBrand(brand);
 		    List<BoxEntity> topBoxes = prodottoRepository.findTop5SellingBoxesByBrand(brand);

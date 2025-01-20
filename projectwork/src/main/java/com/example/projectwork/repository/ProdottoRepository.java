@@ -57,7 +57,7 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 			    ORDER BY vendite DESC 
 			    LIMIT 5
 			    """)
-			List<CardEntity> findTop5SellingCardsByBrand(@Param("brand") String brand);
+			List<CardEntity> findTop5SellingCardsByBrand(@Param("brand") Brand brand);
 
 	 @Query("""
 			    SELECT b, COUNT(d.id) as vendite 
@@ -68,7 +68,7 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 			    ORDER BY vendite DESC 
 			    LIMIT 5
 			    """)
-			List<BustinaEntity> findTop5SellingBustineByBrand(@Param("brand") String brand);
+			List<BustinaEntity> findTop5SellingBustineByBrand(@Param("brand") Brand brand);
 
 	 @Query("""
 			    SELECT b, COUNT(d.id) as vendite 
@@ -79,7 +79,7 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 			    ORDER BY vendite DESC 
 			    LIMIT 5
 			    """)
-			List<BoxEntity> findTop5SellingBoxesByBrand(@Param("brand") String brand);
+			List<BoxEntity> findTop5SellingBoxesByBrand(@Param("brand") Brand brand);
 
 	 @Query("""
 			    SELECT a, COUNT(d.id) as vendite 
@@ -90,6 +90,6 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 			    ORDER BY vendite DESC 
 			    LIMIT 5
 			    """)
-			List<AccessorioEntity> findTop5SellingAccessoriByBrand(@Param("brand") String brand);
+			List<AccessorioEntity> findTop5SellingAccessoriByBrand(@Param("brand") Brand brand);
 	 
 }
