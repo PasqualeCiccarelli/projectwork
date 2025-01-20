@@ -177,3 +177,19 @@ function aperturaHome(){
 }
 
 aperturaHome();
+
+
+
+//CONTROLLO UTENTE
+const controlloUtente= document.querySelector('.controllo-utente');
+const verificaSeAdmin= sessionStorage.getItem('user');
+const conversioneInOggetto= JSON.parse(verificaSeAdmin);
+console.log(conversioneInOggetto.ruolo2);
+
+if(conversioneInOggetto.ruolo2 === "ADMIN"){
+    controlloUtente.classList.remove('d-none');
+}
+else if(conversioneInOggetto.ruolo2 === "null"){
+    controlloUtente.classList.add('d-none');
+}
+
