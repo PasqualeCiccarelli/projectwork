@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.example.projectwork.entity.AdminEntity;
 import com.example.projectwork.entity.BoxEntity;
@@ -25,5 +26,15 @@ public interface BoxRepository extends JpaRepository<BoxEntity, Long>{
 	List<BoxEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
 	Page<BoxEntity> findByAdmin(AdminEntity admin, Pageable pageable);
 	Page<BoxEntity> findByAdmin_Email(String email, Pageable pageable);
+	
+//	 @Query("""
+//		        SELECT b, COUNT(d.id) as vendite 
+//		        FROM BoxEntity b 
+//		        JOIN b.dettagliOrdine d 
+//		        GROUP BY b.id 
+//		        ORDER BY vendite DESC 
+//		        LIMIT 5
+//		        """)
+//		    List<BoxEntity> findTop5SellingBoxes();
 
 }

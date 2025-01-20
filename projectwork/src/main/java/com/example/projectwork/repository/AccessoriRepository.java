@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.example.projectwork.entity.AccessorioEntity;
 import com.example.projectwork.entity.AdminEntity;
@@ -27,4 +28,14 @@ public interface AccessoriRepository extends JpaRepository<AccessorioEntity, Lon
     List<AccessorioEntity> findByBrandAndTipo(Brand brand, Tipo tipo);
     Page<AccessorioEntity> findByAdmin(AdminEntity admin, Pageable pageable);
     Page<AccessorioEntity> findByAdmin_Email(String email, Pageable pageable);
+    
+//    @Query("""
+//            SELECT a, COUNT(d.id) as vendite 
+//            FROM AccessorioEntity a 
+//            JOIN a.dettagliOrdine d 
+//            GROUP BY a.id 
+//            ORDER BY vendite DESC 
+//            LIMIT 5
+//            """)
+//        List<AccessorioEntity> findTop5SellingAccessori();
 }

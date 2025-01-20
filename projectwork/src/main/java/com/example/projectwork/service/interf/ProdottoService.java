@@ -9,6 +9,7 @@ import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Rarita;
 import com.example.projectwork.entity.entityenum.Stato;
+import com.example.projectwork.entity.entityenum.Tipo;
 import com.example.projectwork.entity.entityenum.TipoCategoria;
 
 public interface ProdottoService {
@@ -28,4 +29,7 @@ public interface ProdottoService {
             
 	public void eliminaProdottoUtente(Long id);
 	public List<ProdottoDto> searchProdotti(String query);
+	public List<ProdottoDto> getProdottiByBrandAndCategoria(Brand brand, Categoria categoria);
+	public List<ProdottoDto> getProdottiByBrandTipoCategoriaAndTipi(Brand brand, TipoCategoria tipoCategoria, List<Tipo> tipi);
+	 public List<ProdottoDto> findTop20SellingProductsByBrand(String brand);
 }

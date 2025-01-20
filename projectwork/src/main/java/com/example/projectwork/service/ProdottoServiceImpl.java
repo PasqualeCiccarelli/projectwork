@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import java.util.stream.Collectors;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,16 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.example.projectwork.dto.ProdottoDto;
+import com.example.projectwork.entity.AccessorioEntity;
+import com.example.projectwork.entity.BoxEntity;
+import com.example.projectwork.entity.BustinaEntity;
+import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Rarita;
 import com.example.projectwork.entity.entityenum.Stato;
+import com.example.projectwork.entity.entityenum.Tipo;
 import com.example.projectwork.entity.entityenum.TipoCategoria;
 import com.example.projectwork.repository.ProdottoRepository;
 import com.example.projectwork.service.interf.ProdottoService;
@@ -112,6 +118,41 @@ public class ProdottoServiceImpl implements ProdottoService {
                 .collect(Collectors.toList());
     }
 	
-	
+	 public List<ProdottoDto> getProdottiByBrandAndCategoria(Brand brand, Categoria categoria) {
+	        List<ProdottoEntity> prodotti = prodottoRepository.findByBrandAndCategoria(brand, categoria);
+	        return prodotti.stream().map(ProdottoDto::toDto).collect(Collectors.toList());
+	    }
+	 
+	 public List<ProdottoDto> getProdottiByBrandTipoCategoriaAndTipi(Brand brand, TipoCategoria tipoCategoria, List<Tipo> tipi) {
+	        List<ProdottoEntity> prodotti = prodottoRepository.findByBrandAndTipoCategoriaAndTipoIn(brand, tipoCategoria, tipi);
+	        return prodotti.stream().map(ProdottoDto::toDto).collect(Collectors.toList());
+	    }
+	 
+	 public List<ProdottoDto> findTop20SellingProductsByBrand(String brand) {
+		    List<CardEntity> topCards = prodottoRepository.findTop5SellingCardsByBrand(brand);
+		    List<BustinaEntity> topBustine = prodottoRepository.findTop5SellingBustineByBrand(brand);
+		    List<BoxEntity> topBoxes = prodottoRepository.findTop5SellingBoxesByBrand(brand);
+		    List<AccessorioEntity> topAccessori = prodottoRepository.findTop5SellingAccessoriByBrand(brand);
+
+		    List<ProdottoDto> topProducts = new ArrayList<>();
+		    
+		    topProducts.addAll(topCards.stream()
+		        .map(ProdottoDto::toDto)
+		        .collect(Collectors.toList()));
+		        
+		    topProducts.addAll(topBustine.stream()
+		        .map(ProdottoDto::toDto)
+		        .collect(Collectors.toList()));
+		        
+		    topProducts.addAll(topBoxes.stream()
+		        .map(ProdottoDto::toDto)
+		        .collect(Collectors.toList()));
+		        
+		    topProducts.addAll(topAccessori.stream()
+		        .map(ProdottoDto::toDto)
+		        .collect(Collectors.toList()));
+
+		    return topProducts;
+		}
 	
 }

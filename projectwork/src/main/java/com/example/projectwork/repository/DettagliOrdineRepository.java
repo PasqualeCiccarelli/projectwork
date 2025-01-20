@@ -18,7 +18,7 @@ public interface DettagliOrdineRepository extends JpaRepository<DettaglioOrdineE
     List<DettaglioOrdineEntity> findByOrdine(OrdineEntity ordine);
     List<DettaglioOrdineEntity> findByCarta(CardEntity carta);
     List<DettaglioOrdineEntity> findByBox(BoxEntity box);
-    List<DettaglioOrdineEntity> findByBustina(BustinaEntity bustina); // Corretto
+    List<DettaglioOrdineEntity> findByBustina(BustinaEntity bustina);
     List<DettaglioOrdineEntity> findByAccessorio(AccessorioEntity accessorio);
 
     @Query("SELECT SUM(d.quantita) FROM DettaglioOrdineEntity d WHERE d.carta.id = :cartaId")

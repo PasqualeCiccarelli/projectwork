@@ -1,6 +1,7 @@
 package com.example.projectwork.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
@@ -214,5 +215,5 @@ public abstract class ProdottoEntity {
 			return prezzo;
 		}
 	}
-
+	
 }

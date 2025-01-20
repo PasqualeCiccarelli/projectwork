@@ -132,119 +132,156 @@ async function loadCart() {
 }
 
 function showRemoveModal(dettaglioId, currentQuantity) {
-  if (currentQuantity === 1) {
-      if (confirm('Vuoi rimuovere questo articolo dal carrello?')) {
-          removeFromCart(dettaglioId, 1);
-      }
-  } else {
-      const quantityToRemove = prompt(`Quanti articoli vuoi rimuovere? (1-${currentQuantity})`, "1");
-      const quantity = parseInt(quantityToRemove);
-
-      if (!isNaN(quantity) && quantity > 0 && quantity <= currentQuantity) {
-          removeFromCart(dettaglioId, quantity);
-      } else if (quantityToRemove !== null) { // Se l'utente non ha premuto "Annulla"
-          alert('Quantità non valida');
-      }
-  }
-}
-
-async function removeFromCart(dettaglioId, quantity) {
-  try {
-      const userData = getUserDataFromSessionStorage();
-      const response = await fetch('/api/ordini/rimuovi-prodotto', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              email: userData.email,
-              dettaglioId: dettaglioId,
-              quantita: quantity
-          })
-      });
-
-      if (response.ok) {
-          loadCart();
-      } else {
-          throw new Error('Errore nella rimozione del prodotto');
-      }
-  } catch (error) {
-      console.error('Errore:', error);
-      alert('Errore nella rimozione del prodotto');
-  }
-}
-
-async function deleteOrder() {
-  if (!confirm('Sei sicuro di voler eliminare l\'intero ordine?')) {
-      return;
-  }
-
-  try {
-      const userData = getUserDataFromSessionStorage();
-      const response = await fetch('/api/ordini/elimina', {
-          method: 'DELETE',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email: userData.email })
-      });
-
-      if (response.ok) {
-          alert('Ordine eliminato con successo');
-          location.reload();
-      } else {
-          throw new Error('Errore nell\'eliminazione dell\'ordine');
-      }
-  } catch (error) {
-      console.error('Errore:', error);
-      alert('Errore nell\'eliminazione dell\'ordine');
-  }
-}
-
-async function completeOrder() {
-  const addressInput = document.getElementById('shipping-address');
-  if (!addressInput || !addressInput.value.trim()) {
-      alert('Inserisci un indirizzo di spedizione valido');
-      return;
-  }
-
-  try {
-      const userData = getUserDataFromSessionStorage();
-      const response = await fetch('/api/ordini/completa', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              email: userData.email,
-              indirizzo: addressInput.value.trim()
-          })
-      });
-
-      if (response.ok) {
-          alert('Ordine completato con successo!');
-          window.location.href = '/';
-      } else {
-          throw new Error('Errore nel completamento dell\'ordine');
-      }
-  } catch (error) {
-      console.error('Errore:', error);
-      alert('Errore nel completamento dell\'ordine');
-  }
-}
-
-// Inizializza la pagina
-document.addEventListener('DOMContentLoaded', () => {
-  loadCart();
+    if (currentQuantity === 1) {
+        if (confirm('Vuoi rimuovere questo articolo dal carrello?')) {
+            removeFromCart(dettaglioId, 1);
+        }
+    } else {
+        const quantityToRemove = prompt(`Quanti articoli vuoi rimuovere? (1-${currentQuantity})`, "1");
+        const quantity = parseInt(quantityToRemove);
   
-  // Aggiungi event listener per i pulsanti principali
-  const deleteOrderBtn = document.getElementById('delete-order-btn');
-  if (deleteOrderBtn) {
-      deleteOrderBtn.addEventListener('click', deleteOrder);
+        if (!isNaN(quantity) && quantity > 0 && quantity <= currentQuantity) {
+            removeFromCart(dettaglioId, quantity);
+        } else if (quantityToRemove !== null) { // Se l'utente non ha premuto "Annulla"
+            alert('Quantità non valida');
+        }
+    }
   }
   
-  const completeOrderBtn = document.getElementById('complete-order-btn');
-  if (completeOrderBtn) {
-      completeOrderBtn.addEventListener('click', completeOrder);
+  async function removeFromCart(dettaglioId, quantity) {
+      try {
+          const userData = getUserDataFromSessionStorage();
+          const response = await fetch('/api/ordini/rimuovi-prodotto', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  email: userData.email,
+                  dettaglioId: dettaglioId,
+                  quantita: quantity
+              })
+          });
+    
+          if (response.ok) {
+              // Decrementa la quantità nel carrello
+              aggiornaStickerCarrello(-quantity); // Riduce il conteggio per la quantità rimossa
+              loadCart(); // Ricarica il carrello
+          } else {
+              throw new Error('Errore nella rimozione del prodotto');
+          }
+      } catch (error) {
+          console.error('Errore:', error);
+          alert('Errore nella rimozione del prodotto');
+      }
   }
-});
+  
+  async function deleteOrder() {
+      if (!confirm('Sei sicuro di voler eliminare l\'intero ordine?')) {
+          return;
+      }
+    
+      try {
+          const userData = getUserDataFromSessionStorage();
+          const response = await fetch('/api/ordini/elimina', {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email: userData.email })
+          });
+    
+          if (response.ok) {
+              alert('Ordine eliminato con successo');
+              
+              // Resetta il conteggio del carrello nel localStorage
+              localStorage.removeItem("cartCount"); // Rimuove il conteggio dal localStorage
+              aggiornaStickerCarrello(0); // Rimuove il conteggio e aggiorna il carrello
+              loadCart(); // Ricarica il carrello
+          } else {
+              throw new Error('Errore nell\'eliminazione dell\'ordine');
+          }
+      } catch (error) {
+          console.error('Errore:', error);
+          alert('Errore nell\'eliminazione dell\'ordine');
+      }
+  }
+  
+  async function completeOrder() {
+      const addressInput = document.getElementById('shipping-address');
+      if (!addressInput || !addressInput.value.trim()) {
+          alert('Inserisci un indirizzo di spedizione valido');
+          return;
+      }
+  
+      try {
+          const userData = getUserDataFromSessionStorage();
+          const response = await fetch('/api/ordini/completa', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  email: userData.email,
+                  indirizzo: addressInput.value.trim()
+              })
+          });
+  
+          if (response.ok) {
+              alert('Ordine completato con successo!');
+              
+              // Rimuove il conteggio dal localStorage e aggiorna la visualizzazione
+              localStorage.removeItem("cartCount");
+              aggiornaStickerCarrello(0); // Rimuove il conteggio e aggiorna il carrello
+  
+              window.location.href = '/'; // Torna alla pagina principale
+          } else {
+              throw new Error('Errore nel completamento dell\'ordine');
+          }
+      } catch (error) {
+          console.error('Errore:', error);
+          alert('Errore nel completamento dell\'ordine');
+      }
+  }
+  
+  function aggiornaStickerCarrello(quantita) {
+      const currentCount = parseInt(localStorage.getItem("cartCount")) || 0;
+      const newCount = currentCount + parseInt(quantita);
+  
+      // Se il nuovo conteggio è inferiore a 0, lo settiamo a 0 (non possiamo avere numeri negativi)
+      if (newCount < 0) {
+          localStorage.setItem("cartCount", 0);
+      } else {
+          localStorage.setItem("cartCount", newCount);
+      }
+  
+      // Non è necessario più aggiornare uno sticker visibile, quindi non viene chiamata una funzione visiva
+  }
+  
+  function aggiornaStickerVisuale() {
+      const cartCount = localStorage.getItem("cartCount");
+  
+      if (cartCount && parseInt(cartCount) > 0) {
+          // Lo sticker non è visibile in questa pagina, ma possiamo gestire il conteggio nel localStorage
+          console.log(`Prodotti nel carrello: ${cartCount}`);
+      } else {
+          console.log("Carrello vuoto");
+      }
+  }
+  
+  // Inizializza la pagina
+  document.addEventListener('DOMContentLoaded', () => {
+      loadCart();
+      
+      // Aggiungi event listener per i pulsanti principali
+      const deleteOrderBtn = document.getElementById('delete-order-btn');
+      if (deleteOrderBtn) {
+          deleteOrderBtn.addEventListener('click', deleteOrder);
+      }
+      
+      const completeOrderBtn = document.getElementById('complete-order-btn');
+      if (completeOrderBtn) {
+          completeOrderBtn.addEventListener('click', completeOrder);
+      }
+  });
+  

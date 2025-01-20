@@ -10,12 +10,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.example.projectwork.entity.AccessorioEntity;
+import com.example.projectwork.entity.BoxEntity;
+import com.example.projectwork.entity.BustinaEntity;
+import com.example.projectwork.entity.CardEntity;
 import com.example.projectwork.entity.ProdottoEntity;
 import com.example.projectwork.entity.entityenum.Brand;
 import com.example.projectwork.entity.entityenum.Categoria;
 import com.example.projectwork.entity.entityenum.Rarita;
 import com.example.projectwork.entity.entityenum.Stato;
+import com.example.projectwork.entity.entityenum.Tipo;
 import com.example.projectwork.entity.entityenum.TipoCategoria;
+
 
 public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 	
@@ -39,6 +45,51 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Long>{
 	 
 	 @Query("SELECT p FROM ProdottoEntity p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :query, '%'))")
 	    List<ProdottoEntity> findByNomeContainingIgnoreCase(@Param("query") String query);
+	 List<ProdottoEntity> findByBrandAndCategoria(Brand brand, Categoria categoria);
+	 List<ProdottoEntity> findByBrandAndTipoCategoriaAndTipoIn(Brand brand, TipoCategoria tipoCategoria, List<Tipo> tipi);
+	
+	 @Query("""
+			    SELECT c, COUNT(d.id) as vendite 
+			    FROM CardEntity c 
+			    JOIN c.dettagliOrdine d 
+			    WHERE c.brand = :brand
+			    GROUP BY c.id 
+			    ORDER BY vendite DESC 
+			    LIMIT 5
+			    """)
+			List<CardEntity> findTop5SellingCardsByBrand(@Param("brand") String brand);
+
+	 @Query("""
+			    SELECT b, COUNT(d.id) as vendite 
+			    FROM BustinaEntity b 
+			    JOIN b.dettagliOrdine d 
+			    WHERE b.brand = :brand
+			    GROUP BY b.id 
+			    ORDER BY vendite DESC 
+			    LIMIT 5
+			    """)
+			List<BustinaEntity> findTop5SellingBustineByBrand(@Param("brand") String brand);
+
+	 @Query("""
+			    SELECT b, COUNT(d.id) as vendite 
+			    FROM BoxEntity b 
+			    JOIN b.dettagliOrdine d 
+			    WHERE b.brand = :brand
+			    GROUP BY b.id 
+			    ORDER BY vendite DESC 
+			    LIMIT 5
+			    """)
+			List<BoxEntity> findTop5SellingBoxesByBrand(@Param("brand") String brand);
+
+	 @Query("""
+			    SELECT a, COUNT(d.id) as vendite 
+			    FROM AccessorioEntity a 
+			    JOIN a.dettagliOrdine d 
+			    WHERE a.brand = :brand
+			    GROUP BY a.id 
+			    ORDER BY vendite DESC 
+			    LIMIT 5
+			    """)
+			List<AccessorioEntity> findTop5SellingAccessoriByBrand(@Param("brand") String brand);
 	 
-	 //Page<ProdottoEntity> findByAdmin(AdminEntity admin, Pageable pageable);
 }

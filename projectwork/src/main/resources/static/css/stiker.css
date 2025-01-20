@@ -16,7 +16,7 @@
 /* Animazione periodica */
 .animate__animated.animate__heartBeat {
     animation-delay: 0s; /* Ritardo iniziale */
-    animation-duration: 1s; /* Durata dell'animazione */
+    animation-duration: 5s; /* Durata dell'animazione */
     animation-iteration-count: infinite; /* Ripetizione infinita */
     animation-timing-function: ease-in-out; /* Transizione morbida */
 }
