@@ -83,19 +83,19 @@ const swiperConfig = {
 //const swiper4 = new Swiper('.mySwiper4', swiperConfig);
 
 function initializeSwiper() {
-    return new Swiper(`.mySwiper`, configurazioneSwiper);
+    return new Swiper(`.mySwiper`, swiperConfig);
 }
 
 function initializeSwiper2() {
-    return new Swiper(`.mySwiper2`, configurazioneSwiper);
+    return new Swiper(`.mySwiper2`, swiperConfig);
 }
 
 function initializeSwiper3() {
-    return new Swiper(`.mySwiper3`, configurazioneSwiper);
+    return new Swiper(`.mySwiper3`, swiperConfig);
 }
 
 function initializeSwiper4() {
-    return new Swiper(`.mySwiper4`, configurazioneSwiper);
+    return new Swiper(`.mySwiper4`, swiperConfig);
 }
 
 
