@@ -76,12 +76,6 @@ const swiperConfig = {
     }
 };
 
-// Creazione istanze Swiper
-// const swiper1 = new Swiper('.mySwiper', swiperConfig);
-// const swiper2 = new Swiper('.mySwiper2', swiperConfig);
-// const swiper3 = new Swiper('.mySwiper3', swiperConfig);
-//const swiper4 = new Swiper('.mySwiper4', swiperConfig);
-
 function initializeSwiper() {
     return new Swiper(`.mySwiper`, swiperConfig);
 }
@@ -98,15 +92,13 @@ function initializeSwiper4() {
     return new Swiper(`.mySwiper4`, swiperConfig);
 }
 
-
-// Funzioni per popolare i caroselli
 async function loadPokemonNovita() {
     try {
         const response = await fetch('/api/prodotto/brand-categoria?brand=POKEMON&categoria=NOVITA');
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper2 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper2.update();
+        // swiper2.update();
         initializeSwiper2();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Novità:', error);
@@ -119,7 +111,7 @@ async function loadPokemonSpeciali() {
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper1.update();
+        // swiper1.update();
         initializeSwiper();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Speciali:', error);
@@ -136,7 +128,7 @@ async function loadTopSellingPokemon() {
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
 
         swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
-        swiper4.update();
+        // swiper4.update();
         initializeSwiper4();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti più venduti:', error);
@@ -149,14 +141,13 @@ async function loadPokemonAccessori() {
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper3 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper3.update();
+        // swiper3.update();
         initializeSwiper3();
     } catch (error) {
         console.error('Errore nel caricamento degli accessori:', error);
     }
 }
 
-// Evento per cambio brand
 const switchBrand= document.querySelector('.logo-icon-pokeball');
 
 
