@@ -15,6 +15,10 @@ const navbarVideo = document.querySelector("#navbar-video");
 const navbarVideo2 = document.querySelector("#navbar-video2"); 
 const videoSource = document.querySelector("#video"); 
 const videoSource2 = document.querySelector("#video2"); 
+const venduti = document.querySelector("#Venduti");
+
+
+
 
 btnPokemon.addEventListener("click", () => {
   offerteImg.src = "img/immagini-font/O.png";
@@ -22,6 +26,7 @@ btnPokemon.addEventListener("click", () => {
   gadgets.src = "img/immagini-font/gadgets.png";
   videoSource.src = "img/sfondi/pokemon-video.mp4"; 
   videoSource2.src ="img/sfondi/pikac.mp4" 
+  venduti.src ="img/immagini-font/seller-pokemon.png"
   navbarVideo.load(); 
   navbarVideo2.load(); 
   navbarVideo.play(); 
@@ -34,6 +39,7 @@ btnYugi.addEventListener("click", () => {
   gadgets.src = "img/immagini-font/yugi-gadgets.png";
   videoSource.src = "img/sfondi/yugioh.mp4"; 
   videoSource2.src ="img/sfondi/yugifinale.mp4" 
+  venduti.src ="img/immagini-font/seller-yugi.png"
   navbarVideo.load(); 
   navbarVideo.play(); 
   navbarVideo2.load(); 
@@ -46,6 +52,7 @@ btnMagic.addEventListener("click", () => {
   gadgets.src = "img/immagini-font/magic-gadgets.png";
   videoSource.src = "img/sfondi/magic.mp4"; 
   videoSource2.src = "img/sfondi/magic-back.mp4"; 
+  venduti.src ="img/immagini-font/seller-magic.png"
   gadgets.classList.add("magic-font");
   navbarVideo.load(); 
   navbarVideo.play(); 

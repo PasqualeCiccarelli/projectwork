@@ -107,11 +107,11 @@ display: flex;
 }
 
 li,i{
-    color: rgba(255, 255, 255, 1);
+    color: #171b44;
 }
 
 li a strong{
-    color: rgba(255, 255, 255, 0.89);
+    color: #171b44;
 }
 
 p{
@@ -186,7 +186,7 @@ color: #e72929;
 /* ----------------------------font pokemon---------------------------------------------- */
 
 .pokemon-font{
-width: 30%;
+width: 75%;
 display: flex;
 
 }
@@ -194,6 +194,12 @@ display: flex;
 .magic-font{
     width: 18%;
 }
+
+.barra-gialla{
+    margin-bottom: 10px;
+}
+
+
 
 /* ----------------------------media query---------------------------------------------- */
 @media screen and (min-width: 1024px){
@@ -230,6 +236,17 @@ display: flex;
     #yugi-img, #magic-img{
         padding: 10px; 
     }
+
+    .barra-gialla{
+        margin-bottom: 0px;
+    }
+    .pokemon-font{
+        width: 20%;
+        display: flex;
+        
+        }
+
+
 }
 
 @media screen and (max-width: 768px) {
