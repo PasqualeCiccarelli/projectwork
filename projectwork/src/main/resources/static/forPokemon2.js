@@ -115,6 +115,7 @@ async function loadTopSellingPokemon() {
         }
         const pokemonProducts = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
+
         swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
         swiper4.update();
     } catch (error) {
