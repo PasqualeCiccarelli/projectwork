@@ -43,44 +43,44 @@ function createProductCard(prodotto) {
 }
 
 // Configurazione Swiper
-const swiperConfig = {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    loop: true, // Abilita il loop infinito
-    loopFillGroupWithBlank: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-    },
-    breakpoints: {
-        480: {
-            slidesPerView: 2,
-            spaceBetween: 20
-        },
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 30
-        },
-        1024: {
-            slidesPerView: 4,
-            spaceBetween: 30
-        },
-        1200: {
-            slidesPerView: 5,
-            spaceBetween: 30
-        }
-    }
-};
+// const swiperConfig = {
+//     slidesPerView: 2,
+//     spaceBetween: 20,
+//     loop: true, // Abilita il loop infinito
+//     loopFillGroupWithBlank: true,
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+//     pagination: {
+//         el: '.swiper-pagination',
+//         clickable: true
+//     },
+//     breakpoints: {
+//         480: {
+//             slidesPerView: 2,
+//             spaceBetween: 20
+//         },
+//         768: {
+//             slidesPerView: 3,
+//             spaceBetween: 30
+//         },
+//         1024: {
+//             slidesPerView: 4,
+//             spaceBetween: 30
+//         },
+//         1200: {
+//             slidesPerView: 5,
+//             spaceBetween: 30
+//         }
+//     }
+// };
 
-// Creazione istanze Swiper
-const swiper1 = new Swiper('.mySwiper', swiperConfig);
-const swiper2 = new Swiper('.mySwiper2', swiperConfig);
-const swiper3 = new Swiper('.mySwiper3', swiperConfig);
-const swiper4 = new Swiper('.mySwiper4', swiperConfig);
+// // Creazione istanze Swiper
+// const swiper1 = new Swiper('.mySwiper', swiperConfig);
+// const swiper2 = new Swiper('.mySwiper2', swiperConfig);
+// const swiper3 = new Swiper('.mySwiper3', swiperConfig);
+//const swiper4 = new Swiper('.mySwiper4', swiperConfig);
 
 // Funzioni per popolare i caroselli
 async function loadYugiohNovita() {
@@ -90,6 +90,7 @@ async function loadYugiohNovita() {
         const swiperWrapper = document.querySelector('.mySwiper2 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper2.update();
+        initializeSwiper2();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Novità:', error);
     }
@@ -102,6 +103,7 @@ async function loadYugihoSpeciali() {
         const swiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper1.update();
+        initializeSwiper();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Speciali:', error);
     }
@@ -117,6 +119,7 @@ async function loadTopSellingYugiho() {
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
         swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
         swiper4.update();
+        initializeSwiper4();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti più venduti:', error);
     }
@@ -129,6 +132,7 @@ async function loadYugiohAccessori() {
         const swiperWrapper = document.querySelector('.mySwiper3 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper3.update();
+        initializeSwiper3();
     } catch (error) {
         console.error('Errore nel caricamento degli accessori:', error);
     }
@@ -139,6 +143,7 @@ const switchBrand2= document.querySelector('.logo-icon-puzzle');
 console.log(switchBrand2);
 
 switchBrand2.addEventListener('click', () => {
+    console.log(switchBrand2.id);
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	

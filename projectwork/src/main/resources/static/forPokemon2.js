@@ -77,10 +77,27 @@ const swiperConfig = {
 };
 
 // Creazione istanze Swiper
-const swiper1 = new Swiper('.mySwiper', swiperConfig);
-const swiper2 = new Swiper('.mySwiper2', swiperConfig);
-const swiper3 = new Swiper('.mySwiper3', swiperConfig);
-const swiper4 = new Swiper('.mySwiper4', swiperConfig);
+// const swiper1 = new Swiper('.mySwiper', swiperConfig);
+// const swiper2 = new Swiper('.mySwiper2', swiperConfig);
+// const swiper3 = new Swiper('.mySwiper3', swiperConfig);
+//const swiper4 = new Swiper('.mySwiper4', swiperConfig);
+
+function initializeSwiper() {
+    return new Swiper(`.mySwiper`, configurazioneSwiper);
+}
+
+function initializeSwiper2() {
+    return new Swiper(`.mySwiper2`, configurazioneSwiper);
+}
+
+function initializeSwiper3() {
+    return new Swiper(`.mySwiper3`, configurazioneSwiper);
+}
+
+function initializeSwiper4() {
+    return new Swiper(`.mySwiper4`, configurazioneSwiper);
+}
+
 
 // Funzioni per popolare i caroselli
 async function loadPokemonNovita() {
@@ -90,6 +107,7 @@ async function loadPokemonNovita() {
         const swiperWrapper = document.querySelector('.mySwiper2 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper2.update();
+        initializeSwiper2();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Novità:', error);
     }
@@ -102,6 +120,7 @@ async function loadPokemonSpeciali() {
         const swiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper1.update();
+        initializeSwiper();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Speciali:', error);
     }
@@ -117,6 +136,7 @@ async function loadTopSellingPokemon() {
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
         swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
         swiper4.update();
+        initializeSwiper4();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti più venduti:', error);
     }
@@ -129,6 +149,7 @@ async function loadPokemonAccessori() {
         const swiperWrapper = document.querySelector('.mySwiper3 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
         swiper3.update();
+        initializeSwiper3();
     } catch (error) {
         console.error('Errore nel caricamento degli accessori:', error);
     }
@@ -137,7 +158,9 @@ async function loadPokemonAccessori() {
 // Evento per cambio brand
 const switchBrand= document.querySelector('.logo-icon-pokeball');
 
+
 switchBrand.addEventListener('click', () => {
+    console.log(switchBrand.id);
 	
 	brandSelezionato= localStorage.getItem('brandSelect');
 	
@@ -157,6 +180,7 @@ function aperturaHome(){
     loadPokemonNovita();
     loadPokemonSpeciali();
     loadPokemonAccessori();
+
     brandSelezionato= localStorage.setItem('brandSelect', switchBrand.id);
 }
 
