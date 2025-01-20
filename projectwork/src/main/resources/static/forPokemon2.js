@@ -57,8 +57,8 @@ const swiperConfig = {
         clickable: true
     },
     breakpoints: {
-        480: {
-            slidesPerView: 2,
+        380: {
+            slidesPerView: 1,
             spaceBetween: 20
         },
         768: {

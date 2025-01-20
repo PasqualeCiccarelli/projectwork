@@ -111,15 +111,17 @@ function caricaProdotti(pagina) {
                     <p class="product-category" id="categoria-${prodotto.id}" style="margin-bottom: 0.3rem; display: none;">${prodotto.categoria}</p>
                     <h3 class="product-name" style="margin-bottom: 0.3rem;">${prodotto.nome}</h3>
                     ${mostraPrezzo}
-                    <div>
-                        <button type="button" id="product-${prodotto.id}" class="btn btn-primary special-button mb-1">
-                            ${prodotto.categoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta'}
-                        </button>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" id="delete-button-${prodotto.id}" class="btn btn-danger order-button mb-5 elimina-prodotto">
-                            Elimina
-                        </button>
+                    <div class="contenitore-cose d-flex justify-content-center">
+                        <div>
+                            <button type="button" id="product-${prodotto.id}" class="btn btn-primary special-button mb-1 me-2">
+                                ${prodotto.categoria === 'SPECIALE' ? 'Togli l\'offerta' : 'Metti in offerta'}
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" id="delete-button-${prodotto.id}" class="btn btn-danger order-button mb-5 elimina-prodotto">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 `;
