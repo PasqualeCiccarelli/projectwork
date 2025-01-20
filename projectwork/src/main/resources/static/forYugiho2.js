@@ -30,7 +30,7 @@ function createProductCard2(prodotto) {
                     </a>
                 </div>
                 <div class="product-info">
-                    <h3 class="h5 product-title text-truncate">${prodotto.nome}</h3>
+                    <h3 class="h5 product-title text-wrap" style="color:white;">${prodotto.nome}</h3>
                     ${mostraPrezzo}
                     <div>
                         <button type="button" id="${prodotto.id}" class="btn btn-carrello">

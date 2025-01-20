@@ -2,6 +2,7 @@
     border: 1px solid rgba(211, 211, 211, 0.4);
     border-radius: 8px;
     height: 450px;
+    width: 240px;
     background: transparent;
     transition: transform 0.3s ease;
     backdrop-filter: blur(5px);

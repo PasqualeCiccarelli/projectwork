@@ -41,7 +41,7 @@
     object-fit: contain; /* Mantiene le proporzioni */
 }
 
-.product-category, .product-name, .product-price {
+.product-info, .product-title, .product-price {
     margin-bottom: 0.3rem;
     text-overflow: ellipsis; /* Mostra "..." per il testo troppo lungo */
     white-space: nowrap; /* Mantiene il testo su una sola riga */
