@@ -106,7 +106,7 @@ async function loadPokemonNovita() {
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper2 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper2.update();
+        //swiper2.update();
         initializeSwiper2();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Novità:', error);
@@ -119,7 +119,7 @@ async function loadPokemonSpeciali() {
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper1.update();
+        //swiper1.update();
         initializeSwiper();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti Speciali:', error);
@@ -135,7 +135,7 @@ async function loadTopSellingPokemon() {
         const pokemonProducts = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper4 .swiper-wrapper');
         swiperWrapper.innerHTML = pokemonProducts.map(createProductCard).join('');
-        swiper4.update();
+        //swiper4.update();
         initializeSwiper4();
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti più venduti:', error);
@@ -148,7 +148,7 @@ async function loadPokemonAccessori() {
         const products = await response.json();
         const swiperWrapper = document.querySelector('.mySwiper3 .swiper-wrapper');
         swiperWrapper.innerHTML = products.map(createProductCard).join('');
-        swiper3.update();
+        //swiper3.update();
         initializeSwiper3();
     } catch (error) {
         console.error('Errore nel caricamento degli accessori:', error);
