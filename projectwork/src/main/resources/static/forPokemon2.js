@@ -180,7 +180,7 @@ aperturaHome();
 
 
 
-//CONTROLLO UTENTE
+//CONTROLLO UTENTE/ADMIN
 const controlloUtente= document.querySelector('.controllo-utente');
 const verificaSeAdmin= sessionStorage.getItem('user');
 const conversioneInOggetto= JSON.parse(verificaSeAdmin);

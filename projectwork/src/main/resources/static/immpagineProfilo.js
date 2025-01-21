@@ -41,7 +41,9 @@ function inserisciLogoeNomeUtente(){
                 console.log(immagine);
                 
                 if(nomeUtente != ""){
-                    let nomeInMaiuscolo= nomeUtente.toUpperCase();
+                    let nomeInMaiuscolo= primaLetteraInMaiuscolo(nomeUtente);
+                    console.log(nomeInMaiuscolo);
+                    
                     InserNomeUtente.textContent= nomeInMaiuscolo;
                 }
             
@@ -93,4 +95,18 @@ async function recuparaImmagineUtente(id){
 
     let data= await response.text();   
     return data;
+}
+
+
+
+
+function primaLetteraInMaiuscolo(stringa){
+    let s= "";
+    s += stringa[0].toUpperCase();
+
+    for(let i=1; i<stringa.length; i++){
+        s += stringa[i].toLowerCase();
+    }
+
+    return s;
 }
