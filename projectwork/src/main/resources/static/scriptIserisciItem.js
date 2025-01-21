@@ -1,55 +1,65 @@
 document.addEventListener("click", event => {
     if (event.target.classList.contains("btn-carrello")) {
-        // Recupera l'ID del prodotto dal bottone
+
+       
         const prodottoId = event.target.id;
+        
+                // Quantità fissa: 1
+        const quantita = 1;
+        
+                // Aggiungi il prodotto al carrello
+        aggiungiProdottoAlCarrello(prodottoId, 1);
+        
+    
+        // Recupera l'ID del prodotto dal bottone
+        // const prodottoId = event.target.id;
+        // console.log(event.target);
+        
 
         // Trova il div genitore che contiene il prodotto
-        const parentDiv = event.target.closest(".swiper-slide");
+        // const parentDiv = event.target.closest(".swiper-slide");
 
-        if (!parentDiv) {
-            console.error("Div genitore non trovato.");
-            return;
-        }
+        // if (!parentDiv) {
+        //     console.error("Div genitore non trovato.");
+        //     return;
+        // }
 
         // Trova il form esistente (se presente) nel div genitore
-        const existingForm = parentDiv.querySelector(".form-carrello");
+        // const existingForm = parentDiv.querySelector(".form-carrello");
 
         // Se il form esiste, rimuovilo (toggle)
-        if (existingForm) {
-            existingForm.remove();
-        } else {
-            // Se il form non esiste, crealo e aggiungilo
-            const form = document.createElement("div");
-            form.className = "form-carrello";
-            form.innerHTML = `
-                <label for="quantita-${prodottoId}">Quantità:</label>
-                <input 
-                    id="quantita-${prodottoId}" 
-                    type="number" 
-                    min="1" 
-                    max="10" 
-                    value="1"
-                />
-                <button class="btn-aggiungi">Aggiungi al carrello</button>
-            `;
+        // if (existingForm) {
+        //     existingForm.remove();
+        // } else {
+        //     // Se il form non esiste, crealo e aggiungilo
+        //     const form = document.createElement("div");
+        //     form.className = "form-carrello";
+        //     form.innerHTML = `
+        //         <label for="quantita-${prodottoId}">Quantità:</label>
+        //         <input 
+        //             id="quantita-${prodottoId}" 
+        //             type="number" 
+        //             min="1" 
+        //             max="10" 
+        //             value="1"
+        //         />
+        //         <button class="btn-aggiungi">Aggiungi al carrello</button>
+        //     `;
 
-            parentDiv.appendChild(form);
+        //     parentDiv.appendChild(form);
 
             // Aggiungi un event listener al secondo pulsante per aggiungere il prodotto al carrello
-            form.querySelector(".btn-aggiungi").addEventListener("click", () => {
-                const quantita = form.querySelector(`#quantita-${prodottoId}`).value;
-                if (quantita < 1) {
-                    alert("Inserisci una quantità valida.");
-                    return;
-                }
+            // event.target.addEventListener("click", () => {
+                // const quantita = form.querySelector(`#quantita-${prodottoId}`).value;
+                
                 // Aggiungi il prodotto al carrello
-                aggiungiProdottoAlCarrello(prodottoId, quantita);
+                // aggiungiProdottoAlCarrello(prodottoId, quantita);
 
                 // Rimuovi il form dopo aver aggiunto il prodotto
-                form.remove();
-            });
+                // form.remove();
+            
         }
-    }
+    
 });
 
 async function aggiungiProdottoAlCarrello(prodottoId, quantita) {
@@ -65,7 +75,7 @@ async function aggiungiProdottoAlCarrello(prodottoId, quantita) {
         prodotto: {
             id: prodottoId
         },
-        quantita: quantita
+        quantita: 1
     };
 
     try {
