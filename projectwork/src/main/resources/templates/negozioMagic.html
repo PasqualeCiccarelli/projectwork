@@ -46,81 +46,64 @@
             <!-- Barra di ricerca -->
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <!-- Menu -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3">
-                    <li class="nav-item text-center mx-1">
-                        <a class="nav-link active" aria-current="page" href="/">
-                            <i class="fas fa-home fa-2x" style="color: antiquewhite;"></i>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 order-1 order-lg-2 mt-3" style="align-items: center;">
+                    <li class="nav-item text-center mx-1" style="height: 100%;">
+                        <a class="nav-link active" aria-current="page" href="/" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <i class="fas fa-home fa-2x" style="color: white; margin-bottom: 1rem;"></i>
                             <p style="margin-bottom: 0;">Home</p>
                         </a>
                     </li>
-                    <li class="nav-item text-center mx-1">
-                        <a class="nav-link active" href="/negozio-pokemon" style="padding: 3px;">
-                            <i class="fas fa-dragon mb-2 fa-2x" style="color: antiquewhite;"></i>
-                            <p style="margin-bottom: 0;">Negozio Pokémon</p>
+                    <li class="nav-item text-center mx-1" style="height: 100%;">
+                        <a class="nav-link active" href="/negozio-pokemon" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <i class="fas fa-dragon fa-2x" style="color: white; margin-bottom: 1rem;"></i>
+                            <p style="margin-bottom: 0;">Negozio Pokemon</p>
                         </a>
                     </li>
-                    <li class="nav-item text-center mx-1">
-                        <a class="nav-link active" href="/negozio-yugiho">
-                            <i class="fas fa-scroll fa-2x" style="color: antiquewhite;"></i>
+                    <li class="nav-item text-center mx-1" style="height: 100%;">
+                        <a class="nav-link active" href="/negozio-yugiho" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                            <i class="fas fa-scroll fa-2x" style="color: white; margin-bottom: 1rem;"></i>
                             <p style="margin-bottom: 0;">Negozio Yu-Gi-Oh</p>
                         </a>
                     </li>
-                
 
-                    <li class="nav-item mx-1 d-flex flex-column justify-content-center align-items-center logo-profilo">
-                        <a href="/utente">
-                            <div>
-                                <i class="fa-solid fa-user fa-3x omino active" style="color:white; display: none;"></i>
+                    <li class="nav-item text-center mx-1" style="height: 100%;">
+                        <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <a href="/utente">
                                 <div class="profile-image immagine-profilo" id="profile-image"
-                                    style="width: 48px !important; height: 48px !important;">
+                                    style="width: 48px !important; height: 48px !important; margin-bottom: 1rem;">
+                                    <!-- Immagine di default se non c'è nessuna immagine associata -->
                                     <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Immagine Profilo"
                                         id="profile-img">
                                 </div>
-                            </div>
-                            <p style="color: red;  " class="nome-utente">ACCOUNT</p>
-                        </a>
+                            </a>
+                            <p style="color: #ffffff;" class="nome-utente">ACCOUNT</p>
+                        </div>
                     </li>
 
-                    <li class="nav-item text-center mx-1">
-                        <a class="nav-link active" href="/carrello">
-                            <i class="fa-solid fa-cart-shopping fa-2x" style="color: antiquewhite;"></i>
-                            <p style="color: red;">Carrello</p>
+                    <li class="nav-item mx-1 text-center togli-carrello" style="height: 100%;">
+                        <a href="/carrello" class="nav-link active d-flex flex-column justify-content-center align-items-center" style="text-decoration: none; height: 100%;">
+                            <i class="fa-solid fa-cart-shopping fa-2x" style="color: #ffffff; text-decoration: none; margin-bottom: 1rem;"></i>
+                            <p style="margin: 6px 0 0; color: #ffffff;" class="mb-2">Carrello</p>
                             <div id="cart-sticker" 
-                  class="animate__animated icona-numero" 
-                  style="
-                        display: none;
-                        position: absolute;
-                        top: 25px; /* Posiziona leggermente sopra il bordo superiore */
-                        right: 25px; /* All'interno del lato destro del div genitore */
-                        background: red;
-                        color: white;
-                        width: 15px;
-                        height: 15px;
-                        border-radius: 50%;
-                        text-align: center;
-                        font-size: 10px;
-                        line-height: 15px;
-                        z-index: 10;
-                ">
-             </div>
+                                class="animate__animated icona-numero" 
+                                style="
+                                    display: none;
+                                    position: absolute;
+                                    top: 25px; /* Posiziona leggermente sopra il bordo superiore */
+                                    right: 25px; /* All'interno del lato destro del div genitore */
+                                    background: red;
+                                    color: white;
+                                    width: 15px;
+                                    height: 15px;
+                                    border-radius: 50%;
+                                    text-align: center;
+                                    font-size: 10px;
+                                    line-height: 15px;
+                                    z-index: 10;
+                                ">
+                            </div>
                         </a>
                     </li>
-
-                    <li class="nav-item mx-1 bordo text-center classe-login show-loghi mb-3">
-                        <a class="nav-link active"   href="/login">
-                            <i class="fas fa-sign-in-alt fa-2x"></i>
-                            Login
-                        </a>
-                    </li>
-
-                    <li class="nav-item mx-1 bordo text-center classe-sign-in show-loghi mb-3">
-                        <a class="nav-link active"   href="/registrati">
-                            <i class="fas fa-user-plus fa-2x"></i>
-                            Sign-in
-                        </a>
-                    </li>
-                </ul>
-
                 </ul>
             </div>
         </div>
